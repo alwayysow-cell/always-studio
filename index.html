@@ -3,24 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#f8fafc">
-  <title>AlwaysStudio — Сайты, Mini Apps, BioCard и веб-инструменты за 1 день</title>
+  <title>AlwaysStudio — Сайты, Mini Apps и веб-инструменты за 24 часа</title>
   <style>
     :root {
+      color-scheme: light;
       --bg: #f8fafc;
-      --surface: rgba(255, 255, 255, 0.9);
+      --surface: rgba(255, 255, 255, 0.92);
       --surface-solid: #ffffff;
-      --border: rgba(15, 23, 42, 0.08);
-      --border-strong: rgba(15, 23, 42, 0.14);
+      --surface-subtle: #f1f5f9;
+      --border: rgba(15, 23, 42, 0.07);
+      --border-strong: rgba(15, 23, 42, 0.13);
       --text: #0f172a;
       --muted: #475569;
       --subtle: #64748b;
       --primary: #4f46e5;
+      --primary-hover: #4338ca;
       --secondary: #7c3aed;
       --accent-soft: #eef2ff;
       --emerald: #059669;
       --emerald-soft: #ecfdf5;
       --rose: #e11d48;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.03);
+      --shadow-md: 0 12px 32px -4px rgba(15, 23, 42, 0.06), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
+      --shadow-lg: 0 24px 48px -12px rgba(15, 23, 42, 0.1);
     }
 
     * {
@@ -32,25 +39,37 @@
     }
 
     html {
-      scroll-behavior: smooth;
-      background-color: #f8fafc;
+      background-color: #f8fafc !important;
+      color: var(--text);
     }
 
     body {
-      background-color: var(--bg);
+      background-color: #f8fafc !important;
       color: var(--text);
       line-height: 1.55;
       overflow-x: hidden;
       position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
       padding-bottom: env(safe-area-inset-bottom);
     }
 
-    /* Fixed Canvas & Background Layers */
+    /* Fixed Light Background Layers (iOS Safari Safe) */
+    .bg-base {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% -10%, #eef2ff 0%, #f8fafc 60%);
+      z-index: -4;
+      pointer-events: none;
+    }
+
     #bgCanvas {
       position: fixed;
       inset: 0;
       width: 100%;
       height: 100%;
+      background: transparent;
       z-index: -3;
       pointer-events: none;
     }
@@ -59,11 +78,11 @@
       position: fixed;
       inset: 0;
       background-image: 
-        linear-gradient(to right, rgba(79, 70, 229, 0.045) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(79, 70, 229, 0.045) 1px, transparent 1px);
-      background-size: 36px 36px;
-      mask-image: radial-gradient(ellipse 90% 70% at 50% 10%, #000 40%, transparent 100%);
-      -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 10%, #000 40%, transparent 100%);
+        linear-gradient(to right, rgba(79, 70, 229, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(79, 70, 229, 0.035) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 85% 65% at 50% 10%, #000 35%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 10%, #000 35%, transparent 100%);
       pointer-events: none;
       z-index: -2;
     }
@@ -71,57 +90,58 @@
     .aurora {
       position: fixed;
       border-radius: 50%;
-      filter: blur(95px);
+      filter: blur(100px);
       pointer-events: none;
       z-index: -1;
     }
     .aurora-1 {
-      width: 480px; height: 480px;
-      top: -150px; left: -120px;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.18), transparent 70%);
+      width: 500px; height: 500px;
+      top: -160px; left: -120px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.14), transparent 70%);
     }
     .aurora-2 {
       width: 440px; height: 440px;
-      top: 25%; right: -140px;
-      background: radial-gradient(circle, rgba(168, 85, 247, 0.15), transparent 70%);
+      top: 28%; right: -140px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.12), transparent 70%);
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1080px;
+      width: 100%;
       margin: 0 auto;
       padding: 0 16px;
+      flex: 1;
     }
 
-    /* Header */
+    /* Premium Floating Glass Header */
     header {
       position: sticky;
-      top: 10px;
+      top: 12px;
       z-index: 50;
       padding: 0 12px;
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     .nav-bar {
-      max-width: 1076px;
+      max-width: 1056px;
       margin: 0 auto;
-      padding: 10px 14px;
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
-      border: 1px solid rgba(79, 70, 229, 0.14);
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(15, 23, 42, 0.06);
       border-radius: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
     .logo-wrap {
       display: flex;
       align-items: center;
       gap: 10px;
-      text-decoration: none;
-      color: var(--text);
+      cursor: pointer;
     }
 
     .logo-badge {
@@ -131,9 +151,9 @@
       background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
       display: grid;
       place-items: center;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: #fff;
-      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.32), inset 0 1px 1px rgba(255,255,255,0.4);
+      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.3), inset 0 1px 1px rgba(255,255,255,0.45);
       flex-shrink: 0;
     }
 
@@ -157,7 +177,7 @@
     }
 
     .logo-sub {
-      font-size: 0.69rem;
+      font-size: 0.68rem;
       font-weight: 600;
       color: var(--subtle);
       display: flex;
@@ -174,42 +194,77 @@
       display: inline-block;
     }
 
+    /* Multi-Page Navigation Tabs */
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 4px;
     }
 
-    .nav-links a.link {
+    .nav-tab {
+      background: transparent;
+      border: none;
       color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
-      transition: color 0.2s;
+      padding: 8px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
 
-    .nav-links a.link:hover { color: var(--primary); }
+    .nav-tab:hover {
+      color: var(--text);
+      background: rgba(15, 23, 42, 0.04);
+    }
 
-    @media (max-width: 740px) {
-      .nav-links a.link { display: none; }
+    .nav-tab.active {
+      background: var(--accent-soft);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    @media (max-width: 780px) {
+      .nav-tab { display: none; }
     }
 
     .header-cta {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 9px 15px;
+      padding: 9px 16px;
       border-radius: 13px;
       background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
       color: #fff;
       font-size: 0.84rem;
       font-weight: 700;
-      text-decoration: none;
-      box-shadow: 0 6px 18px rgba(79, 70, 229, 0.3), inset 0 1px 0 rgba(255,255,255,0.28);
-      transition: transform 0.15s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(79, 70, 229, 0.28), inset 0 1px 0 rgba(255,255,255,0.3);
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+      margin-left: 6px;
+    }
+
+    .header-cta:hover {
+      box-shadow: 0 8px 22px rgba(79, 70, 229, 0.38);
     }
 
     .header-cta:active { transform: scale(0.95); }
+
+    /* Page View Transitions */
+    .page-view {
+      display: none;
+      animation: pageFade 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      padding-top: 20px;
+      padding-bottom: 36px;
+    }
+
+    .page-view.active { display: block; }
+
+    @keyframes pageFade {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     /* Buttons */
     .btn {
@@ -217,14 +272,14 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 14px 24px;
+      padding: 14px 26px;
       border-radius: 15px;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       text-decoration: none;
       cursor: pointer;
       border: none;
-      transition: transform 0.18s ease, box-shadow 0.2s ease, background 0.2s ease;
+      transition: transform 0.18s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
       user-select: none;
     }
 
@@ -233,55 +288,56 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       color: #fff;
-      box-shadow: 0 8px 24px rgba(79, 70, 229, 0.28);
+      box-shadow: 0 10px 26px rgba(79, 70, 229, 0.28), inset 0 1px 0 rgba(255,255,255,0.28);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(79, 70, 229, 0.38);
+      box-shadow: 0 14px 32px rgba(79, 70, 229, 0.38);
     }
 
     .btn-outline {
       background: #ffffff;
       color: var(--text);
       border: 1px solid var(--border-strong);
-      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.04);
+      box-shadow: var(--shadow-sm);
     }
 
     .btn-outline:hover {
-      background: #f1f5f9;
-      border-color: rgba(79, 70, 229, 0.35);
+      background: #f8fafc;
+      border-color: rgba(79, 70, 229, 0.38);
+      transform: translateY(-1px);
     }
 
     .btn-sm {
-      padding: 10px 16px;
+      padding: 11px 16px;
       font-size: 0.85rem;
       border-radius: 12px;
     }
 
     /* Hero Section */
     .hero {
-      padding: 28px 0 38px;
+      padding: 24px 0 32px;
       text-align: center;
     }
 
     @media (min-width: 768px) {
-      .hero { padding: 56px 0 52px; }
+      .hero { padding: 52px 0 44px; }
     }
 
     .pill-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 14px;
+      padding: 6px 15px;
       border-radius: 999px;
       background: var(--emerald-soft);
       color: var(--emerald);
       font-size: 0.79rem;
       font-weight: 700;
-      margin-bottom: 16px;
-      border: 1px solid rgba(5, 150, 105, 0.22);
-      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.07);
+      margin-bottom: 18px;
+      border: 1px solid rgba(5, 150, 105, 0.2);
+      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.08);
     }
 
     .pulse-dot {
@@ -300,16 +356,16 @@
     }
 
     h1 {
-      font-size: clamp(1.9rem, 6.2vw, 3.65rem);
+      font-size: clamp(2rem, 6.2vw, 3.85rem);
       font-weight: 800;
-      line-height: 1.09;
-      letter-spacing: -1.3px;
-      margin-bottom: 14px;
+      line-height: 1.08;
+      letter-spacing: -1.4px;
+      margin-bottom: 16px;
       color: #0f172a;
     }
 
     .gradient-text {
-      background: linear-gradient(135deg, #4f46e5 0%, #9333ea 50%, #0284c7 100%);
+      background: linear-gradient(135deg, #4f46e5 0%, #9333ea 52%, #0284c7 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -317,75 +373,20 @@
     .hero p {
       color: var(--muted);
       font-size: clamp(0.95rem, 2.5vw, 1.12rem);
-      max-width: 650px;
-      margin: 0 auto 24px;
+      max-width: 600px;
+      margin: 0 auto 28px;
     }
 
     .hero-actions {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 28px;
+      margin-bottom: 36px;
     }
 
     @media (max-width: 480px) {
       .hero-actions .btn { width: 100%; }
-    }
-
-    /* Live Hero Showcase Strip */
-    .hero-showcase {
-      max-width: 680px;
-      margin: 0 auto 26px;
-      background: rgba(255, 255, 255, 0.92);
-      border: 1px solid rgba(79, 70, 229, 0.16);
-      border-radius: 20px;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      text-align: left;
-      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.05);
-    }
-
-    .showcase-left {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-    }
-
-    .showcase-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: #eef2ff;
-      color: var(--primary);
-      display: grid;
-      place-items: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-
-    .showcase-info strong {
-      display: block;
-      font-size: 0.86rem;
-      color: var(--text);
-    }
-
-    .showcase-info span {
-      font-size: 0.75rem;
-      color: var(--subtle);
-    }
-
-    .showcase-tag {
-      font-size: 0.74rem;
-      font-weight: 700;
-      color: var(--emerald);
-      background: var(--emerald-soft);
-      padding: 5px 10px;
-      border-radius: 9px;
-      white-space: nowrap;
     }
 
     /* Stats Bento */
@@ -402,41 +403,96 @@
     }
 
     .stat-card {
-      background: var(--surface);
+      background: var(--surface-solid);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 14px 8px;
-      backdrop-filter: blur(16px);
+      border-radius: 20px;
+      padding: 16px 8px;
       text-align: center;
-      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
+      box-shadow: var(--shadow-md);
     }
 
     @media (min-width: 640px) {
-      .stat-card { padding: 22px; border-radius: 22px; }
+      .stat-card { padding: 24px; border-radius: 24px; }
     }
 
     .stat-card strong {
       display: block;
-      font-size: clamp(1.05rem, 3.3vw, 1.6rem);
+      font-size: clamp(1.05rem, 3.3vw, 1.65rem);
       font-weight: 800;
       color: var(--primary);
-      margin-bottom: 2px;
+      margin-bottom: 3px;
+      letter-spacing: -0.5px;
     }
 
     .stat-card span {
-      font-size: clamp(0.7rem, 2vw, 0.85rem);
+      font-size: clamp(0.71rem, 2vw, 0.85rem);
       color: var(--muted);
       line-height: 1.25;
       display: block;
     }
 
-    /* Sections */
-    section {
-      padding: 40px 0;
+    /* Premium Quick Page Cards on Home */
+    .quick-nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      max-width: 820px;
+      margin: 18px auto 0;
     }
 
-    @media (min-width: 768px) {
-      section { padding: 60px 0; }
+    .quick-card {
+      background: var(--surface-solid);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 16px 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .quick-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(79, 70, 229, 0.35);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .quick-card-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .quick-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      background: var(--accent-soft);
+      display: grid;
+      place-items: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+
+    .quick-arrow {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--surface-subtle);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    /* Section Headers */
+    .section-block {
+      padding: 14px 0 36px;
     }
 
     .section-label {
@@ -450,21 +506,21 @@
     }
 
     .section-title {
-      font-size: clamp(1.5rem, 4.5vw, 2.35rem);
+      font-size: clamp(1.55rem, 4.5vw, 2.35rem);
       font-weight: 800;
       margin-bottom: 8px;
-      letter-spacing: -0.7px;
-      line-height: 1.18;
+      letter-spacing: -0.8px;
+      line-height: 1.16;
     }
 
     .section-sub {
       color: var(--muted);
       font-size: 0.94rem;
-      max-width: 650px;
+      max-width: 640px;
       margin-bottom: 22px;
     }
 
-    /* Horizontal Swipeable Filter Bar */
+    /* Filter Bar */
     .filter-bar {
       display: flex;
       gap: 8px;
@@ -476,24 +532,25 @@
     .filter-bar::-webkit-scrollbar { display: none; }
 
     .filter-btn {
-      padding: 8px 15px;
+      padding: 8px 16px;
       border-radius: 999px;
       border: 1px solid var(--border-strong);
-      background: #fff;
+      background: #ffffff;
       color: var(--muted);
       font-size: 0.83rem;
       font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
       flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
       transition: all 0.2s;
     }
 
     .filter-btn.active {
       background: var(--primary);
-      color: #fff;
+      color: #ffffff;
       border-color: var(--primary);
-      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.28);
     }
 
     /* Cards Grid */
@@ -508,7 +565,7 @@
       border: 1px solid var(--border);
       border-radius: 24px;
       padding: 20px;
-      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.04);
+      box-shadow: var(--shadow-md);
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
       display: flex;
       flex-direction: column;
@@ -518,9 +575,9 @@
     @media (min-width: 768px) {
       .card { padding: 24px; border-radius: 26px; }
       .card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-4px);
         border-color: rgba(79, 70, 229, 0.35);
-        box-shadow: 0 22px 45px rgba(15, 23, 42, 0.09);
+        box-shadow: var(--shadow-lg);
       }
     }
 
@@ -548,18 +605,18 @@
     }
 
     .card h3 {
-      font-size: 1.16rem;
+      font-size: 1.15rem;
       margin-bottom: 6px;
       letter-spacing: -0.3px;
     }
 
     .card p {
       color: var(--muted);
-      font-size: 0.88rem;
+      font-size: 0.87rem;
       margin-bottom: 16px;
     }
 
-    /* Detailed Mini-App Window inside Card */
+    /* Mini-App Window inside Card */
     .mini-phone-window {
       background: #f8fafc;
       border: 1px solid var(--border-strong);
@@ -588,7 +645,7 @@
     .mini-url {
       font-size: 0.68rem;
       color: var(--subtle);
-      background: #fff;
+      background: #ffffff;
       padding: 2px 8px;
       border-radius: 6px;
       border: 1px solid var(--border);
@@ -630,7 +687,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 7px 10px;
-      background: #fff;
+      background: #ffffff;
       border: 1px solid var(--border);
       border-radius: 10px;
       margin-bottom: 6px;
@@ -643,6 +700,8 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
+      max-width: 820px;
+      margin: 28px auto 0;
     }
 
     @media (max-width: 720px) {
@@ -654,17 +713,18 @@
       border-radius: 22px;
       padding: 20px;
       border: 1px solid var(--border);
+      text-align: left;
+      box-shadow: var(--shadow-md);
     }
 
     .compare-card.bad {
-      background: #fffbfb;
+      background: #fffcfc;
       border-color: rgba(225, 29, 72, 0.18);
     }
 
     .compare-card.good {
-      background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 45%);
+      background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 50%);
       border: 1.5px solid rgba(79, 70, 229, 0.35);
-      box-shadow: 0 12px 32px rgba(79, 70, 229, 0.08);
     }
 
     .compare-list {
@@ -673,44 +733,15 @@
       display: flex;
       flex-direction: column;
       gap: 9px;
-      font-size: 0.89rem;
+      font-size: 0.87rem;
+      color: var(--muted);
     }
 
     .compare-card.bad li::before { content: "✕ "; color: var(--rose); font-weight: 800; }
+    .compare-card.good li { color: var(--text); }
     .compare-card.good li::before { content: "✓ "; color: var(--emerald); font-weight: 800; }
 
-    /* Process Steps */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-    }
-
-    .step-card {
-      background: var(--surface-solid);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 20px;
-      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.03);
-    }
-
-    .step-num {
-      width: 36px;
-      height: 36px;
-      border-radius: 11px;
-      background: var(--accent-soft);
-      color: var(--primary);
-      font-weight: 800;
-      display: grid;
-      place-items: center;
-      margin-bottom: 12px;
-      font-size: 0.98rem;
-    }
-
-    .step-card h4 { margin-bottom: 6px; font-size: 1.03rem; }
-    .step-card p { color: var(--muted); font-size: 0.87rem; }
-
-    /* Pricing & Services Grid (6 services, 1000-2000 RUB) */
+    /* Pricing & Services Grid */
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -720,7 +751,7 @@
     .price-val {
       font-size: 2.2rem;
       font-weight: 800;
-      margin: 8px 0 12px;
+      margin: 6px 0 12px;
       letter-spacing: -1px;
       color: var(--text);
     }
@@ -741,7 +772,7 @@
     }
 
     .features li {
-      font-size: 0.88rem;
+      font-size: 0.87rem;
       color: #334155;
       display: flex;
       align-items: flex-start;
@@ -757,10 +788,10 @@
     .card.featured {
       border: 2px solid var(--primary);
       background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 35%);
-      box-shadow: 0 18px 45px rgba(79, 70, 229, 0.12);
+      box-shadow: 0 20px 45px rgba(79, 70, 229, 0.12);
     }
 
-    /* FAQ + Direct Contact Banner */
+    /* FAQ + Direct Contact */
     .faq-list {
       display: flex;
       flex-direction: column;
@@ -771,11 +802,12 @@
     details.faq-item {
       background: var(--surface-solid);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 15px 18px;
+      border-radius: 18px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow-sm);
     }
 
-    details.faq-item[open] { border-color: rgba(79, 70, 229, 0.4); }
+    details.faq-item[open] { border-color: rgba(79, 70, 229, 0.38); }
 
     summary.faq-q {
       font-weight: 600;
@@ -819,6 +851,7 @@
       justify-content: space-between;
       gap: 14px;
       flex-wrap: wrap;
+      box-shadow: var(--shadow-sm);
     }
 
     .faq-contact-text strong {
@@ -837,11 +870,11 @@
     .order-box {
       background: var(--surface-solid);
       border: 1px solid var(--border-strong);
-      border-radius: 24px;
-      padding: 26px 18px;
-      max-width: 580px;
-      margin: 0 auto;
-      box-shadow: 0 20px 55px rgba(15, 23, 42, 0.08);
+      border-radius: 26px;
+      padding: 28px 18px;
+      max-width: 560px;
+      margin: 30px auto 0;
+      box-shadow: var(--shadow-lg);
     }
 
     @media (min-width: 640px) {
@@ -860,7 +893,7 @@
     input, select {
       width: 100%;
       padding: 13px 15px;
-      border-radius: 13px;
+      border-radius: 14px;
       border: 1px solid var(--border-strong);
       background: #f8fafc;
       color: var(--text);
@@ -875,22 +908,22 @@
       box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
     }
 
-    /* Clean Mobile Sticky Bottom Dock */
+    /* Mobile Bottom Dock */
     .mobile-dock {
       display: none;
     }
 
-    @media (max-width: 740px) {
+    @media (max-width: 780px) {
       .mobile-dock {
         position: fixed;
         bottom: calc(10px + env(safe-area-inset-bottom));
         left: 14px;
         right: 14px;
         background: rgba(255, 255, 255, 0.94);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(15, 23, 42, 0.12);
-        border-radius: 18px;
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+        border: 1px solid rgba(15, 23, 42, 0.1);
+        border-radius: 20px;
         padding: 6px 8px;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -899,28 +932,31 @@
         box-shadow: 0 12px 35px rgba(15, 23, 42, 0.14);
       }
 
-      .dock-link {
+      .dock-btn {
+        background: transparent;
+        border: none;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        text-decoration: none;
         color: var(--muted);
         font-size: 0.7rem;
         font-weight: 600;
         padding: 6px 2px;
-        border-radius: 12px;
-        transition: background 0.15s, color 0.15s;
+        border-radius: 13px;
+        cursor: pointer;
+        transition: all 0.15s;
       }
 
-      .dock-link:active {
+      .dock-btn.active {
         background: var(--accent-soft);
         color: var(--primary);
+        font-weight: 700;
       }
 
-      .dock-link span { font-size: 1.05rem; margin-bottom: 2px; }
+      .dock-btn span { font-size: 1.05rem; margin-bottom: 2px; }
 
-      footer { padding-bottom: 90px; }
+      footer { padding-bottom: 92px; }
     }
 
     /* Interactive Light Smartphone Modal */
@@ -1128,18 +1164,18 @@
 
     footer {
       text-align: center;
-      padding: 34px 20px;
+      padding: 28px 20px;
       color: var(--subtle);
       font-size: 0.84rem;
       border-top: 1px solid var(--border);
-      margin-top: 40px;
       background: #ffffff;
     }
   </style>
 </head>
 <body>
 
-  <!-- Fixed Background Layers -->
+  <!-- Fixed Light Background Layers -->
+  <div class="bg-base"></div>
   <canvas id="bgCanvas"></canvas>
   <div class="bg-grid"></div>
   <div class="aurora aurora-1"></div>
@@ -1147,494 +1183,499 @@
 
   <header>
     <div class="nav-bar">
-      <a href="#" class="logo-wrap">
+      <div class="logo-wrap" onclick="switchPage('home')">
         <div class="logo-badge">⚡</div>
         <div class="logo-text-group">
           <div class="logo-title">Always<span>Studio</span></div>
           <div class="logo-sub"><span class="live-dot"></span> Сайты & Mini Apps • 24ч</div>
         </div>
-      </a>
+      </div>
       <div class="nav-links">
-        <a href="#cases" class="link">Примеры</a>
-        <a href="#pricing" class="link">Услуги и цены</a>
-        <a href="#how" class="link">Этапы</a>
-        <a href="#faq" class="link">Вопросы</a>
-        <a href="#order" class="header-cta">Заказать ✈️</a>
+        <button class="nav-tab active" data-page="home" onclick="switchPage('home')">Главная</button>
+        <button class="nav-tab" data-page="cases" onclick="switchPage('cases')">Примеры</button>
+        <button class="nav-tab" data-page="services" onclick="switchPage('services')">Услуги</button>
+        <button class="nav-tab" data-page="faq" onclick="switchPage('faq')">Вопросы</button>
+        <button class="header-cta" onclick="switchPage('faq', true)">Заказать ✈️</button>
       </div>
     </div>
   </header>
 
   <main class="container">
-    <section class="hero">
-      <div class="pill-badge">
-        <span class="pulse-dot"></span>
-        Сначала показываю готовую работу — оплата потом
-      </div>
-      <h1>Сайты, <span class="gradient-text">Mini Apps и веб-сервисы</span> за 24 часа</h1>
-      <p>Создаем сайты-визитки, Telegram Mini Apps, цифровые карточки BioCard, онлайн-калькуляторы и промо-игры для вашего бизнеса — от 1 000 до 2 000 ₽ под ключ.</p>
-      
-      <div class="hero-actions">
-        <a href="#order" class="btn btn-primary">Заказать проект 🚀</a>
-        <a href="#cases" class="btn btn-outline">Посмотреть примеры 📱</a>
-      </div>
 
-      <div class="hero-showcase">
-        <div class="showcase-left">
-          <div class="showcase-icon">📲</div>
-          <div class="showcase-info">
-            <strong>6 форматов для роста заявок</strong>
-            <span>От мультиссылки BioCard до Mini App с корзиной</span>
+    <!-- ==================== PAGE 1: HOME ==================== -->
+    <div id="page-home" class="page-view active">
+      <section class="hero">
+        <div class="pill-badge">
+          <span class="pulse-dot"></span>
+          Сначала показываю готовую работу — оплата потом
+        </div>
+        <h1>Сайты, <span class="gradient-text">Mini Apps и веб-сервисы</span> за 24 часа</h1>
+        <p>Создаем сайты-визитки, Telegram Mini Apps, цифровые карточки BioCard, онлайн-калькуляторы и промо-игры для вашего бизнеса — от 1 000 до 2 000 ₽ под ключ.</p>
+        
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="switchPage('faq', true)">Заказать проект 🚀</button>
+          <button class="btn btn-outline" onclick="switchPage('cases')">Посмотреть примеры 📱</button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <strong>24 часа</strong>
+            <span>от заявки до ссылки</span>
+          </div>
+          <div class="stat-card">
+            <strong>0 ₽ / мес</strong>
+            <span>хостинг навсегда</span>
+          </div>
+          <div class="stat-card">
+            <strong>1 000 – 2 000 ₽</strong>
+            <span>фикс цена под ключ</span>
           </div>
         </div>
-        <span class="showcase-tag">1 000 – 2 000 ₽</span>
-      </div>
 
-      <div class="stats-grid">
-        <div class="stat-card">
-          <strong>1 день</strong>
-          <span>от заявки до ссылки</span>
-        </div>
-        <div class="stat-card">
-          <strong>0 ₽ / мес</strong>
-          <span>хостинг навсегда</span>
-        </div>
-        <div class="stat-card">
-          <strong>1 000 – 2 000 ₽</strong>
-          <span>фикс цена под ключ</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="cases">
-      <span class="section-label">Портфолио решений</span>
-      <h2 class="section-title">Живые примеры для разных ниш</h2>
-      <p class="section-sub">Нажмите «Открыть на телефоне» на любой карточке — внутри можно переключать категории, выбирать услуги и проверить оформление заявки.</p>
-
-      <div class="filter-bar">
-        <button class="filter-btn active" onclick="filterCases('all', this)">Все ниши (6)</button>
-        <button class="filter-btn" onclick="filterCases('services', this)">Услуги и мастера</button>
-        <button class="filter-btn" onclick="filterCases('food', this)">Еда и магазины</button>
-        <button class="filter-btn" onclick="filterCases('experts', this)">Эксперты и обучение</button>
-      </div>
-
-      <div class="grid" id="cardsGrid">
-        <!-- Case 1: Beauty -->
-        <div class="card" data-cat="services">
-          <div>
-            <div class="card-top">
-              <span class="tag">💅 Бьюти-сфера</span>
-              <span class="mini-badge">Сайт + Запись</span>
-            </div>
-            <h3>Студия маникюра & бровей</h3>
-            <p>Клиентки сами выбирают процедуру, видят время работы и записываются в Telegram без долгих переписок.</p>
-            <div class="mini-phone-window">
-              <div class="mini-window-bar">
-                <div class="dots"><i></i><i></i><i></i></div>
-                <span class="mini-url">anna-nails.app</span>
+        <!-- Quick Page Navigation Cards -->
+        <div class="quick-nav-grid">
+          <div class="quick-card" onclick="switchPage('cases')">
+            <div class="quick-card-left">
+              <div class="quick-icon">📱</div>
+              <div>
+                <strong style="display:block; font-size:0.95rem; color:var(--text);">Примеры работ</strong>
+                <span style="font-size:0.78rem; color:var(--muted);">6 интерактивных ниш</span>
               </div>
-              <div class="mini-app-header">
-                <div class="mini-avatar" style="background:linear-gradient(135deg,#ec4899,#8b5cf6);">💅</div>
-                <div class="mini-app-title">
-                  <strong>Nails & Brows by Anna</strong>
-                  <span>⭐ 5.0 • Центр города • Онлайн-запись</span>
-                </div>
-              </div>
-              <div class="mockup-row"><span>Маникюр + гель-лак</span><strong style="color:var(--emerald);">1 800 ₽</strong></div>
-              <div class="mockup-row"><span>Архитектура бровей</span><strong style="color:var(--emerald);">1 200 ₽</strong></div>
             </div>
+            <div class="quick-arrow">→</div>
           </div>
-          <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('beauty')">Открыть на телефоне 📱</button>
-        </div>
 
-        <!-- Case 2: Tutor -->
-        <div class="card" data-cat="experts">
-          <div>
-            <div class="card-top">
-              <span class="tag">📚 Репетиторы</span>
-              <span class="mini-badge">Визитка эксперта</span>
-            </div>
-            <h3>Подготовка к ЕГЭ и английский</h3>
-            <p>Вызывает доверие у родителей: баллы учеников, формат уроков, абонементы и запись на пробный урок.</p>
-            <div class="mini-phone-window">
-              <div class="mini-window-bar">
-                <div class="dots"><i></i><i></i><i></i></div>
-                <span class="mini-url">english-ege.app</span>
+          <div class="quick-card" onclick="switchPage('services')">
+            <div class="quick-card-left">
+              <div class="quick-icon">💎</div>
+              <div>
+                <strong style="display:block; font-size:0.95rem; color:var(--text);">Услуги и цены</strong>
+                <span style="font-size:0.78rem; color:var(--muted);">Все решения под ключ</span>
               </div>
-              <div class="mini-app-header">
-                <div class="mini-avatar" style="background:linear-gradient(135deg,#2563eb,#0ea5e9);">📚</div>
-                <div class="mini-app-title">
-                  <strong>English & ЕГЭ с Еленой</strong>
-                  <span>🎓 Средний балл 86 • Онлайн в Zoom</span>
-                </div>
-              </div>
-              <div class="mockup-row"><span>Пробный урок (45 мин)</span><strong style="color:var(--emerald);">Бесплатно</strong></div>
-              <div class="mockup-row"><span>Индивидуально (60 мин)</span><strong style="color:var(--emerald);">1 500 ₽</strong></div>
             </div>
+            <div class="quick-arrow">→</div>
           </div>
-          <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('tutor')">Открыть на телефоне 📱</button>
-        </div>
 
-        <!-- Case 3: Auto -->
-        <div class="card" data-cat="services">
-          <div>
-            <div class="card-top">
-              <span class="tag">🚘 Автоуслуги</span>
-              <span class="mini-badge">Прайс + Вызов</span>
-            </div>
-            <h3>Детейлинг и химчистка авто</h3>
-            <p>Понятный прайс по классам авто, список этапов работы и мгновенная кнопка записи для водителей.</p>
-            <div class="mini-phone-window">
-              <div class="mini-window-bar">
-                <div class="dots"><i></i><i></i><i></i></div>
-                <span class="mini-url">prodetail.app</span>
+          <div class="quick-card" onclick="switchPage('faq')">
+            <div class="quick-card-left">
+              <div class="quick-icon">💬</div>
+              <div>
+                <strong style="display:block; font-size:0.95rem; color:var(--text);">Вопросы и связь</strong>
+                <span style="font-size:0.78rem; color:var(--muted);">Напрямую @alwayssowdev</span>
               </div>
-              <div class="mini-app-header">
-                <div class="mini-avatar" style="background:linear-gradient(135deg,#1e293b,#475569);">🚘</div>
-                <div class="mini-app-title">
-                  <strong>ProDetail Studio</strong>
-                  <span>🛡️ Гарантия 1 год • Без выходных</span>
-                </div>
-              </div>
-              <div class="mockup-row"><span>Химчистка салона</span><strong style="color:var(--emerald);">от 6 500 ₽</strong></div>
-              <div class="mockup-row"><span>Полировка + керамика</span><strong style="color:var(--emerald);">14 000 ₽</strong></div>
             </div>
+            <div class="quick-arrow">→</div>
           </div>
-          <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('auto')">Открыть на телефоне 📱</button>
         </div>
 
-        <!-- Case 4: Bakery -->
-        <div class="card" data-cat="food">
-          <div>
-            <div class="card-top">
-              <span class="tag">🎂 Кондитеры</span>
-              <span class="mini-badge">Telegram Mini App</span>
-            </div>
-            <h3>Бенто-торты и десерты на заказ</h3>
-            <p>Каталог начинок и размеров прямо внутри Telegram: клиент собирает заказ в пару тапов и отправляет вам.</p>
-            <div class="mini-phone-window">
-              <div class="mini-window-bar">
-                <div class="dots"><i></i><i></i><i></i></div>
-                <span class="mini-url">t.me/sweetbox_bot</span>
-              </div>
-              <div class="mini-app-header">
-                <div class="mini-avatar" style="background:linear-gradient(135deg,#ea580c,#e11d48);">🎂</div>
-                <div class="mini-app-title">
-                  <strong>SweetBox — Десерты</strong>
-                  <span>🚚 Доставка за 60 мин • ⭐ 4.9</span>
-                </div>
-              </div>
-              <div class="mockup-row"><span>Бенто-торт (450 г)</span><strong style="color:var(--emerald);">1 600 ₽</strong></div>
-              <div class="mockup-row"><span>Набор капкейков (6 шт)</span><strong style="color:var(--emerald);">1 500 ₽</strong></div>
-            </div>
-          </div>
-          <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('bakery')">Открыть на телефоне 📱</button>
-        </div>
-
-        <!-- Case 5: Photo -->
-        <div class="card" data-cat="experts">
-          <div>
-            <div class="card-top">
-              <span class="tag">📸 Фото и видео</span>
-              <span class="mini-badge">Портфолио + Пакеты</span>
-            </div>
-            <h3>Фотограф и контент-мейкер</h3>
-            <p>Вместо скучных ссылок на диск — стильная презентация пакетов съемки, сроков отдачи и бронирование даты.</p>
-            <div class="mini-phone-window">
-              <div class="mini-window-bar">
-                <div class="dots"><i></i><i></i><i></i></div>
-                <span class="mini-url">volkova-photo.app</span>
-              </div>
-              <div class="mini-app-header">
-                <div class="mini-avatar" style="background:linear-gradient(135deg,#4f46e5,#9333ea);">📸</div>
-                <div class="mini-app-title">
-                  <strong>Дарья Волкова | Photo</strong>
-                  <span>⚡ Первые фото за 24 часа</span>
-                </div>
-              </div>
-              <div class="mockup-row"><span>Экспресс-съемка (1 час)</span><strong style="color:var(--emerald);">3 500 ₽</strong></div>
-              <div class="mockup-row"><span>Контент для бренда</span><strong style="color:var(--emerald);">7 000 ₽</strong></div>
-            </div>
-          </div>
-          <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('photo')">Открыть на телефоне 📱</button>
-        </div>
-
-        <!-- Case 6: Repair -->
-        <div class="card" data-cat="services">
-          <div>
-            <div class="card-top">
-              <span class="tag">🛠 Ремонт и сервис</span>
-              <span class="mini-badge">Быстрый вызов</span>
-            </div>
-            <h3>Ремонт смартфонов и ПК</h3>
-            <p>Прайс на частые поломки с гарантией, время ремонта и кнопка срочного вызова мастера или доставки.</p>
-            <div class="mini-phone-window">
-              <div class="mini-window-bar">
-                <div class="dots"><i></i><i></i><i></i></div>
-                <span class="mini-url">fixlab-service.app</span>
-              </div>
-              <div class="mini-app-header">
-                <div class="mini-avatar" style="background:linear-gradient(135deg,#059669,#0d9488);">🛠</div>
-                <div class="mini-app-title">
-                  <strong>FixLab — Сервисный центр</strong>
-                  <span>⚡ Ремонт от 30 мин • Гарантия 1 год</span>
-                </div>
-              </div>
-              <div class="mockup-row"><span>Замена аккумулятора</span><strong style="color:var(--emerald);">от 1 900 ₽</strong></div>
-              <div class="mockup-row"><span>Чистка ПК + термопаста</span><strong style="color:var(--emerald);">1 500 ₽</strong></div>
-            </div>
-          </div>
-          <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('repair')">Открыть на телефоне 📱</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- All Services & Pricing (1000 - 2000 RUB) -->
-    <section id="pricing">
-      <span class="section-label">Услуги и стоимость</span>
-      <h2 class="section-title">Все услуги студии (1 000 – 2 000 ₽)</h2>
-      <p class="section-sub">Выбирайте подходящий формат под вашу задачу. Фиксированная оплата один раз — хостинг полностью бесплатный.</p>
-
-      <div class="pricing-grid">
-        <!-- Service 1: BioCard -->
-        <div class="card">
-          <div>
-            <div class="card-top">
-              <span class="tag">💳 Мультиссылка</span>
-              <span class="mini-badge">Готово за 3 часа</span>
-            </div>
-            <h3>Цифровая BioCard</h3>
-            <div class="price-val">1 000 ₽ <small>/ навсегда</small></div>
-            <ul class="features">
-              <li>Стильная карточка для шапки профиля в соцсетях</li>
-              <li>Все соцсети, мессенджеры и карта проезда в 1 месте</li>
-              <li>Блок с ключевыми услугами и быстрым звонком</li>
-              <li>Адаптация под любые смартфоны</li>
+        <!-- Before vs After Comparison -->
+        <div class="compare-grid">
+          <div class="compare-card bad">
+            <strong style="color:var(--rose); font-size:1rem;">Обычная переписка / Авито</strong>
+            <ul class="compare-list">
+              <li>Ручные ответы про цены по 20 раз в день</li>
+              <li>Клиенты уходят без понятного прайса и фото</li>
+              <li>Долгая загрузка файлов со сторонних дисков</li>
             </ul>
           </div>
-          <a href="#order" class="btn btn-outline btn-sm" onclick="selectTariff('Цифровая BioCard (1 000 ₽)')">Заказать BioCard</a>
-        </div>
 
-        <!-- Service 2: Redesign / Fix -->
-        <div class="card">
-          <div>
-            <div class="card-top">
-              <span class="tag">✨ Апгрейд</span>
-              <span class="mini-badge">За 1 день</span>
-            </div>
-            <h3>Редизайн и правки сайта</h3>
-            <div class="price-val">1 200 ₽ <small>/ под ключ</small></div>
-            <ul class="features">
-              <li>Обновление устаревшего дизайна на современный</li>
-              <li>Полная мобильная адаптация под iPhone и Android</li>
-              <li>Добавление новых разделов, фото, цен и анимаций</li>
-              <li>Ускорение загрузки и перенос на бесплатный хостинг</li>
+          <div class="compare-card good">
+            <strong style="color:var(--primary); font-size:1rem;">AlwaysStudio</strong>
+            <ul class="compare-list">
+              <li>Одна ссылка с прайсом, фото и онлайн-записью</li>
+              <li>Загрузка на iPhone и Android за 0.3 секунды</li>
+              <li>Окупается с первого же нового клиента</li>
             </ul>
           </div>
-          <a href="#order" class="btn btn-outline btn-sm" onclick="selectTariff('Редизайн и правки сайта (1 200 ₽)')">Заказать апгрейд</a>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== PAGE 2: CASES ==================== -->
+    <div id="page-cases" class="page-view">
+      <section class="section-block">
+        <span class="section-label">Портфолио решений</span>
+        <h2 class="section-title">Живые примеры для разных ниш</h2>
+        <p class="section-sub">Нажмите «Открыть на телефоне» на любой карточке — внутри можно переключать категории и протестировать оформление заявки.</p>
+
+        <div class="filter-bar">
+          <button class="filter-btn active" onclick="filterCases('all', this)">Все ниши (6)</button>
+          <button class="filter-btn" onclick="filterCases('services', this)">Услуги и мастера</button>
+          <button class="filter-btn" onclick="filterCases('food', this)">Еда и магазины</button>
+          <button class="filter-btn" onclick="filterCases('experts', this)">Эксперты и обучение</button>
         </div>
 
-        <!-- Service 3: Landing / Business Card -->
-        <div class="card featured">
-          <div>
-            <div class="card-top">
-              <span class="tag" style="background:#ede9fe; color:#6d28d9;">⭐ Популярное</span>
-              <span class="mini-badge">За 24 часа</span>
+        <div class="grid" id="cardsGrid">
+          <!-- Case 1: Beauty -->
+          <div class="card" data-cat="services">
+            <div>
+              <div class="card-top">
+                <span class="tag">💅 Бьюти-сфера</span>
+                <span class="mini-badge">Сайт + Запись</span>
+              </div>
+              <h3>Студия маникюра & бровей</h3>
+              <p>Клиентки сами выбирают процедуру, видят время работы и записываются в Telegram без долгих переписок.</p>
+              <div class="mini-phone-window">
+                <div class="mini-window-bar">
+                  <div class="dots"><i></i><i></i><i></i></div>
+                  <span class="mini-url">anna-nails.app</span>
+                </div>
+                <div class="mini-app-header">
+                  <div class="mini-avatar" style="background:linear-gradient(135deg,#ec4899,#8b5cf6);">💅</div>
+                  <div class="mini-app-title">
+                    <strong>Nails & Brows by Anna</strong>
+                    <span>⭐ 5.0 • Центр города • Онлайн-запись</span>
+                  </div>
+                </div>
+                <div class="mockup-row"><span>Маникюр + гель-лак</span><strong style="color:var(--emerald);">1 800 ₽</strong></div>
+                <div class="mockup-row"><span>Архитектура бровей</span><strong style="color:var(--emerald);">1 200 ₽</strong></div>
+              </div>
             </div>
-            <h3>Сайт-визитка / Лендинг</h3>
-            <div class="price-val">1 500 ₽ <small>/ навсегда</small></div>
-            <ul class="features">
-              <li>Продающий одностраничный сайт под вашу нишу</li>
-              <li>Удобный прайс-лист, галерея работ и отзывы</li>
-              <li>Прямые кнопки в Telegram, WhatsApp и звонок</li>
-              <li>Размещение в интернете без абонентской платы</li>
-            </ul>
+            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('beauty')">Открыть на телефоне 📱</button>
           </div>
-          <a href="#order" class="btn btn-primary btn-sm" onclick="selectTariff('Сайт-визитка / Лендинг (1 500 ₽)')">Заказать сайт</a>
-        </div>
 
-        <!-- Service 4: Interactive Calculator / Quiz -->
-        <div class="card">
-          <div>
-            <div class="card-top">
-              <span class="tag">🧮 Конверсия x2</span>
-              <span class="mini-badge">За 24 часа</span>
+          <!-- Case 2: Tutor -->
+          <div class="card" data-cat="experts">
+            <div>
+              <div class="card-top">
+                <span class="tag">📚 Репетиторы</span>
+                <span class="mini-badge">Визитка эксперта</span>
+              </div>
+              <h3>Подготовка к ЕГЭ и английский</h3>
+              <p>Вызывает доверие у родителей: баллы учеников, формат уроков, абонементы и запись на пробный урок.</p>
+              <div class="mini-phone-window">
+                <div class="mini-window-bar">
+                  <div class="dots"><i></i><i></i><i></i></div>
+                  <span class="mini-url">english-ege.app</span>
+                </div>
+                <div class="mini-app-header">
+                  <div class="mini-avatar" style="background:linear-gradient(135deg,#2563eb,#0ea5e9);">📚</div>
+                  <div class="mini-app-title">
+                    <strong>English & ЕГЭ с Еленой</strong>
+                    <span>🎓 Средний балл 86 • Онлайн в Zoom</span>
+                  </div>
+                </div>
+                <div class="mockup-row"><span>Пробный урок (45 мин)</span><strong style="color:var(--emerald);">Бесплатно</strong></div>
+                <div class="mockup-row"><span>Индивидуально (60 мин)</span><strong style="color:var(--emerald);">1 500 ₽</strong></div>
+              </div>
             </div>
-            <h3>Сайт-калькулятор / Квиз</h3>
-            <div class="price-val">1 500 ₽ <small>/ навсегда</small></div>
-            <ul class="features">
-              <li>Интерактивный расчет цены услуги по параметрам</li>
-              <li>Пошаговый опросник клиента перед отправкой заявки</li>
-              <li>Готовый расчет сразу улетает вам в Telegram</li>
-              <li>Идеально для ремонта, автоуслуг, стройки и доставки</li>
-            </ul>
+            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('tutor')">Открыть на телефоне 📱</button>
           </div>
-          <a href="#order" class="btn btn-outline btn-sm" onclick="selectTariff('Сайт-калькулятор / Квиз (1 500 ₽)')">Заказать калькулятор</a>
-        </div>
 
-        <!-- Service 5: Telegram Mini App -->
-        <div class="card featured">
-          <div>
-            <div class="card-top">
-              <span class="tag" style="background:#ede9fe; color:#6d28d9;">🔥 Хит продаж</span>
-              <span class="mini-badge">За 24 часа</span>
+          <!-- Case 3: Auto -->
+          <div class="card" data-cat="services">
+            <div>
+              <div class="card-top">
+                <span class="tag">🚘 Автоуслуги</span>
+                <span class="mini-badge">Прайс + Вызов</span>
+              </div>
+              <h3>Детейлинг и химчистка авто</h3>
+              <p>Понятный прайс по классам авто, список этапов работы и мгновенная кнопка записи для водителей.</p>
+              <div class="mini-phone-window">
+                <div class="mini-window-bar">
+                  <div class="dots"><i></i><i></i><i></i></div>
+                  <span class="mini-url">prodetail.app</span>
+                </div>
+                <div class="mini-app-header">
+                  <div class="mini-avatar" style="background:linear-gradient(135deg,#1e293b,#475569);">🚘</div>
+                  <div class="mini-app-title">
+                    <strong>ProDetail Studio</strong>
+                    <span>🛡️ Гарантия 1 год • Без выходных</span>
+                  </div>
+                </div>
+                <div class="mockup-row"><span>Химчистка салона</span><strong style="color:var(--emerald);">от 6 500 ₽</strong></div>
+                <div class="mockup-row"><span>Полировка + керамика</span><strong style="color:var(--emerald);">14 000 ₽</strong></div>
+              </div>
             </div>
-            <h3>Telegram Mini App</h3>
-            <div class="price-val">2 000 ₽ <small>/ навсегда</small></div>
-            <ul class="features">
-              <li>Полноценное мини-приложение внутри Telegram</li>
-              <li>Каталог с категориями, корзиной и подсчетом суммы</li>
-              <li>Оформление заказа в 1 клик без перехода в браузер</li>
-              <li>Помощь с подключением и оформлением</li>
-            </ul>
+            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('auto')">Открыть на телефоне 📱</button>
           </div>
-          <a href="#order" class="btn btn-primary btn-sm" onclick="selectTariff('Telegram Mini App (2 000 ₽)')">Заказать Mini App</a>
-        </div>
 
-        <!-- Service 6: Interactive Mini-Game / Promo -->
-        <div class="card">
-          <div>
-            <div class="card-top">
-              <span class="tag">🎮 Геймификация</span>
-              <span class="mini-badge">За 1–2 дня</span>
+          <!-- Case 4: Bakery -->
+          <div class="card" data-cat="food">
+            <div>
+              <div class="card-top">
+                <span class="tag">🎂 Кондитеры</span>
+                <span class="mini-badge">Telegram Mini App</span>
+              </div>
+              <h3>Бенто-торты и десерты на заказ</h3>
+              <p>Каталог начинок и размеров прямо внутри Telegram: клиент собирает заказ в пару тапов и отправляет вам.</p>
+              <div class="mini-phone-window">
+                <div class="mini-window-bar">
+                  <div class="dots"><i></i><i></i><i></i></div>
+                  <span class="mini-url">t.me/sweetbox_bot</span>
+                </div>
+                <div class="mini-app-header">
+                  <div class="mini-avatar" style="background:linear-gradient(135deg,#ea580c,#e11d48);">🎂</div>
+                  <div class="mini-app-title">
+                    <strong>SweetBox — Десерты</strong>
+                    <span>🚚 Доставка за 60 мин • ⭐ 4.9</span>
+                  </div>
+                </div>
+                <div class="mockup-row"><span>Бенто-торт (450 г)</span><strong style="color:var(--emerald);">1 600 ₽</strong></div>
+                <div class="mockup-row"><span>Набор капкейков (6 шт)</span><strong style="color:var(--emerald);">1 500 ₽</strong></div>
+              </div>
             </div>
-            <h3>Промо-игра / Колесо скидок</h3>
-            <div class="price-val">2 000 ₽ <small>/ навсегда</small></div>
-            <ul class="features">
-              <li>Интерактивная мини-игра, кликер или розыгрыш призов</li>
-              <li>Удерживает внимание клиентов и повышает охваты</li>
-              <li>Выдача промокодов на скидку за прохождение</li>
-              <li>Работает в браузере и внутри Telegram</li>
-            </ul>
+            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('bakery')">Открыть на телефоне 📱</button>
           </div>
-          <a href="#order" class="btn btn-outline btn-sm" onclick="selectTariff('Промо-игра / Колесо скидок (2 000 ₽)')">Заказать игру</a>
+
+          <!-- Case 5: Photo -->
+          <div class="card" data-cat="experts">
+            <div>
+              <div class="card-top">
+                <span class="tag">📸 Фото и видео</span>
+                <span class="mini-badge">Портфолио + Пакеты</span>
+              </div>
+              <h3>Фотограф и контент-мейкер</h3>
+              <p>Вместо ссылок на диск — стильная презентация пакетов съемки, сроков отдачи и бронирование даты.</p>
+              <div class="mini-phone-window">
+                <div class="mini-window-bar">
+                  <div class="dots"><i></i><i></i><i></i></div>
+                  <span class="mini-url">volkova-photo.app</span>
+                </div>
+                <div class="mini-app-header">
+                  <div class="mini-avatar" style="background:linear-gradient(135deg,#4f46e5,#9333ea);">📸</div>
+                  <div class="mini-app-title">
+                    <strong>Дарья Волкова | Photo</strong>
+                    <span>⚡ Первые фото за 24 часа</span>
+                  </div>
+                </div>
+                <div class="mockup-row"><span>Экспресс-съемка (1 час)</span><strong style="color:var(--emerald);">3 500 ₽</strong></div>
+                <div class="mockup-row"><span>Контент для бренда</span><strong style="color:var(--emerald);">7 000 ₽</strong></div>
+              </div>
+            </div>
+            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('photo')">Открыть на телефоне 📱</button>
+          </div>
+
+          <!-- Case 6: Repair -->
+          <div class="card" data-cat="services">
+            <div>
+              <div class="card-top">
+                <span class="tag">🛠 Ремонт и сервис</span>
+                <span class="mini-badge">Быстрый вызов</span>
+              </div>
+              <h3>Ремонт смартфонов и ПК</h3>
+              <p>Прайс на частые поломки с гарантией, время ремонта и кнопка срочного вызова мастера или доставки.</p>
+              <div class="mini-phone-window">
+                <div class="mini-window-bar">
+                  <div class="dots"><i></i><i></i><i></i></div>
+                  <span class="mini-url">fixlab-service.app</span>
+                </div>
+                <div class="mini-app-header">
+                  <div class="mini-avatar" style="background:linear-gradient(135deg,#059669,#0d9488);">🛠</div>
+                  <div class="mini-app-title">
+                    <strong>FixLab — Сервисный центр</strong>
+                    <span>⚡ Ремонт от 30 мин • Гарантия 1 год</span>
+                  </div>
+                </div>
+                <div class="mockup-row"><span>Замена аккумулятора</span><strong style="color:var(--emerald);">от 1 900 ₽</strong></div>
+                <div class="mockup-row"><span>Чистка ПК + термопаста</span><strong style="color:var(--emerald);">1 500 ₽</strong></div>
+              </div>
+            </div>
+            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('repair')">Открыть на телефоне 📱</button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
-    <!-- Why it converts section -->
-    <section>
-      <span class="section-label">Эффективность</span>
-      <h2 class="section-title">Почему клиенты покупают чаще</h2>
-      <p class="section-sub">Сравните, как выглядит обычный ответ в переписке и упакованный проект от AlwaysStudio.</p>
+    <!-- ==================== PAGE 3: SERVICES ==================== -->
+    <div id="page-services" class="page-view">
+      <section class="section-block">
+        <span class="section-label">Услуги и стоимость</span>
+        <h2 class="section-title">Все услуги студии (1 000 – 2 000 ₽)</h2>
+        <p class="section-sub">Фиксированная оплата один раз — хостинг полностью бесплатный без абонентской платы.</p>
 
-      <div class="compare-grid">
-        <div class="compare-card bad">
-          <strong style="color:var(--rose); font-size:1.03rem;">Обычная переписка / Авито</strong>
-          <ul class="compare-list">
-            <li>Приходится по 20 раз в день скидывать цены текстом в личку</li>
-            <li>Клиенты спрашивают «Сколько стоит?» и молча пропадают</li>
-            <li>Ссылки на Яндекс.Диск с фото долго грузятся на телефоне</li>
-            <li>Выглядит как частник-новичок, сложнее продавать дорого</li>
-          </ul>
+        <div class="pricing-grid">
+          <!-- Service 1 -->
+          <div class="card">
+            <div>
+              <div class="card-top">
+                <span class="tag">💳 Мультиссылка</span>
+                <span class="mini-badge">Готово за 3 часа</span>
+              </div>
+              <h3>Цифровая BioCard</h3>
+              <div class="price-val">1 000 ₽ <small>/ навсегда</small></div>
+              <ul class="features">
+                <li>Стильная карточка для шапки профиля в соцсетях</li>
+                <li>Все соцсети, мессенджеры и карта проезда в 1 месте</li>
+                <li>Блок с ключевыми услугами и быстрым звонком</li>
+                <li>Адаптация под любые смартфоны</li>
+              </ul>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="orderService('Цифровая BioCard (1 000 ₽)')">Заказать BioCard</button>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="card">
+            <div>
+              <div class="card-top">
+                <span class="tag">✨ Апгрейд</span>
+                <span class="mini-badge">За 1 день</span>
+              </div>
+              <h3>Редизайн и правки сайта</h3>
+              <div class="price-val">1 200 ₽ <small>/ под ключ</small></div>
+              <ul class="features">
+                <li>Обновление устаревшего дизайна на современный</li>
+                <li>Полная мобильная адаптация под iPhone и Android</li>
+                <li>Добавление новых разделов, фото, цен и анимаций</li>
+                <li>Ускорение загрузки и перенос на бесплатный хостинг</li>
+              </ul>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="orderService('Редизайн и правки сайта (1 200 ₽)')">Заказать апгрейд</button>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="card featured">
+            <div>
+              <div class="card-top">
+                <span class="tag" style="background:#ede9fe; color:#6d28d9;">⭐ Популярное</span>
+                <span class="mini-badge">За 24 часа</span>
+              </div>
+              <h3>Сайт-визитка / Лендинг</h3>
+              <div class="price-val">1 500 ₽ <small>/ навсегда</small></div>
+              <ul class="features">
+                <li>Продающий одностраничный сайт под вашу нишу</li>
+                <li>Удобный прайс-лист, галерея работ и отзывы</li>
+                <li>Прямые кнопки в Telegram, WhatsApp и звонок</li>
+                <li>Размещение в интернете без абонентской платы</li>
+              </ul>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="orderService('Сайт-визитка / Лендинг (1 500 ₽)')">Заказать сайт</button>
+          </div>
+
+          <!-- Service 4 -->
+          <div class="card">
+            <div>
+              <div class="card-top">
+                <span class="tag">🧮 Конверсия x2</span>
+                <span class="mini-badge">За 24 часа</span>
+              </div>
+              <h3>Сайт-калькулятор / Квиз</h3>
+              <div class="price-val">1 500 ₽ <small>/ навсегда</small></div>
+              <ul class="features">
+                <li>Интерактивный расчет цены услуги по параметрам</li>
+                <li>Пошаговый опросник клиента перед отправкой заявки</li>
+                <li>Готовый расчет сразу улетает вам в Telegram</li>
+                <li>Идеально для ремонта, автоуслуг, стройки и доставки</li>
+              </ul>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="orderService('Сайт-калькулятор / Квиз (1 500 ₽)')">Заказать калькулятор</button>
+          </div>
+
+          <!-- Service 5 -->
+          <div class="card featured">
+            <div>
+              <div class="card-top">
+                <span class="tag" style="background:#ede9fe; color:#6d28d9;">🔥 Хит продаж</span>
+                <span class="mini-badge">За 24 часа</span>
+              </div>
+              <h3>Telegram Mini App</h3>
+              <div class="price-val">2 000 ₽ <small>/ навсегда</small></div>
+              <ul class="features">
+                <li>Полноценное мини-приложение внутри Telegram</li>
+                <li>Каталог с категориями, корзиной и подсчетом суммы</li>
+                <li>Оформление заказа в 1 клик без перехода в браузер</li>
+                <li>Помощь с подключением и оформлением</li>
+              </ul>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="orderService('Telegram Mini App (2 000 ₽)')">Заказать Mini App</button>
+          </div>
+
+          <!-- Service 6 -->
+          <div class="card">
+            <div>
+              <div class="card-top">
+                <span class="tag">🎮 Геймификация</span>
+                <span class="mini-badge">За 1–2 дня</span>
+              </div>
+              <h3>Промо-игра / Колесо скидок</h3>
+              <div class="price-val">2 000 ₽ <small>/ навсегда</small></div>
+              <ul class="features">
+                <li>Интерактивная мини-игра, кликер или розыгрыш призов</li>
+                <li>Удерживает внимание клиентов и повышает охваты</li>
+                <li>Выдача промокодов на скидку за прохождение</li>
+                <li>Работает в браузере и внутри Telegram</li>
+              </ul>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="orderService('Промо-игра / Колесо скидок (2 000 ₽)')">Заказать игру</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== PAGE 4: FAQ & ORDER ==================== -->
+    <div id="page-faq" class="page-view">
+      <section class="section-block">
+        <span class="section-label">Ответы и связь</span>
+        <h2 class="section-title">Частые вопросы и заявка</h2>
+        <p class="section-sub">Всё, что важно знать перед стартом работы.</p>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary class="faq-q">Правда ли не нужно платить каждый месяц за хостинг?</summary>
+            <div class="faq-a">Да. Мы размещаем ваш сайт или мини-приложение на надежной облачной инфраструктуре с бесплатным SSL-сертификатом (замочек в браузере). Проект работает быстро и стабильно без ежемесячной абонентской платы.</div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-q">А если мне не понравится первый вариант?</summary>
+            <div class="faq-a">Вы ничем не рискуете: мы сначала делаем черновик и показываем вам по ссылке. Если дизайн или структура не подойдут — внесем правки или просто разойдемся без какой-либо оплаты.</div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-q">Чем отличается BioCard, сайт-визитка и Telegram Mini App?</summary>
+            <div class="faq-a"><b>BioCard (1 000 ₽)</b> — компактная страница со всеми ссылками и контактами для соцсетей. <b>Сайт-визитка (1 500 ₽)</b> — полноценный лендинг с прайсом, фото и кнопками записи. <b>Telegram Mini App (2 000 ₽)</b> — приложение прямо внутри Telegram с корзиной и подсчетом суммы заказа.</div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-q">Как потом поменять цены или добавить новую услугу?</summary>
+            <div class="faq-a">Просто напишите нам в Telegram — обновим цены, тексты или фото за 15 минут. Также при желании передадим вам исходный файл сайта.</div>
+          </details>
         </div>
 
-        <div class="compare-card good">
-          <strong style="color:var(--primary); font-size:1.03rem;">Сайт или Mini App от AlwaysStudio</strong>
-          <ul class="compare-list">
-            <li>Отправляете одну красивую ссылку — клиент сам видит все цены</li>
-            <li>Кнопка записи в Telegram / WhatsApp всегда на виду</li>
-            <li>Мгновенная загрузка на iPhone и Android за 0.3 секунды</li>
-            <li>Повышает доверие и окупается с первого же нового клиента</li>
-          </ul>
+        <!-- Direct Telegram Contact Card -->
+        <div class="faq-contact-box">
+          <div class="faq-contact-text">
+            <strong>Остались вопросы или нужна помощь с выбором?</strong>
+            <span>Напишите напрямую разработчику в Telegram: <b>@alwayssowdev</b></span>
+          </div>
+          <a href="https://t.me/alwayssowdev" target="_blank" class="btn btn-primary btn-sm">Написать @alwayssowdev ✈️</a>
         </div>
-      </div>
-    </section>
 
-    <section id="how">
-      <span class="section-label">Процесс работы</span>
-      <h2 class="section-title">Запуск проекта за 3 простых шага</h2>
-      <p class="section-sub">Никаких сложных технических заданий — всё оформление и верстку берем на себя.</p>
-
-      <div class="steps">
-        <div class="step-card">
-          <div class="step-num">1</div>
-          <h4>Присылаете задачу</h4>
-          <p>Скидываете список услуг, цены и пару фото в Telegram — даже если они просто написаны текстом в заметках.</p>
+        <!-- Order Box -->
+        <div class="order-box" id="orderFormBox">
+          <h2 class="section-title" style="text-align:center; font-size:1.65rem;">Заказать проект</h2>
+          <p class="section-sub" style="text-align:center; margin-bottom:20px;">Заполните 3 поля — откроется чат в Telegram с готовой заявкой.</p>
+          <div class="form-group">
+            <label>Ваше имя</label>
+            <input type="text" id="clientName" placeholder="Например: Анна">
+          </div>
+          <div class="form-group">
+            <label>Ваша сфера или задача</label>
+            <input type="text" id="clientNiche" placeholder="Например: Маникюр / Автосервис / Репетитор">
+          </div>
+          <div class="form-group">
+            <label>Выберите услугу</label>
+            <select id="clientTariff">
+              <option value="Сайт-визитка / Лендинг (1 500 ₽)">Сайт-визитка / Лендинг — 1 500 ₽</option>
+              <option value="Telegram Mini App (2 000 ₽)">Telegram Mini App — 2 000 ₽</option>
+              <option value="Цифровая BioCard (1 000 ₽)">Цифровая BioCard — 1 000 ₽</option>
+              <option value="Редизайн и правки сайта (1 200 ₽)">Редизайн и правки сайта — 1 200 ₽</option>
+              <option value="Сайт-калькулятор / Квиз (1 500 ₽)">Сайт-калькулятор / Квиз — 1 500 ₽</option>
+              <option value="Промо-игра / Колесо скидок (2 000 ₽)">Промо-игра / Колесо скидок — 2 000 ₽</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" style="width:100%; margin-top:6px;" onclick="sendToTelegram()">Отправить заявку в Telegram ✈️</button>
         </div>
-        <div class="step-card">
-          <div class="step-num">2</div>
-          <h4>Собираем ваш проект</h4>
-          <p>За 1 день верстаем современный дизайн под вашу нишу и присылаем живую ссылку для проверки с телефона.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">3</div>
-          <h4>Оплата и запуск</h4>
-          <p>Если всё нравится — оплачиваете работу, мы подключаем ваши контакты и передаем готовую ссылку навсегда.</p>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
-    <section id="faq">
-      <span class="section-label">Ответы на вопросы</span>
-      <h2 class="section-title">Частые вопросы клиентов</h2>
-      <p class="section-sub">Всё, что важно знать перед стартом работы.</p>
-
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary class="faq-q">Правда ли не нужно платить каждый месяц за хостинг?</summary>
-          <div class="faq-a">Да. Мы размещаем ваш сайт или мини-приложение на надежной облачной инфраструктуре с бесплатным SSL-сертификатом (замочек в браузере). Проект работает быстро и стабильно без ежемесячной абонентской платы.</div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">А если мне не понравится первый вариант?</summary>
-          <div class="faq-a">Вы ничем не рискуете: мы сначала делаем черновик и показываем вам по ссылке. Если дизайн или структура не подойдут — внесем правки или просто разойдемся без какой-либо оплаты.</div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">Чем отличается BioCard, сайт-визитка и Telegram Mini App?</summary>
-          <div class="faq-a"><b>BioCard (1 000 ₽)</b> — компактная страница со всеми ссылками и контактами для соцсетей. <b>Сайт-визитка (1 500 ₽)</b> — полноценный лендинг с прайсом, фото и кнопками записи. <b>Telegram Mini App (2 000 ₽)</b> — приложение прямо внутри Telegram с корзиной и подсчетом суммы заказа.</div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">Как потом поменять цены или добавить новую услугу?</summary>
-          <div class="faq-a">Просто напишите нам в Telegram — обновим цены, тексты или фото за 15 минут. Также при желании передадим вам исходный файл сайта.</div>
-        </details>
-      </div>
-
-      <!-- Direct Telegram Contact Card inside FAQ -->
-      <div class="faq-contact-box">
-        <div class="faq-contact-text">
-          <strong>Остались вопросы или нужна помощь с выбором?</strong>
-          <span>Напишите напрямую разработчику в Telegram — отвечу за пару минут: <b>@alwayssowdev</b></span>
-        </div>
-        <a href="https://t.me/alwayssowdev" target="_blank" class="btn btn-primary btn-sm">Написать @alwayssowdev ✈️</a>
-      </div>
-    </section>
-
-    <section id="order">
-      <div class="order-box">
-        <h2 class="section-title" style="text-align:center;">Заказать проект</h2>
-        <p class="section-sub" style="text-align:center; margin-bottom:22px;">Заполните 3 поля — откроется чат в Telegram с готовой заявкой.</p>
-        <div class="form-group">
-          <label>Ваше имя</label>
-          <input type="text" id="clientName" placeholder="Например: Анна">
-        </div>
-        <div class="form-group">
-          <label>Ваша сфера или задача</label>
-          <input type="text" id="clientNiche" placeholder="Например: Маникюр / Автосервис / Репетитор">
-        </div>
-        <div class="form-group">
-          <label>Выберите услугу</label>
-          <select id="clientTariff">
-            <option value="Сайт-визитка / Лендинг (1 500 ₽)">Сайт-визитка / Лендинг — 1 500 ₽</option>
-            <option value="Telegram Mini App (2 000 ₽)">Telegram Mini App — 2 000 ₽</option>
-            <option value="Цифровая BioCard (1 000 ₽)">Цифровая BioCard — 1 000 ₽</option>
-            <option value="Редизайн и правки сайта (1 200 ₽)">Редизайн и правки сайта — 1 200 ₽</option>
-            <option value="Сайт-калькулятор / Квиз (1 500 ₽)">Сайт-калькулятор / Квиз — 1 500 ₽</option>
-            <option value="Промо-игра / Колесо скидок (2 000 ₽)">Промо-игра / Колесо скидок — 2 000 ₽</option>
-          </select>
-        </div>
-        <button class="btn btn-primary" style="width:100%; margin-top:8px;" onclick="sendToTelegram()">Отправить заявку в Telegram ✈️</button>
-      </div>
-    </section>
   </main>
 
-  <!-- Clean Mobile Bottom Dock -->
+  <!-- Mobile Bottom Dock -->
   <nav class="mobile-dock">
-    <a href="#cases" class="dock-link"><span>📱</span>Примеры</a>
-    <a href="#pricing" class="dock-link"><span>💎</span>Услуги</a>
-    <a href="#how" class="dock-link"><span>⚡</span>Этапы</a>
-    <a href="#faq" class="dock-link"><span>💬</span>Вопросы</a>
+    <button class="dock-btn active" data-page="home" onclick="switchPage('home')"><span>🏠</span>Главная</button>
+    <button class="dock-btn" data-page="cases" onclick="switchPage('cases')"><span>📱</span>Примеры</button>
+    <button class="dock-btn" data-page="services" onclick="switchPage('services')"><span>💎</span>Услуги</button>
+    <button class="dock-btn" data-page="faq" onclick="switchPage('faq')"><span>💬</span>Вопросы</button>
   </nav>
 
   <footer>
@@ -1669,14 +1710,39 @@
       <button class="btn btn-primary btn-sm" id="demoActionBtn" style="width:100%;" onclick="triggerDemoOrder()">Записаться / Оформить</button>
       <div class="demo-toast" id="demoToast">✅ Вот так клиент в 1 клик отправляет вам готовый заказ в Telegram!</div>
 
-      <a href="#order" class="btn btn-outline btn-sm" style="width:100%; margin-top:8px;" onclick="document.getElementById('demoModal').classList.remove('active')">Заказать такой же проект →</a>
+      <button class="btn btn-outline btn-sm" style="width:100%; margin-top:8px;" onclick="document.getElementById('demoModal').classList.remove('active'); switchPage('faq', true);">Заказать такой же проект →</button>
     </div>
   </div>
 
   <script>
     const TG_USERNAME = "alwayssowdev";
 
-    /* 1. Soft Light Canvas Particles Background */
+    /* 1. Multi-Page Router */
+    function switchPage(pageId, scrollToOrder = false) {
+      document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active'));
+      const target = document.getElementById('page-' + pageId);
+      if (target) target.classList.add('active');
+
+      document.querySelectorAll('.nav-tab, .dock-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.page === pageId);
+      });
+
+      if (scrollToOrder) {
+        setTimeout(() => {
+          const box = document.getElementById('orderFormBox');
+          if (box) box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 60);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function orderService(tariffName) {
+      document.getElementById('clientTariff').value = tariffName;
+      switchPage('faq', true);
+    }
+
+    /* 2. Soft Light Canvas Particles Background */
     const canvas = document.getElementById('bgCanvas');
     const ctx = canvas.getContext('2d');
     let width, height, particles = [];
@@ -1690,15 +1756,15 @@
     function initParticles() {
       particles = [];
       const isMobile = width < 768;
-      const count = isMobile ? 24 : Math.min(Math.floor((width * height) / 18000), 65);
-      const colors = ['rgba(79, 70, 229, 0.32)', 'rgba(124, 58, 237, 0.28)', 'rgba(14, 165, 233, 0.28)'];
+      const count = isMobile ? 22 : Math.min(Math.floor((width * height) / 19000), 60);
+      const colors = ['rgba(79, 70, 229, 0.28)', 'rgba(124, 58, 237, 0.24)', 'rgba(14, 165, 233, 0.24)'];
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.35,
-          vy: (Math.random() - 0.5) * 0.35,
-          size: Math.random() * 2 + 1.2,
+          vx: (Math.random() - 0.5) * 0.32,
+          vy: (Math.random() - 0.5) * 0.32,
+          size: Math.random() * 1.8 + 1.2,
           color: colors[i % colors.length]
         });
       }
@@ -1724,8 +1790,8 @@
           const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
           if (dist < 110) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(79, 70, 229, ${0.09 * (1 - dist / 110)})`;
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = `rgba(79, 70, 229, ${0.08 * (1 - dist / 110)})`;
+            ctx.lineWidth = 0.7;
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
             ctx.stroke();
@@ -1739,7 +1805,7 @@
     resizeCanvas();
     animateParticles();
 
-    /* 2. Portfolio Filter */
+    /* 3. Portfolio Filter */
     function filterCases(cat, btn) {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
@@ -1748,7 +1814,7 @@
       });
     }
 
-    /* 3. Interactive Demo Data */
+    /* 4. Interactive Demo Data */
     const demos = {
       beauty: {
         title: "💅 Nails & Brows by Anna",
@@ -1916,10 +1982,6 @@
       if (e.target.id === 'demoModal') {
         document.getElementById('demoModal').classList.remove('active');
       }
-    }
-
-    function selectTariff(val) {
-      document.getElementById('clientTariff').value = val;
     }
 
     function sendToTelegram() {
