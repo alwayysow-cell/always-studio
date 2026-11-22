@@ -6,17 +6,19 @@
   <title>AlwaysStudio — Сайты-визитки и Telegram Mini Apps за 1 день</title>
   <style>
     :root {
-      --bg: #04060b;
-      --surface: rgba(13, 18, 30, 0.62);
-      --surface-hover: rgba(20, 27, 45, 0.8);
-      --border: rgba(255, 255, 255, 0.08);
-      --border-light: rgba(255, 255, 255, 0.18);
-      --text: #f8fafc;
-      --muted: #94a3b8;
-      --primary: #6366f1;
-      --secondary: #a855f7;
-      --cyan: #06b6d4;
-      --emerald: #10b981;
+      --bg: #f8fafc;
+      --surface: rgba(255, 255, 255, 0.85);
+      --surface-solid: #ffffff;
+      --border: rgba(15, 23, 42, 0.08);
+      --border-strong: rgba(15, 23, 42, 0.14);
+      --text: #0f172a;
+      --muted: #475569;
+      --subtle: #64748b;
+      --primary: #4f46e5;
+      --secondary: #7c3aed;
+      --accent-soft: #eef2ff;
+      --emerald: #059669;
+      --emerald-soft: #ecfdf5;
     }
 
     * {
@@ -38,73 +40,57 @@
       position: relative;
     }
 
-    /* Interactive Canvas Particles Background */
-    #bgCanvas {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -3;
-      pointer-events: none;
-    }
-
-    /* Cyber Grid Overlay */
+    /* Soft Light Mesh & Subtle Grid */
     .bg-grid {
       position: fixed;
       inset: 0;
       background-image: 
-        linear-gradient(to right, rgba(99, 102, 241, 0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(99, 102, 241, 0.04) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: radial-gradient(ellipse 85% 65% at 50% 10%, #000 35%, transparent 100%);
-      -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 10%, #000 35%, transparent 100%);
+        linear-gradient(to right, rgba(79, 70, 229, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(79, 70, 229, 0.04) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(ellipse 85% 65% at 50% 10%, #000 40%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 10%, #000 40%, transparent 100%);
       pointer-events: none;
       z-index: -2;
     }
 
-    /* Animated Aurora Blobs */
     .aurora {
       position: fixed;
       border-radius: 50%;
-      filter: blur(130px);
+      filter: blur(110px);
       pointer-events: none;
       z-index: -1;
-      mix-blend-mode: screen;
     }
     .aurora-1 {
-      width: 560px; height: 560px;
+      width: 580px; height: 580px;
       top: -180px; left: -120px;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.35), transparent 70%);
-      animation: drift1 16s ease-in-out infinite alternate;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.16), transparent 70%);
+      animation: float1 16s ease-in-out infinite alternate;
     }
     .aurora-2 {
-      width: 500px; height: 500px;
-      top: 30%; right: -160px;
-      background: radial-gradient(circle, rgba(168, 85, 247, 0.28), transparent 70%);
-      animation: drift2 20s ease-in-out infinite alternate;
+      width: 520px; height: 520px;
+      top: 28%; right: -160px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.14), transparent 70%);
+      animation: float2 20s ease-in-out infinite alternate;
     }
     .aurora-3 {
       width: 480px; height: 480px;
       bottom: -150px; left: 20%;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.22), transparent 70%);
-      animation: drift3 18s ease-in-out infinite alternate;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.13), transparent 70%);
+      animation: float1 18s ease-in-out infinite alternate-reverse;
     }
 
-    @keyframes drift1 {
+    @keyframes float1 {
       0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(80px, 60px) scale(1.15); }
+      100% { transform: translate(60px, 45px) scale(1.1); }
     }
-    @keyframes drift2 {
+    @keyframes float2 {
       0% { transform: translate(0, 0) scale(1.05); }
-      100% { transform: translate(-70px, -50px) scale(0.95); }
-    }
-    @keyframes drift3 {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(60px, -70px) scale(1.12); }
+      100% { transform: translate(-55px, -40px) scale(0.95); }
     }
 
     .container {
-      max-width: 1080px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 20px;
     }
@@ -118,18 +104,18 @@
     }
 
     .nav-bar {
-      max-width: 1040px;
+      max-width: 1060px;
       margin: 0 auto;
-      padding: 12px 20px;
-      background: rgba(10, 14, 24, 0.72);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
-      border: 1px solid var(--border-light);
+      padding: 12px 22px;
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
       border-radius: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 14px 45px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
     }
 
     .logo {
@@ -151,26 +137,14 @@
       display: grid;
       place-items: center;
       font-size: 1.05rem;
-      box-shadow: 0 0 22px rgba(139, 92, 246, 0.6);
-      animation: iconGlow 3s ease-in-out infinite alternate;
-    }
-
-    @keyframes iconGlow {
-      from { box-shadow: 0 0 14px rgba(99, 102, 241, 0.5); }
-      to { box-shadow: 0 0 26px rgba(168, 85, 247, 0.85); }
+      color: #fff;
+      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.3);
     }
 
     .logo span {
-      background: linear-gradient(135deg, #818cf8, #e879f9, #38bdf8);
-      background-size: 200% auto;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: gradientFlow 5s linear infinite;
-    }
-
-    @keyframes gradientFlow {
-      0% { background-position: 0% center; }
-      100% { background-position: 200% center; }
     }
 
     .nav-links {
@@ -182,13 +156,13 @@
     .nav-links a.link {
       color: var(--muted);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 500;
       transition: color 0.2s;
     }
 
     .nav-links a.link:hover {
-      color: #fff;
+      color: var(--primary);
     }
 
     @media (max-width: 680px) {
@@ -214,47 +188,30 @@
     }
 
     .btn:active {
-      transform: scale(0.96);
+      transform: scale(0.97);
     }
 
     .btn-primary {
       background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       color: #fff;
-      box-shadow: 0 8px 30px rgba(99, 102, 241, 0.45), inset 0 1px 0 rgba(255,255,255,0.3);
-    }
-
-    .btn-primary::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 60%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.32), transparent);
-      transform: skewX(-22deg);
-      animation: shimmer 3.8s infinite;
-    }
-
-    @keyframes shimmer {
-      0%, 60% { left: -100%; }
-      100% { left: 165%; }
+      box-shadow: 0 8px 24px rgba(79, 70, 229, 0.28);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 40px rgba(168, 85, 247, 0.6), inset 0 1px 0 rgba(255,255,255,0.4);
+      box-shadow: 0 12px 32px rgba(79, 70, 229, 0.38);
     }
 
     .btn-outline {
-      background: rgba(255, 255, 255, 0.04);
+      background: #ffffff;
       color: var(--text);
-      border: 1px solid var(--border-light);
-      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-strong);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
     }
 
     .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.32);
+      background: #f1f5f9;
+      border-color: rgba(79, 70, 229, 0.35);
       transform: translateY(-2px);
     }
 
@@ -266,7 +223,7 @@
 
     /* Hero */
     .hero {
-      padding: 82px 0 56px;
+      padding: 78px 0 56px;
       text-align: center;
     }
 
@@ -276,13 +233,13 @@
       gap: 9px;
       padding: 7px 18px;
       border-radius: 999px;
-      background: rgba(16, 185, 129, 0.09);
-      color: #34d399;
+      background: var(--emerald-soft);
+      color: var(--emerald);
       font-size: 0.84rem;
       font-weight: 600;
-      margin-bottom: 26px;
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      box-shadow: 0 0 28px rgba(16, 185, 129, 0.15);
+      margin-bottom: 24px;
+      border: 1px solid rgba(5, 150, 105, 0.22);
+      box-shadow: 0 4px 16px rgba(5, 150, 105, 0.08);
     }
 
     .pulse-dot {
@@ -290,37 +247,36 @@
       height: 8px;
       border-radius: 50%;
       background: var(--emerald);
-      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.85);
+      box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.6);
       animation: pulse 1.8s infinite;
     }
 
     @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.85); }
-      70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+      0% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.6); }
+      70% { box-shadow: 0 0 0 9px rgba(5, 150, 105, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); }
     }
 
     h1 {
-      font-size: clamp(2.3rem, 6vw, 4rem);
+      font-size: clamp(2.3rem, 5.8vw, 3.9rem);
       font-weight: 800;
-      line-height: 1.07;
-      letter-spacing: -1.7px;
-      margin-bottom: 22px;
+      line-height: 1.08;
+      letter-spacing: -1.6px;
+      margin-bottom: 20px;
+      color: #0f172a;
     }
 
     .gradient-text {
-      background: linear-gradient(135deg, #818cf8 0%, #c084fc 40%, #38bdf8 80%, #818cf8 100%);
-      background-size: 200% auto;
+      background: linear-gradient(135deg, #4f46e5 0%, #9333ea 50%, #0284c7 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: gradientFlow 6s linear infinite;
     }
 
     .hero p {
       color: var(--muted);
       font-size: 1.14rem;
-      max-width: 660px;
-      margin: 0 auto 36px;
+      max-width: 650px;
+      margin: 0 auto 34px;
     }
 
     .hero-actions {
@@ -328,7 +284,7 @@
       gap: 14px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 56px;
+      margin-bottom: 52px;
     }
 
     /* Stats Bento */
@@ -336,7 +292,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      max-width: 800px;
+      max-width: 820px;
       margin: 0 auto;
     }
 
@@ -346,41 +302,39 @@
 
     .stat-card {
       background: var(--surface);
-      border: 1px solid var(--border-light);
+      border: 1px solid var(--border);
       border-radius: 22px;
       padding: 22px;
       backdrop-filter: blur(16px);
       text-align: center;
-      transition: transform 0.25s ease, border-color 0.25s ease;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .stat-card:hover {
       transform: translateY(-3px);
-      border-color: rgba(139, 92, 246, 0.45);
+      box-shadow: 0 14px 32px rgba(79, 70, 229, 0.08);
     }
 
     .stat-card strong {
       display: block;
       font-size: 1.65rem;
       font-weight: 800;
-      background: linear-gradient(180deg, #ffffff, #cbd5e1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--primary);
       margin-bottom: 2px;
     }
 
     .stat-card span {
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       color: var(--muted);
     }
 
-    /* Scroll Reveal Animation */
+    /* Scroll Reveal */
     .reveal {
       opacity: 0;
-      transform: translateY(26px);
-      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(22px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
-
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
@@ -388,7 +342,7 @@
 
     /* Sections */
     section {
-      padding: 62px 0;
+      padding: 60px 0;
     }
 
     .section-label {
@@ -397,7 +351,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1.4px;
-      color: #a5b4fc;
+      color: var(--primary);
       margin-bottom: 8px;
     }
 
@@ -411,59 +365,72 @@
     .section-sub {
       color: var(--muted);
       font-size: 1.03rem;
-      max-width: 640px;
-      margin-bottom: 36px;
+      max-width: 650px;
+      margin-bottom: 28px;
     }
 
-    /* 3D Tilt + Spotlight Cards */
+    /* Filter Pills for Portfolio */
+    .filter-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .filter-btn {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border-strong);
+      background: #fff;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .filter-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+    }
+
+    /* Portfolio Cards */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
-      gap: 22px;
-      perspective: 1000px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
     }
 
     .card {
-      background: var(--surface);
+      background: var(--surface-solid);
       border: 1px solid var(--border);
       border-radius: 26px;
-      padding: 26px;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      transition: transform 0.2s ease-out, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-      transform-style: preserve-3d;
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(480px circle at var(--mouse-x, 50%) var(--mouse-y, 0%), rgba(139, 92, 246, 0.18), transparent 45%);
-      opacity: 0;
-      transition: opacity 0.3s;
-      pointer-events: none;
-    }
-
-    .card:hover::before {
-      opacity: 1;
     }
 
     .card:hover {
-      background: var(--surface-hover);
-      border-color: rgba(168, 85, 247, 0.55);
-      box-shadow: 0 25px 55px rgba(0, 0, 0, 0.6), 0 0 30px rgba(99, 102, 241, 0.12);
+      transform: translateY(-5px);
+      border-color: rgba(79, 70, 229, 0.35);
+      box-shadow: 0 22px 45px rgba(15, 23, 42, 0.09);
     }
 
     .card-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .tag {
@@ -471,19 +438,18 @@
       font-weight: 600;
       padding: 5px 12px;
       border-radius: 10px;
-      background: rgba(99, 102, 241, 0.15);
-      color: #c7d2fe;
-      border: 1px solid rgba(99, 102, 241, 0.28);
+      background: var(--accent-soft);
+      color: var(--primary);
     }
 
     .mini-badge {
-      font-size: 0.75rem;
-      color: var(--muted);
-      font-weight: 500;
+      font-size: 0.76rem;
+      color: var(--subtle);
+      font-weight: 600;
     }
 
     .card h3 {
-      font-size: 1.26rem;
+      font-size: 1.24rem;
       margin-bottom: 8px;
       letter-spacing: -0.3px;
     }
@@ -491,26 +457,63 @@
     .card p {
       color: var(--muted);
       font-size: 0.92rem;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
-    .card-mockup {
-      background: rgba(4, 6, 11, 0.78);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 13px 15px;
-      margin-bottom: 20px;
-      font-size: 0.84rem;
+    /* Embedded Realistic Mini-App Window inside Card */
+    .mini-phone-window {
+      background: #f8fafc;
+      border: 1px solid var(--border-strong);
+      border-radius: 18px;
+      padding: 14px;
+      margin-bottom: 18px;
+      box-shadow: inset 0 2px 6px rgba(15, 23, 42, 0.02);
+    }
+
+    .mini-app-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mini-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .mini-app-title strong {
+      display: block;
+      font-size: 0.86rem;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .mini-app-title span {
+      font-size: 0.73rem;
+      color: var(--subtle);
     }
 
     .mockup-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 6px 0;
-      border-bottom: 1px dashed rgba(255,255,255,0.08);
+      padding: 7px 10px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 6px;
+      font-size: 0.82rem;
     }
-    .mockup-row:last-child { border-bottom: none; }
+    .mockup-row:last-child { margin-bottom: 0; }
 
     /* Process Steps */
     .steps {
@@ -520,26 +523,22 @@
     }
 
     .step-card {
-      background: var(--surface);
+      background: var(--surface-solid);
       border: 1px solid var(--border);
       border-radius: 24px;
       padding: 26px;
-      backdrop-filter: blur(14px);
-      transition: transform 0.25s ease, border-color 0.25s ease;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.03);
+      transition: transform 0.25s ease;
     }
 
-    .step-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(99, 102, 241, 0.45);
-    }
+    .step-card:hover { transform: translateY(-4px); }
 
     .step-num {
       width: 40px;
       height: 40px;
       border-radius: 13px;
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.28), rgba(168, 85, 247, 0.28));
-      border: 1px solid rgba(168, 85, 247, 0.4);
-      color: #f3e8ff;
+      background: var(--accent-soft);
+      color: var(--primary);
       font-weight: 800;
       display: grid;
       place-items: center;
@@ -554,7 +553,7 @@
 
     .step-card p {
       color: var(--muted);
-      font-size: 0.89rem;
+      font-size: 0.9rem;
     }
 
     /* Pricing */
@@ -569,12 +568,13 @@
       font-weight: 800;
       margin: 12px 0 18px;
       letter-spacing: -1.3px;
+      color: var(--text);
     }
 
     .price-val small {
       font-size: 0.95rem;
       font-weight: 400;
-      color: var(--muted);
+      color: var(--subtle);
       letter-spacing: 0;
     }
 
@@ -588,7 +588,7 @@
 
     .features li {
       font-size: 0.94rem;
-      color: #e2e8f0;
+      color: #334155;
       display: flex;
       align-items: flex-start;
       gap: 10px;
@@ -601,9 +601,9 @@
     }
 
     .card.featured {
-      border: 1px solid rgba(168, 85, 247, 0.65);
-      background: linear-gradient(180deg, rgba(139, 92, 246, 0.16) 0%, var(--surface) 100%);
-      box-shadow: 0 20px 55px rgba(99, 102, 241, 0.2);
+      border: 2px solid var(--primary);
+      background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 35%);
+      box-shadow: 0 20px 50px rgba(79, 70, 229, 0.12);
     }
 
     /* FAQ Accordion */
@@ -611,20 +611,20 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      max-width: 800px;
+      max-width: 820px;
     }
 
     details.faq-item {
-      background: var(--surface);
+      background: var(--surface-solid);
       border: 1px solid var(--border);
       border-radius: 18px;
       padding: 18px 22px;
-      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.02);
       transition: border-color 0.2s;
     }
 
     details.faq-item[open] {
-      border-color: rgba(139, 92, 247, 0.5);
+      border-color: rgba(79, 70, 229, 0.4);
     }
 
     summary.faq-q {
@@ -643,8 +643,8 @@
     summary.faq-q::after {
       content: "+";
       font-size: 1.35rem;
-      color: #a5b4fc;
-      font-weight: 400;
+      color: var(--primary);
+      font-weight: 500;
       transition: transform 0.2s;
     }
 
@@ -659,23 +659,15 @@
       line-height: 1.6;
     }
 
-    /* Animated Gradient Border Order Box */
-    .order-wrapper {
-      position: relative;
+    /* Order Box */
+    .order-box {
+      background: var(--surface-solid);
+      border: 1px solid var(--border-strong);
       border-radius: 28px;
+      padding: 40px 32px;
       max-width: 600px;
       margin: 0 auto;
-      padding: 2px;
-      background: linear-gradient(135deg, #6366f1, #a855f7, #06b6d4, #6366f1);
-      background-size: 300% 300%;
-      animation: gradientFlow 6s ease infinite;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65);
-    }
-
-    .order-box {
-      background: #080b14;
-      border-radius: 26px;
-      padding: 40px 30px;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
     }
 
     .form-group {
@@ -687,37 +679,33 @@
       font-size: 0.85rem;
       color: var(--muted);
       margin-bottom: 7px;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     input, select {
       width: 100%;
       padding: 14px 16px;
       border-radius: 14px;
-      border: 1px solid var(--border-light);
-      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-strong);
+      background: #f8fafc;
       color: var(--text);
       font-size: 0.96rem;
       outline: none;
-      transition: border-color 0.2s, background 0.2s;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
     }
 
     input:focus, select:focus {
-      border-color: var(--secondary);
-      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--primary);
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
     }
 
-    select option {
-      background: #0e1320;
-      color: #fff;
-    }
-
-    /* Interactive Smartphone Modal */
+    /* Interactive Light Smartphone Preview Modal */
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(2, 4, 9, 0.88);
-      backdrop-filter: blur(12px);
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(8px);
       display: none;
       align-items: center;
       justify-content: center;
@@ -730,32 +718,31 @@
     }
 
     .phone-frame {
-      background: #0a0e18;
-      border: 3px solid #2b364d;
-      border-radius: 42px;
+      background: #f8fafc;
+      border: 6px solid #1e293b;
+      border-radius: 44px;
       width: 100%;
       max-width: 405px;
       max-height: 92vh;
       overflow-y: auto;
-      padding: 18px;
-      box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255,255,255,0.08);
-      animation: pop 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 16px;
+      box-shadow: 0 35px 80px rgba(15, 23, 42, 0.35);
+      animation: pop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .phone-frame::-webkit-scrollbar { width: 4px; }
-    .phone-frame::-webkit-scrollbar-thumb { background: #2b364d; border-radius: 4px; }
+    .phone-frame::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
 
     .phone-island {
-      width: 110px;
+      width: 105px;
       height: 22px;
-      background: #000;
+      background: #0f172a;
       border-radius: 999px;
-      margin: 0 auto 14px;
-      border: 1px solid #1e293b;
+      margin: 0 auto 12px;
     }
 
     @keyframes pop {
-      from { transform: scale(0.9) translateY(18px); opacity: 0; }
+      from { transform: scale(0.92) translateY(16px); opacity: 0; }
       to { transform: scale(1) translateY(0); opacity: 1; }
     }
 
@@ -767,24 +754,24 @@
     }
 
     .close-btn {
-      background: #1e293b;
-      color: #fff;
+      background: #e2e8f0;
+      color: #0f172a;
       border: none;
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       cursor: pointer;
       font-weight: bold;
       transition: background 0.15s;
     }
-    .close-btn:hover { background: #334155; }
+    .close-btn:hover { background: #cbd5e1; }
 
     .demo-hero-card {
       border-radius: 22px;
       padding: 18px;
       margin-bottom: 14px;
       color: #fff;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.16);
     }
 
     .demo-meta {
@@ -796,10 +783,36 @@
     }
 
     .demo-pill {
-      background: rgba(0, 0, 0, 0.35);
+      background: rgba(255, 255, 255, 0.22);
       backdrop-filter: blur(4px);
       padding: 4px 10px;
       border-radius: 8px;
+      font-weight: 500;
+    }
+
+    .demo-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 10px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .demo-tab {
+      padding: 5px 11px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: #e2e8f0;
+      color: #475569;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .demo-tab.active {
+      background: #0f172a;
+      color: #fff;
     }
 
     .demo-service {
@@ -807,36 +820,37 @@
       justify-content: space-between;
       align-items: center;
       padding: 12px 14px;
-      background: #131928;
-      border: 1px solid rgba(255,255,255,0.06);
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
       border-radius: 15px;
       margin-bottom: 8px;
       cursor: pointer;
       transition: all 0.15s ease;
     }
 
-    .demo-service:hover { border-color: rgba(255,255,255,0.2); }
+    .demo-service:hover { border-color: #94a3b8; }
 
     .demo-service.selected {
-      border-color: #10b981;
-      background: rgba(16, 185, 129, 0.13);
+      border-color: var(--primary);
+      background: #eef2ff;
     }
 
     .demo-service-info strong {
       display: block;
       font-size: 0.88rem;
+      color: #0f172a;
       margin-bottom: 2px;
     }
 
     .demo-service-info small {
-      color: var(--muted);
+      color: #64748b;
       font-size: 0.75rem;
     }
 
     .demo-price {
-      font-weight: 700;
+      font-weight: 800;
       font-size: 0.9rem;
-      color: #34d399;
+      color: var(--emerald);
       white-space: nowrap;
       margin-left: 10px;
     }
@@ -845,20 +859,22 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 14px;
-      background: rgba(255,255,255,0.04);
+      padding: 11px 14px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
       border-radius: 12px;
-      font-size: 0.84rem;
+      font-size: 0.85rem;
       margin: 10px 0;
     }
 
     .demo-toast {
-      background: rgba(16, 185, 129, 0.16);
-      border: 1px solid rgba(16, 185, 129, 0.45);
-      color: #6ee7b7;
+      background: var(--emerald-soft);
+      border: 1px solid rgba(5, 150, 105, 0.35);
+      color: #065f46;
       padding: 11px;
       border-radius: 12px;
       font-size: 0.82rem;
+      font-weight: 500;
       text-align: center;
       margin-top: 10px;
       display: none;
@@ -867,16 +883,17 @@
     footer {
       text-align: center;
       padding: 42px 0;
-      color: var(--muted);
-      font-size: 0.86rem;
+      color: var(--subtle);
+      font-size: 0.88rem;
       border-top: 1px solid var(--border);
       margin-top: 52px;
+      background: #ffffff;
     }
   </style>
 </head>
 <body>
 
-  <!-- Live Interactive Background -->
+  <!-- Soft Light Interactive Background -->
   <canvas id="bgCanvas"></canvas>
   <div class="bg-grid"></div>
   <div class="aurora aurora-1"></div>
@@ -905,7 +922,7 @@
         Сначала показываю готовый сайт — оплата потом
       </div>
       <h1>Сайты-визитки и <span class="gradient-text">Telegram Mini Apps</span> за 24 часа</h1>
-      <p>Упакуем ваши услуги в быстрый мобильный сайт или приложение внутри Telegram. Удобный прайс, галерея и запись в 1 клик — без ежемесячной платы за хостинг.</p>
+      <p>Упакуем ваши услуги в стильный мобильный сайт или приложение внутри Telegram. Удобный прайс, галерея и запись в 1 клик — без ежемесячной платы за хостинг.</p>
       <div class="hero-actions">
         <a href="#order" class="btn btn-primary">Заказать сайт 🚀</a>
         <a href="#cases" class="btn btn-outline">Посмотреть примеры 📱</a>
@@ -929,107 +946,156 @@
 
     <section id="cases" class="reveal">
       <span class="section-label">Портфолио решений</span>
-      <h2 class="section-title">Интерактивные примеры работ</h2>
-      <p class="section-sub">Нажмите «Открыть на телефоне» на любой карточке — внутри можно выбрать услуги и проверить, как клиент оформляет заявку.</p>
+      <h2 class="section-title">Живые примеры для разных ниш</h2>
+      <p class="section-sub">Нажмите «Открыть на телефоне» на любой карточке — внутри можно переключать категории, выбирать услуги и проверить оформление заявки.</p>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterCases('all', this)">Все ниши (6)</button>
+        <button class="filter-btn" onclick="filterCases('services', this)">Услуги и мастера</button>
+        <button class="filter-btn" onclick="filterCases('food', this)">Еда и магазины</button>
+        <button class="filter-btn" onclick="filterCases('experts', this)">Эксперты и обучение</button>
+      </div>
 
       <div class="grid" id="cardsGrid">
-        <!-- Case 1 -->
-        <div class="card tilt-card">
+        <!-- Case 1: Beauty -->
+        <div class="card" data-cat="services">
           <div>
             <div class="card-top">
               <span class="tag">💅 Бьюти-сфера</span>
               <span class="mini-badge">Сайт + Запись</span>
             </div>
             <h3>Студия маникюра & бровей</h3>
-            <p>Клиентки сами выбирают процедуру, видят время работы, адрес студии и записываются в мессенджер без долгих переписок.</p>
-            <div class="card-mockup">
-              <div class="mockup-row"><span>Маникюр + гель-лак</span><strong style="color:#34d399;">1 800 ₽</strong></div>
-              <div class="mockup-row"><span>Архитектура бровей</span><strong style="color:#34d399;">1 200 ₽</strong></div>
+            <p>Клиентки сами выбирают процедуру, видят время работы и записываются в Telegram без долгих переписок.</p>
+            <div class="mini-phone-window">
+              <div class="mini-app-header">
+                <div class="mini-avatar" style="background:linear-gradient(135deg,#ec4899,#8b5cf6);">💅</div>
+                <div class="mini-app-title">
+                  <strong>Nails & Brows by Anna</strong>
+                  <span>⭐ 5.0 • Центр города • Онлайн-запись</span>
+                </div>
+              </div>
+              <div class="mockup-row"><span>Маникюр + гель-лак</span><strong style="color:var(--emerald);">1 800 ₽</strong></div>
+              <div class="mockup-row"><span>Архитектура бровей</span><strong style="color:var(--emerald);">1 200 ₽</strong></div>
             </div>
           </div>
           <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('beauty')">Открыть на телефоне 📱</button>
         </div>
 
-        <!-- Case 2 -->
-        <div class="card tilt-card">
+        <!-- Case 2: Tutor -->
+        <div class="card" data-cat="experts">
           <div>
             <div class="card-top">
               <span class="tag">📚 Репетиторы</span>
               <span class="mini-badge">Визитка эксперта</span>
             </div>
             <h3>Подготовка к ЕГЭ и английский</h3>
-            <p>Вызывает доверие у родителей: баллы учеников, формат уроков, прозрачные абонементы и запись на бесплатный пробный урок.</p>
-            <div class="card-mockup">
-              <div class="mockup-row"><span>Пробный урок (45 мин)</span><strong style="color:#34d399;">Бесплатно</strong></div>
-              <div class="mockup-row"><span>Индивидуально (60 мин)</span><strong style="color:#34d399;">1 500 ₽</strong></div>
+            <p>Вызывает доверие у родителей: баллы учеников, формат уроков, абонементы и запись на пробный урок.</p>
+            <div class="mini-phone-window">
+              <div class="mini-app-header">
+                <div class="mini-avatar" style="background:linear-gradient(135deg,#2563eb,#0ea5e9);">📚</div>
+                <div class="mini-app-title">
+                  <strong>English & ЕГЭ с Еленой</strong>
+                  <span>🎓 Средний балл 86 • Онлайн в Zoom</span>
+                </div>
+              </div>
+              <div class="mockup-row"><span>Пробный урок (45 мин)</span><strong style="color:var(--emerald);">Бесплатно</strong></div>
+              <div class="mockup-row"><span>Индивидуально (60 мин)</span><strong style="color:var(--emerald);">1 500 ₽</strong></div>
             </div>
           </div>
           <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('tutor')">Открыть на телефоне 📱</button>
         </div>
 
-        <!-- Case 3 -->
-        <div class="card tilt-card">
+        <!-- Case 3: Auto -->
+        <div class="card" data-cat="services">
           <div>
             <div class="card-top">
               <span class="tag">🚘 Автоуслуги</span>
               <span class="mini-badge">Прайс + Вызов</span>
             </div>
             <h3>Детейлинг и химчистка авто</h3>
-            <p>Понятный прайс по классам авто, список этапов работы и мгновенная кнопка связи для водителей с телефона.</p>
-            <div class="card-mockup">
-              <div class="mockup-row"><span>Химчистка салона</span><strong style="color:#34d399;">от 6 500 ₽</strong></div>
-              <div class="mockup-row"><span>Полировка + керамика</span><strong style="color:#34d399;">14 000 ₽</strong></div>
+            <p>Понятный прайс по классам авто, список этапов работы и мгновенная кнопка записи для водителей.</p>
+            <div class="mini-phone-window">
+              <div class="mini-app-header">
+                <div class="mini-avatar" style="background:linear-gradient(135deg,#1e293b,#475569);">🚘</div>
+                <div class="mini-app-title">
+                  <strong>ProDetail Studio</strong>
+                  <span>🛡️ Гарантия 1 год • Без выходных</span>
+                </div>
+              </div>
+              <div class="mockup-row"><span>Химчистка салона</span><strong style="color:var(--emerald);">от 6 500 ₽</strong></div>
+              <div class="mockup-row"><span>Полировка + керамика</span><strong style="color:var(--emerald);">14 000 ₽</strong></div>
             </div>
           </div>
           <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('auto')">Открыть на телефоне 📱</button>
         </div>
 
-        <!-- Case 4 -->
-        <div class="card tilt-card">
+        <!-- Case 4: Bakery -->
+        <div class="card" data-cat="food">
           <div>
             <div class="card-top">
               <span class="tag">🎂 Кондитеры</span>
               <span class="mini-badge">Telegram Mini App</span>
             </div>
             <h3>Бенто-торты и десерты на заказ</h3>
-            <p>Каталог начинок и размеров прямо внутри Telegram: клиент собирает заказ в пару тапов и отправляет вам готовой заявкой.</p>
-            <div class="card-mockup">
-              <div class="mockup-row"><span>Бенто-торт (450 г)</span><strong style="color:#34d399;">1 600 ₽</strong></div>
-              <div class="mockup-row"><span>Набор капкейков (6 шт)</span><strong style="color:#34d399;">1 500 ₽</strong></div>
+            <p>Каталог начинок и размеров прямо внутри Telegram: клиент собирает заказ в пару тапов и отправляет вам.</p>
+            <div class="mini-phone-window">
+              <div class="mini-app-header">
+                <div class="mini-avatar" style="background:linear-gradient(135deg,#ea580c,#e11d48);">🎂</div>
+                <div class="mini-app-title">
+                  <strong>SweetBox — Десерты</strong>
+                  <span>🚚 Доставка за 60 мин • ⭐ 4.9</span>
+                </div>
+              </div>
+              <div class="mockup-row"><span>Бенто-торт (450 г)</span><strong style="color:var(--emerald);">1 600 ₽</strong></div>
+              <div class="mockup-row"><span>Набор капкейков (6 шт)</span><strong style="color:var(--emerald);">1 500 ₽</strong></div>
             </div>
           </div>
           <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('bakery')">Открыть на телефоне 📱</button>
         </div>
 
-        <!-- Case 5 -->
-        <div class="card tilt-card">
+        <!-- Case 5: Photo -->
+        <div class="card" data-cat="experts">
           <div>
             <div class="card-top">
               <span class="tag">📸 Фото и видео</span>
               <span class="mini-badge">Портфолио + Пакеты</span>
             </div>
             <h3>Фотограф и контент-мейкер</h3>
-            <p>Вместо скучных ссылок на диск — стильная презентация пакетов съемки, сроков отдачи кадров и бронирование даты.</p>
-            <div class="card-mockup">
-              <div class="mockup-row"><span>Экспресс-съемка (1 час)</span><strong style="color:#34d399;">3 500 ₽</strong></div>
-              <div class="mockup-row"><span>Контент для бренда</span><strong style="color:#34d399;">7 000 ₽</strong></div>
+            <p>Вместо скучных ссылок на диск — стильная презентация пакетов съемки, сроков отдачи и бронирование даты.</p>
+            <div class="mini-phone-window">
+              <div class="mini-app-header">
+                <div class="mini-avatar" style="background:linear-gradient(135deg,#4f46e5,#9333ea);">📸</div>
+                <div class="mini-app-title">
+                  <strong>Дарья Волкова | Photo</strong>
+                  <span>⚡ Первые фото за 24 часа</span>
+                </div>
+              </div>
+              <div class="mockup-row"><span>Экспресс-съемка (1 час)</span><strong style="color:var(--emerald);">3 500 ₽</strong></div>
+              <div class="mockup-row"><span>Контент для бренда</span><strong style="color:var(--emerald);">7 000 ₽</strong></div>
             </div>
           </div>
           <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('photo')">Открыть на телефоне 📱</button>
         </div>
 
-        <!-- Case 6 -->
-        <div class="card tilt-card">
+        <!-- Case 6: Repair -->
+        <div class="card" data-cat="services">
           <div>
             <div class="card-top">
               <span class="tag">🛠 Ремонт и сервис</span>
               <span class="mini-badge">Быстрый вызов</span>
             </div>
             <h3>Ремонт смартфонов и ПК</h3>
-            <p>Прайс на частые поломки с гарантией, время ремонта и кнопка срочного вызова мастера или доставки в сервис.</p>
-            <div class="card-mockup">
-              <div class="mockup-row"><span>Замена аккумулятора</span><strong style="color:#34d399;">от 1 900 ₽</strong></div>
-              <div class="mockup-row"><span>Чистка ПК + термопаста</span><strong style="color:#34d399;">1 500 ₽</strong></div>
+            <p>Прайс на частые поломки с гарантией, время ремонта и кнопка срочного вызова мастера или доставки.</p>
+            <div class="mini-phone-window">
+              <div class="mini-app-header">
+                <div class="mini-avatar" style="background:linear-gradient(135deg,#059669,#0d9488);">🛠</div>
+                <div class="mini-app-title">
+                  <strong>FixLab — Сервисный центр</strong>
+                  <span>⚡ Ремонт от 30 мин • Гарантия 1 год</span>
+                </div>
+              </div>
+              <div class="mockup-row"><span>Замена аккумулятора</span><strong style="color:var(--emerald);">от 1 900 ₽</strong></div>
+              <div class="mockup-row"><span>Чистка ПК + термопаста</span><strong style="color:var(--emerald);">1 500 ₽</strong></div>
             </div>
           </div>
           <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('repair')">Открыть на телефоне 📱</button>
@@ -1073,7 +1139,7 @@
             <h3>Сайт-визитка / Прайс</h3>
             <div class="price-val">1 500 ₽ <small>/ навсегда</small></div>
             <ul class="features">
-              <li>Премиальный дизайн под смартфоны и ПК</li>
+              <li>Современный дизайн под смартфоны и ПК</li>
               <li>Удобный прайс-лист и описание услуг</li>
               <li>Прямые кнопки в Telegram, WhatsApp и звонок</li>
               <li>Размещение в интернете без ежемесячных платежей</li>
@@ -1084,7 +1150,7 @@
 
         <div class="card featured">
           <div>
-            <span class="tag" style="background:rgba(168,85,247,0.22); color:#f3e8ff; border-color:rgba(168,85,247,0.45);">🔥 Хит продаж</span>
+            <span class="tag" style="background:#ede9fe; color:#6d28d9;">🔥 Хит продаж</span>
             <h3>Сайт + Telegram Mini App</h3>
             <div class="price-val">3 000 ₽ <small>/ навсегда</small></div>
             <ul class="features">
@@ -1128,28 +1194,26 @@
     </section>
 
     <section id="order" class="reveal">
-      <div class="order-wrapper">
-        <div class="order-box">
-          <h2 class="section-title" style="text-align:center;">Заказать сайт</h2>
-          <p class="section-sub" style="text-align:center; margin-bottom:26px;">Заполните 3 поля — откроется чат в Telegram с готовой заявкой.</p>
-          <div class="form-group">
-            <label>Ваше имя</label>
-            <input type="text" id="clientName" placeholder="Например: Анна">
-          </div>
-          <div class="form-group">
-            <label>Ваша сфера или ссылка на объявление</label>
-            <input type="text" id="clientNiche" placeholder="Например: Маникюр / Автосервис / Репетитор">
-          </div>
-          <div class="form-group">
-            <label>Подходящий тариф</label>
-            <select id="clientTariff">
-              <option value="Сайт-визитка / Прайс (1 500 ₽)">Сайт-визитка / Прайс (1 500 ₽)</option>
-              <option value="Сайт + Telegram Mini App (3 000 ₽)">Сайт + Telegram Mini App (3 000 ₽)</option>
-              <option value="Нужна консультация">Пока не решил — подскажите, что лучше</option>
-            </select>
-          </div>
-          <button class="btn btn-primary" style="width:100%; margin-top:10px;" onclick="sendToTelegram()">Заказать сайт в Telegram ✈️</button>
+      <div class="order-box">
+        <h2 class="section-title" style="text-align:center;">Заказать сайт</h2>
+        <p class="section-sub" style="text-align:center; margin-bottom:26px;">Заполните 3 поля — откроется чат в Telegram с готовой заявкой.</p>
+        <div class="form-group">
+          <label>Ваше имя</label>
+          <input type="text" id="clientName" placeholder="Например: Анна">
         </div>
+        <div class="form-group">
+          <label>Ваша сфера или ссылка на объявление</label>
+          <input type="text" id="clientNiche" placeholder="Например: Маникюр / Автосервис / Репетитор">
+        </div>
+        <div class="form-group">
+          <label>Подходящий тариф</label>
+          <select id="clientTariff">
+            <option value="Сайт-визитка / Прайс (1 500 ₽)">Сайт-визитка / Прайс (1 500 ₽)</option>
+            <option value="Сайт + Telegram Mini App (3 000 ₽)">Сайт + Telegram Mini App (3 000 ₽)</option>
+            <option value="Нужна консультация">Пока не решил — подскажите, что лучше</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" style="width:100%; margin-top:10px;" onclick="sendToTelegram()">Заказать сайт в Telegram ✈️</button>
       </div>
     </section>
   </main>
@@ -1158,27 +1222,29 @@
     <div class="container">© 2026 AlwaysStudio — Сайты-визитки и Telegram Mini Apps • @alwayssowdev</div>
   </footer>
 
-  <!-- Interactive Smartphone Preview Modal -->
+  <!-- Interactive Light Smartphone Preview Modal -->
   <div class="modal-backdrop" id="demoModal" onclick="closeDemo(event)">
     <div class="phone-frame" onclick="event.stopPropagation()">
       <div class="phone-island"></div>
       <div class="phone-top">
-        <span style="font-size:0.78rem; color:#94a3b8; font-weight:500;">📱 Живое превью клиента</span>
+        <span style="font-size:0.78rem; color:#475569; font-weight:600;">📱 Живое превью клиента</span>
         <button class="close-btn" onclick="document.getElementById('demoModal').classList.remove('active')">✕</button>
       </div>
 
       <div class="demo-hero-card" id="demoHeroCard">
         <h3 id="demoTitle" style="font-size:1.15rem; margin-bottom:4px;"></h3>
-        <p id="demoDesc" style="font-size:0.82rem; opacity:0.92;"></p>
+        <p id="demoDesc" style="font-size:0.82rem; opacity:0.94;"></p>
         <div class="demo-meta" id="demoMeta"></div>
       </div>
 
-      <div style="font-size:0.76rem; color:#94a3b8; margin-bottom:8px;">Нажимайте на услуги, чтобы добавить в заявку:</div>
+      <div class="demo-tabs" id="demoTabs"></div>
+
+      <div style="font-size:0.75rem; color:#64748b; margin-bottom:8px;">Нажимайте на услуги, чтобы добавить в заявку:</div>
       <div id="demoList"></div>
 
       <div class="demo-summary">
-        <span style="color:#94a3b8;">Выбрано услуг: <strong id="demoCount" style="color:#fff;">1</strong></span>
-        <span style="color:#94a3b8;">Итого: <strong id="demoTotal" style="color:#34d399;">0 ₽</strong></span>
+        <span style="color:#475569;">Выбрано услуг: <strong id="demoCount" style="color:#0f172a;">1</strong></span>
+        <span style="color:#475569;">Итого: <strong id="demoTotal" style="color:#059669;">0 ₽</strong></span>
       </div>
 
       <button class="btn btn-primary btn-sm" id="demoActionBtn" style="width:100%;" onclick="triggerDemoOrder()">Записаться / Оформить</button>
@@ -1191,20 +1257,14 @@
   <script>
     const TG_USERNAME = "alwayssowdev";
 
-    /* 1. Interactive Canvas Constellation & Particles */
+    /* 1. Soft Light Canvas Particles Background */
     const canvas = document.getElementById('bgCanvas');
     const ctx = canvas.getContext('2d');
     let width, height, particles = [];
-    const mouse = { x: null, y: null, radius: 140 };
+    const mouse = { x: null, y: null, radius: 130 };
 
-    window.addEventListener('mousemove', e => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-    });
-    window.addEventListener('mouseleave', () => {
-      mouse.x = null;
-      mouse.y = null;
-    });
+    window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+    window.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
 
     function resizeCanvas() {
       width = canvas.width = window.innerWidth;
@@ -1214,15 +1274,15 @@
 
     function initParticles() {
       particles = [];
-      const count = Math.min(Math.floor((width * height) / 16000), 85);
-      const colors = ['rgba(99, 102, 241, 0.65)', 'rgba(168, 85, 247, 0.65)', 'rgba(56, 189, 248, 0.55)'];
+      const count = Math.min(Math.floor((width * height) / 18000), 75);
+      const colors = ['rgba(79, 70, 229, 0.35)', 'rgba(124, 58, 237, 0.32)', 'rgba(14, 165, 233, 0.3)'];
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.45,
-          vy: (Math.random() - 0.5) * 0.45,
-          size: Math.random() * 2 + 1,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          size: Math.random() * 2.2 + 1.2,
           color: colors[i % colors.length]
         });
       }
@@ -1243,15 +1303,12 @@
         ctx.fillStyle = p.color;
         ctx.fill();
 
-        // Connect nearby particles
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
-          const dx = p.x - p2.x;
-          const dy = p.y - p2.y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < 125) {
+          const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+          if (dist < 120) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(139, 92, 246, ${0.14 * (1 - dist / 125)})`;
+            ctx.strokeStyle = `rgba(79, 70, 229, ${0.1 * (1 - dist / 120)})`;
             ctx.lineWidth = 0.8;
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
@@ -1259,14 +1316,11 @@
           }
         }
 
-        // Connect to mouse cursor
         if (mouse.x !== null) {
-          const dxm = p.x - mouse.x;
-          const dym = p.y - mouse.y;
-          const distM = Math.hypot(dxm, dym);
+          const distM = Math.hypot(p.x - mouse.x, p.y - mouse.y);
           if (distM < mouse.radius) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(56, 189, 248, ${0.28 * (1 - distM / mouse.radius)})`;
+            ctx.strokeStyle = `rgba(124, 58, 237, ${0.22 * (1 - distM / mouse.radius)})`;
             ctx.lineWidth = 1;
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(mouse.x, mouse.y);
@@ -1281,64 +1335,55 @@
     resizeCanvas();
     animateParticles();
 
-    /* 2. Spotlight & Subtle 3D Tilt on Cards */
-    document.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('mousemove', e => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
-
-        if (card.classList.contains('tilt-card') && window.innerWidth > 768) {
-          const rotateX = ((y / rect.height) - 0.5) * -6;
-          const rotateY = ((x / rect.width) - 0.5) * 6;
-          card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-        }
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
-    });
-
-    /* 3. Scroll Reveal Observer */
+    /* 2. Scroll Reveal */
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.1 });
-
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    /* 4. Interactive Demo Data & Modal Logic */
+    /* 3. Portfolio Filter */
+    function filterCases(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('#cardsGrid .card').forEach(card => {
+        if (cat === 'all' || card.dataset.cat === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    /* 4. Interactive Demo Data with Category Tabs */
     const demos = {
       beauty: {
         title: "💅 Nails & Brows by Anna",
         desc: "Студия в центре города • Стерильно 100% • Гарантия на покрытие 14 дней",
-        gradient: "linear-gradient(135deg, #be185d, #7e22ce)",
+        gradient: "linear-gradient(135deg, #db2777, #7c3aed)",
         meta: ["⭐ 5.0 (48 отзывов)", "📍 ул. Ленина, 24", "🕒 10:00 – 21:00"],
         cta: "Записаться в Telegram",
+        tabs: ["Все услуги", "Маникюр", "Брови и ресницы"],
         items: [
-          { name: "Маникюр + покрытие гель-лак", sub: "1 час 30 мин • Снятие бесплатно", price: 1800, label: "1 800 ₽" },
-          { name: "Наращивание ногтей (любая длина)", sub: "2 часа 15 мин • Дизайн в подарок", price: 2500, label: "2 500 ₽" },
-          { name: "Архитектура и окрашивание бровей", sub: "45 мин • Хна или краска", price: 1200, label: "1 200 ₽" },
-          { name: "Ламинирование + ботокс ресниц", sub: "1 час • Эффект до 6 недель", price: 1600, label: "1 600 ₽" }
+          { cat: "Маникюр", name: "Маникюр + покрытие гель-лак", sub: "1 час 30 мин • Снятие бесплатно", price: 1800, label: "1 800 ₽" },
+          { cat: "Маникюр", name: "Наращивание ногтей (любая длина)", sub: "2 часа 15 мин • Дизайн в подарок", price: 2500, label: "2 500 ₽" },
+          { cat: "Брови и ресницы", name: "Архитектура и окрашивание бровей", sub: "45 мин • Хна или краска", price: 1200, label: "1 200 ₽" },
+          { cat: "Брови и ресницы", name: "Ламинирование + ботокс ресниц", sub: "1 час • Эффект до 6 недель", price: 1600, label: "1 600 ₽" }
         ]
       },
       tutor: {
         title: "📚 Английский язык | ЕГЭ и ОГЭ",
         desc: "Средний балл учеников — 86 • Онлайн в Zoom с интерактивной доской",
-        gradient: "linear-gradient(135deg, #1d4ed8, #0284c7)",
+        gradient: "linear-gradient(135deg, #2563eb, #0284c7)",
         meta: ["🎓 Опыт 6 лет", "📈 +32 балла за полгода", "💻 Онлайн"],
         cta: "Записаться на занятие",
+        tabs: ["Все форматы", "Индивидуально", "Группы и пакеты"],
         items: [
-          { name: "Пробный урок + диагностика уровня", sub: "45 мин • План подготовки в подарок", price: 0, label: "0 ₽" },
-          { name: "Индивидуальное занятие (ЕГЭ / ОГЭ)", sub: "60 мин • Проверка второй части", price: 1500, label: "1 500 ₽" },
-          { name: "Абонемент на 8 занятий в месяц", sub: "Выгода 1 200 ₽ • Гибкий график", price: 10800, label: "10 800 ₽" },
-          { name: "Разговорный клуб в мини-группе", sub: "60 мин • До 4 человек", price: 900, label: "900 ₽" }
+          { cat: "Индивидуально", name: "Пробный урок + диагностика уровня", sub: "45 мин • План подготовки в подарок", price: 0, label: "0 ₽" },
+          { cat: "Индивидуально", name: "Индивидуальное занятие (ЕГЭ / ОГЭ)", sub: "60 мин • Проверка второй части", price: 1500, label: "1 500 ₽" },
+          { cat: "Группы и пакеты", name: "Абонемент на 8 занятий в месяц", sub: "Выгода 1 200 ₽ • Гибкий график", price: 10800, label: "10 800 ₽" },
+          { cat: "Группы и пакеты", name: "Разговорный клуб в мини-группе", sub: "60 мин • До 4 человек", price: 900, label: "900 ₽" }
         ]
       },
       auto: {
@@ -1347,56 +1392,66 @@
         gradient: "linear-gradient(135deg, #1e293b, #475569)",
         meta: ["🛡️ Гарантия 1 год", "☕ Зона ожидания", "📞 Без выходных"],
         cta: "Записаться на сервис",
+        tabs: ["Все услуги", "Салон", "Кузов"],
         items: [
-          { name: "Детейлинг-химчистка салона", sub: "С разбором сидений и озонацией", price: 6500, label: "6 500 ₽" },
-          { name: "Восстановительная полировка кузова", sub: "Удаление до 95% царапин", price: 9000, label: "9 000 ₽" },
-          { name: "Керамическое покрытие (2 слоя)", sub: "Гидрофобный эффект + блеск", price: 14000, label: "14 000 ₽" },
-          { name: "Оклейка зон риска полиуретаном", sub: "Капот, фары, стойки, бампер", price: 12000, label: "12 000 ₽" }
+          { cat: "Салон", name: "Детейлинг-химчистка салона", sub: "С разбором сидений и озонацией", price: 6500, label: "6 500 ₽" },
+          { cat: "Кузов", name: "Восстановительная полировка кузова", sub: "Удаление до 95% царапин", price: 9000, label: "9 000 ₽" },
+          { cat: "Кузов", name: "Керамическое покрытие (2 слоя)", sub: "Гидрофобный эффект + блеск", price: 14000, label: "14 000 ₽" },
+          { cat: "Кузов", name: "Оклейка зон риска полиуретаном", sub: "Капот, фары, стойки, бампер", price: 12000, label: "12 000 ₽" }
         ]
       },
       bakery: {
         title: "🎂 SweetBox — Торты на заказ",
         desc: "Натуральные ингредиенты • Срочные заказы за 24 часа • Доставка по городу",
-        gradient: "linear-gradient(135deg, #c2410c, #db2777)",
+        gradient: "linear-gradient(135deg, #ea580c, #e11d48)",
         meta: ["🚚 Доставка за 60 мин", "🎁 Открытка в подарок", "⭐ 4.9"],
         cta: "Оформить заказ в Telegram",
+        tabs: ["Всё меню", "Торты", "Пирожные"],
         items: [
-          { name: "Бенто-торт с вашей надписью (450 г)", sub: "Сникерс / Красный бархат / Манго", price: 1600, label: "1 600 ₽" },
-          { name: "Набор капкейков (6 шт)", sub: "Нежный крем-чиз и ягодная начинка", price: 1500, label: "1 500 ₽" },
-          { name: "Бисквитный торт (2 кг)", sub: "На день рождения или праздник", price: 4200, label: "4 200 ₽" },
-          { name: "Моти-сет ассорти (8 шт)", sub: "Японский десерт без глютена", price: 1400, label: "1 400 ₽" }
+          { cat: "Торты", name: "Бенто-торт с вашей надписью (450 г)", sub: "Сникерс / Красный бархат / Манго", price: 1600, label: "1 600 ₽" },
+          { cat: "Пирожные", name: "Набор капкейков (6 шт)", sub: "Нежный крем-чиз и ягодная начинка", price: 1500, label: "1 500 ₽" },
+          { cat: "Торты", name: "Бисквитный торт (2 кг)", sub: "На день рождения или праздник", price: 4200, label: "4 200 ₽" },
+          { cat: "Пирожные", name: "Моти-сет ассорти (8 шт)", sub: "Японский десерт без глютена", price: 1400, label: "1 400 ₽" }
         ]
       },
       photo: {
         title: "📸 Дарья Волкова — Фотограф",
         desc: "Индивидуальные, семейные и контент-съемки • Первые фото на следующий день",
-        gradient: "linear-gradient(135deg, #4338ca, #7e22ce)",
+        gradient: "linear-gradient(135deg, #4f46e5, #9333ea)",
         meta: ["⚡ Анонс за 24 часа", "🎞️ Помощь с позированием", "📍 Студия / Улица"],
         cta: "Забронировать дату съемки",
+        tabs: ["Все пакеты", "Фото", "Видео / Reels"],
         items: [
-          { name: "Пакет «Экспресс» (1 час)", sub: "35 фото в цветокоррекции + 5 в ретуши", price: 3500, label: "3 500 ₽" },
-          { name: "Пакет «Контент для соцсетей»", sub: "2 часа • 3 образа • 80 готовых фото", price: 7000, label: "7 000 ₽" },
-          { name: "Семейная или Love Story съемка", sub: "1.5 часа • Помощь в подборе студии", price: 5000, label: "5 000 ₽" },
-          { name: "Съемка Reels (3 готовых ролика)", sub: "Съемка + динамичный монтаж", price: 4500, label: "4 500 ₽" }
+          { cat: "Фото", name: "Пакет «Экспресс» (1 час)", sub: "35 фото в цветокоррекции + 5 в ретуши", price: 3500, label: "3 500 ₽" },
+          { cat: "Фото", name: "Пакет «Контент для соцсетей»", sub: "2 часа • 3 образа • 80 готовых фото", price: 7000, label: "7 000 ₽" },
+          { cat: "Фото", name: "Семейная или Love Story съемка", sub: "1.5 часа • Помощь в подборе студии", price: 5000, label: "5 000 ₽" },
+          { cat: "Видео / Reels", name: "Съемка Reels (3 готовых ролика)", sub: "Съемка + динамичный монтаж", price: 4500, label: "4 500 ₽" }
         ]
       },
       repair: {
         title: "🛠 FixLab — Ремонт телефонов и ПК",
         desc: "Бесплатная диагностика за 15 минут • Запчасти в наличии • Честная гарантия",
-        gradient: "linear-gradient(135deg, #047857, #0f766e)",
+        gradient: "linear-gradient(135deg, #059669, #0d9488)",
         meta: ["⚡ Ремонт от 30 мин", "📜 Гарантия до 1 года", "🚗 Выезд мастера"],
         cta: "Вызвать мастера",
+        tabs: ["Все услуги", "Смартфоны", "Ноутбуки и ПК"],
         items: [
-          { name: "Замена аккумулятора iPhone / Android", sub: "30 минут • Оригинальная емкость", price: 1900, label: "1 900 ₽" },
-          { name: "Замена дисплея (экрана)", sub: "45 минут • Защитное стекло в подарок", price: 3200, label: "3 200 ₽" },
-          { name: "Чистка ноутбука / ПК + термопаста", sub: "Устранение шума и перегрева", price: 1500, label: "1 500 ₽" },
-          { name: "Установка Windows и драйверов", sub: "С сохранением всех ваших файлов", price: 1200, label: "1 200 ₽" }
+          { cat: "Смартфоны", name: "Замена аккумулятора iPhone / Android", sub: "30 минут • Оригинальная емкость", price: 1900, label: "1 900 ₽" },
+          { cat: "Смартфоны", name: "Замена дисплея (экрана)", sub: "45 минут • Защитное стекло в подарок", price: 3200, label: "3 200 ₽" },
+          { cat: "Ноутбуки и ПК", name: "Чистка ноутбука / ПК + термопаста", sub: "Устранение шума и перегрева", price: 1500, label: "1 500 ₽" },
+          { cat: "Ноутбуки и ПК", name: "Установка Windows и драйверов", sub: "С сохранением всех ваших файлов", price: 1200, label: "1 200 ₽" }
         ]
       }
     };
 
+    let activeDemoKey = 'beauty';
+    let selectedIndices = new Set([0]);
+
     function openDemo(key) {
+      activeDemoKey = key;
+      selectedIndices = new Set([0]);
       const data = demos[key];
+
       document.getElementById('demoTitle').textContent = data.title;
       document.getElementById('demoDesc').textContent = data.desc;
       document.getElementById('demoHeroCard').style.background = data.gradient;
@@ -1406,34 +1461,58 @@
       document.getElementById('demoMeta').innerHTML = data.meta
         .map(m => `<span class="demo-pill">${m}</span>`).join('');
 
-      const list = document.getElementById('demoList');
-      list.innerHTML = data.items.map((item, idx) => `
-        <div class="demo-service ${idx === 0 ? 'selected' : ''}" data-price="${item.price}" onclick="toggleDemoService(this)">
-          <div class="demo-service-info">
-            <strong>${item.name}</strong>
-            <small>${item.sub}</small>
-          </div>
-          <div class="demo-price">${item.label}</div>
-        </div>
-      `).join('');
+      document.getElementById('demoTabs').innerHTML = data.tabs
+        .map((t, i) => `<button class="demo-tab ${i === 0 ? 'active' : ''}" onclick="filterDemoTab('${t}', this)">${t}</button>`).join('');
 
-      recalcDemoTotal();
+      renderDemoItems('all');
       document.getElementById('demoModal').classList.add('active');
     }
 
-    function toggleDemoService(el) {
-      el.classList.toggle('selected');
-      document.getElementById('demoToast').style.display = 'none';
+    function filterDemoTab(tabName, btn) {
+      document.querySelectorAll('#demoTabs .demo-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const isFirst = btn === document.querySelector('#demoTabs .demo-tab');
+      renderDemoItems(isFirst ? 'all' : tabName);
+    }
+
+    function renderDemoItems(filterCat) {
+      const data = demos[activeDemoKey];
+      const list = document.getElementById('demoList');
+      list.innerHTML = data.items.map((item, idx) => {
+        if (filterCat !== 'all' && item.cat !== filterCat) return '';
+        const isSel = selectedIndices.has(idx);
+        return `
+          <div class="demo-service ${isSel ? 'selected' : ''}" onclick="toggleDemoService(${idx})">
+            <div class="demo-service-info">
+              <strong>${item.name}</strong>
+              <small>${item.sub}</small>
+            </div>
+            <div class="demo-price">${item.label}</div>
+          </div>
+        `;
+      }).join('');
       recalcDemoTotal();
     }
 
+    function toggleDemoService(idx) {
+      if (selectedIndices.has(idx)) {
+        selectedIndices.delete(idx);
+      } else {
+        selectedIndices.add(idx);
+      }
+      document.getElementById('demoToast').style.display = 'none';
+      const activeBtn = document.querySelector('#demoTabs .demo-tab.active');
+      const isFirst = activeBtn === document.querySelector('#demoTabs .demo-tab');
+      renderDemoItems(isFirst ? 'all' : activeBtn.textContent);
+    }
+
     function recalcDemoTotal() {
-      const selected = document.querySelectorAll('#demoList .demo-service.selected');
+      const data = demos[activeDemoKey];
       let sum = 0;
-      selected.forEach(node => {
-        sum += Number(node.getAttribute('data-price') || 0);
+      selectedIndices.forEach(idx => {
+        if (data.items[idx]) sum += data.items[idx].price;
       });
-      document.getElementById('demoCount').textContent = selected.length;
+      document.getElementById('demoCount').textContent = selectedIndices.size;
       document.getElementById('demoTotal').textContent = sum.toLocaleString('ru-RU') + ' ₽';
     }
 
