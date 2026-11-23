@@ -21,7 +21,6 @@
       --primary-bright: #38bdf8;
       --cyan: #22d3ee;
       --emerald: #10b981;
-      --emerald-soft: rgba(16, 185, 129, 0.14);
       --rose: #fb7185;
       --shadow-md: 0 18px 42px -6px rgba(0, 0, 0, 0.85);
       --shadow-glow: 0 0 32px rgba(14, 165, 233, 0.22);
@@ -66,7 +65,7 @@
       transition: width 0.08s linear;
     }
 
-    /* Rock-Solid GPU-Locked Background (Obsidian Black + Sky Blue Glow) */
+    /* Rock-Solid GPU-Locked Background */
     .bg-stage {
       position: fixed;
       top: 0;
@@ -125,24 +124,21 @@
       flex: 1;
     }
 
-    /* Floating Obsidian & Cyan Glass Header */
+    /* Static Top Header (Does NOT float when scrolling) */
     header {
-      position: sticky;
-      top: 12px;
-      z-index: 50;
+      position: relative;
+      z-index: 20;
       padding: 0 12px;
-      margin-top: 12px;
+      margin-top: calc(12px + env(safe-area-inset-top));
     }
 
     .nav-bar {
       max-width: 1056px;
       margin: 0 auto;
-      padding: 9px 14px;
-      background: rgba(5, 8, 15, 0.86);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      padding: 10px 14px;
+      background: rgba(6, 10, 18, 0.92);
       border: 1px solid rgba(56, 189, 248, 0.24);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(186, 230, 253, 0.14);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.78), inset 0 1px 0 rgba(186, 230, 253, 0.14);
       border-radius: 20px;
       display: flex;
       justify-content: space-between;
@@ -175,8 +171,7 @@
       background: linear-gradient(135deg, #0284c7 0%, #38bdf8 60%, #67e8f9 100%);
       display: grid;
       place-items: center;
-      font-size: 1.2rem;
-      color: #030712;
+      color: #ffffff;
       box-shadow: 0 0 22px rgba(14, 165, 233, 0.48), inset 0 1px 1px rgba(255,255,255,0.55);
       flex-shrink: 0;
       transition: transform 0.25s ease;
@@ -269,7 +264,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 9px 16px;
+      padding: 9px 15px;
       border-radius: 13px;
       background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 55%, #22d3ee 100%);
       color: #ffffff;
@@ -284,11 +279,23 @@
 
     .header-cta:active { transform: scale(0.95); }
 
+    /* Clean SVG Icon Helper */
+    .ui-icon {
+      width: 17px;
+      height: 17px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
     /* Page View Transitions */
     .page-view {
       display: none;
       animation: pageFade 0.24s ease-out;
-      padding-top: 20px;
+      padding-top: 16px;
       padding-bottom: 36px;
     }
 
@@ -369,12 +376,12 @@
 
     /* Hero Section */
     .hero {
-      padding: 28px 0 32px;
+      padding: 24px 0 32px;
       text-align: center;
     }
 
     @media (min-width: 768px) {
-      .hero { padding: 54px 0 44px; }
+      .hero { padding: 48px 0 44px; }
     }
 
     h1 {
@@ -404,7 +411,7 @@
       gap: 12px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 34px;
+      margin-bottom: 32px;
     }
 
     @media (max-width: 480px) {
@@ -466,92 +473,83 @@
       display: block;
     }
 
-    /* Interactive Mini Solution Selector on Home */
-    .selector-box {
+    /* Telegram Contact & Channel Strip on Home */
+    .social-connect-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
       max-width: 820px;
-      margin: 22px auto 0;
-      background: linear-gradient(180deg, #0a1220 0%, #04060b 100%);
-      border: 1px solid rgba(56, 189, 248, 0.32);
-      border-radius: 22px;
-      padding: 18px;
-      text-align: left;
-      position: relative;
-      box-shadow: var(--shadow-md), var(--shadow-glow), inset 0 1px 0 rgba(186, 230, 253, 0.14);
+      margin: 16px auto 0;
     }
 
-    .selector-box::before,
-    .selector-box::after {
-      content: "";
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      pointer-events: none;
+    @media (max-width: 640px) {
+      .social-connect-grid { grid-template-columns: 1fr; }
     }
 
-    .selector-box::before {
-      top: 8px;
-      left: 8px;
-      border-top: 1.5px solid rgba(56, 189, 248, 0.5);
-      border-left: 1.5px solid rgba(56, 189, 248, 0.5);
-      border-top-left-radius: 4px;
-    }
-
-    .selector-box::after {
-      bottom: 8px;
-      right: 8px;
-      border-bottom: 1.5px solid rgba(56, 189, 248, 0.5);
-      border-right: 1.5px solid rgba(56, 189, 248, 0.5);
-      border-bottom-right-radius: 4px;
-    }
-
-    .selector-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-
-    .selector-chips {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
-    }
-
-    .sel-chip {
-      padding: 8px 13px;
-      border-radius: 11px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: #04070d;
-      color: #94a3b8;
-      font-size: 0.81rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.18s ease;
-    }
-
-    .sel-chip:hover {
-      color: #ffffff;
-      border-color: rgba(56, 189, 248, 0.45);
-    }
-
-    .sel-chip.active {
-      background: rgba(14, 165, 233, 0.22);
-      border-color: var(--primary-bright);
-      color: #ffffff;
-      box-shadow: 0 0 14px rgba(56, 189, 248, 0.2);
-    }
-
-    .selector-result {
+    .social-card {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      padding-top: 12px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      flex-wrap: wrap;
+      padding: 15px 18px;
+      border-radius: 20px;
+      text-decoration: none;
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.16) 0%, #05080f 100%);
+      border: 1px solid rgba(56, 189, 248, 0.34);
+      box-shadow: var(--shadow-md), inset 0 1px 0 rgba(186, 230, 253, 0.12);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .social-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.65);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85), var(--shadow-glow);
+    }
+
+    .social-card-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .social-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, #0284c7, #22d3ee);
+      color: #ffffff;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      box-shadow: 0 6px 18px rgba(14, 165, 233, 0.35);
+    }
+
+    .social-card-text strong {
+      display: block;
+      font-size: 0.93rem;
+      color: #ffffff;
+      line-height: 1.25;
+    }
+
+    .social-card-text span {
+      display: block;
+      font-size: 0.78rem;
+      color: #7dd3fc;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .social-pill-btn {
+      padding: 7px 12px;
+      border-radius: 10px;
+      background: rgba(56, 189, 248, 0.16);
+      border: 1px solid rgba(56, 189, 248, 0.32);
+      color: #e0f2fe;
+      font-size: 0.77rem;
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     /* Quick Page Navigation Cards on Home */
@@ -560,7 +558,7 @@
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 14px;
       max-width: 820px;
-      margin: 16px auto 0;
+      margin: 14px auto 0;
     }
 
     .quick-card {
@@ -599,9 +597,9 @@
       border-radius: 13px;
       background: rgba(14, 165, 233, 0.16);
       border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #38bdf8;
       display: grid;
       place-items: center;
-      font-size: 1.15rem;
       flex-shrink: 0;
     }
 
@@ -614,71 +612,55 @@
       color: var(--primary-bright);
       display: grid;
       place-items: center;
-      font-weight: 800;
-      font-size: 0.9rem;
       flex-shrink: 0;
       transition: transform 0.2s ease, background 0.2s ease;
     }
 
-    /* 4-Step Workflow Strip */
-    .steps-box {
+    /* Before vs After Comparison */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
       max-width: 820px;
-      margin: 22px auto 0;
-      background: linear-gradient(180deg, #09101d 0%, #04060b 100%);
-      border: 1px solid var(--border);
+      margin: 18px auto 0;
+    }
+
+    @media (max-width: 720px) {
+      .compare-grid { grid-template-columns: 1fr; }
+    }
+
+    .compare-card {
+      background: #05080f;
       border-radius: 22px;
-      padding: 18px;
+      padding: 20px;
+      border: 1px solid var(--border);
       text-align: left;
       box-shadow: var(--shadow-md);
     }
 
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+    .compare-card.bad {
+      background: linear-gradient(180deg, rgba(244, 63, 94, 0.08) 0%, #05080f 45%);
+      border-color: rgba(244, 63, 94, 0.25);
+    }
+
+    .compare-card.good {
+      background: linear-gradient(180deg, rgba(14, 165, 233, 0.16) 0%, #05080f 50%);
+      border: 1.5px solid rgba(56, 189, 248, 0.42);
+    }
+
+    .compare-list {
+      list-style: none;
       margin-top: 12px;
-    }
-
-    @media (max-width: 680px) {
-      .steps-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    .step-item {
-      background: #04070d;
-      border: 1px solid rgba(56, 189, 248, 0.14);
-      border-radius: 15px;
-      padding: 12px;
-      position: relative;
-    }
-
-    .step-num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      border-radius: 8px;
-      background: rgba(14, 165, 233, 0.2);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      color: #7dd3fc;
-      font-size: 0.74rem;
-      font-weight: 800;
-      margin-bottom: 7px;
-    }
-
-    .step-item strong {
-      display: block;
-      font-size: 0.84rem;
-      color: #ffffff;
-      margin-bottom: 2px;
-    }
-
-    .step-item span {
-      font-size: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      font-size: 0.87rem;
       color: #94a3b8;
-      line-height: 1.3;
-      display: block;
     }
+
+    .compare-card.bad li::before { content: "✕ "; color: var(--rose); font-weight: 800; }
+    .compare-card.good li { color: #e2e8f0; }
+    .compare-card.good li::before { content: "✓ "; color: #38bdf8; font-weight: 800; }
 
     /* Niche Ticker Strip */
     .ticker-wrap {
@@ -947,52 +929,6 @@
     }
     .mockup-row:last-child { margin-bottom: 0; }
 
-    /* Before vs After Comparison */
-    .compare-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      max-width: 820px;
-      margin: 22px auto 0;
-    }
-
-    @media (max-width: 720px) {
-      .compare-grid { grid-template-columns: 1fr; }
-    }
-
-    .compare-card {
-      background: #05080f;
-      border-radius: 22px;
-      padding: 20px;
-      border: 1px solid var(--border);
-      text-align: left;
-      box-shadow: var(--shadow-md);
-    }
-
-    .compare-card.bad {
-      background: linear-gradient(180deg, rgba(244, 63, 94, 0.08) 0%, #05080f 45%);
-      border-color: rgba(244, 63, 94, 0.25);
-    }
-
-    .compare-card.good {
-      background: linear-gradient(180deg, rgba(14, 165, 233, 0.16) 0%, #05080f 50%);
-      border: 1.5px solid rgba(56, 189, 248, 0.42);
-    }
-
-    .compare-list {
-      list-style: none;
-      margin-top: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-      font-size: 0.87rem;
-      color: #94a3b8;
-    }
-
-    .compare-card.bad li::before { content: "✕ "; color: var(--rose); font-weight: 800; }
-    .compare-card.good li { color: #e2e8f0; }
-    .compare-card.good li::before { content: "✓ "; color: #38bdf8; font-weight: 800; }
-
     /* Pricing & Services Grid */
     .pricing-grid {
       display: grid;
@@ -1170,7 +1106,7 @@
       color: #ffffff;
     }
 
-    /* Mobile Bottom Dock */
+    /* Mobile Bottom Dock with Clean Vector Icons */
     .mobile-dock {
       display: none;
     }
@@ -1181,7 +1117,7 @@
         bottom: calc(10px + env(safe-area-inset-bottom));
         left: 14px;
         right: 14px;
-        background: rgba(4, 7, 13, 0.92);
+        background: rgba(4, 7, 13, 0.94);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border: 1px solid rgba(56, 189, 248, 0.26);
@@ -1202,10 +1138,11 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        gap: 4px;
         color: #64748b;
         font-size: 0.7rem;
         font-weight: 600;
-        padding: 6px 2px;
+        padding: 7px 2px;
         border-radius: 13px;
         cursor: pointer;
         transition: all 0.15s;
@@ -1217,8 +1154,6 @@
         font-weight: 700;
         box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.35);
       }
-
-      .dock-btn span { font-size: 1.05rem; margin-bottom: 2px; }
 
       footer { padding-bottom: 92px; }
     }
@@ -1487,15 +1422,20 @@
 
   <div class="scroll-progress" id="scrollProgress"></div>
 
-  <!-- GPU-Locked Stable Background (Obsidian Black + Sky Blue Glow + Smooth Particles) -->
+  <!-- GPU-Locked Stable Background -->
   <div class="bg-stage"></div>
   <div class="bg-grid"></div>
   <canvas id="bgCanvas"></canvas>
 
+  <!-- Static Top Header (Not Sticky / Does not float while scrolling) -->
   <header>
     <div class="nav-bar">
       <div class="logo-wrap" onclick="switchPage('home')">
-        <div class="logo-badge">⚜️</div>
+        <div class="logo-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/>
+          </svg>
+        </div>
         <div class="logo-text-group">
           <div class="logo-title">Always<span>Studio</span></div>
           <div class="logo-sub"><span class="live-dot"></span> Сайты, Mini Apps & Боты</div>
@@ -1506,7 +1446,12 @@
         <button class="nav-tab" data-page="cases" onclick="switchPage('cases')">Примеры</button>
         <button class="nav-tab" data-page="services" onclick="switchPage('services')">Услуги</button>
         <button class="nav-tab" data-page="faq" onclick="switchPage('faq')">Вопросы</button>
-        <button class="header-cta" onclick="switchPage('faq', true)">Заказать ✈️</button>
+        <button class="header-cta" onclick="switchPage('faq', true)">
+          <span>Заказать</span>
+          <svg class="ui-icon" style="width:15px;height:15px;" viewBox="0 0 24 24">
+            <path d="M5 12h14M13 5l7 7-7 7"/>
+          </svg>
+        </button>
       </div>
     </div>
   </header>
@@ -1520,8 +1465,14 @@
         <p>Создаем сайты-визитки, Telegram Mini Apps, цифровые карточки BioCard и умных Telegram-ботов для автоматизации заявок и продаж под ключ.</p>
         
         <div class="hero-actions">
-          <button class="btn btn-primary btn-shimmer" onclick="switchPage('faq', true)">Заказать проект 🚀</button>
-          <button class="btn btn-outline" onclick="switchPage('cases')">Посмотреть примеры 📱</button>
+          <button class="btn btn-primary btn-shimmer" onclick="switchPage('faq', true)">
+            <span>Заказать проект</span>
+            <svg class="ui-icon" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+          <button class="btn btn-outline" onclick="switchPage('cases')">
+            <svg class="ui-icon" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            <span>Посмотреть примеры</span>
+          </button>
         </div>
 
         <div class="stats-grid">
@@ -1539,89 +1490,83 @@
           </div>
         </div>
 
-        <!-- Interactive Quick Solution Picker -->
-        <div class="selector-box">
-          <div class="selector-head">
-            <strong style="font-size:0.92rem; color:#fff;">⚜️ Быстрый подбор под вашу задачу:</strong>
-            <span style="font-size:0.75rem; color:var(--primary-bright); font-weight:600;">Нажмите на цель</span>
-          </div>
-          <div class="selector-chips">
-            <button class="sel-chip active" onclick="pickGoal('site', this)">Нужен сайт-визитка с прайсом</button>
-            <button class="sel-chip" onclick="pickGoal('bot', this)">Автоматизировать запись в TG-боте</button>
-            <button class="sel-chip" onclick="pickGoal('miniapp', this)">Магазин / каталог внутри Telegram</button>
-            <button class="sel-chip" onclick="pickGoal('biocard', this)">Карточка ссылок для соцсетей</button>
-          </div>
-          <div class="selector-result">
-            <div>
-              <strong id="goalTitle" style="display:block; font-size:0.95rem; color:#fff;">Сайт-визитка / Лендинг — 1 050 ₽</strong>
-              <span id="goalDesc" style="font-size:0.79rem; color:#94a3b8;">Готово за 24 часа • Бесплатный хостинг навсегда</span>
+        <!-- Direct Telegram & Channel Block on Home -->
+        <div class="social-connect-grid">
+          <a href="https://t.me/alwayssowdev" target="_blank" class="social-card">
+            <div class="social-card-left">
+              <div class="social-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/>
+                </svg>
+              </div>
+              <div class="social-card-text">
+                <strong>Связаться лично в Telegram</strong>
+                <span>@alwayssowdev</span>
+              </div>
             </div>
-            <button class="btn btn-primary btn-sm" id="goalBtn" onclick="orderGoal()">Выбрать решение →</button>
-          </div>
+            <span class="social-pill-btn">Написать</span>
+          </a>
+
+          <a href="https://t.me/alwaysstudiioo" target="_blank" class="social-card">
+            <div class="social-card-left">
+              <div class="social-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/>
+                </svg>
+              </div>
+              <div class="social-card-text">
+                <strong>Telegram-канал студии</strong>
+                <span>t.me/alwaysstudiioo</span>
+              </div>
+            </div>
+            <span class="social-pill-btn">Перейти</span>
+          </a>
         </div>
 
         <!-- Quick Page Navigation Cards -->
         <div class="quick-nav-grid">
           <div class="quick-card" onclick="switchPage('cases')">
             <div class="quick-card-left">
-              <div class="quick-icon">📱</div>
+              <div class="quick-icon">
+                <svg class="ui-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+              </div>
               <div>
                 <strong style="display:block; font-size:0.95rem; color:#fff;">Примеры работ</strong>
                 <span style="font-size:0.78rem; color:#94a3b8;">7 реальных кейсов с превью</span>
               </div>
             </div>
-            <div class="quick-arrow">→</div>
+            <div class="quick-arrow">
+              <svg class="ui-icon" style="width:15px;height:15px;" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+            </div>
           </div>
 
           <div class="quick-card" onclick="switchPage('services')">
             <div class="quick-card-left">
-              <div class="quick-icon">💎</div>
+              <div class="quick-icon">
+                <svg class="ui-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
               <div>
                 <strong style="display:block; font-size:0.95rem; color:#fff;">Услуги и цены</strong>
                 <span style="font-size:0.78rem; color:#94a3b8;">Сайты, Mini Apps и TG-боты</span>
               </div>
             </div>
-            <div class="quick-arrow">→</div>
+            <div class="quick-arrow">
+              <svg class="ui-icon" style="width:15px;height:15px;" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+            </div>
           </div>
 
           <div class="quick-card" onclick="switchPage('faq')">
             <div class="quick-card-left">
-              <div class="quick-icon">💬</div>
+              <div class="quick-icon">
+                <svg class="ui-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
               <div>
-                <strong style="display:block; font-size:0.95rem; color:#fff;">Вопросы и связь</strong>
-                <span style="font-size:0.78rem; color:#94a3b8;">Напрямую @alwayssowdev</span>
+                <strong style="display:block; font-size:0.95rem; color:#fff;">Вопросы и заявка</strong>
+                <span style="font-size:0.78rem; color:#94a3b8;">Ответы и быстрый заказ</span>
               </div>
             </div>
-            <div class="quick-arrow">→</div>
-          </div>
-        </div>
-
-        <!-- 4-Step Launch Process -->
-        <div class="steps-box">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
-            <strong style="font-size:0.92rem; color:#fff;">⚙️ Как проходит запуск проекта</strong>
-            <span style="font-size:0.74rem; color:var(--primary-bright); font-weight:600;">Без сложных ТЗ</span>
-          </div>
-          <div class="steps-grid">
-            <div class="step-item">
-              <div class="step-num">01</div>
-              <strong>Заявка в TG</strong>
-              <span>Пишете нишу и что нужно показать клиентам</span>
-            </div>
-            <div class="step-item">
-              <div class="step-num">02</div>
-              <strong>Черновик</strong>
-              <span>Собираем дизайн, структуру и прайс за 24 часа</span>
-            </div>
-            <div class="step-item">
-              <div class="step-num">03</div>
-              <strong>Проверка</strong>
-              <span>Тестируете ссылку прямо на своем телефоне</span>
-            </div>
-            <div class="step-item">
-              <div class="step-num">04</div>
-              <strong>Запуск</strong>
-              <span>Подключаем кнопки связи и передаем готовый проект</span>
+            <div class="quick-arrow">
+              <svg class="ui-icon" style="width:15px;height:15px;" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
             </div>
           </div>
         </div>
@@ -1650,20 +1595,20 @@
         <!-- Subtle Niche Marquee Strip -->
         <div class="ticker-wrap">
           <div class="ticker-track">
-            <span class="ticker-pill">💅 Бьюти-мастера</span>
-            <span class="ticker-pill">🤖 Telegram-боты</span>
-            <span class="ticker-pill">🚘 Детейлинг и СТО</span>
-            <span class="ticker-pill">🎂 Кондитеры и доставка</span>
-            <span class="ticker-pill">📚 Репетиторы и курсы</span>
-            <span class="ticker-pill">📸 Фотографы и видео</span>
-            <span class="ticker-pill">🛠 Ремонт техники</span>
-            <span class="ticker-pill">💅 Бьюти-мастера</span>
-            <span class="ticker-pill">🤖 Telegram-боты</span>
-            <span class="ticker-pill">🚘 Детейлинг и СТО</span>
-            <span class="ticker-pill">🎂 Кондитеры и доставка</span>
-            <span class="ticker-pill">📚 Репетиторы и курсы</span>
-            <span class="ticker-pill">📸 Фотографы и видео</span>
-            <span class="ticker-pill">🛠 Ремонт техники</span>
+            <span class="ticker-pill">Бьюти-мастера</span>
+            <span class="ticker-pill">Telegram-боты</span>
+            <span class="ticker-pill">Детейлинг и СТО</span>
+            <span class="ticker-pill">Кондитеры и доставка</span>
+            <span class="ticker-pill">Репетиторы и курсы</span>
+            <span class="ticker-pill">Фотографы и видео</span>
+            <span class="ticker-pill">Ремонт техники</span>
+            <span class="ticker-pill">Бьюти-мастера</span>
+            <span class="ticker-pill">Telegram-боты</span>
+            <span class="ticker-pill">Детейлинг и СТО</span>
+            <span class="ticker-pill">Кондитеры и доставка</span>
+            <span class="ticker-pill">Репетиторы и курсы</span>
+            <span class="ticker-pill">Фотографы и видео</span>
+            <span class="ticker-pill">Ремонт техники</span>
           </div>
         </div>
       </section>
@@ -1695,7 +1640,7 @@
               <h3>Бот записи, прайса и автоворонки</h3>
               <p>Клиент запускает бота в Telegram, выбирает услугу, свободное окно и получает напоминание за 2 часа до визита.</p>
               <div class="case-result-bar">
-                <span>📈 Результат внедрения:</span>
+                <span>Результат внедрения:</span>
                 <span>−2 ч/день на переписку</span>
               </div>
               <div class="mini-phone-window">
@@ -1707,14 +1652,14 @@
                   <div class="mini-avatar" style="background:linear-gradient(135deg,#0284c7,#22d3ee);">🤖</div>
                   <div class="mini-app-title">
                     <strong>TOP CUT • Бот-администратор</strong>
-                    <span>🟢 Онлайн 24/7 • Запись за 3 клика</span>
+                    <span>Онлайн 24/7 • Запись за 3 клика</span>
                   </div>
                 </div>
-                <div class="mockup-row"><span>✂️ Мужская стрижка + укладка</span><strong style="color:#34d399;">1 120 ₽</strong></div>
-                <div class="mockup-row"><span>🪒 Моделирование бороды</span><strong style="color:#34d399;">770 ₽</strong></div>
+                <div class="mockup-row"><span>Мужская стрижка + укладка</span><strong style="color:#34d399;">1 120 ₽</strong></div>
+                <div class="mockup-row"><span>Моделирование бороды</span><strong style="color:#34d399;">770 ₽</strong></div>
               </div>
             </div>
-            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('tgbot')">Протестировать бота 📱</button>
+            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('tgbot')">Протестировать бота</button>
           </div>
 
           <!-- Case 2: Beauty -->
@@ -1727,7 +1672,7 @@
               <h3>Студия маникюра & бровей</h3>
               <p>Ссылка в шапке профиля с актуальными окнами, работами мастера и мгновенной записью в Telegram без звонков.</p>
               <div class="case-result-bar">
-                <span>📈 Результат внедрения:</span>
+                <span>Результат внедрения:</span>
                 <span>+34% записей из профиля</span>
               </div>
               <div class="mini-phone-window">
@@ -1739,14 +1684,14 @@
                   <div class="mini-avatar" style="background:linear-gradient(135deg,#0ea5e9,#38bdf8);">💅</div>
                   <div class="mini-app-title">
                     <strong>Nails & Brows by Anna</strong>
-                    <span>⭐ 5.0 (64 отзыва) • ул. Ленина, 24</span>
+                    <span>5.0 (64 отзыва) • ул. Ленина, 24</span>
                   </div>
                 </div>
                 <div class="mockup-row"><span>Маникюр + снятие + гель-лак</span><strong style="color:#34d399;">1 260 ₽</strong></div>
                 <div class="mockup-row"><span>Архитектура + окрашивание бровей</span><strong style="color:#34d399;">840 ₽</strong></div>
               </div>
             </div>
-            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('beauty')">Открыть на телефоне 📱</button>
+            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('beauty')">Открыть на телефоне</button>
           </div>
 
           <!-- Case 3: Tutor -->
@@ -1759,7 +1704,7 @@
               <h3>Подготовка к ЕГЭ и английский</h3>
               <p>Посадочная страница для родителей и учеников: реальные баллы выпускников, тарифы и запись на пробный урок.</p>
               <div class="case-result-bar">
-                <span>📈 Результат внедрения:</span>
+                <span>Результат внедрения:</span>
                 <span>7 из 10 заявок в абонемент</span>
               </div>
               <div class="mini-phone-window">
@@ -1771,14 +1716,14 @@
                   <div class="mini-avatar" style="background:linear-gradient(135deg,#2563eb,#0ea5e9);">📚</div>
                   <div class="mini-app-title">
                     <strong>English & ЕГЭ с Еленой</strong>
-                    <span>🎓 Средний балл 86 • Zoom / Миро</span>
+                    <span>Средний балл 86 • Zoom / Миро</span>
                   </div>
                 </div>
                 <div class="mockup-row"><span>Пробный урок + диагностика</span><strong style="color:#34d399;">0 ₽</strong></div>
                 <div class="mockup-row"><span>Индивидуально (60 мин)</span><strong style="color:#34d399;">1 050 ₽</strong></div>
               </div>
             </div>
-            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('tutor')">Открыть на телефоне 📱</button>
+            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('tutor')">Открыть на телефоне</button>
           </div>
 
           <!-- Case 4: Auto -->
@@ -1791,7 +1736,7 @@
               <h3>Детейлинг и химчистка авто</h3>
               <p>Прайс по услугам кузова и салона: водитель сразу видит итоговую стоимость и бронирует бокс.</p>
               <div class="case-result-bar">
-                <span>📈 Результат внедрения:</span>
+                <span>Результат внедрения:</span>
                 <span>Средний чек вырос на 22%</span>
               </div>
               <div class="mini-phone-window">
@@ -1803,14 +1748,14 @@
                   <div class="mini-avatar" style="background:linear-gradient(135deg,#0369a1,#0284c7);">🚘</div>
                   <div class="mini-app-title">
                     <strong>ProDetail Studio</strong>
-                    <span>🛡️ Гарантия 12 мес • Бокс на 4 авто</span>
+                    <span>Гарантия 12 мес • Бокс на 4 авто</span>
                   </div>
                 </div>
                 <div class="mockup-row"><span>Детейлинг-химчистка салона</span><strong style="color:#34d399;">4 550 ₽</strong></div>
                 <div class="mockup-row"><span>Полировка + керамика (2 слоя)</span><strong style="color:#34d399;">9 800 ₽</strong></div>
               </div>
             </div>
-            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('auto')">Открыть на телефоне 📱</button>
+            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('auto')">Открыть на телефоне</button>
           </div>
 
           <!-- Case 5: Bakery -->
@@ -1823,7 +1768,7 @@
               <h3>Бенто-торты и десерты на заказ</h3>
               <p>Витрина десертов внутри Telegram: покупатель выбирает начинку, вес, надпись и отправляет готовый заказ в 1 клик.</p>
               <div class="case-result-bar">
-                <span>📈 Результат внедрения:</span>
+                <span>Результат внедрения:</span>
                 <span>Оформление заказа за 40 сек</span>
               </div>
               <div class="mini-phone-window">
@@ -1835,14 +1780,14 @@
                   <div class="mini-avatar" style="background:linear-gradient(135deg,#0ea5e9,#06b6d4);">🎂</div>
                   <div class="mini-app-title">
                     <strong>SweetBox — Кондитерская</strong>
-                    <span>🚚 Доставка за 60 мин • ⭐ 4.9</span>
+                    <span>Доставка за 60 мин • 4.9</span>
                   </div>
                 </div>
-                <div class="mockup-row"><span>Бенто-торт с надписью (450 г)</span><strong style="color:#34d399;">1 120 ₽</strong></div>
+                <div class="mockup-row"><span>Бенто-торт с вашей надписью (450 г)</span><strong style="color:#34d399;">1 120 ₽</strong></div>
                 <div class="mockup-row"><span>Набор капкейков (6 шт)</span><strong style="color:#34d399;">1 050 ₽</strong></div>
               </div>
             </div>
-            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('bakery')">Открыть на телефоне 📱</button>
+            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('bakery')">Открыть на телефоне</button>
           </div>
 
           <!-- Case 6: Photo -->
@@ -1855,7 +1800,7 @@
               <h3>Фотограф и контент-мейкер</h3>
               <p>Упаковка пакетов съемки с прозрачными условиями: сколько фото, срок готовности 24 часа и бронь даты.</p>
               <div class="case-result-bar">
-                <span>📈 Результат внедрения:</span>
+                <span>Результат внедрения:</span>
                 <span>+5 съемок в первую неделю</span>
               </div>
               <div class="mini-phone-window">
@@ -1867,14 +1812,14 @@
                   <div class="mini-avatar" style="background:linear-gradient(135deg,#0284c7,#38bdf8);">📸</div>
                   <div class="mini-app-title">
                     <strong>Дарья Волкова | Photo</strong>
-                    <span>⚡ Анонс 10 кадров за 24 часа</span>
+                    <span>Анонс 10 кадров за 24 часа</span>
                   </div>
                 </div>
                 <div class="mockup-row"><span>Экспресс-съемка (1 час)</span><strong style="color:#34d399;">2 450 ₽</strong></div>
                 <div class="mockup-row"><span>Контент-съемка (2 часа)</span><strong style="color:#34d399;">4 900 ₽</strong></div>
               </div>
             </div>
-            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('photo')">Открыть на телефоне 📱</button>
+            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('photo')">Открыть на телефоне</button>
           </div>
 
           <!-- Case 7: Repair -->
@@ -1887,7 +1832,7 @@
               <h3>Ремонт смартфонов и ПК</h3>
               <p>Честный прайс на популярные поломки, время ремонта от 30 минут и кнопка срочного вызова мастера.</p>
               <div class="case-result-bar">
-                <span>📈 Результат внедрения:</span>
+                <span>Результат внедрения:</span>
                 <span>Конверсия с поиска 14.8%</span>
               </div>
               <div class="mini-phone-window">
@@ -1899,14 +1844,14 @@
                   <div class="mini-avatar" style="background:linear-gradient(135deg,#059669,#0ea5e9);">🛠</div>
                   <div class="mini-app-title">
                     <strong>FixLab — Сервисный центр</strong>
-                    <span>⚡ От 30 мин • Гарантия 12 мес</span>
+                    <span>От 30 мин • Гарантия 12 мес</span>
                   </div>
                 </div>
                 <div class="mockup-row"><span>Замена АКБ iPhone / Android</span><strong style="color:#34d399;">1 330 ₽</strong></div>
                 <div class="mockup-row"><span>Чистка ПК + замена термопасты</span><strong style="color:#34d399;">1 050 ₽</strong></div>
               </div>
             </div>
-            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('repair')">Открыть на телефоне 📱</button>
+            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('repair')">Открыть на телефоне</button>
           </div>
         </div>
       </section>
@@ -1924,7 +1869,7 @@
           <div class="card">
             <div>
               <div class="card-top">
-                <span class="tag">💳 Мультиссылка</span>
+                <span class="tag">Мультиссылка</span>
                 <span class="mini-badge">Готово за 3 часа</span>
               </div>
               <h3>Цифровая BioCard</h3>
@@ -1943,7 +1888,7 @@
           <div class="card">
             <div>
               <div class="card-top">
-                <span class="tag">✨ Апгрейд</span>
+                <span class="tag">Апгрейд</span>
                 <span class="mini-badge">За 1 день</span>
               </div>
               <h3>Редизайн и правки сайта</h3>
@@ -1962,7 +1907,7 @@
           <div class="card featured">
             <div>
               <div class="card-top">
-                <span class="tag">⭐ Популярное</span>
+                <span class="tag">Популярное</span>
                 <span class="mini-badge">За 24 часа</span>
               </div>
               <h3>Сайт-визитка / Лендинг</h3>
@@ -1981,7 +1926,7 @@
           <div class="card featured">
             <div>
               <div class="card-top">
-                <span class="tag">🔥 Хит продаж</span>
+                <span class="tag">Хит продаж</span>
                 <span class="mini-badge">За 24 часа</span>
               </div>
               <h3>Telegram Mini App</h3>
@@ -2000,7 +1945,7 @@
           <div class="card bot-card">
             <div>
               <div class="card-top">
-                <span class="tag">🤖 Автоматизация</span>
+                <span class="tag">Автоматизация</span>
                 <span class="mini-badge">От 1 до 5 дней</span>
               </div>
               <h3>Создание Telegram-бота</h3>
@@ -2051,9 +1996,12 @@
         <div class="faq-contact-box">
           <div class="faq-contact-text">
             <strong>Нужен расчет стоимости бота или помощь с выбором?</strong>
-            <span>Напишите напрямую разработчику в Telegram — отвечу за пару минут: <b>@alwayssowdev</b></span>
+            <span>Напишите напрямую разработчику в Telegram: <b>@alwayssowdev</b> или подпишитесь на канал <b>@alwaysstudiioo</b></span>
           </div>
-          <a href="https://t.me/alwayssowdev" target="_blank" class="btn btn-primary btn-sm">Написать @alwayssowdev ✈️</a>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <a href="https://t.me/alwayssowdev" target="_blank" class="btn btn-primary btn-sm">Написать @alwayssowdev</a>
+            <a href="https://t.me/alwaysstudiioo" target="_blank" class="btn btn-outline btn-sm">Канал студии</a>
+          </div>
         </div>
 
         <!-- Order Box -->
@@ -2078,23 +2026,38 @@
               <option value="Редизайн и правки сайта (840 ₽)">Редизайн и правки сайта — 840 ₽</option>
             </select>
           </div>
-          <button class="btn btn-primary" style="width:100%; margin-top:6px;" onclick="sendToTelegram()">Отправить заявку в Telegram ✈️</button>
+          <button class="btn btn-primary" style="width:100%; margin-top:6px;" onclick="sendToTelegram()">
+            <span>Отправить заявку в Telegram</span>
+            <svg class="ui-icon" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
         </div>
       </section>
     </div>
 
   </main>
 
-  <!-- Mobile Bottom Dock -->
+  <!-- Mobile Bottom Dock with Clean Vector Icons -->
   <nav class="mobile-dock">
-    <button class="dock-btn active" data-page="home" onclick="switchPage('home')"><span>🏠</span>Главная</button>
-    <button class="dock-btn" data-page="cases" onclick="switchPage('cases')"><span>📱</span>Примеры</button>
-    <button class="dock-btn" data-page="services" onclick="switchPage('services')"><span>💎</span>Услуги</button>
-    <button class="dock-btn" data-page="faq" onclick="switchPage('faq')"><span>💬</span>Вопросы</button>
+    <button class="dock-btn active" data-page="home" onclick="switchPage('home')">
+      <svg class="ui-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Главная</span>
+    </button>
+    <button class="dock-btn" data-page="cases" onclick="switchPage('cases')">
+      <svg class="ui-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      <span>Примеры</span>
+    </button>
+    <button class="dock-btn" data-page="services" onclick="switchPage('services')">
+      <svg class="ui-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <span>Услуги</span>
+    </button>
+    <button class="dock-btn" data-page="faq" onclick="switchPage('faq')">
+      <svg class="ui-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span>Вопросы</span>
+    </button>
   </nav>
 
   <footer>
-    <div class="container">© 2026 AlwaysStudio — Сайты, Mini Apps и Telegram-боты • <a href="https://t.me/alwayssowdev" target="_blank" style="color:var(--primary-bright); text-decoration:none; font-weight:600;">@alwayssowdev</a></div>
+    <div class="container">© 2026 AlwaysStudio • <a href="https://t.me/alwayssowdev" target="_blank" style="color:var(--primary-bright); text-decoration:none; font-weight:600;">@alwayssowdev</a> • <a href="https://t.me/alwaysstudiioo" target="_blank" style="color:var(--primary-bright); text-decoration:none; font-weight:600;">Telegram-канал</a></div>
   </footer>
 
   <!-- Interactive Smartphone Preview Modal -->
@@ -2102,7 +2065,7 @@
     <div class="phone-frame" onclick="event.stopPropagation()">
       <div class="phone-island"></div>
       <div class="phone-top">
-        <span style="font-size:0.78rem; color:#94a3b8; font-weight:600;">📱 Как это видит ваш клиент</span>
+        <span style="font-size:0.78rem; color:#94a3b8; font-weight:600;">Как это видит ваш клиент</span>
         <button class="close-btn" onclick="document.getElementById('demoModal').classList.remove('active')">✕</button>
       </div>
 
@@ -2130,7 +2093,7 @@
       <!-- Real Telegram Incoming Message Result -->
       <div class="tg-msg-preview" id="tgMsgPreview">
         <div class="tg-msg-header">
-          <span>📩 Так заявка придет вам в Telegram:</span>
+          <span>Так заявка придет вам в Telegram:</span>
           <span>Только что</span>
         </div>
         <div class="tg-msg-body" id="tgMsgBody"></div>
@@ -2176,44 +2139,7 @@
       switchPage('faq', true);
     }
 
-    /* 2. Quick Solution Selector on Home */
-    const goalsData = {
-      site: {
-        title: "Сайт-визитка / Лендинг — 1 050 ₽",
-        desc: "Готово за 24 часа • Бесплатный хостинг навсегда",
-        tariff: "Сайт-визитка / Лендинг (1 050 ₽)"
-      },
-      bot: {
-        title: "Создание Telegram-бота — цена договорная",
-        desc: "Срок 1–5 дней • Запись, меню, оплата или ИИ-бот под задачу",
-        tariff: "Создание Telegram-бота (цена договорная)"
-      },
-      miniapp: {
-        title: "Telegram Mini App — 1 400 ₽",
-        desc: "Готово за 24 часа • Каталог, корзина и заказы внутри Telegram",
-        tariff: "Telegram Mini App (1 400 ₽)"
-      },
-      biocard: {
-        title: "Цифровая BioCard — 700 ₽",
-        desc: "Готово за 3 часа • Все соцсети, прайс и карта в 1 ссылке",
-        tariff: "Цифровая BioCard (700 ₽)"
-      }
-    };
-    let currentGoal = goalsData.site;
-
-    function pickGoal(key, btn) {
-      document.querySelectorAll('.sel-chip').forEach(c => c.classList.remove('active'));
-      btn.classList.add('active');
-      currentGoal = goalsData[key];
-      document.getElementById('goalTitle').textContent = currentGoal.title;
-      document.getElementById('goalDesc').textContent = currentGoal.desc;
-    }
-
-    function orderGoal() {
-      orderService(currentGoal.tariff);
-    }
-
-    /* 3. Anti-Jitter Sky-Blue Constellation & Shooting Stars Canvas */
+    /* 2. Anti-Jitter Sky-Blue Constellation & Shooting Stars Canvas */
     const canvas = document.getElementById('bgCanvas');
     const ctx = canvas.getContext('2d');
     let width = 0, height = 0, lastWidth = 0;
@@ -2343,7 +2269,7 @@
     setupCanvas(true);
     animateParticles();
 
-    /* 4. Portfolio Filter */
+    /* 3. Portfolio Filter */
     function filterCases(cat, btn) {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
@@ -2352,13 +2278,13 @@
       });
     }
 
-    /* 5. Realistic Interactive Demo Data */
+    /* 4. Realistic Interactive Demo Data */
     const demos = {
       tgbot: {
         title: "🤖 TOP CUT • Бот-администратор",
         desc: "Онлайн-запись к барберу, напоминания и бонусный баланс в Telegram",
         gradient: "linear-gradient(135deg, #0284c7, #22d3ee)",
-        meta: ["🟢 Бот онлайн 24/7", "🔔 Напоминание за 2ч", "⭐ 4.9"],
+        meta: ["Бот онлайн 24/7", "Напоминание за 2ч", "4.9"],
         cta: "Подтвердить запись в боте",
         slots: ["Сегодня, 16:30", "Сегодня, 19:00", "Завтра, 11:00", "Завтра, 14:30"],
         tabs: ["Все услуги", "Стрижки", "Борода и уход"],
@@ -2373,7 +2299,7 @@
         title: "💅 Nails & Brows by Anna",
         desc: "Студия в центре города • Стерильно 100% • Гарантия на покрытие 14 дней",
         gradient: "linear-gradient(135deg, #0ea5e9, #38bdf8)",
-        meta: ["⭐ 5.0 (64 отзыва)", "📍 ул. Ленина, 24", "🕒 10:00 – 21:00"],
+        meta: ["5.0 (64 отзыва)", "ул. Ленина, 24", "10:00 – 21:00"],
         cta: "Записаться в Telegram",
         slots: ["Завтра, 12:00", "Завтра, 15:30", "Чт, 11:00", "Пт, 18:00"],
         tabs: ["Все услуги", "Маникюр", "Брови и ресницы"],
@@ -2388,7 +2314,7 @@
         title: "📚 Английский язык | ЕГЭ и ОГЭ",
         desc: "Средний балл учеников — 86 • Онлайн в Zoom с интерактивной доской",
         gradient: "linear-gradient(135deg, #2563eb, #0ea5e9)",
-        meta: ["🎓 Опыт 6 лет", "📈 +32 балла за полгода", "💻 Онлайн"],
+        meta: ["Опыт 6 лет", "+32 балла за полгода", "Онлайн"],
         cta: "Записаться на занятие",
         slots: ["Пн / Чт, 17:00", "Вт / Пт, 18:30", "Сб, 12:00"],
         tabs: ["Все форматы", "Индивидуально", "Группы и пакеты"],
@@ -2403,7 +2329,7 @@
         title: "🚘 ProDetail — Студия детейлинга",
         desc: "Глубокая химчистка, полировка кузова и защита керамикой",
         gradient: "linear-gradient(135deg, #0369a1, #0284c7)",
-        meta: ["🛡️ Гарантия 1 год", "☕ Зона ожидания", "📞 09:00 – 21:00"],
+        meta: ["Гарантия 1 год", "Зона ожидания", "09:00 – 21:00"],
         cta: "Записаться на сервис",
         slots: ["Завтра, 10:00", "Завтра, 14:00", "Суббота, 11:00"],
         tabs: ["Все услуги", "Салон", "Кузов"],
@@ -2418,7 +2344,7 @@
         title: "🎂 SweetBox — Кондитерская",
         desc: "Натуральные сливки и бельгийский шоколад • Доставка по городу за 60 мин",
         gradient: "linear-gradient(135deg, #0ea5e9, #06b6d4)",
-        meta: ["🚚 Доставка 60 мин", "🎁 Открытка в подарок", "⭐ 4.9"],
+        meta: ["Доставка 60 мин", "Открытка в подарок", "4.9"],
         cta: "Оформить заказ в Telegram",
         slots: ["Сегодня к 18:00", "Завтра к 12:00", "Самовывоз"],
         tabs: ["Всё меню", "Торты", "Пирожные"],
@@ -2433,7 +2359,7 @@
         title: "📸 Дарья Волкова — Фотограф",
         desc: "Индивидуальные, семейные и контент-съемки • Анонс 10 кадров за 24 часа",
         gradient: "linear-gradient(135deg, #0284c7, #38bdf8)",
-        meta: ["⚡ Анонс за 24 часа", "🎞️ Помощь с позированием", "📍 Студия / Улица"],
+        meta: ["Анонс за 24 часа", "Помощь с позированием", "Студия / Улица"],
         cta: "Забронировать дату съемки",
         slots: ["Пятница, 15:00", "Суббота, 13:00", "Воскресенье, 16:00"],
         tabs: ["Все пакеты", "Фото", "Видео / Reels"],
@@ -2448,7 +2374,7 @@
         title: "🛠 FixLab — Ремонт телефонов и ПК",
         desc: "Бесплатная диагностика за 15 минут • Запчасти в наличии • Гарантия 12 мес",
         gradient: "linear-gradient(135deg, #059669, #0ea5e9)",
-        meta: ["⚡ Ремонт от 30 мин", "📜 Гарантия 1 год", "🚗 Выезд курьера"],
+        meta: ["Ремонт от 30 мин", "Гарантия 1 год", "Выезд курьера"],
         cta: "Вызвать мастера / Записаться",
         slots: ["Срочно (в течение часа)", "Сегодня, 17:00", "Завтра, 11:00"],
         tabs: ["Все услуги", "Смартфоны", "Ноутбуки и ПК"],
@@ -2561,7 +2487,7 @@
         }
       });
 
-      const msg = `🔥 Новая заявка | ${data.title}\n\nВыбрано:\n${lines.join('\n')}\n\n🕒 Время: ${selectedSlot}\n💰 Итого: ${sum.toLocaleString('ru-RU')} ₽\n👤 Клиент: @username`;
+      const msg = `Новая заявка | ${data.title}\n\nВыбрано:\n${lines.join('\n')}\n\nВремя: ${selectedSlot}\nИтого: ${sum.toLocaleString('ru-RU')} ₽\nКлиент: @username`;
       document.getElementById('tgMsgBody').textContent = msg;
       document.getElementById('tgMsgPreview').style.display = 'block';
     }
