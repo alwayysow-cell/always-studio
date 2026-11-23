@@ -10,21 +10,21 @@
     :root {
       color-scheme: dark;
       --bg: #030508;
-      --surface-solid: #080d17;
-      --surface-elevated: #0d1526;
-      --border: rgba(56, 189, 248, 0.16);
-      --border-strong: rgba(56, 189, 248, 0.32);
-      --text: #f8fafc;
-      --muted: #94a3b8;
-      --subtle: #64748b;
-      --primary: #0284c7;
-      --primary-bright: #38bdf8;
-      --cyan: #22d3ee;
+      --surface-solid: #0b0a08;
+      --surface-elevated: #14110b;
+      --border: rgba(245, 158, 11, 0.2);
+      --border-strong: rgba(251, 191, 36, 0.36);
+      --text: #fafaf9;
+      --muted: #a8a29e;
+      --subtle: #78716c;
+      --primary: #d97706;
+      --primary-bright: #fbbf24;
+      --gold-light: #fde68a;
       --emerald: #10b981;
       --emerald-soft: rgba(16, 185, 129, 0.14);
       --rose: #fb7185;
-      --shadow-md: 0 18px 42px -6px rgba(0, 0, 0, 0.85);
-      --shadow-glow: 0 0 32px rgba(14, 165, 233, 0.22);
+      --shadow-md: 0 18px 42px -6px rgba(0, 0, 0, 0.88);
+      --shadow-glow: 0 0 32px rgba(245, 158, 11, 0.22);
     }
 
     * {
@@ -52,7 +52,7 @@
       padding-bottom: env(safe-area-inset-bottom);
     }
 
-    /* Rock-Solid GPU-Locked Background (Zero Jitter on Mobile Scroll) */
+    /* Rock-Solid GPU-Locked Background (Obsidian Black + Warm Gold Glow) */
     .bg-stage {
       position: fixed;
       top: 0;
@@ -61,10 +61,10 @@
       height: 100lvh;
       height: 100vh;
       background:
-        radial-gradient(ellipse 85% 45% at 50% 0%, rgba(14, 165, 233, 0.28) 0%, rgba(2, 132, 199, 0.08) 45%, transparent 75%),
-        radial-gradient(circle at 88% 38%, rgba(34, 211, 238, 0.14) 0%, transparent 50%),
-        radial-gradient(circle at 12% 72%, rgba(2, 132, 199, 0.16) 0%, transparent 52%),
-        linear-gradient(180deg, #040914 0%, #030508 42%, #050c18 78%, #020305 100%);
+        radial-gradient(ellipse 85% 45% at 50% 0%, rgba(217, 119, 6, 0.26) 0%, rgba(180, 83, 9, 0.08) 45%, transparent 75%),
+        radial-gradient(circle at 88% 38%, rgba(251, 191, 36, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 12% 72%, rgba(217, 119, 6, 0.14) 0%, transparent 52%),
+        linear-gradient(180deg, #0d0a05 0%, #050506 42%, #0c0904 78%, #020203 100%);
       z-index: -4;
       pointer-events: none;
       transform: translate3d(0, 0, 0);
@@ -80,8 +80,8 @@
       height: 100lvh;
       height: 100vh;
       background-image: 
-        linear-gradient(to right, rgba(56, 189, 248, 0.045) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(56, 189, 248, 0.045) 1px, transparent 1px);
+        linear-gradient(to right, rgba(251, 191, 36, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(251, 191, 36, 0.045) 1px, transparent 1px);
       background-size: 40px 40px;
       mask-image: radial-gradient(ellipse 90% 65% at 50% 18%, #000 30%, transparent 95%);
       -webkit-mask-image: radial-gradient(ellipse 90% 65% at 50% 18%, #000 30%, transparent 95%);
@@ -111,7 +111,7 @@
       flex: 1;
     }
 
-    /* Floating Obsidian & Cyan Glass Header */
+    /* Floating Obsidian & Gold Glass Header */
     header {
       position: sticky;
       top: 12px;
@@ -124,11 +124,11 @@
       max-width: 1056px;
       margin: 0 auto;
       padding: 9px 14px;
-      background: rgba(5, 8, 15, 0.86);
+      background: rgba(8, 7, 5, 0.88);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(56, 189, 248, 0.22);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(186, 230, 253, 0.12);
+      border: 1px solid rgba(251, 191, 36, 0.24);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.88), inset 0 1px 0 rgba(253, 230, 138, 0.14);
       border-radius: 20px;
       display: flex;
       justify-content: space-between;
@@ -146,12 +146,12 @@
       width: 38px;
       height: 38px;
       border-radius: 12px;
-      background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
+      background: linear-gradient(135deg, #b45309 0%, #f59e0b 55%, #fde047 100%);
       display: grid;
       place-items: center;
-      font-size: 1.05rem;
-      color: #fff;
-      box-shadow: 0 0 20px rgba(14, 165, 233, 0.45), inset 0 1px 1px rgba(255,255,255,0.45);
+      font-size: 1.2rem;
+      color: #090704;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.42), inset 0 1px 1px rgba(255,255,255,0.55);
       flex-shrink: 0;
     }
 
@@ -169,7 +169,7 @@
     }
 
     .logo-title span {
-      background: linear-gradient(135deg, #38bdf8, #67e8f9);
+      background: linear-gradient(135deg, #fbbf24, #fde68a);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -177,7 +177,7 @@
     .logo-sub {
       font-size: 0.68rem;
       font-weight: 600;
-      color: #94a3b8;
+      color: #a8a29e;
       display: flex;
       align-items: center;
       gap: 5px;
@@ -203,7 +203,7 @@
     .nav-tab {
       background: transparent;
       border: none;
-      color: #94a3b8;
+      color: #a8a29e;
       font-size: 0.88rem;
       font-weight: 600;
       padding: 8px 14px;
@@ -214,14 +214,14 @@
 
     .nav-tab:hover {
       color: #ffffff;
-      background: rgba(56, 189, 248, 0.1);
+      background: rgba(251, 191, 36, 0.1);
     }
 
     .nav-tab.active {
-      background: rgba(56, 189, 248, 0.2);
-      color: #e0f2fe;
+      background: rgba(245, 158, 11, 0.2);
+      color: #fef3c7;
       font-weight: 700;
-      box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.38);
+      box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.38);
     }
 
     @media (max-width: 780px) {
@@ -234,13 +234,13 @@
       gap: 6px;
       padding: 9px 16px;
       border-radius: 13px;
-      background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 55%, #22d3ee 100%);
-      color: #ffffff;
+      background: linear-gradient(135deg, #b45309 0%, #f59e0b 55%, #fbbf24 100%);
+      color: #090704;
       font-size: 0.84rem;
-      font-weight: 700;
+      font-weight: 800;
       border: none;
       cursor: pointer;
-      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.38), inset 0 1px 0 rgba(255,255,255,0.35);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.36), inset 0 1px 0 rgba(255,255,255,0.45);
       transition: transform 0.15s ease, box-shadow 0.2s ease;
       margin-left: 6px;
     }
@@ -282,26 +282,27 @@
     .btn:active { transform: scale(0.96); }
 
     .btn-primary {
-      background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 55%, #22d3ee 100%);
-      color: #ffffff;
-      box-shadow: 0 10px 28px rgba(14, 165, 233, 0.34), inset 0 1px 0 rgba(255,255,255,0.35);
+      background: linear-gradient(135deg, #b45309 0%, #f59e0b 55%, #fbbf24 100%);
+      color: #090704;
+      font-weight: 800;
+      box-shadow: 0 10px 28px rgba(245, 158, 11, 0.34), inset 0 1px 0 rgba(255,255,255,0.45);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 36px rgba(56, 189, 248, 0.48);
+      box-shadow: 0 14px 36px rgba(251, 191, 36, 0.46);
     }
 
     .btn-outline {
-      background-color: #070b14;
-      color: #f0f9ff;
-      border: 1px solid rgba(56, 189, 248, 0.26);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+      background-color: #0b0a08;
+      color: #fef3c7;
+      border: 1px solid rgba(251, 191, 36, 0.28);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75);
     }
 
     .btn-outline:hover {
-      background-color: #0c1424;
-      border-color: rgba(56, 189, 248, 0.55);
+      background-color: #16130d;
+      border-color: rgba(251, 191, 36, 0.58);
       transform: translateY(-1px);
     }
 
@@ -313,35 +314,12 @@
 
     /* Hero Section */
     .hero {
-      padding: 24px 0 32px;
+      padding: 28px 0 32px;
       text-align: center;
     }
 
     @media (min-width: 768px) {
-      .hero { padding: 52px 0 44px; }
-    }
-
-    .pill-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 15px;
-      border-radius: 999px;
-      background: rgba(5, 10, 18, 0.85);
-      color: #34d399;
-      font-size: 0.79rem;
-      font-weight: 700;
-      margin-bottom: 18px;
-      border: 1px solid rgba(16, 185, 129, 0.32);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.65);
-    }
-
-    .pulse-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--emerald);
-      box-shadow: 0 0 8px var(--emerald);
+      .hero { padding: 54px 0 44px; }
     }
 
     h1 {
@@ -354,13 +332,13 @@
     }
 
     .gradient-text {
-      background: linear-gradient(135deg, #38bdf8 0%, #67e8f9 55%, #bae6fd 100%);
+      background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fef08a 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero p {
-      color: #cbd5e1;
+      color: #d6d3d1;
       font-size: clamp(0.95rem, 2.5vw, 1.12rem);
       max-width: 620px;
       margin: 0 auto 28px;
@@ -378,7 +356,7 @@
       .hero-actions .btn { width: 100%; }
     }
 
-    /* Stats Bento (Black Obsidian Cards + Sky Accents) */
+    /* Stats Bento (Black Obsidian Cards + Gold Accents) */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -392,12 +370,12 @@
     }
 
     .stat-card {
-      background: linear-gradient(180deg, #0b1322 0%, #05080f 100%);
+      background: linear-gradient(180deg, #14110b 0%, #070605 100%);
       border: 1px solid var(--border);
       border-radius: 20px;
       padding: 16px 8px;
       text-align: center;
-      box-shadow: var(--shadow-md), inset 0 1px 0 rgba(56, 189, 248, 0.14);
+      box-shadow: var(--shadow-md), inset 0 1px 0 rgba(251, 191, 36, 0.14);
     }
 
     @media (min-width: 640px) {
@@ -408,14 +386,14 @@
       display: block;
       font-size: clamp(1.05rem, 3.3vw, 1.65rem);
       font-weight: 800;
-      color: #ffffff;
+      color: #fde68a;
       margin-bottom: 3px;
       letter-spacing: -0.5px;
     }
 
     .stat-card span {
       font-size: clamp(0.71rem, 2vw, 0.85rem);
-      color: #94a3b8;
+      color: #a8a29e;
       line-height: 1.25;
       display: block;
     }
@@ -424,12 +402,12 @@
     .selector-box {
       max-width: 820px;
       margin: 22px auto 0;
-      background: linear-gradient(180deg, #0a1220 0%, #04060b 100%);
-      border: 1px solid rgba(56, 189, 248, 0.3);
+      background: linear-gradient(180deg, #13100a 0%, #060504 100%);
+      border: 1px solid rgba(251, 191, 36, 0.32);
       border-radius: 22px;
       padding: 18px;
       text-align: left;
-      box-shadow: var(--shadow-md), var(--shadow-glow), inset 0 1px 0 rgba(186, 230, 253, 0.12);
+      box-shadow: var(--shadow-md), var(--shadow-glow), inset 0 1px 0 rgba(253, 230, 138, 0.12);
     }
 
     .selector-head {
@@ -452,8 +430,8 @@
       padding: 8px 13px;
       border-radius: 11px;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      background: #04070d;
-      color: #94a3b8;
+      background: #060504;
+      color: #a8a29e;
       font-size: 0.81rem;
       font-weight: 600;
       cursor: pointer;
@@ -462,13 +440,13 @@
 
     .sel-chip:hover {
       color: #ffffff;
-      border-color: rgba(56, 189, 248, 0.45);
+      border-color: rgba(251, 191, 36, 0.45);
     }
 
     .sel-chip.active {
-      background: rgba(14, 165, 233, 0.22);
+      background: rgba(245, 158, 11, 0.22);
       border-color: var(--primary-bright);
-      color: #ffffff;
+      color: #fef3c7;
     }
 
     .selector-result {
@@ -491,7 +469,7 @@
     }
 
     .quick-card {
-      background: linear-gradient(180deg, #0a1220 0%, #05080f 100%);
+      background: linear-gradient(180deg, #13100a 0%, #070605 100%);
       border: 1px solid var(--border);
       border-radius: 20px;
       padding: 16px 18px;
@@ -505,7 +483,7 @@
 
     .quick-card:hover {
       transform: translateY(-3px);
-      border-color: rgba(56, 189, 248, 0.5);
+      border-color: rgba(251, 191, 36, 0.52);
     }
 
     .quick-card-left {
@@ -519,8 +497,8 @@
       width: 42px;
       height: 42px;
       border-radius: 13px;
-      background: rgba(14, 165, 233, 0.16);
-      border: 1px solid rgba(56, 189, 248, 0.3);
+      background: rgba(245, 158, 11, 0.16);
+      border: 1px solid rgba(251, 191, 36, 0.32);
       display: grid;
       place-items: center;
       font-size: 1.15rem;
@@ -531,8 +509,8 @@
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      background: #030508;
-      border: 1px solid rgba(56, 189, 248, 0.25);
+      background: #050403;
+      border: 1px solid rgba(251, 191, 36, 0.28);
       color: var(--primary-bright);
       display: grid;
       place-items: center;
@@ -566,7 +544,7 @@
     }
 
     .section-sub {
-      color: #94a3b8;
+      color: #a8a29e;
       font-size: 0.94rem;
       max-width: 660px;
       margin-bottom: 22px;
@@ -587,8 +565,8 @@
       padding: 8px 16px;
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.14);
-      background-color: #060a12;
-      color: #94a3b8;
+      background-color: #090806;
+      color: #a8a29e;
       font-size: 0.83rem;
       font-weight: 600;
       cursor: pointer;
@@ -598,10 +576,11 @@
     }
 
     .filter-btn.active {
-      background: linear-gradient(135deg, #0284c7, #0ea5e9);
-      color: #ffffff;
-      border-color: #38bdf8;
-      box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
+      background: linear-gradient(135deg, #b45309, #f59e0b);
+      color: #090704;
+      font-weight: 800;
+      border-color: #fbbf24;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
     }
 
     /* Cards Grid */
@@ -612,7 +591,7 @@
     }
 
     .card {
-      background: linear-gradient(180deg, #0a111f 0%, #04070d 100%);
+      background: linear-gradient(180deg, #120f0a 0%, #060504 100%);
       border: 1px solid var(--border);
       border-radius: 24px;
       padding: 20px;
@@ -627,8 +606,8 @@
       .card { padding: 24px; border-radius: 26px; }
       .card:hover {
         transform: translateY(-4px);
-        border-color: rgba(56, 189, 248, 0.5);
-        box-shadow: 0 22px 48px rgba(0, 0, 0, 0.85), var(--shadow-glow);
+        border-color: rgba(251, 191, 36, 0.52);
+        box-shadow: 0 22px 48px rgba(0, 0, 0, 0.88), var(--shadow-glow);
       }
     }
 
@@ -645,14 +624,14 @@
       font-weight: 700;
       padding: 5px 11px;
       border-radius: 9px;
-      background: rgba(14, 165, 233, 0.16);
-      color: #7dd3fc;
-      border: 1px solid rgba(56, 189, 248, 0.28);
+      background: rgba(245, 158, 11, 0.16);
+      color: #fcd34d;
+      border: 1px solid rgba(251, 191, 36, 0.3);
     }
 
     .mini-badge {
       font-size: 0.73rem;
-      color: #94a3b8;
+      color: #a8a29e;
       font-weight: 600;
     }
 
@@ -664,7 +643,7 @@
     }
 
     .card p {
-      color: #94a3b8;
+      color: #a8a29e;
       font-size: 0.87rem;
       margin-bottom: 14px;
     }
@@ -687,8 +666,8 @@
 
     /* Black Mini-App Window inside Card */
     .mini-phone-window {
-      background-color: #020408;
-      border: 1px solid rgba(56, 189, 248, 0.14);
+      background-color: #030303;
+      border: 1px solid rgba(251, 191, 36, 0.16);
       border-radius: 18px;
       padding: 12px;
       margin-bottom: 16px;
@@ -707,13 +686,13 @@
     .dots i {
       width: 6px; height: 6px;
       border-radius: 50%;
-      background: #1e293b;
+      background: #292524;
       display: block;
     }
 
     .mini-url {
       font-size: 0.68rem;
-      color: #94a3b8;
+      color: #a8a29e;
       background: rgba(255, 255, 255, 0.04);
       padding: 2px 8px;
       border-radius: 6px;
@@ -733,20 +712,20 @@
       display: grid;
       place-items: center;
       font-size: 1.15rem;
-      color: #fff;
+      color: #090704;
       flex-shrink: 0;
     }
 
     .mini-app-title strong {
       display: block;
       font-size: 0.85rem;
-      color: #f8fafc;
+      color: #fafaf9;
       line-height: 1.2;
     }
 
     .mini-app-title span {
       font-size: 0.71rem;
-      color: #64748b;
+      color: #78716c;
     }
 
     .mockup-row {
@@ -754,12 +733,12 @@
       justify-content: space-between;
       align-items: center;
       padding: 7px 10px;
-      background: #070b14;
+      background: #0a0907;
       border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: 10px;
       margin-bottom: 6px;
       font-size: 0.8rem;
-      color: #e2e8f0;
+      color: #e7e5e4;
     }
     .mockup-row:last-child { margin-bottom: 0; }
 
@@ -777,7 +756,7 @@
     }
 
     .compare-card {
-      background: #05080f;
+      background: #070605;
       border-radius: 22px;
       padding: 20px;
       border: 1px solid var(--border);
@@ -786,13 +765,13 @@
     }
 
     .compare-card.bad {
-      background: linear-gradient(180deg, rgba(244, 63, 94, 0.08) 0%, #05080f 45%);
+      background: linear-gradient(180deg, rgba(244, 63, 94, 0.08) 0%, #070605 45%);
       border-color: rgba(244, 63, 94, 0.25);
     }
 
     .compare-card.good {
-      background: linear-gradient(180deg, rgba(14, 165, 233, 0.16) 0%, #05080f 50%);
-      border: 1.5px solid rgba(56, 189, 248, 0.42);
+      background: linear-gradient(180deg, rgba(245, 158, 11, 0.16) 0%, #070605 50%);
+      border: 1.5px solid rgba(251, 191, 36, 0.44);
     }
 
     .compare-list {
@@ -802,12 +781,12 @@
       flex-direction: column;
       gap: 9px;
       font-size: 0.87rem;
-      color: #94a3b8;
+      color: #a8a29e;
     }
 
     .compare-card.bad li::before { content: "✕ "; color: var(--rose); font-weight: 800; }
-    .compare-card.good li { color: #e2e8f0; }
-    .compare-card.good li::before { content: "✓ "; color: #38bdf8; font-weight: 800; }
+    .compare-card.good li { color: #f5f5f4; }
+    .compare-card.good li::before { content: "✓ "; color: #fbbf24; font-weight: 800; }
 
     /* Pricing & Services Grid */
     .pricing-grid {
@@ -821,13 +800,13 @@
       font-weight: 800;
       margin: 6px 0 12px;
       letter-spacing: -1px;
-      color: #ffffff;
+      color: #fde68a;
     }
 
     .price-val small {
       font-size: 0.84rem;
       font-weight: 500;
-      color: #94a3b8;
+      color: #a8a29e;
       letter-spacing: 0;
     }
 
@@ -841,7 +820,7 @@
 
     .features li {
       font-size: 0.87rem;
-      color: #cbd5e1;
+      color: #d6d3d1;
       display: flex;
       align-items: flex-start;
       gap: 9px;
@@ -849,19 +828,19 @@
 
     .features li::before {
       content: "✓";
-      color: #38bdf8;
+      color: #fbbf24;
       font-weight: 800;
     }
 
     .card.featured {
-      border: 1.5px solid rgba(56, 189, 248, 0.62);
-      background: linear-gradient(180deg, rgba(14, 165, 233, 0.18) 0%, #05080f 45%);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 28px rgba(14, 165, 233, 0.16);
+      border: 1.5px solid rgba(251, 191, 36, 0.65);
+      background: linear-gradient(180deg, rgba(245, 158, 11, 0.18) 0%, #070605 45%);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85), 0 0 28px rgba(245, 158, 11, 0.18);
     }
 
     .card.bot-card {
-      border: 1.5px solid rgba(34, 211, 238, 0.58);
-      background: linear-gradient(180deg, rgba(6, 182, 212, 0.18) 0%, #05080f 45%);
+      border: 1.5px solid rgba(253, 224, 71, 0.58);
+      background: linear-gradient(180deg, rgba(217, 119, 6, 0.18) 0%, #070605 45%);
     }
 
     /* FAQ + Direct Contact */
@@ -873,13 +852,13 @@
     }
 
     details.faq-item {
-      background-color: #060a12;
+      background-color: #090806;
       border: 1px solid var(--border);
       border-radius: 18px;
       padding: 16px 20px;
     }
 
-    details.faq-item[open] { border-color: rgba(56, 189, 248, 0.5); }
+    details.faq-item[open] { border-color: rgba(251, 191, 36, 0.52); }
 
     summary.faq-q {
       font-weight: 600;
@@ -907,7 +886,7 @@
 
     .faq-a {
       margin-top: 10px;
-      color: #94a3b8;
+      color: #a8a29e;
       font-size: 0.89rem;
       line-height: 1.55;
     }
@@ -915,8 +894,8 @@
     .faq-contact-box {
       max-width: 820px;
       margin-top: 18px;
-      background: linear-gradient(135deg, rgba(14, 165, 233, 0.18) 0%, #05080f 100%);
-      border: 1px solid rgba(56, 189, 248, 0.38);
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.18) 0%, #070605 100%);
+      border: 1px solid rgba(251, 191, 36, 0.4);
       border-radius: 20px;
       padding: 18px 20px;
       display: flex;
@@ -935,18 +914,18 @@
 
     .faq-contact-text span {
       font-size: 0.86rem;
-      color: #cbd5e1;
+      color: #d6d3d1;
     }
 
     /* Order Box */
     .order-box {
-      background: linear-gradient(180deg, #0a111f 0%, #04060b 100%);
+      background: linear-gradient(180deg, #120f0a 0%, #060504 100%);
       border: 1px solid var(--border-strong);
       border-radius: 26px;
       padding: 28px 18px;
       max-width: 560px;
       margin: 30px auto 0;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(186, 230, 253, 0.1);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.88), inset 0 1px 0 rgba(253, 230, 138, 0.12);
     }
 
     @media (min-width: 640px) {
@@ -957,7 +936,7 @@
     .form-group label {
       display: block;
       font-size: 0.83rem;
-      color: #94a3b8;
+      color: #a8a29e;
       margin-bottom: 6px;
       font-weight: 600;
     }
@@ -966,23 +945,23 @@
       width: 100%;
       padding: 13px 15px;
       border-radius: 14px;
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      background-color: #020408;
+      border: 1px solid rgba(251, 191, 36, 0.26);
+      background-color: #030303;
       color: #ffffff;
       font-size: 16px;
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    input::placeholder { color: #475569; }
+    input::placeholder { color: #57534e; }
 
     input:focus, select:focus {
       border-color: var(--primary-bright);
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.22);
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.24);
     }
 
     select option {
-      background-color: #060a12;
+      background-color: #0b0a08;
       color: #ffffff;
     }
 
@@ -997,17 +976,17 @@
         bottom: calc(10px + env(safe-area-inset-bottom));
         left: 14px;
         right: 14px;
-        background: rgba(4, 7, 13, 0.92);
+        background: rgba(7, 6, 5, 0.94);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(56, 189, 248, 0.26);
+        border: 1px solid rgba(251, 191, 36, 0.28);
         border-radius: 20px;
         padding: 6px 8px;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 4px;
         z-index: 45;
-        box-shadow: 0 14px 36px rgba(0, 0, 0, 0.9);
+        box-shadow: 0 14px 36px rgba(0, 0, 0, 0.92);
         transform: translate3d(0, 0, 0);
       }
 
@@ -1018,7 +997,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        color: #64748b;
+        color: #78716c;
         font-size: 0.7rem;
         font-weight: 600;
         padding: 6px 2px;
@@ -1028,10 +1007,10 @@
       }
 
       .dock-btn.active {
-        background: rgba(56, 189, 248, 0.2);
-        color: #7dd3fc;
+        background: rgba(245, 158, 11, 0.2);
+        color: #fcd34d;
         font-weight: 700;
-        box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.35);
+        box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.36);
       }
 
       .dock-btn span { font-size: 1.05rem; margin-bottom: 2px; }
@@ -1043,7 +1022,7 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(2, 4, 8, 0.88);
+      background: rgba(2, 2, 3, 0.9);
       backdrop-filter: blur(10px);
       display: none;
       align-items: center;
@@ -1055,8 +1034,8 @@
     .modal-backdrop.active { display: flex; }
 
     .phone-frame {
-      background-color: #060a12;
-      border: 4px solid #16253b;
+      background-color: #090806;
+      border: 4px solid #292216;
       border-radius: 40px;
       width: 100%;
       max-width: 410px;
@@ -1084,7 +1063,7 @@
       .phone-island {
         width: 44px;
         height: 5px;
-        background: #1e293b;
+        background: #292524;
         margin: 0 auto 12px;
         border-radius: 99px;
       }
@@ -1094,7 +1073,7 @@
       .phone-island {
         width: 100px;
         height: 20px;
-        background: #020306;
+        background: #030303;
         border-radius: 999px;
         margin: 0 auto 12px;
       }
@@ -1118,7 +1097,7 @@
     }
 
     .close-btn {
-      background: rgba(56, 189, 248, 0.14);
+      background: rgba(251, 191, 36, 0.16);
       color: #ffffff;
       border: none;
       width: 32px;
@@ -1146,7 +1125,7 @@
     }
 
     .demo-pill {
-      background: rgba(0, 0, 0, 0.32);
+      background: rgba(0, 0, 0, 0.38);
       padding: 4px 9px;
       border-radius: 8px;
       font-weight: 500;
@@ -1166,15 +1145,15 @@
       border-radius: 9px;
       font-size: 0.76rem;
       font-weight: 600;
-      background: #0c1322;
-      color: #94a3b8;
+      background: #14110b;
+      color: #a8a29e;
       border: none;
       cursor: pointer;
       white-space: nowrap;
     }
 
     .demo-tab.active {
-      background: #0284c7;
+      background: #d97706;
       color: #ffffff;
     }
 
@@ -1183,7 +1162,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 11px 13px;
-      background: #0a101d;
+      background: #110e09;
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 14px;
       margin-bottom: 8px;
@@ -1193,7 +1172,7 @@
 
     .demo-service.selected {
       border-color: var(--primary-bright);
-      background: rgba(14, 165, 233, 0.2);
+      background: rgba(245, 158, 11, 0.2);
     }
 
     .demo-service-info strong {
@@ -1204,14 +1183,14 @@
     }
 
     .demo-service-info small {
-      color: #94a3b8;
+      color: #a8a29e;
       font-size: 0.74rem;
     }
 
     .demo-price {
       font-weight: 800;
       font-size: 0.88rem;
-      color: #34d399;
+      color: #fbbf24;
       white-space: nowrap;
       margin-left: 10px;
     }
@@ -1230,16 +1209,16 @@
       padding: 6px 11px;
       border-radius: 10px;
       border: 1px solid rgba(255, 255, 255, 0.14);
-      background: #0a101d;
+      background: #110e09;
       font-size: 0.75rem;
       font-weight: 600;
-      color: #cbd5e1;
+      color: #d6d3d1;
       cursor: pointer;
       white-space: nowrap;
     }
     .slot-chip.active {
-      background: #0284c7;
-      border-color: #38bdf8;
+      background: #d97706;
+      border-color: #fbbf24;
       color: #ffffff;
     }
 
@@ -1248,7 +1227,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 14px;
-      background: #0a101d;
+      background: #110e09;
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 12px;
       font-size: 0.84rem;
@@ -1257,34 +1236,34 @@
 
     /* Real Telegram Message Preview inside Demo */
     .tg-msg-preview {
-      background: #020408;
-      border: 1px solid rgba(16, 185, 129, 0.45);
+      background: #030303;
+      border: 1px solid rgba(251, 191, 36, 0.45);
       border-radius: 14px;
       padding: 12px;
       margin-top: 10px;
       font-size: 0.78rem;
-      color: #f8fafc;
+      color: #fafaf9;
       display: none;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75);
     }
 
     .tg-msg-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: #34d399;
+      color: #fbbf24;
       font-weight: 700;
       margin-bottom: 6px;
       font-size: 0.75rem;
     }
 
     .tg-msg-body {
-      background: rgba(56, 189, 248, 0.08);
+      background: rgba(245, 158, 11, 0.08);
       padding: 9px 10px;
       border-radius: 10px;
       white-space: pre-line;
       line-height: 1.45;
-      color: #e0f2fe;
+      color: #fef3c7;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       font-size: 0.74rem;
     }
@@ -1292,16 +1271,16 @@
     footer {
       text-align: center;
       padding: 28px 20px;
-      color: #64748b;
+      color: #78716c;
       font-size: 0.84rem;
       border-top: 1px solid rgba(255, 255, 255, 0.06);
-      background-color: #020306;
+      background-color: #030303;
     }
   </style>
 </head>
 <body>
 
-  <!-- GPU-Locked Stable Background (Black + Sky Blue Glow + Smooth Particles) -->
+  <!-- GPU-Locked Stable Background (Obsidian Black + Gold Glow + Smooth Particles) -->
   <div class="bg-stage"></div>
   <div class="bg-grid"></div>
   <canvas id="bgCanvas"></canvas>
@@ -1309,7 +1288,7 @@
   <header>
     <div class="nav-bar">
       <div class="logo-wrap" onclick="switchPage('home')">
-        <div class="logo-badge">⚡</div>
+        <div class="logo-badge">⚜️</div>
         <div class="logo-text-group">
           <div class="logo-title">Always<span>Studio</span></div>
           <div class="logo-sub"><span class="live-dot"></span> Сайты, Mini Apps & Боты</div>
@@ -1330,10 +1309,6 @@
     <!-- ==================== PAGE 1: HOME ==================== -->
     <div id="page-home" class="page-view active">
       <section class="hero">
-        <div class="pill-badge">
-          <span class="pulse-dot"></span>
-          Сначала показываю готовую работу — оплата потом
-        </div>
         <h1>Сайты, <span class="gradient-text">Mini Apps и Telegram-боты</span> за 24 часа</h1>
         <p>Создаем сайты-визитки, Telegram Mini Apps, цифровые карточки BioCard и умных Telegram-ботов для автоматизации заявок и продаж под ключ.</p>
         
@@ -1352,7 +1327,7 @@
             <span>хостинг для сайтов</span>
           </div>
           <div class="stat-card">
-            <strong>от 1 000 ₽</strong>
+            <strong>от 700 ₽</strong>
             <span>прозрачная стоимость</span>
           </div>
         </div>
@@ -1360,7 +1335,7 @@
         <!-- Interactive Quick Solution Picker -->
         <div class="selector-box">
           <div class="selector-head">
-            <strong style="font-size:0.92rem; color:#fff;">⚡ Быстрый подбор под вашу задачу:</strong>
+            <strong style="font-size:0.92rem; color:#fff;">⚜️ Быстрый подбор под вашу задачу:</strong>
             <span style="font-size:0.75rem; color:var(--primary-bright); font-weight:600;">Нажмите на цель</span>
           </div>
           <div class="selector-chips">
@@ -1371,8 +1346,8 @@
           </div>
           <div class="selector-result">
             <div>
-              <strong id="goalTitle" style="display:block; font-size:0.95rem; color:#fff;">Сайт-визитка / Лендинг — 1 500 ₽</strong>
-              <span id="goalDesc" style="font-size:0.79rem; color:#94a3b8;">Готово за 24 часа • Бесплатный хостинг навсегда</span>
+              <strong id="goalTitle" style="display:block; font-size:0.95rem; color:#fde68a;">Сайт-визитка / Лендинг — 1 050 ₽</strong>
+              <span id="goalDesc" style="font-size:0.79rem; color:#a8a29e;">Готово за 24 часа • Бесплатный хостинг навсегда</span>
             </div>
             <button class="btn btn-primary btn-sm" id="goalBtn" onclick="orderGoal()">Выбрать решение →</button>
           </div>
@@ -1385,7 +1360,7 @@
               <div class="quick-icon">📱</div>
               <div>
                 <strong style="display:block; font-size:0.95rem; color:#fff;">Примеры работ</strong>
-                <span style="font-size:0.78rem; color:#94a3b8;">7 реальных кейсов с превью</span>
+                <span style="font-size:0.78rem; color:#a8a29e;">7 реальных кейсов с превью</span>
               </div>
             </div>
             <div class="quick-arrow">→</div>
@@ -1396,7 +1371,7 @@
               <div class="quick-icon">💎</div>
               <div>
                 <strong style="display:block; font-size:0.95rem; color:#fff;">Услуги и цены</strong>
-                <span style="font-size:0.78rem; color:#94a3b8;">Сайты, Mini Apps и TG-боты</span>
+                <span style="font-size:0.78rem; color:#a8a29e;">Сайты, Mini Apps и TG-боты</span>
               </div>
             </div>
             <div class="quick-arrow">→</div>
@@ -1407,7 +1382,7 @@
               <div class="quick-icon">💬</div>
               <div>
                 <strong style="display:block; font-size:0.95rem; color:#fff;">Вопросы и связь</strong>
-                <span style="font-size:0.78rem; color:#94a3b8;">Напрямую @alwayssowdev</span>
+                <span style="font-size:0.78rem; color:#a8a29e;">Напрямую @alwayssowdev</span>
               </div>
             </div>
             <div class="quick-arrow">→</div>
@@ -1472,14 +1447,14 @@
                   <span class="mini-url">@barber_club_bot</span>
                 </div>
                 <div class="mini-app-header">
-                  <div class="mini-avatar" style="background:linear-gradient(135deg,#0284c7,#22d3ee);">🤖</div>
+                  <div class="mini-avatar" style="background:linear-gradient(135deg,#b45309,#fbbf24);">🤖</div>
                   <div class="mini-app-title">
                     <strong>TOP CUT • Бот-администратор</strong>
                     <span>🟢 Онлайн 24/7 • Запись за 3 клика</span>
                   </div>
                 </div>
-                <div class="mockup-row"><span>✂️ Мужская стрижка + укладка</span><strong style="color:#34d399;">1 600 ₽</strong></div>
-                <div class="mockup-row"><span>🪒 Моделирование бороды</span><strong style="color:#34d399;">1 100 ₽</strong></div>
+                <div class="mockup-row"><span>✂️ Мужская стрижка + укладка</span><strong style="color:#fbbf24;">1 120 ₽</strong></div>
+                <div class="mockup-row"><span>🪒 Моделирование бороды</span><strong style="color:#fbbf24;">770 ₽</strong></div>
               </div>
             </div>
             <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('tgbot')">Протестировать бота 📱</button>
@@ -1504,14 +1479,14 @@
                   <span class="mini-url">anna-nails.app</span>
                 </div>
                 <div class="mini-app-header">
-                  <div class="mini-avatar" style="background:linear-gradient(135deg,#0ea5e9,#38bdf8);">💅</div>
+                  <div class="mini-avatar" style="background:linear-gradient(135deg,#d97706,#fde047);">💅</div>
                   <div class="mini-app-title">
                     <strong>Nails & Brows by Anna</strong>
                     <span>⭐ 5.0 (64 отзыва) • ул. Ленина, 24</span>
                   </div>
                 </div>
-                <div class="mockup-row"><span>Маникюр + снятие + гель-лак</span><strong style="color:#34d399;">1 800 ₽</strong></div>
-                <div class="mockup-row"><span>Архитектура + окрашивание бровей</span><strong style="color:#34d399;">1 200 ₽</strong></div>
+                <div class="mockup-row"><span>Маникюр + снятие + гель-лак</span><strong style="color:#fbbf24;">1 260 ₽</strong></div>
+                <div class="mockup-row"><span>Архитектура + окрашивание бровей</span><strong style="color:#fbbf24;">840 ₽</strong></div>
               </div>
             </div>
             <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('beauty')">Открыть на телефоне 📱</button>
@@ -1536,14 +1511,14 @@
                   <span class="mini-url">english-ege.app</span>
                 </div>
                 <div class="mini-app-header">
-                  <div class="mini-avatar" style="background:linear-gradient(135deg,#2563eb,#0ea5e9);">📚</div>
+                  <div class="mini-avatar" style="background:linear-gradient(135deg,#92400e,#f59e0b);">📚</div>
                   <div class="mini-app-title">
                     <strong>English & ЕГЭ с Еленой</strong>
                     <span>🎓 Средний балл 86 • Zoom / Миро</span>
                   </div>
                 </div>
-                <div class="mockup-row"><span>Пробный урок + диагностика</span><strong style="color:#34d399;">0 ₽</strong></div>
-                <div class="mockup-row"><span>Индивидуально (60 мин)</span><strong style="color:#34d399;">1 500 ₽</strong></div>
+                <div class="mockup-row"><span>Пробный урок + диагностика</span><strong style="color:#fbbf24;">0 ₽</strong></div>
+                <div class="mockup-row"><span>Индивидуально (60 мин)</span><strong style="color:#fbbf24;">1 050 ₽</strong></div>
               </div>
             </div>
             <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('tutor')">Открыть на телефоне 📱</button>
@@ -1557,7 +1532,7 @@
                 <span class="mini-badge">Срок: 24 часа</span>
               </div>
               <h3>Детейлинг и химчистка авто</h3>
-              <p>Калькулятор-прайс по услугам кузова и салона: водитель сразу видит итоговую стоимость и бронирует бокс.</p>
+              <p>Прайс по услугам кузова и салона: водитель сразу видит итоговую стоимость и бронирует бокс.</p>
               <div class="case-result-bar">
                 <span>📈 Результат внедрения:</span>
                 <span>Средний чек вырос на 22%</span>
@@ -1568,14 +1543,14 @@
                   <span class="mini-url">prodetail.app</span>
                 </div>
                 <div class="mini-app-header">
-                  <div class="mini-avatar" style="background:linear-gradient(135deg,#0369a1,#0284c7);">🚘</div>
+                  <div class="mini-avatar" style="background:linear-gradient(135deg,#78350f,#d97706);">🚘</div>
                   <div class="mini-app-title">
                     <strong>ProDetail Studio</strong>
                     <span>🛡️ Гарантия 12 мес • Бокс на 4 авто</span>
                   </div>
                 </div>
-                <div class="mockup-row"><span>Детейлинг-химчистка салона</span><strong style="color:#34d399;">6 500 ₽</strong></div>
-                <div class="mockup-row"><span>Полировка + керамика (2 слоя)</span><strong style="color:#34d399;">14 000 ₽</strong></div>
+                <div class="mockup-row"><span>Детейлинг-химчистка салона</span><strong style="color:#fbbf24;">4 550 ₽</strong></div>
+                <div class="mockup-row"><span>Полировка + керамика (2 слоя)</span><strong style="color:#fbbf24;">9 800 ₽</strong></div>
               </div>
             </div>
             <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('auto')">Открыть на телефоне 📱</button>
@@ -1600,14 +1575,14 @@
                   <span class="mini-url">t.me/sweetbox_bot</span>
                 </div>
                 <div class="mini-app-header">
-                  <div class="mini-avatar" style="background:linear-gradient(135deg,#0ea5e9,#06b6d4);">🎂</div>
+                  <div class="mini-avatar" style="background:linear-gradient(135deg,#d97706,#fbbf24);">🎂</div>
                   <div class="mini-app-title">
                     <strong>SweetBox — Кондитерская</strong>
                     <span>🚚 Доставка за 60 мин • ⭐ 4.9</span>
                   </div>
                 </div>
-                <div class="mockup-row"><span>Бенто-торт с надписью (450 г)</span><strong style="color:#34d399;">1 600 ₽</strong></div>
-                <div class="mockup-row"><span>Набор капкейков (6 шт)</span><strong style="color:#34d399;">1 500 ₽</strong></div>
+                <div class="mockup-row"><span>Бенто-торт с надписью (450 г)</span><strong style="color:#fbbf24;">1 120 ₽</strong></div>
+                <div class="mockup-row"><span>Набор капкейков (6 шт)</span><strong style="color:#fbbf24;">1 050 ₽</strong></div>
               </div>
             </div>
             <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('bakery')">Открыть на телефоне 📱</button>
@@ -1632,14 +1607,14 @@
                   <span class="mini-url">volkova-photo.app</span>
                 </div>
                 <div class="mini-app-header">
-                  <div class="mini-avatar" style="background:linear-gradient(135deg,#0284c7,#38bdf8);">📸</div>
+                  <div class="mini-avatar" style="background:linear-gradient(135deg,#b45309,#fde047);">📸</div>
                   <div class="mini-app-title">
                     <strong>Дарья Волкова | Photo</strong>
                     <span>⚡ Анонс 10 кадров за 24 часа</span>
                   </div>
                 </div>
-                <div class="mockup-row"><span>Экспресс-съемка (1 час)</span><strong style="color:#34d399;">3 500 ₽</strong></div>
-                <div class="mockup-row"><span>Контент-съемка (2 часа)</span><strong style="color:#34d399;">7 000 ₽</strong></div>
+                <div class="mockup-row"><span>Экспресс-съемка (1 час)</span><strong style="color:#fbbf24;">2 450 ₽</strong></div>
+                <div class="mockup-row"><span>Контент-съемка (2 часа)</span><strong style="color:#fbbf24;">4 900 ₽</strong></div>
               </div>
             </div>
             <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('photo')">Открыть на телефоне 📱</button>
@@ -1664,14 +1639,14 @@
                   <span class="mini-url">fixlab-service.app</span>
                 </div>
                 <div class="mini-app-header">
-                  <div class="mini-avatar" style="background:linear-gradient(135deg,#059669,#0ea5e9);">🛠</div>
+                  <div class="mini-avatar" style="background:linear-gradient(135deg,#92400e,#fbbf24);">🛠</div>
                   <div class="mini-app-title">
                     <strong>FixLab — Сервисный центр</strong>
                     <span>⚡ От 30 мин • Гарантия 12 мес</span>
                   </div>
                 </div>
-                <div class="mockup-row"><span>Замена АКБ iPhone / Android</span><strong style="color:#34d399;">1 900 ₽</strong></div>
-                <div class="mockup-row"><span>Чистка ПК + замена термопасты</span><strong style="color:#34d399;">1 500 ₽</strong></div>
+                <div class="mockup-row"><span>Замена АКБ iPhone / Android</span><strong style="color:#fbbf24;">1 330 ₽</strong></div>
+                <div class="mockup-row"><span>Чистка ПК + замена термопасты</span><strong style="color:#fbbf24;">1 050 ₽</strong></div>
               </div>
             </div>
             <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('repair')">Открыть на телефоне 📱</button>
@@ -1696,7 +1671,7 @@
                 <span class="mini-badge">Готово за 3 часа</span>
               </div>
               <h3>Цифровая BioCard</h3>
-              <div class="price-val">1 000 ₽ <small>/ навсегда</small></div>
+              <div class="price-val">700 ₽ <small>/ навсегда</small></div>
               <ul class="features">
                 <li>Стильная карточка для шапки профиля в соцсетях</li>
                 <li>Все соцсети, мессенджеры и карта проезда в 1 месте</li>
@@ -1704,7 +1679,7 @@
                 <li>Адаптация под любые смартфоны</li>
               </ul>
             </div>
-            <button class="btn btn-outline btn-sm" onclick="orderService('Цифровая BioCard (1 000 ₽)')">Заказать BioCard</button>
+            <button class="btn btn-outline btn-sm" onclick="orderService('Цифровая BioCard (700 ₽)')">Заказать BioCard</button>
           </div>
 
           <!-- Service 2: Redesign -->
@@ -1715,7 +1690,7 @@
                 <span class="mini-badge">За 1 день</span>
               </div>
               <h3>Редизайн и правки сайта</h3>
-              <div class="price-val">1 200 ₽ <small>/ под ключ</small></div>
+              <div class="price-val">840 ₽ <small>/ под ключ</small></div>
               <ul class="features">
                 <li>Обновление устаревшего дизайна на современный</li>
                 <li>Полная мобильная адаптация под iPhone и Android</li>
@@ -1723,7 +1698,7 @@
                 <li>Ускорение загрузки и перенос на бесплатный хостинг</li>
               </ul>
             </div>
-            <button class="btn btn-outline btn-sm" onclick="orderService('Редизайн и правки сайта (1 200 ₽)')">Заказать апгрейд</button>
+            <button class="btn btn-outline btn-sm" onclick="orderService('Редизайн и правки сайта (840 ₽)')">Заказать апгрейд</button>
           </div>
 
           <!-- Service 3: Landing -->
@@ -1734,7 +1709,7 @@
                 <span class="mini-badge">За 24 часа</span>
               </div>
               <h3>Сайт-визитка / Лендинг</h3>
-              <div class="price-val">1 500 ₽ <small>/ навсегда</small></div>
+              <div class="price-val">1 050 ₽ <small>/ навсегда</small></div>
               <ul class="features">
                 <li>Продающий одностраничный сайт под вашу нишу</li>
                 <li>Удобный прайс-лист, галерея работ и отзывы</li>
@@ -1742,29 +1717,10 @@
                 <li>Размещение в интернете без абонентской платы</li>
               </ul>
             </div>
-            <button class="btn btn-primary btn-sm" onclick="orderService('Сайт-визитка / Лендинг (1 500 ₽)')">Заказать сайт</button>
+            <button class="btn btn-primary btn-sm" onclick="orderService('Сайт-визитка / Лендинг (1 050 ₽)')">Заказать сайт</button>
           </div>
 
-          <!-- Service 4: Quiz -->
-          <div class="card">
-            <div>
-              <div class="card-top">
-                <span class="tag">🧮 Конверсия x2</span>
-                <span class="mini-badge">За 24 часа</span>
-              </div>
-              <h3>Сайт-калькулятор / Квиз</h3>
-              <div class="price-val">1 500 ₽ <small>/ навсегда</small></div>
-              <ul class="features">
-                <li>Интерактивный расчет цены услуги по параметрам</li>
-                <li>Пошаговый опросник клиента перед отправкой заявки</li>
-                <li>Готовый расчет сразу улетает вам в Telegram</li>
-                <li>Идеально для ремонта, автоуслуг, стройки и доставки</li>
-              </ul>
-            </div>
-            <button class="btn btn-outline btn-sm" onclick="orderService('Сайт-калькулятор / Квиз (1 500 ₽)')">Заказать калькулятор</button>
-          </div>
-
-          <!-- Service 5: Mini App -->
+          <!-- Service 4: Mini App -->
           <div class="card featured">
             <div>
               <div class="card-top">
@@ -1772,7 +1728,7 @@
                 <span class="mini-badge">За 24 часа</span>
               </div>
               <h3>Telegram Mini App</h3>
-              <div class="price-val">2 000 ₽ <small>/ навсегда</small></div>
+              <div class="price-val">1 400 ₽ <small>/ навсегда</small></div>
               <ul class="features">
                 <li>Полноценное мини-приложение внутри Telegram</li>
                 <li>Каталог с категориями, корзиной и подсчетом суммы</li>
@@ -1780,10 +1736,10 @@
                 <li>Помощь с подключением и оформлением</li>
               </ul>
             </div>
-            <button class="btn btn-primary btn-sm" onclick="orderService('Telegram Mini App (2 000 ₽)')">Заказать Mini App</button>
+            <button class="btn btn-primary btn-sm" onclick="orderService('Telegram Mini App (1 400 ₽)')">Заказать Mini App</button>
           </div>
 
-          <!-- Service 6: Telegram Bot (Negotiable) -->
+          <!-- Service 5: Telegram Bot (Negotiable) -->
           <div class="card bot-card">
             <div>
               <div class="card-top">
@@ -1800,25 +1756,6 @@
               </ul>
             </div>
             <button class="btn btn-primary btn-sm" onclick="orderService('Создание Telegram-бота (цена договорная)')">Обсудить бота</button>
-          </div>
-
-          <!-- Service 7: Promo Game -->
-          <div class="card">
-            <div>
-              <div class="card-top">
-                <span class="tag">🎮 Геймификация</span>
-                <span class="mini-badge">За 1–2 дня</span>
-              </div>
-              <h3>Промо-игра / Колесо скидок</h3>
-              <div class="price-val">2 000 ₽ <small>/ навсегда</small></div>
-              <ul class="features">
-                <li>Интерактивная мини-игра, кликер или розыгрыш призов</li>
-                <li>Удерживает внимание клиентов и повышает охваты</li>
-                <li>Выдача промокодов на скидку за прохождение</li>
-                <li>Работает в браузере и внутри Telegram</li>
-              </ul>
-            </div>
-            <button class="btn btn-outline btn-sm" onclick="orderService('Промо-игра / Колесо скидок (2 000 ₽)')">Заказать игру</button>
           </div>
         </div>
       </section>
@@ -1877,13 +1814,11 @@
           <div class="form-group">
             <label>Выберите услугу</label>
             <select id="clientTariff">
-              <option value="Сайт-визитка / Лендинг (1 500 ₽)">Сайт-визитка / Лендинг — 1 500 ₽</option>
-              <option value="Telegram Mini App (2 000 ₽)">Telegram Mini App — 2 000 ₽</option>
+              <option value="Сайт-визитка / Лендинг (1 050 ₽)">Сайт-визитка / Лендинг — 1 050 ₽</option>
+              <option value="Telegram Mini App (1 400 ₽)">Telegram Mini App — 1 400 ₽</option>
               <option value="Создание Telegram-бота (цена договорная)">Создание Telegram-бота — договорная</option>
-              <option value="Цифровая BioCard (1 000 ₽)">Цифровая BioCard — 1 000 ₽</option>
-              <option value="Редизайн и правки сайта (1 200 ₽)">Редизайн и правки сайта — 1 200 ₽</option>
-              <option value="Сайт-калькулятор / Квиз (1 500 ₽)">Сайт-калькулятор / Квиз — 1 500 ₽</option>
-              <option value="Промо-игра / Колесо скидок (2 000 ₽)">Промо-игра / Колесо скидок — 2 000 ₽</option>
+              <option value="Цифровая BioCard (700 ₽)">Цифровая BioCard — 700 ₽</option>
+              <option value="Редизайн и правки сайта (840 ₽)">Редизайн и правки сайта — 840 ₽</option>
             </select>
           </div>
           <button class="btn btn-primary" style="width:100%; margin-top:6px;" onclick="sendToTelegram()">Отправить заявку в Telegram ✈️</button>
@@ -1910,7 +1845,7 @@
     <div class="phone-frame" onclick="event.stopPropagation()">
       <div class="phone-island"></div>
       <div class="phone-top">
-        <span style="font-size:0.78rem; color:#94a3b8; font-weight:600;">📱 Как это видит ваш клиент</span>
+        <span style="font-size:0.78rem; color:#a8a29e; font-weight:600;">📱 Как это видит ваш клиент</span>
         <button class="close-btn" onclick="document.getElementById('demoModal').classList.remove('active')">✕</button>
       </div>
 
@@ -1922,15 +1857,15 @@
 
       <div class="demo-tabs" id="demoTabs"></div>
 
-      <div style="font-size:0.74rem; color:#94a3b8; margin-bottom:8px;">1. Выберите нужные позиции:</div>
+      <div style="font-size:0.74rem; color:#a8a29e; margin-bottom:8px;">1. Выберите нужные позиции:</div>
       <div id="demoList"></div>
 
-      <div style="font-size:0.74rem; color:#94a3b8; margin-top:10px;">2. Удобное время / формат:</div>
+      <div style="font-size:0.74rem; color:#a8a29e; margin-top:10px;">2. Удобное время / формат:</div>
       <div class="slot-bar" id="demoSlots"></div>
 
       <div class="demo-summary">
-        <span style="color:#94a3b8;">Позиций: <strong id="demoCount" style="color:#ffffff;">1</strong></span>
-        <span style="color:#94a3b8;">Итого: <strong id="demoTotal" style="color:#34d399;">0 ₽</strong></span>
+        <span style="color:#a8a29e;">Позиций: <strong id="demoCount" style="color:#ffffff;">1</strong></span>
+        <span style="color:#a8a29e;">Итого: <strong id="demoTotal" style="color:#fbbf24;">0 ₽</strong></span>
       </div>
 
       <button class="btn btn-primary btn-sm" id="demoActionBtn" style="width:100%;" onclick="triggerDemoOrder()">Сформировать заявку</button>
@@ -1976,12 +1911,12 @@
       switchPage('faq', true);
     }
 
-    /* 2. Quick Solution Selector on Home */
+    /* 2. Quick Solution Selector on Home (Prices reduced by 30%) */
     const goalsData = {
       site: {
-        title: "Сайт-визитка / Лендинг — 1 500 ₽",
+        title: "Сайт-визитка / Лендинг — 1 050 ₽",
         desc: "Готово за 24 часа • Бесплатный хостинг навсегда",
-        tariff: "Сайт-визитка / Лендинг (1 500 ₽)"
+        tariff: "Сайт-визитка / Лендинг (1 050 ₽)"
       },
       bot: {
         title: "Создание Telegram-бота — цена договорная",
@@ -1989,14 +1924,14 @@
         tariff: "Создание Telegram-бота (цена договорная)"
       },
       miniapp: {
-        title: "Telegram Mini App — 2 000 ₽",
+        title: "Telegram Mini App — 1 400 ₽",
         desc: "Готово за 24 часа • Каталог, корзина и заказы внутри Telegram",
-        tariff: "Telegram Mini App (2 000 ₽)"
+        tariff: "Telegram Mini App (1 400 ₽)"
       },
       biocard: {
-        title: "Цифровая BioCard — 1 000 ₽",
+        title: "Цифровая BioCard — 700 ₽",
         desc: "Готово за 3 часа • Все соцсети, прайс и карта в 1 ссылке",
-        tariff: "Цифровая BioCard (1 000 ₽)"
+        tariff: "Цифровая BioCard (700 ₽)"
       }
     };
     let currentGoal = goalsData.site;
@@ -2013,7 +1948,7 @@
       orderService(currentGoal.tariff);
     }
 
-    /* 3. Anti-Jitter Canvas (Locks Height on Mobile Scroll so Safari Address Bar Never Shakes It) */
+    /* 3. Anti-Jitter Gold Constellation & Shooting Stars Canvas */
     const canvas = document.getElementById('bgCanvas');
     const ctx = canvas.getContext('2d');
     let width = 0, height = 0, lastWidth = 0;
@@ -2027,12 +1962,10 @@
 
     function setupCanvas(force = false) {
       const newW = window.innerWidth;
-      // Ignore vertical resize triggered by mobile browser URL bar show/hide
       if (!force && Math.abs(newW - lastWidth) < 20) return;
       lastWidth = newW;
 
       width = canvas.width = newW;
-      // Use max screen height so bottom never clips when URL bar hides
       height = canvas.height = Math.max(window.innerHeight, window.screen.height);
       initParticles();
     }
@@ -2042,10 +1975,10 @@
       const isMobile = width < 768;
       const count = isMobile ? 28 : Math.min(Math.floor((width * height) / 16500), 72);
       const colors = [
-        'rgba(56, 189, 248, 0.68)',
-        'rgba(103, 232, 249, 0.6)',
-        'rgba(14, 165, 233, 0.6)',
-        'rgba(224, 242, 254, 0.45)'
+        'rgba(251, 191, 36, 0.68)',
+        'rgba(245, 158, 11, 0.6)',
+        'rgba(253, 224, 71, 0.55)',
+        'rgba(254, 243, 199, 0.42)'
       ];
       for (let i = 0; i < count; i++) {
         particles.push({
@@ -2092,7 +2025,7 @@
           const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
           if (dist < 115) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(56, 189, 248, ${0.16 * (1 - dist / 115)})`;
+            ctx.strokeStyle = `rgba(251, 191, 36, ${0.16 * (1 - dist / 115)})`;
             ctx.lineWidth = 0.7;
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
@@ -2104,7 +2037,7 @@
           const pDist = Math.hypot(p.x - pointer.x, p.y - pointer.y);
           if (pDist < 135) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(103, 232, 249, ${0.32 * (1 - pDist / 135)})`;
+            ctx.strokeStyle = `rgba(253, 224, 71, ${0.32 * (1 - pDist / 135)})`;
             ctx.lineWidth = 0.9;
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(pointer.x, pointer.y);
@@ -2126,8 +2059,8 @@
         }
 
         const grad = ctx.createLinearGradient(s.x, s.y, s.x - s.len, s.y - s.len * 0.45);
-        grad.addColorStop(0, `rgba(125, 211, 252, ${s.alpha})`);
-        grad.addColorStop(1, 'rgba(125, 211, 252, 0)');
+        grad.addColorStop(0, `rgba(253, 230, 138, ${s.alpha})`);
+        grad.addColorStop(1, 'rgba(253, 230, 138, 0)');
 
         ctx.beginPath();
         ctx.strokeStyle = grad;
@@ -2154,111 +2087,111 @@
       });
     }
 
-    /* 5. Realistic Interactive Demo Data */
+    /* 5. Realistic Interactive Demo Data (Black & Gold + 30% Lower Prices) */
     const demos = {
       tgbot: {
         title: "🤖 TOP CUT • Бот-администратор",
         desc: "Онлайн-запись к барберу, напоминания и бонусный баланс в Telegram",
-        gradient: "linear-gradient(135deg, #0284c7, #22d3ee)",
+        gradient: "linear-gradient(135deg, #92400e, #d97706)",
         meta: ["🟢 Бот онлайн 24/7", "🔔 Напоминание за 2ч", "⭐ 4.9"],
         cta: "Подтвердить запись в боте",
         slots: ["Сегодня, 16:30", "Сегодня, 19:00", "Завтра, 11:00", "Завтра, 14:30"],
         tabs: ["Все услуги", "Стрижки", "Борода и уход"],
         items: [
-          { cat: "Стрижки", name: "Мужская стрижка + мытье и укладка", sub: "45 мин • Топ-барбер Артем", price: 1600, label: "1 600 ₽" },
-          { cat: "Стрижки", name: "Комплекс «Отец + Сын»", sub: "1 час 15 мин • Выгода 500 ₽", price: 2400, label: "2 400 ₽" },
-          { cat: "Борода и уход", name: "Моделирование бороды + опасное бритье", sub: "35 мин • Распаривание + масло", price: 1100, label: "1 100 ₽" },
-          { cat: "Борода и уход", name: "Тонирование седины (Камуфляж)", sub: "25 мин • Естественный оттенок", price: 1300, label: "1 300 ₽" }
+          { cat: "Стрижки", name: "Мужская стрижка + мытье и укладка", sub: "45 мин • Топ-барбер Артем", price: 1120, label: "1 120 ₽" },
+          { cat: "Стрижки", name: "Комплекс «Отец + Сын»", sub: "1 час 15 мин • Пакет для двоих", price: 1680, label: "1 680 ₽" },
+          { cat: "Борода и уход", name: "Моделирование бороды + опасное бритье", sub: "35 мин • Распаривание + масло", price: 770, label: "770 ₽" },
+          { cat: "Борода и уход", name: "Тонирование седины (Камуфляж)", sub: "25 мин • Естественный оттенок", price: 910, label: "910 ₽" }
         ]
       },
       beauty: {
         title: "💅 Nails & Brows by Anna",
         desc: "Студия в центре города • Стерильно 100% • Гарантия на покрытие 14 дней",
-        gradient: "linear-gradient(135deg, #0ea5e9, #38bdf8)",
+        gradient: "linear-gradient(135deg, #b45309, #f59e0b)",
         meta: ["⭐ 5.0 (64 отзыва)", "📍 ул. Ленина, 24", "🕒 10:00 – 21:00"],
         cta: "Записаться в Telegram",
         slots: ["Завтра, 12:00", "Завтра, 15:30", "Чт, 11:00", "Пт, 18:00"],
         tabs: ["Все услуги", "Маникюр", "Брови и ресницы"],
         items: [
-          { cat: "Маникюр", name: "Маникюр + снятие + покрытие гель-лак", sub: "1 час 30 мин • Выравнивание базой", price: 1800, label: "1 800 ₽" },
-          { cat: "Маникюр", name: "Наращивание ногтей (любая длина)", sub: "2 часа 15 мин • Дизайн 2 ногтей в подарок", price: 2500, label: "2 500 ₽" },
-          { cat: "Брови и ресницы", name: "Архитектура и окрашивание бровей", sub: "45 мин • Хна или краска Bronsun", price: 1200, label: "1 200 ₽" },
-          { cat: "Брови и ресницы", name: "Ламинирование + ботокс ресниц", sub: "1 час • Эффект до 6 недель", price: 1600, label: "1 600 ₽" }
+          { cat: "Маникюр", name: "Маникюр + снятие + покрытие гель-лак", sub: "1 час 30 мин • Выравнивание базой", price: 1260, label: "1 260 ₽" },
+          { cat: "Маникюр", name: "Наращивание ногтей (любая длина)", sub: "2 часа 15 мин • Дизайн 2 ногтей в подарок", price: 1750, label: "1 750 ₽" },
+          { cat: "Брови и ресницы", name: "Архитектура и окрашивание бровей", sub: "45 мин • Хна или краска Bronsun", price: 840, label: "840 ₽" },
+          { cat: "Брови и ресницы", name: "Ламинирование + ботокс ресниц", sub: "1 час • Эффект до 6 недель", price: 1120, label: "1 120 ₽" }
         ]
       },
       tutor: {
         title: "📚 Английский язык | ЕГЭ и ОГЭ",
         desc: "Средний балл учеников — 86 • Онлайн в Zoom с интерактивной доской",
-        gradient: "linear-gradient(135deg, #2563eb, #0ea5e9)",
+        gradient: "linear-gradient(135deg, #78350f, #d97706)",
         meta: ["🎓 Опыт 6 лет", "📈 +32 балла за полгода", "💻 Онлайн"],
         cta: "Записаться на занятие",
         slots: ["Пн / Чт, 17:00", "Вт / Пт, 18:30", "Сб, 12:00"],
         tabs: ["Все форматы", "Индивидуально", "Группы и пакеты"],
         items: [
           { cat: "Индивидуально", name: "Пробный урок + диагностика уровня", sub: "45 мин • План подготовки на 85+ баллов", price: 0, label: "0 ₽" },
-          { cat: "Индивидуально", name: "Индивидуальное занятие (ЕГЭ / ОГЭ)", sub: "60 мин • Проверка эссе и устной части", price: 1500, label: "1 500 ₽" },
-          { cat: "Группы и пакеты", name: "Абонемент на 8 занятий в месяц", sub: "Выгода 1 200 ₽ • Поддержка в чате 24/7", price: 10800, label: "10 800 ₽" },
-          { cat: "Группы и пакеты", name: "Разговорный клуб в мини-группе", sub: "60 мин • До 4 человек одного уровня", price: 900, label: "900 ₽" }
+          { cat: "Индивидуально", name: "Индивидуальное занятие (ЕГЭ / ОГЭ)", sub: "60 мин • Проверка эссе и устной части", price: 1050, label: "1 050 ₽" },
+          { cat: "Группы и пакеты", name: "Абонемент на 8 занятий в месяц", sub: "Поддержка в чате 24/7 + материалы", price: 7560, label: "7 560 ₽" },
+          { cat: "Группы и пакеты", name: "Разговорный клуб в мини-группе", sub: "60 мин • До 4 человек одного уровня", price: 630, label: "630 ₽" }
         ]
       },
       auto: {
         title: "🚘 ProDetail — Студия детейлинга",
         desc: "Глубокая химчистка, полировка кузова и защита керамикой",
-        gradient: "linear-gradient(135deg, #0369a1, #0284c7)",
+        gradient: "linear-gradient(135deg, #451a03, #b45309)",
         meta: ["🛡️ Гарантия 1 год", "☕ Зона ожидания", "📞 09:00 – 21:00"],
         cta: "Записаться на сервис",
         slots: ["Завтра, 10:00", "Завтра, 14:00", "Суббота, 11:00"],
         tabs: ["Все услуги", "Салон", "Кузов"],
         items: [
-          { cat: "Салон", name: "Детейлинг-химчистка салона", sub: "С разбором сидений и озонацией", price: 6500, label: "6 500 ₽" },
-          { cat: "Кузов", name: "Восстановительная полировка кузова", sub: "Удаление до 95% царапин и голограмм", price: 9000, label: "9 000 ₽" },
-          { cat: "Кузов", name: "Керамическое покрытие (2 слоя)", sub: "Гидрофобный эффект + глубокий блеск", price: 14000, label: "14 000 ₽" },
-          { cat: "Кузов", name: "Оклейка зон риска полиуретаном", sub: "Капот, фары, стойки, полоса на крышу", price: 12000, label: "12 000 ₽" }
+          { cat: "Салон", name: "Детейлинг-химчистка салона", sub: "С разбором сидений и озонацией", price: 4550, label: "4 550 ₽" },
+          { cat: "Кузов", name: "Восстановительная полировка кузова", sub: "Удаление до 95% царапин и голограмм", price: 6300, label: "6 300 ₽" },
+          { cat: "Кузов", name: "Керамическое покрытие (2 слоя)", sub: "Гидрофобный эффект + глубокий блеск", price: 9800, label: "9 800 ₽" },
+          { cat: "Кузов", name: "Оклейка зон риска полиуретаном", sub: "Капот, фары, стойки, полоса на крышу", price: 8400, label: "8 400 ₽" }
         ]
       },
       bakery: {
         title: "🎂 SweetBox — Кондитерская",
         desc: "Натуральные сливки и бельгийский шоколад • Доставка по городу за 60 мин",
-        gradient: "linear-gradient(135deg, #0ea5e9, #06b6d4)",
+        gradient: "linear-gradient(135deg, #b45309, #f59e0b)",
         meta: ["🚚 Доставка 60 мин", "🎁 Открытка в подарок", "⭐ 4.9"],
         cta: "Оформить заказ в Telegram",
         slots: ["Сегодня к 18:00", "Завтра к 12:00", "Самовывоз"],
         tabs: ["Всё меню", "Торты", "Пирожные"],
         items: [
-          { cat: "Торты", name: "Бенто-торт с вашей надписью (450 г)", sub: "Сникерс / Красный бархат / Манго-маракуйя", price: 1600, label: "1 600 ₽" },
-          { cat: "Пирожные", name: "Набор капкейков (6 шт)", sub: "Нежный крем-чиз и ягодная начинка", price: 1500, label: "1 500 ₽" },
-          { cat: "Торты", name: "Бисквитный торт (2 кг)", sub: "На день рождения или семейный праздник", price: 4200, label: "4 200 ₽" },
-          { cat: "Пирожные", name: "Моти-сет ассорти (8 шт)", sub: "Японский десерт без глютена", price: 1400, label: "1 400 ₽" }
+          { cat: "Торты", name: "Бенто-торт с вашей надписью (450 г)", sub: "Сникерс / Красный бархат / Манго-маракуйя", price: 1120, label: "1 120 ₽" },
+          { cat: "Пирожные", name: "Набор капкейков (6 шт)", sub: "Нежный крем-чиз и ягодная начинка", price: 1050, label: "1 050 ₽" },
+          { cat: "Торты", name: "Бисквитный торт (2 кг)", sub: "На день рождения или семейный праздник", price: 2940, label: "2 940 ₽" },
+          { cat: "Пирожные", name: "Моти-сет ассорти (8 шт)", sub: "Японский десерт без глютена", price: 980, label: "980 ₽" }
         ]
       },
       photo: {
         title: "📸 Дарья Волкова — Фотограф",
         desc: "Индивидуальные, семейные и контент-съемки • Анонс 10 кадров за 24 часа",
-        gradient: "linear-gradient(135deg, #0284c7, #38bdf8)",
+        gradient: "linear-gradient(135deg, #92400e, #f59e0b)",
         meta: ["⚡ Анонс за 24 часа", "🎞️ Помощь с позированием", "📍 Студия / Улица"],
         cta: "Забронировать дату съемки",
         slots: ["Пятница, 15:00", "Суббота, 13:00", "Воскресенье, 16:00"],
         tabs: ["Все пакеты", "Фото", "Видео / Reels"],
         items: [
-          { cat: "Фото", name: "Пакет «Экспресс» (1 час)", sub: "35 фото в цветокоррекции + 5 в ретуши", price: 3500, label: "3 500 ₽" },
-          { cat: "Фото", name: "Пакет «Контент для соцсетей»", sub: "2 часа • 3 образа • 80 готовых фото", price: 7000, label: "7 000 ₽" },
-          { cat: "Фото", name: "Семейная или Love Story съемка", sub: "1.5 часа • Помощь в подборе студии", price: 5000, label: "5 000 ₽" },
-          { cat: "Видео / Reels", name: "Съемка Reels (3 готовых ролика)", sub: "Съемка на iPhone + динамичный монтаж", price: 4500, label: "4 500 ₽" }
+          { cat: "Фото", name: "Пакет «Экспресс» (1 час)", sub: "35 фото в цветокоррекции + 5 в ретуши", price: 2450, label: "2 450 ₽" },
+          { cat: "Фото", name: "Пакет «Контент для соцсетей»", sub: "2 часа • 3 образа • 80 готовых фото", price: 4900, label: "4 900 ₽" },
+          { cat: "Фото", name: "Семейная или Love Story съемка", sub: "1.5 часа • Помощь в подборе студии", price: 3500, label: "3 500 ₽" },
+          { cat: "Видео / Reels", name: "Съемка Reels (3 готовых ролика)", sub: "Съемка на iPhone + динамичный монтаж", price: 3150, label: "3 150 ₽" }
         ]
       },
       repair: {
         title: "🛠 FixLab — Ремонт телефонов и ПК",
         desc: "Бесплатная диагностика за 15 минут • Запчасти в наличии • Гарантия 12 мес",
-        gradient: "linear-gradient(135deg, #059669, #0ea5e9)",
+        gradient: "linear-gradient(135deg, #78350f, #b45309)",
         meta: ["⚡ Ремонт от 30 мин", "📜 Гарантия 1 год", "🚗 Выезд курьера"],
         cta: "Вызвать мастера / Записаться",
         slots: ["Срочно (в течение часа)", "Сегодня, 17:00", "Завтра, 11:00"],
         tabs: ["Все услуги", "Смартфоны", "Ноутбуки и ПК"],
         items: [
-          { cat: "Смартфоны", name: "Замена аккумулятора iPhone / Android", sub: "30 минут • Оригинальная емкость без ошибок", price: 1900, label: "1 900 ₽" },
-          { cat: "Смартфоны", name: "Замена дисплея (экрана)", sub: "45 минут • Защитное стекло в подарок", price: 3200, label: "3 200 ₽" },
-          { cat: "Ноутбуки и ПК", name: "Чистка ноутбука / ПК + термопаста MX-4", sub: "Устранение шума, троттлинга и перегрева", price: 1500, label: "1 500 ₽" },
-          { cat: "Ноутбуки и ПК", name: "Установка Windows 11 и драйверов", sub: "С сохранением всех ваших фото и файлов", price: 1200, label: "1 200 ₽" }
+          { cat: "Смартфоны", name: "Замена аккумулятора iPhone / Android", sub: "30 минут • Оригинальная емкость без ошибок", price: 1330, label: "1 330 ₽" },
+          { cat: "Смартфоны", name: "Замена дисплея (экрана)", sub: "45 минут • Защитное стекло в подарок", price: 2240, label: "2 240 ₽" },
+          { cat: "Ноутбуки и ПК", name: "Чистка ноутбука / ПК + термопаста MX-4", sub: "Устранение шума, троттлинга и перегрева", price: 1050, label: "1 050 ₽" },
+          { cat: "Ноутбуки и ПК", name: "Установка Windows 11 и драйверов", sub: "С сохранением всех ваших фото и файлов", price: 840, label: "840 ₽" }
         ]
       }
     };
