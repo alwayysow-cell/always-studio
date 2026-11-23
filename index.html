@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#f8fafc">
-  <title>AlwaysStudio — Сайты, Mini Apps и веб-инструменты за 24 часа</title>
+  <title>AlwaysStudio — Сайты, Mini Apps и Telegram-боты за 24 часа</title>
   <style>
     :root {
       color-scheme: light;
@@ -24,6 +24,8 @@
       --accent-soft: #eef2ff;
       --emerald: #059669;
       --emerald-soft: #ecfdf5;
+      --amber: #d97706;
+      --amber-soft: #fffbeb;
       --rose: #e11d48;
       --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.03);
       --shadow-md: 0 12px 32px -4px rgba(15, 23, 42, 0.06), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
@@ -55,7 +57,7 @@
       padding-bottom: env(safe-area-inset-bottom);
     }
 
-    /* Fixed Light Background Layers (iOS Safari Safe) */
+    /* Fixed Light Background Layers */
     .bg-base {
       position: fixed;
       inset: 0;
@@ -373,7 +375,7 @@
     .hero p {
       color: var(--muted);
       font-size: clamp(0.95rem, 2.5vw, 1.12rem);
-      max-width: 600px;
+      max-width: 620px;
       margin: 0 auto 28px;
     }
 
@@ -516,7 +518,7 @@
     .section-sub {
       color: var(--muted);
       font-size: 0.94rem;
-      max-width: 640px;
+      max-width: 660px;
       margin-bottom: 22px;
     }
 
@@ -556,7 +558,7 @@
     /* Cards Grid */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(305px, 1fr));
       gap: 18px;
     }
 
@@ -613,7 +615,23 @@
     .card p {
       color: var(--muted);
       font-size: 0.87rem;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+    }
+
+    /* Real Result Metric Pill inside Case Card */
+    .case-result-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 8px 11px;
+      background: var(--emerald-soft);
+      border: 1px solid rgba(5, 150, 105, 0.18);
+      border-radius: 12px;
+      margin-bottom: 14px;
+      font-size: 0.77rem;
+      color: #065f46;
+      font-weight: 600;
     }
 
     /* Mini-App Window inside Card */
@@ -744,12 +762,12 @@
     /* Pricing & Services Grid */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
       gap: 18px;
     }
 
     .price-val {
-      font-size: 2.2rem;
+      font-size: 2.1rem;
       font-weight: 800;
       margin: 6px 0 12px;
       letter-spacing: -1px;
@@ -757,7 +775,7 @@
     }
 
     .price-val small {
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       font-weight: 500;
       color: var(--subtle);
       letter-spacing: 0;
@@ -789,6 +807,11 @@
       border: 2px solid var(--primary);
       background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 35%);
       box-shadow: 0 20px 45px rgba(79, 70, 229, 0.12);
+    }
+
+    .card.bot-card {
+      border: 1.5px solid rgba(14, 165, 233, 0.45);
+      background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 40%);
     }
 
     /* FAQ + Direct Contact */
@@ -959,7 +982,7 @@
       footer { padding-bottom: 92px; }
     }
 
-    /* Interactive Light Smartphone Modal */
+    /* Interactive Light Smartphone Preview Modal */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -979,8 +1002,8 @@
       border: 5px solid #1e293b;
       border-radius: 40px;
       width: 100%;
-      max-width: 405px;
-      max-height: 90vh;
+      max-width: 410px;
+      max-height: 92vh;
       overflow-y: auto;
       padding: 16px;
       box-shadow: 0 35px 80px rgba(15, 23, 42, 0.35);
@@ -997,7 +1020,7 @@
         border-top: 1px solid var(--border);
         border-radius: 28px 28px 0 0;
         max-width: 100%;
-        max-height: 88vh;
+        max-height: 90vh;
         padding: 14px 16px calc(20px + env(safe-area-inset-bottom));
         animation: slideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
       }
@@ -1137,6 +1160,34 @@
       margin-left: 10px;
     }
 
+    /* Slot / Time picker in demo */
+    .slot-bar {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      margin: 10px 0;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+    .slot-bar::-webkit-scrollbar { display: none; }
+
+    .slot-chip {
+      padding: 6px 11px;
+      border-radius: 10px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #334155;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .slot-chip.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
     .demo-summary {
       display: flex;
       justify-content: space-between;
@@ -1149,17 +1200,38 @@
       margin: 10px 0;
     }
 
-    .demo-toast {
-      background: var(--emerald-soft);
+    /* Real Telegram Message Preview inside Demo */
+    .tg-msg-preview {
+      background: #ffffff;
       border: 1px solid rgba(5, 150, 105, 0.35);
-      color: #065f46;
-      padding: 10px;
-      border-radius: 12px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      text-align: center;
+      border-radius: 14px;
+      padding: 12px;
       margin-top: 10px;
+      font-size: 0.78rem;
+      color: #0f172a;
       display: none;
+      box-shadow: 0 6px 18px rgba(5, 150, 105, 0.08);
+    }
+
+    .tg-msg-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--emerald);
+      font-weight: 700;
+      margin-bottom: 6px;
+      font-size: 0.75rem;
+    }
+
+    .tg-msg-body {
+      background: #f1f5f9;
+      padding: 9px 10px;
+      border-radius: 10px;
+      white-space: pre-line;
+      line-height: 1.45;
+      color: #1e293b;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.74rem;
     }
 
     footer {
@@ -1187,7 +1259,7 @@
         <div class="logo-badge">⚡</div>
         <div class="logo-text-group">
           <div class="logo-title">Always<span>Studio</span></div>
-          <div class="logo-sub"><span class="live-dot"></span> Сайты & Mini Apps • 24ч</div>
+          <div class="logo-sub"><span class="live-dot"></span> Сайты, Mini Apps & Боты</div>
         </div>
       </div>
       <div class="nav-links">
@@ -1209,8 +1281,8 @@
           <span class="pulse-dot"></span>
           Сначала показываю готовую работу — оплата потом
         </div>
-        <h1>Сайты, <span class="gradient-text">Mini Apps и веб-сервисы</span> за 24 часа</h1>
-        <p>Создаем сайты-визитки, Telegram Mini Apps, цифровые карточки BioCard, онлайн-калькуляторы и промо-игры для вашего бизнеса — от 1 000 до 2 000 ₽ под ключ.</p>
+        <h1>Сайты, <span class="gradient-text">Mini Apps и Telegram-боты</span> за 24 часа</h1>
+        <p>Создаем сайты-визитки, Telegram Mini Apps, цифровые карточки BioCard и умных Telegram-ботов для автоматизации заявок и продаж под ключ.</p>
         
         <div class="hero-actions">
           <button class="btn btn-primary" onclick="switchPage('faq', true)">Заказать проект 🚀</button>
@@ -1224,11 +1296,11 @@
           </div>
           <div class="stat-card">
             <strong>0 ₽ / мес</strong>
-            <span>хостинг навсегда</span>
+            <span>хостинг для сайтов</span>
           </div>
           <div class="stat-card">
-            <strong>1 000 – 2 000 ₽</strong>
-            <span>фикс цена под ключ</span>
+            <strong>от 1 000 ₽</strong>
+            <span>прозрачная стоимость</span>
           </div>
         </div>
 
@@ -1239,7 +1311,7 @@
               <div class="quick-icon">📱</div>
               <div>
                 <strong style="display:block; font-size:0.95rem; color:var(--text);">Примеры работ</strong>
-                <span style="font-size:0.78rem; color:var(--muted);">6 интерактивных ниш</span>
+                <span style="font-size:0.78rem; color:var(--muted);">7 реальных кейсов с превью</span>
               </div>
             </div>
             <div class="quick-arrow">→</div>
@@ -1250,7 +1322,7 @@
               <div class="quick-icon">💎</div>
               <div>
                 <strong style="display:block; font-size:0.95rem; color:var(--text);">Услуги и цены</strong>
-                <span style="font-size:0.78rem; color:var(--muted);">Все решения под ключ</span>
+                <span style="font-size:0.78rem; color:var(--muted);">Сайты, Mini Apps и TG-боты</span>
               </div>
             </div>
             <div class="quick-arrow">→</div>
@@ -1275,14 +1347,14 @@
             <ul class="compare-list">
               <li>Ручные ответы про цены по 20 раз в день</li>
               <li>Клиенты уходят без понятного прайса и фото</li>
-              <li>Долгая загрузка файлов со сторонних дисков</li>
+              <li>Заявки теряются в личных сообщениях</li>
             </ul>
           </div>
 
           <div class="compare-card good">
             <strong style="color:var(--primary); font-size:1rem;">AlwaysStudio</strong>
             <ul class="compare-list">
-              <li>Одна ссылка с прайсом, фото и онлайн-записью</li>
+              <li>Одна ссылка или бот с прайсом, фото и записью</li>
               <li>Загрузка на iPhone и Android за 0.3 секунды</li>
               <li>Окупается с первого же нового клиента</li>
             </ul>
@@ -1294,27 +1366,64 @@
     <!-- ==================== PAGE 2: CASES ==================== -->
     <div id="page-cases" class="page-view">
       <section class="section-block">
-        <span class="section-label">Портфолио решений</span>
-        <h2 class="section-title">Живые примеры для разных ниш</h2>
-        <p class="section-sub">Нажмите «Открыть на телефоне» на любой карточке — внутри можно переключать категории и протестировать оформление заявки.</p>
+        <span class="section-label">Реальные кейсы</span>
+        <h2 class="section-title">Приближенные к реальным результатам</h2>
+        <p class="section-sub">Нажмите «Открыть на телефоне» на любой карточке: выберите услуги, удобное время и посмотрите, какое готовое сообщение с заказом придет вам в Telegram.</p>
 
         <div class="filter-bar">
-          <button class="filter-btn active" onclick="filterCases('all', this)">Все ниши (6)</button>
+          <button class="filter-btn active" onclick="filterCases('all', this)">Все кейсы (7)</button>
+          <button class="filter-btn" onclick="filterCases('bots', this)">Telegram-боты</button>
           <button class="filter-btn" onclick="filterCases('services', this)">Услуги и мастера</button>
           <button class="filter-btn" onclick="filterCases('food', this)">Еда и магазины</button>
-          <button class="filter-btn" onclick="filterCases('experts', this)">Эксперты и обучение</button>
+          <button class="filter-btn" onclick="filterCases('experts', this)">Эксперты</button>
         </div>
 
         <div class="grid" id="cardsGrid">
-          <!-- Case 1: Beauty -->
+          <!-- Case 1: Telegram Bot -->
+          <div class="card" data-cat="bots">
+            <div>
+              <div class="card-top">
+                <span class="tag" style="background:#e0f2fe; color:#0369a1;">🤖 Telegram-бот</span>
+                <span class="mini-badge">Срок: 2 дня</span>
+              </div>
+              <h3>Бот записи, прайса и автоворонки</h3>
+              <p>Клиент запускает бота в Telegram, выбирает услугу, свободное окно и получает напоминание за 2 часа до визита.</p>
+              <div class="case-result-bar">
+                <span>📈 Результат внедрения:</span>
+                <span>−2 ч/день на переписку</span>
+              </div>
+              <div class="mini-phone-window">
+                <div class="mini-window-bar">
+                  <div class="dots"><i></i><i></i><i></i></div>
+                  <span class="mini-url">@barber_club_bot</span>
+                </div>
+                <div class="mini-app-header">
+                  <div class="mini-avatar" style="background:linear-gradient(135deg,#0284c7,#4f46e5);">🤖</div>
+                  <div class="mini-app-title">
+                    <strong>TOP CUT • Бот-администратор</strong>
+                    <span>🟢 Онлайн 24/7 • Запись за 3 клика</span>
+                  </div>
+                </div>
+                <div class="mockup-row"><span>✂️ Мужская стрижка + укладка</span><strong style="color:var(--emerald);">1 600 ₽</strong></div>
+                <div class="mockup-row"><span>🪒 Моделирование бороды</span><strong style="color:var(--emerald);">1 100 ₽</strong></div>
+              </div>
+            </div>
+            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('tgbot')">Протестировать бота 📱</button>
+          </div>
+
+          <!-- Case 2: Beauty -->
           <div class="card" data-cat="services">
             <div>
               <div class="card-top">
                 <span class="tag">💅 Бьюти-сфера</span>
-                <span class="mini-badge">Сайт + Запись</span>
+                <span class="mini-badge">Срок: 24 часа</span>
               </div>
               <h3>Студия маникюра & бровей</h3>
-              <p>Клиентки сами выбирают процедуру, видят время работы и записываются в Telegram без долгих переписок.</p>
+              <p>Ссылка в шапке профиля с актуальными окнами, работами мастера и мгновенной записью в Telegram без звонков.</p>
+              <div class="case-result-bar">
+                <span>📈 Результат внедрения:</span>
+                <span>+34% записей из профиля</span>
+              </div>
               <div class="mini-phone-window">
                 <div class="mini-window-bar">
                   <div class="dots"><i></i><i></i><i></i></div>
@@ -1324,25 +1433,29 @@
                   <div class="mini-avatar" style="background:linear-gradient(135deg,#ec4899,#8b5cf6);">💅</div>
                   <div class="mini-app-title">
                     <strong>Nails & Brows by Anna</strong>
-                    <span>⭐ 5.0 • Центр города • Онлайн-запись</span>
+                    <span>⭐ 5.0 (64 отзыва) • ул. Ленина, 24</span>
                   </div>
                 </div>
-                <div class="mockup-row"><span>Маникюр + гель-лак</span><strong style="color:var(--emerald);">1 800 ₽</strong></div>
-                <div class="mockup-row"><span>Архитектура бровей</span><strong style="color:var(--emerald);">1 200 ₽</strong></div>
+                <div class="mockup-row"><span>Маникюр + снятие + гель-лак</span><strong style="color:var(--emerald);">1 800 ₽</strong></div>
+                <div class="mockup-row"><span>Архитектура + окрашивание бровей</span><strong style="color:var(--emerald);">1 200 ₽</strong></div>
               </div>
             </div>
             <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('beauty')">Открыть на телефоне 📱</button>
           </div>
 
-          <!-- Case 2: Tutor -->
+          <!-- Case 3: Tutor -->
           <div class="card" data-cat="experts">
             <div>
               <div class="card-top">
                 <span class="tag">📚 Репетиторы</span>
-                <span class="mini-badge">Визитка эксперта</span>
+                <span class="mini-badge">Срок: 24 часа</span>
               </div>
               <h3>Подготовка к ЕГЭ и английский</h3>
-              <p>Вызывает доверие у родителей: баллы учеников, формат уроков, абонементы и запись на пробный урок.</p>
+              <p>Посадочная страница для родителей и учеников: реальные баллы выпускников, тарифы и запись на пробный урок.</p>
+              <div class="case-result-bar">
+                <span>📈 Результат внедрения:</span>
+                <span>7 из 10 заявок в абонемент</span>
+              </div>
               <div class="mini-phone-window">
                 <div class="mini-window-bar">
                   <div class="dots"><i></i><i></i><i></i></div>
@@ -1352,25 +1465,29 @@
                   <div class="mini-avatar" style="background:linear-gradient(135deg,#2563eb,#0ea5e9);">📚</div>
                   <div class="mini-app-title">
                     <strong>English & ЕГЭ с Еленой</strong>
-                    <span>🎓 Средний балл 86 • Онлайн в Zoom</span>
+                    <span>🎓 Средний балл 86 • Zoom / Миро</span>
                   </div>
                 </div>
-                <div class="mockup-row"><span>Пробный урок (45 мин)</span><strong style="color:var(--emerald);">Бесплатно</strong></div>
+                <div class="mockup-row"><span>Пробный урок + диагностика</span><strong style="color:var(--emerald);">0 ₽</strong></div>
                 <div class="mockup-row"><span>Индивидуально (60 мин)</span><strong style="color:var(--emerald);">1 500 ₽</strong></div>
               </div>
             </div>
             <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('tutor')">Открыть на телефоне 📱</button>
           </div>
 
-          <!-- Case 3: Auto -->
+          <!-- Case 4: Auto -->
           <div class="card" data-cat="services">
             <div>
               <div class="card-top">
                 <span class="tag">🚘 Автоуслуги</span>
-                <span class="mini-badge">Прайс + Вызов</span>
+                <span class="mini-badge">Срок: 24 часа</span>
               </div>
               <h3>Детейлинг и химчистка авто</h3>
-              <p>Понятный прайс по классам авто, список этапов работы и мгновенная кнопка записи для водителей.</p>
+              <p>Калькулятор-прайс по услугам кузова и салона: водитель сразу видит итоговую стоимость и бронирует бокс.</p>
+              <div class="case-result-bar">
+                <span>📈 Результат внедрения:</span>
+                <span>Средний чек вырос на 22%</span>
+              </div>
               <div class="mini-phone-window">
                 <div class="mini-window-bar">
                   <div class="dots"><i></i><i></i><i></i></div>
@@ -1380,17 +1497,17 @@
                   <div class="mini-avatar" style="background:linear-gradient(135deg,#1e293b,#475569);">🚘</div>
                   <div class="mini-app-title">
                     <strong>ProDetail Studio</strong>
-                    <span>🛡️ Гарантия 1 год • Без выходных</span>
+                    <span>🛡️ Гарантия 12 мес • Бокс на 4 авто</span>
                   </div>
                 </div>
-                <div class="mockup-row"><span>Химчистка салона</span><strong style="color:var(--emerald);">от 6 500 ₽</strong></div>
-                <div class="mockup-row"><span>Полировка + керамика</span><strong style="color:var(--emerald);">14 000 ₽</strong></div>
+                <div class="mockup-row"><span>Детейлинг-химчистка салона</span><strong style="color:var(--emerald);">6 500 ₽</strong></div>
+                <div class="mockup-row"><span>Полировка + керамика (2 слоя)</span><strong style="color:var(--emerald);">14 000 ₽</strong></div>
               </div>
             </div>
             <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('auto')">Открыть на телефоне 📱</button>
           </div>
 
-          <!-- Case 4: Bakery -->
+          <!-- Case 5: Bakery -->
           <div class="card" data-cat="food">
             <div>
               <div class="card-top">
@@ -1398,7 +1515,11 @@
                 <span class="mini-badge">Telegram Mini App</span>
               </div>
               <h3>Бенто-торты и десерты на заказ</h3>
-              <p>Каталог начинок и размеров прямо внутри Telegram: клиент собирает заказ в пару тапов и отправляет вам.</p>
+              <p>Витрина десертов внутри Telegram: покупатель выбирает начинку, вес, надпись и отправляет готовый заказ в 1 клик.</p>
+              <div class="case-result-bar">
+                <span>📈 Результат внедрения:</span>
+                <span>Оформление заказа за 40 сек</span>
+              </div>
               <div class="mini-phone-window">
                 <div class="mini-window-bar">
                   <div class="dots"><i></i><i></i><i></i></div>
@@ -1407,26 +1528,30 @@
                 <div class="mini-app-header">
                   <div class="mini-avatar" style="background:linear-gradient(135deg,#ea580c,#e11d48);">🎂</div>
                   <div class="mini-app-title">
-                    <strong>SweetBox — Десерты</strong>
+                    <strong>SweetBox — Кондитерская</strong>
                     <span>🚚 Доставка за 60 мин • ⭐ 4.9</span>
                   </div>
                 </div>
-                <div class="mockup-row"><span>Бенто-торт (450 г)</span><strong style="color:var(--emerald);">1 600 ₽</strong></div>
+                <div class="mockup-row"><span>Бенто-торт с надписью (450 г)</span><strong style="color:var(--emerald);">1 600 ₽</strong></div>
                 <div class="mockup-row"><span>Набор капкейков (6 шт)</span><strong style="color:var(--emerald);">1 500 ₽</strong></div>
               </div>
             </div>
             <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('bakery')">Открыть на телефоне 📱</button>
           </div>
 
-          <!-- Case 5: Photo -->
+          <!-- Case 6: Photo -->
           <div class="card" data-cat="experts">
             <div>
               <div class="card-top">
                 <span class="tag">📸 Фото и видео</span>
-                <span class="mini-badge">Портфолио + Пакеты</span>
+                <span class="mini-badge">Срок: 24 часа</span>
               </div>
               <h3>Фотограф и контент-мейкер</h3>
-              <p>Вместо ссылок на диск — стильная презентация пакетов съемки, сроков отдачи и бронирование даты.</p>
+              <p>Упаковка пакетов съемки с прозрачными условиями: сколько фото, срок готовности 24 часа и бронь даты.</p>
+              <div class="case-result-bar">
+                <span>📈 Результат внедрения:</span>
+                <span>+5 съемок в первую неделю</span>
+              </div>
               <div class="mini-phone-window">
                 <div class="mini-window-bar">
                   <div class="dots"><i></i><i></i><i></i></div>
@@ -1436,25 +1561,29 @@
                   <div class="mini-avatar" style="background:linear-gradient(135deg,#4f46e5,#9333ea);">📸</div>
                   <div class="mini-app-title">
                     <strong>Дарья Волкова | Photo</strong>
-                    <span>⚡ Первые фото за 24 часа</span>
+                    <span>⚡ Анонс 10 кадров за 24 часа</span>
                   </div>
                 </div>
                 <div class="mockup-row"><span>Экспресс-съемка (1 час)</span><strong style="color:var(--emerald);">3 500 ₽</strong></div>
-                <div class="mockup-row"><span>Контент для бренда</span><strong style="color:var(--emerald);">7 000 ₽</strong></div>
+                <div class="mockup-row"><span>Контент-съемка (2 часа)</span><strong style="color:var(--emerald);">7 000 ₽</strong></div>
               </div>
             </div>
             <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('photo')">Открыть на телефоне 📱</button>
           </div>
 
-          <!-- Case 6: Repair -->
+          <!-- Case 7: Repair -->
           <div class="card" data-cat="services">
             <div>
               <div class="card-top">
                 <span class="tag">🛠 Ремонт и сервис</span>
-                <span class="mini-badge">Быстрый вызов</span>
+                <span class="mini-badge">Срок: 24 часа</span>
               </div>
               <h3>Ремонт смартфонов и ПК</h3>
-              <p>Прайс на частые поломки с гарантией, время ремонта и кнопка срочного вызова мастера или доставки.</p>
+              <p>Честный прайс на популярные поломки, время ремонта от 30 минут и кнопка срочного вызова мастера.</p>
+              <div class="case-result-bar">
+                <span>📈 Результат внедрения:</span>
+                <span>Конверсия с поиска 14.8%</span>
+              </div>
               <div class="mini-phone-window">
                 <div class="mini-window-bar">
                   <div class="dots"><i></i><i></i><i></i></div>
@@ -1464,11 +1593,11 @@
                   <div class="mini-avatar" style="background:linear-gradient(135deg,#059669,#0d9488);">🛠</div>
                   <div class="mini-app-title">
                     <strong>FixLab — Сервисный центр</strong>
-                    <span>⚡ Ремонт от 30 мин • Гарантия 1 год</span>
+                    <span>⚡ От 30 мин • Гарантия 12 мес</span>
                   </div>
                 </div>
-                <div class="mockup-row"><span>Замена аккумулятора</span><strong style="color:var(--emerald);">от 1 900 ₽</strong></div>
-                <div class="mockup-row"><span>Чистка ПК + термопаста</span><strong style="color:var(--emerald);">1 500 ₽</strong></div>
+                <div class="mockup-row"><span>Замена АКБ iPhone / Android</span><strong style="color:var(--emerald);">1 900 ₽</strong></div>
+                <div class="mockup-row"><span>Чистка ПК + замена термопасты</span><strong style="color:var(--emerald);">1 500 ₽</strong></div>
               </div>
             </div>
             <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openDemo('repair')">Открыть на телефоне 📱</button>
@@ -1481,11 +1610,11 @@
     <div id="page-services" class="page-view">
       <section class="section-block">
         <span class="section-label">Услуги и стоимость</span>
-        <h2 class="section-title">Все услуги студии (1 000 – 2 000 ₽)</h2>
-        <p class="section-sub">Фиксированная оплата один раз — хостинг полностью бесплатный без абонентской платы.</p>
+        <h2 class="section-title">Все решения студии под ключ</h2>
+        <p class="section-sub">Сайты и Mini Apps запускаются по фиксированной цене без ежемесячной платы за хостинг, а Telegram-боты рассчитываются индивидуально под ваш сценарий.</p>
 
         <div class="pricing-grid">
-          <!-- Service 1 -->
+          <!-- Service 1: BioCard -->
           <div class="card">
             <div>
               <div class="card-top">
@@ -1504,7 +1633,7 @@
             <button class="btn btn-outline btn-sm" onclick="orderService('Цифровая BioCard (1 000 ₽)')">Заказать BioCard</button>
           </div>
 
-          <!-- Service 2 -->
+          <!-- Service 2: Redesign -->
           <div class="card">
             <div>
               <div class="card-top">
@@ -1523,7 +1652,7 @@
             <button class="btn btn-outline btn-sm" onclick="orderService('Редизайн и правки сайта (1 200 ₽)')">Заказать апгрейд</button>
           </div>
 
-          <!-- Service 3 -->
+          <!-- Service 3: Landing -->
           <div class="card featured">
             <div>
               <div class="card-top">
@@ -1542,7 +1671,7 @@
             <button class="btn btn-primary btn-sm" onclick="orderService('Сайт-визитка / Лендинг (1 500 ₽)')">Заказать сайт</button>
           </div>
 
-          <!-- Service 4 -->
+          <!-- Service 4: Quiz -->
           <div class="card">
             <div>
               <div class="card-top">
@@ -1561,7 +1690,7 @@
             <button class="btn btn-outline btn-sm" onclick="orderService('Сайт-калькулятор / Квиз (1 500 ₽)')">Заказать калькулятор</button>
           </div>
 
-          <!-- Service 5 -->
+          <!-- Service 5: Mini App -->
           <div class="card featured">
             <div>
               <div class="card-top">
@@ -1580,7 +1709,26 @@
             <button class="btn btn-primary btn-sm" onclick="orderService('Telegram Mini App (2 000 ₽)')">Заказать Mini App</button>
           </div>
 
-          <!-- Service 6 -->
+          <!-- Service 6: Telegram Bot (Negotiable) -->
+          <div class="card bot-card">
+            <div>
+              <div class="card-top">
+                <span class="tag" style="background:#e0f2fe; color:#0369a1;">🤖 Автоматизация</span>
+                <span class="mini-badge">От 1 до 5 дней</span>
+              </div>
+              <h3>Создание Telegram-бота</h3>
+              <div class="price-val" style="font-size:1.75rem;">Договорная <small>/ от сложности</small></div>
+              <ul class="features">
+                <li>Бот-визитка, автоворонка, запись или приём заявок</li>
+                <li>Интеграция с таблицами, оплатой и уведомлениями</li>
+                <li>Подключение ИИ-консультанта или админ-панели</li>
+                <li>Точную цену назовем за 10 минут после обсуждения</li>
+              </ul>
+            </div>
+            <button class="btn btn-primary btn-sm" style="background:linear-gradient(135deg,#0284c7,#4f46e5);" onclick="orderService('Создание Telegram-бота (цена договорная)')">Обсудить бота</button>
+          </div>
+
+          <!-- Service 7: Promo Game -->
           <div class="card">
             <div>
               <div class="card-top">
@@ -1611,8 +1759,13 @@
 
         <div class="faq-list">
           <details class="faq-item" open>
-            <summary class="faq-q">Правда ли не нужно платить каждый месяц за хостинг?</summary>
-            <div class="faq-a">Да. Мы размещаем ваш сайт или мини-приложение на надежной облачной инфраструктуре с бесплатным SSL-сертификатом (замочек в браузере). Проект работает быстро и стабильно без ежемесячной абонентской платы.</div>
+            <summary class="faq-q">От чего зависит цена разработки Telegram-бота?</summary>
+            <div class="faq-a">Цена договорная и зависит от функционала: простой бот с меню, прайсом и отправкой заявок в личку стоит недорого и делается за 1 день, а сложный бот с базой данных, приемом оплат, рассылками или ИИ-ассистентом оценивается индивидуально перед стартом.</div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-q">Правда ли не нужно платить каждый месяц за хостинг сайта?</summary>
+            <div class="faq-a">Да. Все сайты-визитки, BioCard и фронтенд Mini Apps мы размещаем на надежной облачной инфраструктуре с бесплатным SSL-сертификатом — без ежемесячной абонентской платы.</div>
           </details>
 
           <details class="faq-item">
@@ -1621,21 +1774,16 @@
           </details>
 
           <details class="faq-item">
-            <summary class="faq-q">Чем отличается BioCard, сайт-визитка и Telegram Mini App?</summary>
-            <div class="faq-a"><b>BioCard (1 000 ₽)</b> — компактная страница со всеми ссылками и контактами для соцсетей. <b>Сайт-визитка (1 500 ₽)</b> — полноценный лендинг с прайсом, фото и кнопками записи. <b>Telegram Mini App (2 000 ₽)</b> — приложение прямо внутри Telegram с корзиной и подсчетом суммы заказа.</div>
-          </details>
-
-          <details class="faq-item">
             <summary class="faq-q">Как потом поменять цены или добавить новую услугу?</summary>
-            <div class="faq-a">Просто напишите нам в Telegram — обновим цены, тексты или фото за 15 минут. Также при желании передадим вам исходный файл сайта.</div>
+            <div class="faq-a">Просто напишите нам в Telegram — обновим цены, тексты или фото за 15 минут. Также при желании передадим вам исходный файл проекта.</div>
           </details>
         </div>
 
         <!-- Direct Telegram Contact Card -->
         <div class="faq-contact-box">
           <div class="faq-contact-text">
-            <strong>Остались вопросы или нужна помощь с выбором?</strong>
-            <span>Напишите напрямую разработчику в Telegram: <b>@alwayssowdev</b></span>
+            <strong>Нужен расчет стоимости бота или помощь с выбором?</strong>
+            <span>Напишите напрямую разработчику в Telegram — отвечу за пару минут: <b>@alwayssowdev</b></span>
           </div>
           <a href="https://t.me/alwayssowdev" target="_blank" class="btn btn-primary btn-sm">Написать @alwayssowdev ✈️</a>
         </div>
@@ -1650,13 +1798,14 @@
           </div>
           <div class="form-group">
             <label>Ваша сфера или задача</label>
-            <input type="text" id="clientNiche" placeholder="Например: Маникюр / Автосервис / Репетитор">
+            <input type="text" id="clientNiche" placeholder="Например: Бот для записи / Маникюр / Автосервис">
           </div>
           <div class="form-group">
             <label>Выберите услугу</label>
             <select id="clientTariff">
               <option value="Сайт-визитка / Лендинг (1 500 ₽)">Сайт-визитка / Лендинг — 1 500 ₽</option>
               <option value="Telegram Mini App (2 000 ₽)">Telegram Mini App — 2 000 ₽</option>
+              <option value="Создание Telegram-бота (цена договорная)">Создание Telegram-бота — договорная</option>
               <option value="Цифровая BioCard (1 000 ₽)">Цифровая BioCard — 1 000 ₽</option>
               <option value="Редизайн и правки сайта (1 200 ₽)">Редизайн и правки сайта — 1 200 ₽</option>
               <option value="Сайт-калькулятор / Квиз (1 500 ₽)">Сайт-калькулятор / Квиз — 1 500 ₽</option>
@@ -1679,7 +1828,7 @@
   </nav>
 
   <footer>
-    <div class="container">© 2026 AlwaysStudio — Сайты, Mini Apps и веб-решения • <a href="https://t.me/alwayssowdev" target="_blank" style="color:var(--primary); text-decoration:none; font-weight:600;">@alwayssowdev</a></div>
+    <div class="container">© 2026 AlwaysStudio — Сайты, Mini Apps и Telegram-боты • <a href="https://t.me/alwayssowdev" target="_blank" style="color:var(--primary); text-decoration:none; font-weight:600;">@alwayssowdev</a></div>
   </footer>
 
   <!-- Interactive Light Smartphone Preview Modal -->
@@ -1687,7 +1836,7 @@
     <div class="phone-frame" onclick="event.stopPropagation()">
       <div class="phone-island"></div>
       <div class="phone-top">
-        <span style="font-size:0.78rem; color:#475569; font-weight:600;">📱 Живое превью клиента</span>
+        <span style="font-size:0.78rem; color:#475569; font-weight:600;">📱 Как это видит ваш клиент</span>
         <button class="close-btn" onclick="document.getElementById('demoModal').classList.remove('active')">✕</button>
       </div>
 
@@ -1699,18 +1848,29 @@
 
       <div class="demo-tabs" id="demoTabs"></div>
 
-      <div style="font-size:0.74rem; color:#64748b; margin-bottom:8px;">Нажимайте на услуги, чтобы добавить в заявку:</div>
+      <div style="font-size:0.74rem; color:#64748b; margin-bottom:8px;">1. Выберите нужные позиции:</div>
       <div id="demoList"></div>
 
+      <div style="font-size:0.74rem; color:#64748b; margin-top:10px;">2. Удобное время / формат:</div>
+      <div class="slot-bar" id="demoSlots"></div>
+
       <div class="demo-summary">
-        <span style="color:#475569;">Выбрано услуг: <strong id="demoCount" style="color:#0f172a;">1</strong></span>
+        <span style="color:#475569;">Позиций: <strong id="demoCount" style="color:#0f172a;">1</strong></span>
         <span style="color:#475569;">Итого: <strong id="demoTotal" style="color:#059669;">0 ₽</strong></span>
       </div>
 
-      <button class="btn btn-primary btn-sm" id="demoActionBtn" style="width:100%;" onclick="triggerDemoOrder()">Записаться / Оформить</button>
-      <div class="demo-toast" id="demoToast">✅ Вот так клиент в 1 клик отправляет вам готовый заказ в Telegram!</div>
+      <button class="btn btn-primary btn-sm" id="demoActionBtn" style="width:100%;" onclick="triggerDemoOrder()">Сформировать заявку</button>
 
-      <button class="btn btn-outline btn-sm" style="width:100%; margin-top:8px;" onclick="document.getElementById('demoModal').classList.remove('active'); switchPage('faq', true);">Заказать такой же проект →</button>
+      <!-- Real Telegram Incoming Message Result -->
+      <div class="tg-msg-preview" id="tgMsgPreview">
+        <div class="tg-msg-header">
+          <span>📩 Так заявка придет вам в Telegram:</span>
+          <span>Только что</span>
+        </div>
+        <div class="tg-msg-body" id="tgMsgBody"></div>
+      </div>
+
+      <button class="btn btn-outline btn-sm" style="width:100%; margin-top:10px;" onclick="document.getElementById('demoModal').classList.remove('active'); switchPage('faq', true);">Заказать такой же проект →</button>
     </div>
   </div>
 
@@ -1814,19 +1974,35 @@
       });
     }
 
-    /* 4. Interactive Demo Data */
+    /* 4. Realistic Interactive Demo Data */
     const demos = {
+      tgbot: {
+        title: "🤖 TOP CUT • Бот-администратор",
+        desc: "Онлайн-запись к барберу, напоминания и бонусный баланс в Telegram",
+        gradient: "linear-gradient(135deg, #0284c7, #4f46e5)",
+        meta: ["🟢 Бот онлайн 24/7", "🔔 Напоминание за 2ч", "⭐ 4.9"],
+        cta: "Подтвердить запись в боте",
+        slots: ["Сегодня, 16:30", "Сегодня, 19:00", "Завтра, 11:00", "Завтра, 14:30"],
+        tabs: ["Все услуги", "Стрижки", "Борода и уход"],
+        items: [
+          { cat: "Стрижки", name: "Мужская стрижка + мытье и укладка", sub: "45 мин • Топ-барбер Артем", price: 1600, label: "1 600 ₽" },
+          { cat: "Стрижки", name: "Комплекс «Отец + Сын»", sub: "1 час 15 мин • Выгода 500 ₽", price: 2400, label: "2 400 ₽" },
+          { cat: "Борода и уход", name: "Моделирование бороды + опасное бритье", sub: "35 мин • Распаривание + масло", price: 1100, label: "1 100 ₽" },
+          { cat: "Борода и уход", name: "Тонирование седины (Камуфляж)", sub: "25 мин • Естественный оттенок", price: 1300, label: "1 300 ₽" }
+        ]
+      },
       beauty: {
         title: "💅 Nails & Brows by Anna",
         desc: "Студия в центре города • Стерильно 100% • Гарантия на покрытие 14 дней",
         gradient: "linear-gradient(135deg, #db2777, #7c3aed)",
-        meta: ["⭐ 5.0 (48 отзывов)", "📍 ул. Ленина, 24", "🕒 10:00 – 21:00"],
+        meta: ["⭐ 5.0 (64 отзыва)", "📍 ул. Ленина, 24", "🕒 10:00 – 21:00"],
         cta: "Записаться в Telegram",
+        slots: ["Завтра, 12:00", "Завтра, 15:30", "Чт, 11:00", "Пт, 18:00"],
         tabs: ["Все услуги", "Маникюр", "Брови и ресницы"],
         items: [
-          { cat: "Маникюр", name: "Маникюр + покрытие гель-лак", sub: "1 час 30 мин • Снятие бесплатно", price: 1800, label: "1 800 ₽" },
-          { cat: "Маникюр", name: "Наращивание ногтей (любая длина)", sub: "2 часа 15 мин • Дизайн в подарок", price: 2500, label: "2 500 ₽" },
-          { cat: "Брови и ресницы", name: "Архитектура и окрашивание бровей", sub: "45 мин • Хна или краска", price: 1200, label: "1 200 ₽" },
+          { cat: "Маникюр", name: "Маникюр + снятие + покрытие гель-лак", sub: "1 час 30 мин • Выравнивание базой", price: 1800, label: "1 800 ₽" },
+          { cat: "Маникюр", name: "Наращивание ногтей (любая длина)", sub: "2 часа 15 мин • Дизайн 2 ногтей в подарок", price: 2500, label: "2 500 ₽" },
+          { cat: "Брови и ресницы", name: "Архитектура и окрашивание бровей", sub: "45 мин • Хна или краска Bronsun", price: 1200, label: "1 200 ₽" },
           { cat: "Брови и ресницы", name: "Ламинирование + ботокс ресниц", sub: "1 час • Эффект до 6 недель", price: 1600, label: "1 600 ₽" }
         ]
       },
@@ -1836,85 +2012,92 @@
         gradient: "linear-gradient(135deg, #2563eb, #0284c7)",
         meta: ["🎓 Опыт 6 лет", "📈 +32 балла за полгода", "💻 Онлайн"],
         cta: "Записаться на занятие",
+        slots: ["Пн / Чт, 17:00", "Вт / Пт, 18:30", "Сб, 12:00"],
         tabs: ["Все форматы", "Индивидуально", "Группы и пакеты"],
         items: [
-          { cat: "Индивидуально", name: "Пробный урок + диагностика уровня", sub: "45 мин • План подготовки в подарок", price: 0, label: "0 ₽" },
-          { cat: "Индивидуально", name: "Индивидуальное занятие (ЕГЭ / ОГЭ)", sub: "60 мин • Проверка второй части", price: 1500, label: "1 500 ₽" },
-          { cat: "Группы и пакеты", name: "Абонемент на 8 занятий в месяц", sub: "Выгода 1 200 ₽ • Гибкий график", price: 10800, label: "10 800 ₽" },
-          { cat: "Группы и пакеты", name: "Разговорный клуб в мини-группе", sub: "60 мин • До 4 человек", price: 900, label: "900 ₽" }
+          { cat: "Индивидуально", name: "Пробный урок + диагностика уровня", sub: "45 мин • План подготовки на 85+ баллов", price: 0, label: "0 ₽" },
+          { cat: "Индивидуально", name: "Индивидуальное занятие (ЕГЭ / ОГЭ)", sub: "60 мин • Проверка эссе и устной части", price: 1500, label: "1 500 ₽" },
+          { cat: "Группы и пакеты", name: "Абонемент на 8 занятий в месяц", sub: "Выгода 1 200 ₽ • Поддержка в чате 24/7", price: 10800, label: "10 800 ₽" },
+          { cat: "Группы и пакеты", name: "Разговорный клуб в мини-группе", sub: "60 мин • До 4 человек одного уровня", price: 900, label: "900 ₽" }
         ]
       },
       auto: {
         title: "🚘 ProDetail — Студия детейлинга",
         desc: "Глубокая химчистка, полировка кузова и защита керамикой",
         gradient: "linear-gradient(135deg, #1e293b, #475569)",
-        meta: ["🛡️ Гарантия 1 год", "☕ Зона ожидания", "📞 Без выходных"],
+        meta: ["🛡️ Гарантия 1 год", "☕ Зона ожидания", "📞 09:00 – 21:00"],
         cta: "Записаться на сервис",
+        slots: ["Завтра, 10:00", "Завтра, 14:00", "Суббота, 11:00"],
         tabs: ["Все услуги", "Салон", "Кузов"],
         items: [
           { cat: "Салон", name: "Детейлинг-химчистка салона", sub: "С разбором сидений и озонацией", price: 6500, label: "6 500 ₽" },
-          { cat: "Кузов", name: "Восстановительная полировка кузова", sub: "Удаление до 95% царапин", price: 9000, label: "9 000 ₽" },
-          { cat: "Кузов", name: "Керамическое покрытие (2 слоя)", sub: "Гидрофобный эффект + блеск", price: 14000, label: "14 000 ₽" },
-          { cat: "Кузов", name: "Оклейка зон риска полиуретаном", sub: "Капот, фары, стойки, бампер", price: 12000, label: "12 000 ₽" }
+          { cat: "Кузов", name: "Восстановительная полировка кузова", sub: "Удаление до 95% царапин и голограмм", price: 9000, label: "9 000 ₽" },
+          { cat: "Кузов", name: "Керамическое покрытие (2 слоя)", sub: "Гидрофобный эффект + глубокий блеск", price: 14000, label: "14 000 ₽" },
+          { cat: "Кузов", name: "Оклейка зон риска полиуретаном", sub: "Капот, фары, стойки, полоса на крышу", price: 12000, label: "12 000 ₽" }
         ]
       },
       bakery: {
-        title: "🎂 SweetBox — Торты на заказ",
-        desc: "Натуральные ингредиенты • Срочные заказы за 24 часа • Доставка по городу",
+        title: "🎂 SweetBox — Кондитерская",
+        desc: "Натуральные сливки и бельгийский шоколад • Доставка по городу за 60 мин",
         gradient: "linear-gradient(135deg, #ea580c, #e11d48)",
-        meta: ["🚚 Доставка за 60 мин", "🎁 Открытка в подарок", "⭐ 4.9"],
+        meta: ["🚚 Доставка 60 мин", "🎁 Открытка в подарок", "⭐ 4.9"],
         cta: "Оформить заказ в Telegram",
+        slots: ["Сегодня к 18:00", "Завтра к 12:00", "Самовывоз"],
         tabs: ["Всё меню", "Торты", "Пирожные"],
         items: [
-          { cat: "Торты", name: "Бенто-торт с вашей надписью (450 г)", sub: "Сникерс / Красный бархат / Манго", price: 1600, label: "1 600 ₽" },
+          { cat: "Торты", name: "Бенто-торт с вашей надписью (450 г)", sub: "Сникерс / Красный бархат / Манго-маракуйя", price: 1600, label: "1 600 ₽" },
           { cat: "Пирожные", name: "Набор капкейков (6 шт)", sub: "Нежный крем-чиз и ягодная начинка", price: 1500, label: "1 500 ₽" },
-          { cat: "Торты", name: "Бисквитный торт (2 кг)", sub: "На день рождения или праздник", price: 4200, label: "4 200 ₽" },
+          { cat: "Торты", name: "Бисквитный торт (2 кг)", sub: "На день рождения или семейный праздник", price: 4200, label: "4 200 ₽" },
           { cat: "Пирожные", name: "Моти-сет ассорти (8 шт)", sub: "Японский десерт без глютена", price: 1400, label: "1 400 ₽" }
         ]
       },
       photo: {
         title: "📸 Дарья Волкова — Фотограф",
-        desc: "Индивидуальные, семейные и контент-съемки • Первые фото на следующий день",
+        desc: "Индивидуальные, семейные и контент-съемки • Анонс 10 кадров за 24 часа",
         gradient: "linear-gradient(135deg, #4f46e5, #9333ea)",
         meta: ["⚡ Анонс за 24 часа", "🎞️ Помощь с позированием", "📍 Студия / Улица"],
         cta: "Забронировать дату съемки",
+        slots: ["Пятница, 15:00", "Суббота, 13:00", "Воскресенье, 16:00"],
         tabs: ["Все пакеты", "Фото", "Видео / Reels"],
         items: [
           { cat: "Фото", name: "Пакет «Экспресс» (1 час)", sub: "35 фото в цветокоррекции + 5 в ретуши", price: 3500, label: "3 500 ₽" },
           { cat: "Фото", name: "Пакет «Контент для соцсетей»", sub: "2 часа • 3 образа • 80 готовых фото", price: 7000, label: "7 000 ₽" },
           { cat: "Фото", name: "Семейная или Love Story съемка", sub: "1.5 часа • Помощь в подборе студии", price: 5000, label: "5 000 ₽" },
-          { cat: "Видео / Reels", name: "Съемка Reels (3 готовых ролика)", sub: "Съемка + динамичный монтаж", price: 4500, label: "4 500 ₽" }
+          { cat: "Видео / Reels", name: "Съемка Reels (3 готовых ролика)", sub: "Съемка на iPhone + динамичный монтаж", price: 4500, label: "4 500 ₽" }
         ]
       },
       repair: {
         title: "🛠 FixLab — Ремонт телефонов и ПК",
-        desc: "Бесплатная диагностика за 15 минут • Запчасти в наличии • Честная гарантия",
+        desc: "Бесплатная диагностика за 15 минут • Запчасти в наличии • Гарантия 12 мес",
         gradient: "linear-gradient(135deg, #059669, #0d9488)",
-        meta: ["⚡ Ремонт от 30 мин", "📜 Гарантия до 1 года", "🚗 Выезд мастера"],
-        cta: "Вызвать мастера",
+        meta: ["⚡ Ремонт от 30 мин", "📜 Гарантия 1 год", "🚗 Выезд курьера"],
+        cta: "Вызвать мастера / Записаться",
+        slots: ["Срочно (в течение часа)", "Сегодня, 17:00", "Завтра, 11:00"],
         tabs: ["Все услуги", "Смартфоны", "Ноутбуки и ПК"],
         items: [
-          { cat: "Смартфоны", name: "Замена аккумулятора iPhone / Android", sub: "30 минут • Оригинальная емкость", price: 1900, label: "1 900 ₽" },
+          { cat: "Смартфоны", name: "Замена аккумулятора iPhone / Android", sub: "30 минут • Оригинальная емкость без ошибок", price: 1900, label: "1 900 ₽" },
           { cat: "Смартфоны", name: "Замена дисплея (экрана)", sub: "45 минут • Защитное стекло в подарок", price: 3200, label: "3 200 ₽" },
-          { cat: "Ноутбуки и ПК", name: "Чистка ноутбука / ПК + термопаста", sub: "Устранение шума и перегрева", price: 1500, label: "1 500 ₽" },
-          { cat: "Ноутбуки и ПК", name: "Установка Windows и драйверов", sub: "С сохранением всех ваших файлов", price: 1200, label: "1 200 ₽" }
+          { cat: "Ноутбуки и ПК", name: "Чистка ноутбука / ПК + термопаста MX-4", sub: "Устранение шума, троттлинга и перегрева", price: 1500, label: "1 500 ₽" },
+          { cat: "Ноутбуки и ПК", name: "Установка Windows 11 и драйверов", sub: "С сохранением всех ваших фото и файлов", price: 1200, label: "1 200 ₽" }
         ]
       }
     };
 
-    let activeDemoKey = 'beauty';
+    let activeDemoKey = 'tgbot';
     let selectedIndices = new Set([0]);
+    let selectedSlot = "";
 
     function openDemo(key) {
       activeDemoKey = key;
       selectedIndices = new Set([0]);
       const data = demos[key];
+      selectedSlot = data.slots[0];
 
       document.getElementById('demoTitle').textContent = data.title;
       document.getElementById('demoDesc').textContent = data.desc;
       document.getElementById('demoHeroCard').style.background = data.gradient;
       document.getElementById('demoActionBtn').textContent = data.cta;
-      document.getElementById('demoToast').style.display = 'none';
+      document.getElementById('tgMsgPreview').style.display = 'none';
 
       document.getElementById('demoMeta').innerHTML = data.meta
         .map(m => `<span class="demo-pill">${m}</span>`).join('');
@@ -1922,8 +2105,20 @@
       document.getElementById('demoTabs').innerHTML = data.tabs
         .map((t, i) => `<button class="demo-tab ${i === 0 ? 'active' : ''}" onclick="filterDemoTab('${t}', this)">${t}</button>`).join('');
 
+      document.getElementById('demoSlots').innerHTML = data.slots
+        .map((s, i) => `<button class="slot-chip ${i === 0 ? 'active' : ''}" onclick="selectSlot('${s}', this)">${s}</button>`).join('');
+
       renderDemoItems('all');
       document.getElementById('demoModal').classList.add('active');
+    }
+
+    function selectSlot(slotVal, btn) {
+      selectedSlot = slotVal;
+      document.querySelectorAll('#demoSlots .slot-chip').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      if (document.getElementById('tgMsgPreview').style.display === 'block') {
+        triggerDemoOrder();
+      }
     }
 
     function filterDemoTab(tabName, btn) {
@@ -1954,14 +2149,16 @@
 
     function toggleDemoService(idx) {
       if (selectedIndices.has(idx)) {
-        selectedIndices.delete(idx);
+        if (selectedIndices.size > 1) selectedIndices.delete(idx);
       } else {
         selectedIndices.add(idx);
       }
-      document.getElementById('demoToast').style.display = 'none';
       const activeBtn = document.querySelector('#demoTabs .demo-tab.active');
       const isFirst = activeBtn === document.querySelector('#demoTabs .demo-tab');
       renderDemoItems(isFirst ? 'all' : activeBtn.textContent);
+      if (document.getElementById('tgMsgPreview').style.display === 'block') {
+        triggerDemoOrder();
+      }
     }
 
     function recalcDemoTotal() {
@@ -1975,7 +2172,20 @@
     }
 
     function triggerDemoOrder() {
-      document.getElementById('demoToast').style.display = 'block';
+      const data = demos[activeDemoKey];
+      let sum = 0;
+      const lines = [];
+      selectedIndices.forEach(idx => {
+        const it = data.items[idx];
+        if (it) {
+          sum += it.price;
+          lines.push(`• ${it.name} (${it.label})`);
+        }
+      });
+
+      const msg = `🔥 Новая заявка | ${data.title}\n\nВыбрано:\n${lines.join('\n')}\n\n🕒 Время: ${selectedSlot}\n💰 Итого: ${sum.toLocaleString('ru-RU')} ₽\n👤 Клиент: @username`;
+      document.getElementById('tgMsgBody').textContent = msg;
+      document.getElementById('tgMsgPreview').style.display = 'block';
     }
 
     function closeDemo(e) {
