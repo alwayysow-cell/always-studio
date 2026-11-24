@@ -5,7 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#030508">
+
+  <!-- SEO & Красивое превью ссылки в Telegram / соцсетях (OpenGraph) -->
   <title>AlwaysStudio — Сайты, Mini Apps и Telegram-боты за 24 часа</title>
+  <meta name="description" content="Разработка сайтов-визиток, интернет-магазинов, Telegram Mini Apps и умных Telegram-ботов под ключ от 700 ₽. Хостинг 0 ₽/мес.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AlwaysStudio">
+  <meta property="og:url" content="https://alwayysow-cell.github.io/always-studio/">
+  <meta property="og:title" content="AlwaysStudio — Сайты, Mini Apps и Telegram-боты за 24 часа">
+  <meta property="og:description" content="Сайты-визитки, интернет-магазины от 1 000 ₽, Telegram Mini Apps и боты для автоматизации заявок. Бесплатный хостинг навсегда.">
+  <meta property="og:image" content="https://alwayysow-cell.github.io/always-studio/preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AlwaysStudio — Сайты, Mini Apps и Telegram-боты">
+  <meta name="twitter:description" content="Запуск сайтов, магазинов и ботов под ключ от 24 часов.">
+
+  <!-- Минималистичный Favicon (буква A + молния) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%230284c7'/%3E%3Cstop offset='100%25' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='%23040914'/%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='url(%23g)' stroke-width='3'/%3E%3Cpath d='M35 13L19 35h11l-2 16 17-22H34l1-16z' fill='url(%23g)'/%3E%3C/svg%3E">
+
   <style>
     :root {
       color-scheme: dark;
@@ -122,6 +138,43 @@
       margin: 0 auto;
       padding: 0 16px;
       flex: 1;
+    }
+
+    /* Spotlight Hover Effect */
+    .spotlight {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .spotlight::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        380px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(56, 189, 248, 0.16),
+        transparent 65%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .spotlight:hover::after {
+      opacity: 1;
+    }
+
+    /* Staggered Block Reveal Animation */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(16px) scale(0.985);
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-item.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
 
     /* Static Top Header */
@@ -294,17 +347,11 @@
     /* Page View Transitions */
     .page-view {
       display: none;
-      animation: pageFade 0.24s ease-out;
       padding-top: 16px;
       padding-bottom: 36px;
     }
 
     .page-view.active { display: block; }
-
-    @keyframes pageFade {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
 
     /* Buttons + Shimmer Detail */
     .btn {
@@ -323,6 +370,7 @@
       overflow: hidden;
       transition: transform 0.16s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
       user-select: none;
+      z-index: 2;
     }
 
     .btn:active { transform: scale(0.96); }
@@ -437,8 +485,12 @@
       border-radius: 20px;
       padding: 16px 8px;
       text-align: center;
-      position: relative;
       box-shadow: var(--shadow-md), inset 0 1px 0 rgba(56, 189, 248, 0.16);
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .stat-card:hover {
+      border-color: rgba(56, 189, 248, 0.45);
     }
 
     .stat-card::before {
@@ -464,6 +516,7 @@
       color: #ffffff;
       margin-bottom: 3px;
       letter-spacing: -0.5px;
+      font-variant-numeric: tabular-nums;
     }
 
     .stat-card span {
@@ -473,7 +526,7 @@
       display: block;
     }
 
-    /* Unified Cyan Glow Action Cards (Used for Nav Cards & Telegram Links) */
+    /* Unified Cyan Glow Action Cards */
     .quick-nav-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
@@ -520,6 +573,8 @@
       align-items: center;
       gap: 12px;
       text-align: left;
+      position: relative;
+      z-index: 2;
     }
 
     .action-icon-box {
@@ -559,6 +614,8 @@
       font-weight: 700;
       white-space: nowrap;
       flex-shrink: 0;
+      position: relative;
+      z-index: 2;
       transition: background 0.2s ease;
     }
 
@@ -586,6 +643,7 @@
       border: 1px solid var(--border);
       text-align: left;
       box-shadow: var(--shadow-md);
+      transition: border-color 0.25s ease;
     }
 
     .compare-card.bad {
@@ -606,6 +664,8 @@
       gap: 9px;
       font-size: 0.87rem;
       color: #94a3b8;
+      position: relative;
+      z-index: 2;
     }
 
     .compare-card.bad li::before { content: "✕ "; color: var(--rose); font-weight: 800; }
@@ -719,13 +779,11 @@
       border: 1px solid var(--border);
       border-radius: 24px;
       padding: 20px;
-      position: relative;
       box-shadow: var(--shadow-md), inset 0 1px 0 rgba(125, 211, 252, 0.16);
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      overflow: hidden;
     }
 
     .card::before {
@@ -747,6 +805,11 @@
         border-color: rgba(56, 189, 248, 0.52);
         box-shadow: 0 22px 48px rgba(0, 0, 0, 0.85), var(--shadow-glow);
       }
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 2;
     }
 
     .card-top {
@@ -1446,10 +1509,10 @@
     <!-- ==================== PAGE 1: HOME ==================== -->
     <div id="page-home" class="page-view active">
       <section class="hero">
-        <h1>Сайты, <span class="gradient-text">Mini Apps и Telegram-боты</span> за 24 часа</h1>
-        <p>Создаем сайты-визитки, интернет-магазины, Telegram Mini Apps и умных Telegram-ботов для автоматизации заявок и продаж под ключ.</p>
+        <h1 class="reveal-item">Сайты, <span class="gradient-text">Mini Apps и Telegram-боты</span> за 24 часа</h1>
+        <p class="reveal-item">Создаем сайты-визитки, интернет-магазины, Telegram Mini Apps и умных Telegram-ботов для автоматизации заявок и продаж под ключ.</p>
         
-        <div class="hero-actions">
+        <div class="hero-actions reveal-item">
           <button class="btn btn-primary btn-shimmer" onclick="switchPage('faq', true)">
             <span>Заказать проект</span>
             <svg class="ui-icon" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -1461,23 +1524,23 @@
         </div>
 
         <div class="stats-grid">
-          <div class="stat-card">
-            <strong>24 часа</strong>
+          <div class="stat-card spotlight reveal-item">
+            <strong class="counter-num" data-target="24" data-prefix="" data-suffix=" часа">24 часа</strong>
             <span>от заявки до ссылки</span>
           </div>
-          <div class="stat-card">
-            <strong>0 ₽ / мес</strong>
+          <div class="stat-card spotlight reveal-item">
+            <strong class="counter-num" data-target="0" data-prefix="" data-suffix=" ₽ / мес">0 ₽ / мес</strong>
             <span>хостинг для сайтов</span>
           </div>
-          <div class="stat-card">
-            <strong>от 700 ₽</strong>
+          <div class="stat-card spotlight reveal-item">
+            <strong class="counter-num" data-target="700" data-prefix="от " data-suffix=" ₽">от 700 ₽</strong>
             <span>прозрачная стоимость</span>
           </div>
         </div>
 
         <!-- Unified Cyan Glow Navigation Cards -->
         <div class="quick-nav-grid">
-          <div class="action-glow-card" onclick="switchPage('cases')">
+          <div class="action-glow-card spotlight reveal-item" onclick="switchPage('cases')">
             <div class="action-glow-left">
               <div class="action-icon-box">
                 <svg class="ui-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
@@ -1490,7 +1553,7 @@
             <span class="action-pill-btn">Открыть</span>
           </div>
 
-          <div class="action-glow-card" onclick="switchPage('services')">
+          <div class="action-glow-card spotlight reveal-item" onclick="switchPage('services')">
             <div class="action-glow-left">
               <div class="action-icon-box">
                 <svg class="ui-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1503,7 +1566,7 @@
             <span class="action-pill-btn">Смотреть</span>
           </div>
 
-          <div class="action-glow-card" onclick="switchPage('faq')">
+          <div class="action-glow-card spotlight reveal-item" onclick="switchPage('faq')">
             <div class="action-glow-left">
               <div class="action-icon-box">
                 <svg class="ui-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -1519,8 +1582,8 @@
 
         <!-- Before vs After Comparison -->
         <div class="compare-grid">
-          <div class="compare-card bad">
-            <strong style="color:var(--rose); font-size:1rem;">Обычная переписка / Авито</strong>
+          <div class="compare-card bad spotlight reveal-item">
+            <strong style="color:var(--rose); font-size:1rem; position:relative; z-index:2;">Обычная переписка / Авито</strong>
             <ul class="compare-list">
               <li>Ручные ответы про цены по 20 раз в день</li>
               <li>Клиенты уходят без понятного прайса и фото</li>
@@ -1528,8 +1591,8 @@
             </ul>
           </div>
 
-          <div class="compare-card good">
-            <strong style="color:var(--primary-bright); font-size:1rem;">AlwaysStudio</strong>
+          <div class="compare-card good spotlight reveal-item">
+            <strong style="color:var(--primary-bright); font-size:1rem; position:relative; z-index:2;">AlwaysStudio</strong>
             <ul class="compare-list">
               <li>Одна ссылка или бот с прайсом, фото и корзиной</li>
               <li>Загрузка на iPhone и Android за 0.3 секунды</li>
@@ -1539,7 +1602,7 @@
         </div>
 
         <!-- Subtle Niche Marquee Strip -->
-        <div class="ticker-wrap">
+        <div class="ticker-wrap reveal-item">
           <div class="ticker-track">
             <span class="ticker-pill">Интернет-магазины</span>
             <span class="ticker-pill">Бьюти-мастера</span>
@@ -1562,7 +1625,7 @@
 
         <!-- Direct Telegram & Channel Block at the Bottom of Home -->
         <div class="social-connect-grid">
-          <a href="https://t.me/alwayssowdev" target="_blank" class="action-glow-card">
+          <a href="https://t.me/alwayssowdev" target="_blank" class="action-glow-card spotlight reveal-item">
             <div class="action-glow-left">
               <div class="action-icon-box">
                 <svg class="ui-icon" viewBox="0 0 24 24">
@@ -1577,7 +1640,7 @@
             <span class="action-pill-btn">Написать</span>
           </a>
 
-          <a href="https://t.me/alwaysstudiioo" target="_blank" class="action-glow-card">
+          <a href="https://t.me/alwaysstudiioo" target="_blank" class="action-glow-card spotlight reveal-item">
             <div class="action-glow-left">
               <div class="action-icon-box">
                 <svg class="ui-icon" viewBox="0 0 24 24">
@@ -1598,11 +1661,11 @@
     <!-- ==================== PAGE 2: CASES ==================== -->
     <div id="page-cases" class="page-view">
       <section class="section-block">
-        <span class="section-label">Реальные кейсы</span>
-        <h2 class="section-title">Приближенные к реальным результатам</h2>
-        <p class="section-sub">Нажмите «Запустить живое превью» на любой карточке: выберите товары или услуги, удобное время и посмотрите, какое готовое сообщение с заказом придет вам в Telegram.</p>
+        <span class="section-label reveal-item">Реальные кейсы</span>
+        <h2 class="section-title reveal-item">Приближенные к реальным результатам</h2>
+        <p class="section-sub reveal-item">Нажмите «Запустить живое превью» на любой карточке: выберите товары или услуги, удобное время и посмотрите, какое готовое сообщение с заказом придет вам в Telegram.</p>
 
-        <div class="filter-bar">
+        <div class="filter-bar reveal-item">
           <button class="filter-btn active" onclick="filterCases('all', this)">Все кейсы (8)</button>
           <button class="filter-btn" onclick="filterCases('food', this)">Магазины и еда</button>
           <button class="filter-btn" onclick="filterCases('bots', this)">Telegram-боты</button>
@@ -1612,8 +1675,8 @@
 
         <div class="grid" id="cardsGrid">
           <!-- Case 1: Online Store -->
-          <div class="card" data-cat="food">
-            <div>
+          <div class="card spotlight reveal-item" data-cat="food">
+            <div class="card-content">
               <div class="card-top">
                 <span class="tag">Интернет-магазин</span>
                 <span class="mini-badge">Срок: 24 часа</span>
@@ -1647,8 +1710,8 @@
           </div>
 
           <!-- Case 2: Telegram Bot -->
-          <div class="card" data-cat="bots">
-            <div>
+          <div class="card spotlight reveal-item" data-cat="bots">
+            <div class="card-content">
               <div class="card-top">
                 <span class="tag">Telegram-бот</span>
                 <span class="mini-badge">Срок: 2 дня</span>
@@ -1682,8 +1745,8 @@
           </div>
 
           <!-- Case 3: Beauty -->
-          <div class="card" data-cat="services">
-            <div>
+          <div class="card spotlight reveal-item" data-cat="services">
+            <div class="card-content">
               <div class="card-top">
                 <span class="tag">Бьюти-сфера</span>
                 <span class="mini-badge">Срок: 24 часа</span>
@@ -1717,8 +1780,8 @@
           </div>
 
           <!-- Case 4: Bakery -->
-          <div class="card" data-cat="food">
-            <div>
+          <div class="card spotlight reveal-item" data-cat="food">
+            <div class="card-content">
               <div class="card-top">
                 <span class="tag">Кондитеры</span>
                 <span class="mini-badge">Telegram Mini App</span>
@@ -1752,8 +1815,8 @@
           </div>
 
           <!-- Case 5: Tutor -->
-          <div class="card" data-cat="experts">
-            <div>
+          <div class="card spotlight reveal-item" data-cat="experts">
+            <div class="card-content">
               <div class="card-top">
                 <span class="tag">Репетиторы</span>
                 <span class="mini-badge">Срок: 24 часа</span>
@@ -1787,8 +1850,8 @@
           </div>
 
           <!-- Case 6: Auto -->
-          <div class="card" data-cat="services">
-            <div>
+          <div class="card spotlight reveal-item" data-cat="services">
+            <div class="card-content">
               <div class="card-top">
                 <span class="tag">Автоуслуги</span>
                 <span class="mini-badge">Срок: 24 часа</span>
@@ -1822,8 +1885,8 @@
           </div>
 
           <!-- Case 7: Photo -->
-          <div class="card" data-cat="experts">
-            <div>
+          <div class="card spotlight reveal-item" data-cat="experts">
+            <div class="card-content">
               <div class="card-top">
                 <span class="tag">Фото и видео</span>
                 <span class="mini-badge">Срок: 24 часа</span>
@@ -1857,8 +1920,8 @@
           </div>
 
           <!-- Case 8: Repair -->
-          <div class="card" data-cat="services">
-            <div>
+          <div class="card spotlight reveal-item" data-cat="services">
+            <div class="card-content">
               <div class="card-top">
                 <span class="tag">Ремонт и сервис</span>
                 <span class="mini-badge">Срок: 24 часа</span>
@@ -1897,14 +1960,14 @@
     <!-- ==================== PAGE 3: SERVICES ==================== -->
     <div id="page-services" class="page-view">
       <section class="section-block">
-        <span class="section-label">Услуги и стоимость</span>
-        <h2 class="section-title">Все решения студии под ключ</h2>
-        <p class="section-sub">Сайты, интернет-магазины и Mini Apps запускаются без ежемесячной платы за хостинг, а Telegram-боты рассчитываются индивидуально под ваш сценарий.</p>
+        <span class="section-label reveal-item">Услуги и стоимость</span>
+        <h2 class="section-title reveal-item">Все решения студии под ключ</h2>
+        <p class="section-sub reveal-item">Сайты, интернет-магазины и Mini Apps запускаются без ежемесячной платы за хостинг, а Telegram-боты рассчитываются индивидуально под ваш сценарий.</p>
 
         <div class="pricing-grid">
           <!-- Service 1: BioCard -->
-          <div class="card">
-            <div>
+          <div class="card spotlight reveal-item">
+            <div class="card-content">
               <div class="card-top">
                 <span class="tag">Мультиссылка</span>
                 <span class="mini-badge">Готово за 3 часа</span>
@@ -1922,8 +1985,8 @@
           </div>
 
           <!-- Service 2: Redesign -->
-          <div class="card">
-            <div>
+          <div class="card spotlight reveal-item">
+            <div class="card-content">
               <div class="card-top">
                 <span class="tag">Апгрейд</span>
                 <span class="mini-badge">За 1 день</span>
@@ -1941,8 +2004,8 @@
           </div>
 
           <!-- Service 3: Online Store (from 1000 RUB) -->
-          <div class="card featured">
-            <div>
+          <div class="card featured spotlight reveal-item">
+            <div class="card-content">
               <div class="card-top">
                 <span class="tag">E-commerce</span>
                 <span class="mini-badge">За 24 часа</span>
@@ -1960,8 +2023,8 @@
           </div>
 
           <!-- Service 4: Landing -->
-          <div class="card featured">
-            <div>
+          <div class="card featured spotlight reveal-item">
+            <div class="card-content">
               <div class="card-top">
                 <span class="tag">Популярное</span>
                 <span class="mini-badge">За 24 часа</span>
@@ -1979,8 +2042,8 @@
           </div>
 
           <!-- Service 5: Mini App -->
-          <div class="card featured">
-            <div>
+          <div class="card featured spotlight reveal-item">
+            <div class="card-content">
               <div class="card-top">
                 <span class="tag">Хит продаж</span>
                 <span class="mini-badge">За 24 часа</span>
@@ -1998,8 +2061,8 @@
           </div>
 
           <!-- Service 6: Telegram Bot (Negotiable) -->
-          <div class="card bot-card">
-            <div>
+          <div class="card bot-card spotlight reveal-item">
+            <div class="card-content">
               <div class="card-top">
                 <span class="tag">Автоматизация</span>
                 <span class="mini-badge">От 1 до 5 дней</span>
@@ -2022,71 +2085,73 @@
     <!-- ==================== PAGE 4: FAQ & ORDER ==================== -->
     <div id="page-faq" class="page-view">
       <section class="section-block">
-        <span class="section-label">Ответы и связь</span>
-        <h2 class="section-title">Частые вопросы и заявка</h2>
-        <p class="section-sub">Всё, что важно знать перед стартом работы.</p>
+        <span class="section-label reveal-item">Ответы и связь</span>
+        <h2 class="section-title reveal-item">Частые вопросы и заявка</h2>
+        <p class="section-sub reveal-item">Всё, что важно знать перед стартом работы.</p>
 
         <div class="faq-list">
-          <details class="faq-item" open>
+          <details class="faq-item reveal-item" open>
             <summary class="faq-q">От чего зависит цена интернет-магазина и Telegram-бота?</summary>
             <div class="faq-a">Базовый интернет-магазин с каталогом, корзиной и отправкой заказов в Telegram стоит от 1 000 ₽ (итоговая цена зависит от количества товаров и фильтров). Для Telegram-ботов цена договорная и зависит от сложности логики: меню, запись, база данных или прием оплат.</div>
           </details>
 
-          <details class="faq-item">
+          <details class="faq-item reveal-item">
             <summary class="faq-q">Правда ли не нужно платить каждый месяц за хостинг сайта?</summary>
             <div class="faq-a">Да. Все сайты-визитки, интернет-магазины, BioCard и фронтенд Mini Apps мы размещаем на надежной облачной инфраструктуре с бесплатным SSL-сертификатом — без ежемесячной абонентской платы.</div>
           </details>
 
-          <details class="faq-item">
+          <details class="faq-item reveal-item">
             <summary class="faq-q">А если мне не понравится первый вариант?</summary>
             <div class="faq-a">Вы ничем не рискуете: мы сначала делаем черновик и показываем вам по ссылке. Если дизайн или структура не подойдут — внесем правки или просто разойдемся без какой-либо оплаты.</div>
           </details>
 
-          <details class="faq-item">
+          <details class="faq-item reveal-item">
             <summary class="faq-q">Как потом поменять цены или добавить новый товар?</summary>
             <div class="faq-a">Просто напишите нам в Telegram — обновим цены, товары или фото за 15 минут. Также при желании передадим вам исходный файл проекта.</div>
           </details>
         </div>
 
         <!-- Direct Telegram Contact Card -->
-        <div class="faq-contact-box">
-          <div class="faq-contact-text">
+        <div class="faq-contact-box spotlight reveal-item">
+          <div class="faq-contact-text" style="position:relative; z-index:2;">
             <strong>Нужен расчет стоимости магазина или бота?</strong>
             <span>Напишите напрямую разработчику в Telegram: <b>@alwayssowdev</b> или подпишитесь на канал <b>@alwaysstudiioo</b></span>
           </div>
-          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <div style="display:flex; gap:8px; flex-wrap:wrap; position:relative; z-index:2;">
             <a href="https://t.me/alwayssowdev" target="_blank" class="btn btn-primary btn-sm">Написать @alwayssowdev</a>
             <a href="https://t.me/alwaysstudiioo" target="_blank" class="btn btn-outline btn-sm">Канал студии</a>
           </div>
         </div>
 
         <!-- Order Box -->
-        <div class="order-box" id="orderFormBox">
-          <h2 class="section-title" style="text-align:center; font-size:1.65rem;">Заказать проект</h2>
-          <p class="section-sub" style="text-align:center; margin-bottom:20px;">Заполните 3 поля — откроется чат в Telegram с готовой заявкой.</p>
-          <div class="form-group">
-            <label>Ваше имя</label>
-            <input type="text" id="clientName" placeholder="Например: Анна">
+        <div class="order-box spotlight reveal-item" id="orderFormBox">
+          <div style="position:relative; z-index:2;">
+            <h2 class="section-title" style="text-align:center; font-size:1.65rem;">Заказать проект</h2>
+            <p class="section-sub" style="text-align:center; margin-bottom:20px;">Заполните 3 поля — откроется чат в Telegram с готовой заявкой.</p>
+            <div class="form-group">
+              <label>Ваше имя</label>
+              <input type="text" id="clientName" placeholder="Например: Анна">
+            </div>
+            <div class="form-group">
+              <label>Ваша сфера или задача</label>
+              <input type="text" id="clientNiche" placeholder="Например: Интернет-магазин одежды / Маникюр / Бот">
+            </div>
+            <div class="form-group">
+              <label>Выберите услугу</label>
+              <select id="clientTariff">
+                <option value="Интернет-магазин (от 1 000 ₽)">Интернет-магазин — от 1 000 ₽</option>
+                <option value="Сайт-визитка / Лендинг (1 050 ₽)">Сайт-визитка / Лендинг — 1 050 ₽</option>
+                <option value="Telegram Mini App (1 400 ₽)">Telegram Mini App — 1 400 ₽</option>
+                <option value="Создание Telegram-бота (цена договорная)">Создание Telegram-бота — договорная</option>
+                <option value="Цифровая BioCard (700 ₽)">Цифровая BioCard — 700 ₽</option>
+                <option value="Редизайн и правки сайта (840 ₽)">Редизайн и правки сайта — 840 ₽</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" style="width:100%; margin-top:6px;" onclick="sendToTelegram()">
+              <span>Отправить заявку в Telegram</span>
+              <svg class="ui-icon" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
           </div>
-          <div class="form-group">
-            <label>Ваша сфера или задача</label>
-            <input type="text" id="clientNiche" placeholder="Например: Интернет-магазин одежды / Маникюр / Бот">
-          </div>
-          <div class="form-group">
-            <label>Выберите услугу</label>
-            <select id="clientTariff">
-              <option value="Интернет-магазин (от 1 000 ₽)">Интернет-магазин — от 1 000 ₽</option>
-              <option value="Сайт-визитка / Лендинг (1 050 ₽)">Сайт-визитка / Лендинг — 1 050 ₽</option>
-              <option value="Telegram Mini App (1 400 ₽)">Telegram Mini App — 1 400 ₽</option>
-              <option value="Создание Telegram-бота (цена договорная)">Создание Telegram-бота — договорная</option>
-              <option value="Цифровая BioCard (700 ₽)">Цифровая BioCard — 700 ₽</option>
-              <option value="Редизайн и правки сайта (840 ₽)">Редизайн и правки сайта — 840 ₽</option>
-            </select>
-          </div>
-          <button class="btn btn-primary" style="width:100%; margin-top:6px;" onclick="sendToTelegram()">
-            <span>Отправить заявку в Telegram</span>
-            <svg class="ui-icon" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-          </button>
         </div>
       </section>
     </div>
@@ -2163,6 +2228,57 @@
   <script>
     const TG_USERNAME = "alwayssowdev";
 
+    /* Spotlight Hover Tracker */
+    document.addEventListener('mousemove', e => {
+      const target = e.target.closest('.spotlight');
+      if (!target) return;
+      const rect = target.getBoundingClientRect();
+      target.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+      target.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+    }, { passive: true });
+
+    /* Staggered Block Reveal */
+    function triggerStagger(pageEl) {
+      const items = pageEl.querySelectorAll('.reveal-item');
+      items.forEach(el => el.classList.remove('is-visible'));
+      items.forEach((el, idx) => {
+        setTimeout(() => {
+          el.classList.add('is-visible');
+        }, 45 * idx);
+      });
+    }
+
+    /* Animated Number Counters */
+    function animateCounters() {
+      const counters = document.querySelectorAll('.counter-num');
+      counters.forEach(counter => {
+        const target = parseInt(counter.dataset.target, 10);
+        const prefix = counter.dataset.prefix || "";
+        const suffix = counter.dataset.suffix || "";
+
+        if (target === 0) {
+          counter.textContent = `${prefix}0${suffix}`;
+          return;
+        }
+
+        const duration = 950;
+        const startTime = performance.now();
+
+        function update(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(eased * target);
+          counter.textContent = `${prefix}${current}${suffix}`;
+
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          }
+        }
+        requestAnimationFrame(update);
+      });
+    }
+
     /* Scroll Progress Indicator */
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY;
@@ -2175,7 +2291,11 @@
     function switchPage(pageId, scrollToOrder = false) {
       document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active'));
       const target = document.getElementById('page-' + pageId);
-      if (target) target.classList.add('active');
+      if (target) {
+        target.classList.add('active');
+        triggerStagger(target);
+        if (pageId === 'home') animateCounters();
+      }
 
       document.querySelectorAll('.nav-tab, .dock-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.page === pageId);
@@ -2185,7 +2305,7 @@
         setTimeout(() => {
           const box = document.getElementById('orderFormBox');
           if (box) box.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 60);
+        }, 80);
       } else {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
@@ -2330,8 +2450,14 @@
     function filterCases(cat, btn) {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      let visibleIdx = 0;
       document.querySelectorAll('#cardsGrid .card').forEach(card => {
-        card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'flex' : 'none';
+        const show = (cat === 'all' || card.dataset.cat === cat);
+        card.style.display = show ? 'flex' : 'none';
+        if (show) {
+          card.classList.remove('is-visible');
+          setTimeout(() => card.classList.add('is-visible'), 40 * visibleIdx++);
+        }
       });
     }
 
@@ -2577,6 +2703,13 @@
       const text = `Привет! Хочу заказать проект в AlwaysStudio.\n\nИмя: ${name}\nСфера/задача: ${niche}\nУслуга: ${tariff}`;
       window.open(`https://t.me/${TG_USERNAME}?text=${encodeURIComponent(text)}`, '_blank');
     }
+
+    /* Initial Run on Page Load */
+    window.addEventListener('DOMContentLoaded', () => {
+      const activePage = document.querySelector('.page-view.active');
+      if (activePage) triggerStagger(activePage);
+      animateCounters();
+    });
   </script>
 </body>
 </html>
