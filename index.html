@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#030508">
 
   <!-- SEO & OpenGraph -->
-  <title>AlwaysStudio — Сайты, Mini Apps и Telegram-боты за 24 часа</title>
+  <title>AlwaysStudio by alwayssow — Сайты, Mini Apps и Telegram-боты за 24 часа</title>
   <meta name="description" content="Разработка сайтов-визиток, интернет-магазинов, Telegram Mini Apps и умных Telegram-ботов под ключ от 990 ₽. Хостинг 0 ₽/мес.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="AlwaysStudio">
@@ -199,6 +199,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 8px;
       position: relative;
     }
 
@@ -216,13 +217,14 @@
     .logo-wrap {
       display: flex;
       align-items: center;
-      gap: 11px;
+      gap: 10px;
       cursor: pointer;
+      min-width: 0;
     }
 
     .logo-badge {
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       background: radial-gradient(circle at 50% 45%, #07192e 0%, #030a14 100%);
       border: 1.5px solid rgba(34, 211, 238, 0.8);
@@ -235,8 +237,8 @@
     }
 
     .logo-badge svg {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       display: block;
     }
 
@@ -248,30 +250,47 @@
     .logo-text-group {
       display: flex;
       flex-direction: column;
-      line-height: 1.1;
+      line-height: 1.15;
+      min-width: 0;
     }
 
     .logo-title {
       font-weight: 800;
-      font-size: 1.1rem;
+      font-size: clamp(0.98rem, 2.8vw, 1.12rem);
       letter-spacing: -0.03em;
       color: #ffffff;
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      column-gap: 5px;
     }
 
-    .logo-title span {
+    .logo-studio {
       background: linear-gradient(135deg, #38bdf8, #67e8f9);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
+    .logo-by {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: rgba(255, 255, 255, 0.36);
+      white-space: nowrap;
+    }
+
     .logo-sub {
-      font-size: 0.68rem;
+      font-size: 0.67rem;
       font-weight: 500;
       color: #94a3b8;
       display: flex;
       align-items: center;
       gap: 5px;
       margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .live-dot {
@@ -281,6 +300,7 @@
       background: var(--emerald);
       box-shadow: 0 0 8px var(--emerald);
       display: inline-block;
+      flex-shrink: 0;
     }
 
     /* Multi-Page Navigation Tabs */
@@ -288,6 +308,7 @@
       display: flex;
       align-items: center;
       gap: 4px;
+      flex-shrink: 0;
     }
 
     .nav-tab {
@@ -313,25 +334,25 @@
       box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.34);
     }
 
-    @media (max-width: 780px) {
+    @media (max-width: 820px) {
       .nav-tab { display: none; }
     }
 
     .header-cta {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 9px 15px;
+      gap: 5px;
+      padding: 9px 14px;
       border-radius: 12px;
       background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 55%, #22d3ee 100%);
       color: #ffffff;
-      font-size: 0.83rem;
+      font-size: 0.82rem;
       font-weight: 700;
       border: none;
       cursor: pointer;
       box-shadow: 0 6px 20px rgba(14, 165, 233, 0.32), inset 0 1px 0 rgba(255,255,255,0.3);
       transition: transform 0.15s ease, box-shadow 0.2s ease;
-      margin-left: 6px;
+      flex-shrink: 0;
     }
 
     .header-cta:active { transform: scale(0.96); }
@@ -412,27 +433,12 @@
 
     /* Hero Section */
     .hero {
-      padding: 28px 0 24px;
+      padding: 26px 0 24px;
       text-align: center;
     }
 
     @media (min-width: 768px) {
-      .hero { padding: 52px 0 32px; }
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: 999px;
-      background: rgba(14, 165, 233, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.26);
-      color: #7dd3fc;
-      font-size: 0.76rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      margin-bottom: 18px;
+      .hero { padding: 48px 0 32px; }
     }
 
     h1 {
@@ -515,7 +521,7 @@
     /* Tech Stack Logos Strip */
     .tech-stack-section {
       max-width: 860px;
-      margin: 26px auto 0;
+      margin: 28px auto 0;
       text-align: center;
     }
 
@@ -563,14 +569,6 @@
     }
 
     /* Unified Cyan Glow Action Cards */
-    .quick-nav-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
-      gap: 12px;
-      max-width: 860px;
-      margin: 24px auto 0;
-    }
-
     .social-connect-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1272,7 +1270,7 @@
       display: none;
     }
 
-    @media (max-width: 780px) {
+    @media (max-width: 820px) {
       .mobile-dock {
         position: fixed;
         bottom: 0;
@@ -1609,7 +1607,10 @@
           </svg>
         </div>
         <div class="logo-text-group">
-          <div class="logo-title">Always<span>Studio</span></div>
+          <div class="logo-title">
+            <span>Always<span class="logo-studio">Studio</span></span>
+            <span class="logo-by">by alwayssow</span>
+          </div>
           <div class="logo-sub"><span class="live-dot"></span> Web, Mini Apps & Bot API</div>
         </div>
       </div>
@@ -1633,11 +1634,6 @@
     <!-- ==================== PAGE 1: HOME ==================== -->
     <div id="page-home" class="page-view active">
       <section class="hero">
-        <div class="hero-eyebrow reveal-item">
-          <span class="live-dot"></span>
-          <span>Запуск цифровых продуктов под ключ • 2026</span>
-        </div>
-
         <h1 class="reveal-item">Сайты, <span class="gradient-text">Mini Apps и Telegram-боты</span> за 24 часа</h1>
         <p class="reveal-item">Проектируем быстрые сайты-визитки, интернет-магазины, Telegram Mini Apps и умных ботов для автоматизации заявок без ежемесячной платы за хостинг.</p>
         
@@ -1692,48 +1688,6 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               <span>Cloudflare & GitHub CDN</span>
             </div>
-          </div>
-        </div>
-
-        <!-- Quick Navigation Cards -->
-        <div class="quick-nav-grid">
-          <div class="action-glow-card spotlight reveal-item" onclick="switchPage('cases')">
-            <div class="action-glow-left">
-              <div class="action-icon-box">
-                <svg class="ui-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
-              </div>
-              <div class="action-card-text">
-                <strong>Портфолио и демо</strong>
-                <span>8 интерактивных макетов</span>
-              </div>
-            </div>
-            <span class="action-pill-btn">Открыть</span>
-          </div>
-
-          <div class="action-glow-card spotlight reveal-item" onclick="switchPage('services')">
-            <div class="action-glow-left">
-              <div class="action-icon-box">
-                <svg class="ui-icon" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-              </div>
-              <div class="action-card-text">
-                <strong>Услуги и тарифы</strong>
-                <span>Сайты, магазины и боты</span>
-              </div>
-            </div>
-            <span class="action-pill-btn">Смотреть</span>
-          </div>
-
-          <div class="action-glow-card spotlight reveal-item" onclick="switchPage('faq')">
-            <div class="action-glow-left">
-              <div class="action-icon-box">
-                <svg class="ui-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-              </div>
-              <div class="action-card-text">
-                <strong>Вопросы и расчет</strong>
-                <span>Гарантии и быстрый старт</span>
-              </div>
-            </div>
-            <span class="action-pill-btn">Перейти</span>
           </div>
         </div>
 
@@ -1806,7 +1760,7 @@
 
         <!-- Direct Telegram & Channel Block -->
         <div class="social-connect-grid">
-          <a href="https://t.me/alwayssowdev" target="_blank" class="action-glow-card spotlight reveal-item">
+          <a href="https://t.me/alwayssowdev" target="_blank" rel="noopener noreferrer" class="action-glow-card spotlight reveal-item">
             <div class="action-glow-left">
               <div class="action-icon-box">
                 <svg class="ui-icon" viewBox="0 0 24 24">
@@ -1821,7 +1775,7 @@
             <span class="action-pill-btn">Telegram</span>
           </a>
 
-          <a href="https://t.me/alwaysstudiioo" target="_blank" class="action-glow-card spotlight reveal-item">
+          <a href="https://t.me/alwaysstudiioo" target="_blank" rel="noopener noreferrer" class="action-glow-card spotlight reveal-item">
             <div class="action-glow-left">
               <div class="action-icon-box">
                 <svg class="ui-icon" viewBox="0 0 24 24">
@@ -2531,8 +2485,8 @@
             <span>Напишите напрямую разработчику: <b>@alwayssowdev</b> или посмотрите свежие релизы в <b>@alwaysstudiioo</b></span>
           </div>
           <div style="display:flex; gap:8px; flex-wrap:wrap; position:relative; z-index:2;">
-            <a href="https://t.me/alwayssowdev" target="_blank" class="btn btn-primary btn-sm">Написать @alwayssowdev</a>
-            <a href="https://t.me/alwaysstudiioo" target="_blank" class="btn btn-outline btn-sm">Канал студии</a>
+            <a href="https://t.me/alwayssowdev" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Написать @alwayssowdev</a>
+            <a href="https://t.me/alwaysstudiioo" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Канал студии</a>
           </div>
         </div>
 
@@ -2592,7 +2546,7 @@
   </nav>
 
   <footer>
-    <div class="container">© 2026 AlwaysStudio • <a href="https://t.me/alwayssowdev" target="_blank" style="color:var(--primary-bright); text-decoration:none; font-weight:600;">@alwayssowdev</a> • <a href="https://t.me/alwaysstudiioo" target="_blank" style="color:var(--primary-bright); text-decoration:none; font-weight:600;">Telegram-канал</a></div>
+    <div class="container">© 2026 AlwaysStudio by alwayssow • <a href="https://t.me/alwayssowdev" target="_blank" rel="noopener noreferrer" style="color:var(--primary-bright); text-decoration:none; font-weight:600;">@alwayssowdev</a> • <a href="https://t.me/alwaysstudiioo" target="_blank" rel="noopener noreferrer" style="color:var(--primary-bright); text-decoration:none; font-weight:600;">Telegram-канал</a></div>
   </footer>
 
   <!-- Interactive Smartphone Preview Modal -->
@@ -2601,7 +2555,7 @@
       <div class="phone-island"></div>
       <div class="phone-top">
         <span style="font-size:0.76rem; color:#94a3b8; font-weight:600;">Интерактивный режим клиента</span>
-        <button class="close-btn" onclick="document.getElementById('demoModal').classList.remove('active')">✕</button>
+        <button class="close-btn" onclick="hideDemoModal()">✕</button>
       </div>
 
       <div class="demo-hero-card" id="demoHeroCard">
@@ -2633,7 +2587,7 @@
         <div class="tg-msg-body" id="tgMsgBody"></div>
       </div>
 
-      <button class="btn btn-outline btn-sm" style="width:100%; margin-top:10px;" onclick="document.getElementById('demoModal').classList.remove('active'); switchPage('faq', true);">Заказать такой же проект →</button>
+      <button class="btn btn-outline btn-sm" style="width:100%; margin-top:10px;" onclick="hideDemoModal(); switchPage('faq', true);">Заказать такой же проект →</button>
     </div>
   </div>
 
@@ -2660,10 +2614,14 @@
       });
     }
 
-    /* Animated Number Counters */
+    /* Animated Number Counters (Race-Condition Safe) */
     function animateCounters() {
       const counters = document.querySelectorAll('.counter-num');
       counters.forEach(counter => {
+        if (counter._animId) {
+          cancelAnimationFrame(counter._animId);
+        }
+
         const target = parseInt(counter.dataset.target, 10);
         const prefix = counter.dataset.prefix || "";
         const suffix = counter.dataset.suffix || "";
@@ -2684,10 +2642,12 @@
           counter.textContent = `${prefix}${current}${suffix}`;
 
           if (progress < 1) {
-            requestAnimationFrame(update);
+            counter._animId = requestAnimationFrame(update);
+          } else {
+            counter._animId = null;
           }
         }
-        requestAnimationFrame(update);
+        counter._animId = requestAnimationFrame(update);
       });
     }
 
@@ -2743,7 +2703,7 @@
       });
     }
 
-    /* Clean Interactive Demo Data (No Emojis + Rounded Commercial Prices) */
+    /* Interactive Demo Data */
     const demos = {
       shop: {
         title: "GadgetStore • Магазин аксессуаров",
@@ -2894,6 +2854,12 @@
 
       renderDemoItems('all');
       document.getElementById('demoModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function hideDemoModal() {
+      document.getElementById('demoModal').classList.remove('active');
+      document.body.style.overflow = '';
     }
 
     function selectSlot(slotVal, btn) {
@@ -2974,7 +2940,7 @@
 
     function closeDemo(e) {
       if (e.target.id === 'demoModal') {
-        document.getElementById('demoModal').classList.remove('active');
+        hideDemoModal();
       }
     }
 
@@ -2983,7 +2949,7 @@
       const niche = document.getElementById('clientNiche').value.trim() || "Не указана";
       const tariff = document.getElementById('clientTariff').value;
       const text = `Здравствуйте! Хочу обсудить проект в AlwaysStudio.\n\nИмя: ${name}\nНиша / задача: ${niche}\nФормат: ${tariff}`;
-      window.open(`https://t.me/${TG_USERNAME}?text=${encodeURIComponent(text)}`, '_blank');
+      window.open(`https://t.me/${TG_USERNAME}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
     }
 
     /* Initial Run */
