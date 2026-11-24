@@ -1447,7 +1447,7 @@
     <div id="page-home" class="page-view active">
       <section class="hero">
         <h1>Сайты, <span class="gradient-text">Mini Apps и Telegram-боты</span> за 24 часа</h1>
-        <p>Создаем сайты-визитки, Telegram Mini Apps, цифровые карточки BioCard и умных Telegram-ботов для автоматизации заявок и продаж под ключ.</p>
+        <p>Создаем сайты-визитки, интернет-магазины, Telegram Mini Apps и умных Telegram-ботов для автоматизации заявок и продаж под ключ.</p>
         
         <div class="hero-actions">
           <button class="btn btn-primary btn-shimmer" onclick="switchPage('faq', true)">
@@ -1484,7 +1484,7 @@
               </div>
               <div class="action-card-text">
                 <strong>Примеры работ</strong>
-                <span>7 реальных кейсов с превью</span>
+                <span>8 реальных кейсов с превью</span>
               </div>
             </div>
             <span class="action-pill-btn">Открыть</span>
@@ -1497,7 +1497,7 @@
               </div>
               <div class="action-card-text">
                 <strong>Услуги и цены</strong>
-                <span>Сайты, Mini Apps и TG-боты</span>
+                <span>Сайты, магазины и TG-боты</span>
               </div>
             </div>
             <span class="action-pill-btn">Смотреть</span>
@@ -1531,7 +1531,7 @@
           <div class="compare-card good">
             <strong style="color:var(--primary-bright); font-size:1rem;">AlwaysStudio</strong>
             <ul class="compare-list">
-              <li>Одна ссылка или бот с прайсом, фото и записью</li>
+              <li>Одна ссылка или бот с прайсом, фото и корзиной</li>
               <li>Загрузка на iPhone и Android за 0.3 секунды</li>
               <li>Окупается с первого же нового клиента</li>
             </ul>
@@ -1541,6 +1541,7 @@
         <!-- Subtle Niche Marquee Strip -->
         <div class="ticker-wrap">
           <div class="ticker-track">
+            <span class="ticker-pill">Интернет-магазины</span>
             <span class="ticker-pill">Бьюти-мастера</span>
             <span class="ticker-pill">Telegram-боты</span>
             <span class="ticker-pill">Детейлинг и СТО</span>
@@ -1548,6 +1549,7 @@
             <span class="ticker-pill">Репетиторы и курсы</span>
             <span class="ticker-pill">Фотографы и видео</span>
             <span class="ticker-pill">Ремонт техники</span>
+            <span class="ticker-pill">Интернет-магазины</span>
             <span class="ticker-pill">Бьюти-мастера</span>
             <span class="ticker-pill">Telegram-боты</span>
             <span class="ticker-pill">Детейлинг и СТО</span>
@@ -1598,18 +1600,53 @@
       <section class="section-block">
         <span class="section-label">Реальные кейсы</span>
         <h2 class="section-title">Приближенные к реальным результатам</h2>
-        <p class="section-sub">Нажмите «Запустить живое превью» на любой карточке: выберите услуги, удобное время и посмотрите, какое готовое сообщение с заказом придет вам в Telegram.</p>
+        <p class="section-sub">Нажмите «Запустить живое превью» на любой карточке: выберите товары или услуги, удобное время и посмотрите, какое готовое сообщение с заказом придет вам в Telegram.</p>
 
         <div class="filter-bar">
-          <button class="filter-btn active" onclick="filterCases('all', this)">Все кейсы (7)</button>
+          <button class="filter-btn active" onclick="filterCases('all', this)">Все кейсы (8)</button>
+          <button class="filter-btn" onclick="filterCases('food', this)">Магазины и еда</button>
           <button class="filter-btn" onclick="filterCases('bots', this)">Telegram-боты</button>
           <button class="filter-btn" onclick="filterCases('services', this)">Услуги и мастера</button>
-          <button class="filter-btn" onclick="filterCases('food', this)">Еда и магазины</button>
           <button class="filter-btn" onclick="filterCases('experts', this)">Эксперты</button>
         </div>
 
         <div class="grid" id="cardsGrid">
-          <!-- Case 1: Telegram Bot -->
+          <!-- Case 1: Online Store -->
+          <div class="card" data-cat="food">
+            <div>
+              <div class="card-top">
+                <span class="tag">Интернет-магазин</span>
+                <span class="mini-badge">Срок: 24 часа</span>
+              </div>
+              <h3>Магазин техники и аксессуаров</h3>
+              <p>Удобный каталог товаров с категориями, корзиной, автоматическим расчетом суммы и отправкой заказа в Telegram.</p>
+              <div class="case-result-bar">
+                <span>Результат внедрения</span>
+                <span>+41% заказов через каталог</span>
+              </div>
+              <div class="mini-phone-window">
+                <div class="mini-window-bar">
+                  <div class="dots"><i></i><i></i><i></i></div>
+                  <span class="mini-url">gadget-store.app</span>
+                </div>
+                <div class="mini-app-banner" style="background:linear-gradient(135deg, rgba(2,132,199,0.3), rgba(56,189,248,0.14));">
+                  <div class="mini-avatar" style="background:linear-gradient(135deg,#0284c7,#38bdf8);">🛍️</div>
+                  <div class="mini-app-title">
+                    <strong>GadgetStore • Аксессуары</strong>
+                    <span>В наличии • Доставка в день заказа</span>
+                  </div>
+                </div>
+                <div class="mockup-row"><span>Беспроводные наушники Pro 2</span><span class="price-chip">3 490 ₽</span></div>
+                <div class="mockup-row"><span>MagSafe PowerBank 10 000 mAh</span><span class="price-chip">2 790 ₽</span></div>
+              </div>
+            </div>
+            <button class="btn case-cta-btn btn-sm" onclick="openDemo('shop')">
+              <span>Запустить живое превью</span>
+              <svg class="ui-icon" style="width:15px;height:15px;" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+          </div>
+
+          <!-- Case 2: Telegram Bot -->
           <div class="card" data-cat="bots">
             <div>
               <div class="card-top">
@@ -1644,7 +1681,7 @@
             </button>
           </div>
 
-          <!-- Case 2: Beauty -->
+          <!-- Case 3: Beauty -->
           <div class="card" data-cat="services">
             <div>
               <div class="card-top">
@@ -1679,77 +1716,7 @@
             </button>
           </div>
 
-          <!-- Case 3: Tutor -->
-          <div class="card" data-cat="experts">
-            <div>
-              <div class="card-top">
-                <span class="tag">Репетиторы</span>
-                <span class="mini-badge">Срок: 24 часа</span>
-              </div>
-              <h3>Подготовка к ЕГЭ и английский</h3>
-              <p>Посадочная страница для родителей и учеников: реальные баллы выпускников, тарифы и запись на пробный урок.</p>
-              <div class="case-result-bar">
-                <span>Результат внедрения</span>
-                <span>7 из 10 заявок в абонемент</span>
-              </div>
-              <div class="mini-phone-window">
-                <div class="mini-window-bar">
-                  <div class="dots"><i></i><i></i><i></i></div>
-                  <span class="mini-url">english-ege.app</span>
-                </div>
-                <div class="mini-app-banner" style="background:linear-gradient(135deg, rgba(37,99,235,0.28), rgba(14,165,233,0.12));">
-                  <div class="mini-avatar" style="background:linear-gradient(135deg,#2563eb,#0ea5e9);">📚</div>
-                  <div class="mini-app-title">
-                    <strong>English & ЕГЭ с Еленой</strong>
-                    <span>Средний балл 86 • Zoom / Миро</span>
-                  </div>
-                </div>
-                <div class="mockup-row"><span>Пробный урок + диагностика</span><span class="price-chip">0 ₽</span></div>
-                <div class="mockup-row"><span>Индивидуально (60 мин)</span><span class="price-chip">1 050 ₽</span></div>
-              </div>
-            </div>
-            <button class="btn case-cta-btn btn-sm" onclick="openDemo('tutor')">
-              <span>Запустить живое превью</span>
-              <svg class="ui-icon" style="width:15px;height:15px;" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </button>
-          </div>
-
-          <!-- Case 4: Auto -->
-          <div class="card" data-cat="services">
-            <div>
-              <div class="card-top">
-                <span class="tag">Автоуслуги</span>
-                <span class="mini-badge">Срок: 24 часа</span>
-              </div>
-              <h3>Детейлинг и химчистка авто</h3>
-              <p>Прайс по услугам кузова и салона: водитель сразу видит итоговую стоимость и бронирует бокс.</p>
-              <div class="case-result-bar">
-                <span>Результат внедрения</span>
-                <span>Средний чек вырос на 22%</span>
-              </div>
-              <div class="mini-phone-window">
-                <div class="mini-window-bar">
-                  <div class="dots"><i></i><i></i><i></i></div>
-                  <span class="mini-url">prodetail.app</span>
-                </div>
-                <div class="mini-app-banner" style="background:linear-gradient(135deg, rgba(3,105,161,0.32), rgba(2,132,199,0.12));">
-                  <div class="mini-avatar" style="background:linear-gradient(135deg,#0369a1,#0284c7);">🚘</div>
-                  <div class="mini-app-title">
-                    <strong>ProDetail Studio</strong>
-                    <span>Гарантия 12 мес • Бокс на 4 авто</span>
-                  </div>
-                </div>
-                <div class="mockup-row"><span>Детейлинг-химчистка салона</span><span class="price-chip">4 550 ₽</span></div>
-                <div class="mockup-row"><span>Полировка + керамика (2 слоя)</span><span class="price-chip">9 800 ₽</span></div>
-              </div>
-            </div>
-            <button class="btn case-cta-btn btn-sm" onclick="openDemo('auto')">
-              <span>Запустить живое превью</span>
-              <svg class="ui-icon" style="width:15px;height:15px;" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </button>
-          </div>
-
-          <!-- Case 5: Bakery -->
+          <!-- Case 4: Bakery -->
           <div class="card" data-cat="food">
             <div>
               <div class="card-top">
@@ -1784,7 +1751,77 @@
             </button>
           </div>
 
-          <!-- Case 6: Photo -->
+          <!-- Case 5: Tutor -->
+          <div class="card" data-cat="experts">
+            <div>
+              <div class="card-top">
+                <span class="tag">Репетиторы</span>
+                <span class="mini-badge">Срок: 24 часа</span>
+              </div>
+              <h3>Подготовка к ЕГЭ и английский</h3>
+              <p>Посадочная страница для родителей и учеников: реальные баллы выпускников, тарифы и запись на пробный урок.</p>
+              <div class="case-result-bar">
+                <span>Результат внедрения</span>
+                <span>7 из 10 заявок в абонемент</span>
+              </div>
+              <div class="mini-phone-window">
+                <div class="mini-window-bar">
+                  <div class="dots"><i></i><i></i><i></i></div>
+                  <span class="mini-url">english-ege.app</span>
+                </div>
+                <div class="mini-app-banner" style="background:linear-gradient(135deg, rgba(37,99,235,0.28), rgba(14,165,233,0.12));">
+                  <div class="mini-avatar" style="background:linear-gradient(135deg,#2563eb,#0ea5e9);">📚</div>
+                  <div class="mini-app-title">
+                    <strong>English & ЕГЭ с Еленой</strong>
+                    <span>Средний балл 86 • Zoom / Миро</span>
+                  </div>
+                </div>
+                <div class="mockup-row"><span>Пробный урок + диагностика</span><span class="price-chip">0 ₽</span></div>
+                <div class="mockup-row"><span>Индивидуально (60 мин)</span><span class="price-chip">1 050 ₽</span></div>
+              </div>
+            </div>
+            <button class="btn case-cta-btn btn-sm" onclick="openDemo('tutor')">
+              <span>Запустить живое превью</span>
+              <svg class="ui-icon" style="width:15px;height:15px;" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+          </div>
+
+          <!-- Case 6: Auto -->
+          <div class="card" data-cat="services">
+            <div>
+              <div class="card-top">
+                <span class="tag">Автоуслуги</span>
+                <span class="mini-badge">Срок: 24 часа</span>
+              </div>
+              <h3>Детейлинг и химчистка авто</h3>
+              <p>Прайс по услугам кузова и салона: водитель сразу видит итоговую стоимость и бронирует бокс.</p>
+              <div class="case-result-bar">
+                <span>Результат внедрения</span>
+                <span>Средний чек вырос на 22%</span>
+              </div>
+              <div class="mini-phone-window">
+                <div class="mini-window-bar">
+                  <div class="dots"><i></i><i></i><i></i></div>
+                  <span class="mini-url">prodetail.app</span>
+                </div>
+                <div class="mini-app-banner" style="background:linear-gradient(135deg, rgba(3,105,161,0.32), rgba(2,132,199,0.12));">
+                  <div class="mini-avatar" style="background:linear-gradient(135deg,#0369a1,#0284c7);">🚘</div>
+                  <div class="mini-app-title">
+                    <strong>ProDetail Studio</strong>
+                    <span>Гарантия 12 мес • Бокс на 4 авто</span>
+                  </div>
+                </div>
+                <div class="mockup-row"><span>Детейлинг-химчистка салона</span><span class="price-chip">4 550 ₽</span></div>
+                <div class="mockup-row"><span>Полировка + керамика (2 слоя)</span><span class="price-chip">9 800 ₽</span></div>
+              </div>
+            </div>
+            <button class="btn case-cta-btn btn-sm" onclick="openDemo('auto')">
+              <span>Запустить живое превью</span>
+              <svg class="ui-icon" style="width:15px;height:15px;" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+          </div>
+
+          <!-- Case 7: Photo -->
           <div class="card" data-cat="experts">
             <div>
               <div class="card-top">
@@ -1819,7 +1856,7 @@
             </button>
           </div>
 
-          <!-- Case 7: Repair -->
+          <!-- Case 8: Repair -->
           <div class="card" data-cat="services">
             <div>
               <div class="card-top">
@@ -1862,7 +1899,7 @@
       <section class="section-block">
         <span class="section-label">Услуги и стоимость</span>
         <h2 class="section-title">Все решения студии под ключ</h2>
-        <p class="section-sub">Сайты и Mini Apps запускаются по фиксированной цене без ежемесячной платы за хостинг, а Telegram-боты рассчитываются индивидуально под ваш сценарий.</p>
+        <p class="section-sub">Сайты, интернет-магазины и Mini Apps запускаются без ежемесячной платы за хостинг, а Telegram-боты рассчитываются индивидуально под ваш сценарий.</p>
 
         <div class="pricing-grid">
           <!-- Service 1: BioCard -->
@@ -1903,7 +1940,26 @@
             <button class="btn btn-outline btn-sm" onclick="orderService('Редизайн и правки сайта (840 ₽)')">Заказать апгрейд</button>
           </div>
 
-          <!-- Service 3: Landing -->
+          <!-- Service 3: Online Store (from 1000 RUB) -->
+          <div class="card featured">
+            <div>
+              <div class="card-top">
+                <span class="tag">E-commerce</span>
+                <span class="mini-badge">За 24 часа</span>
+              </div>
+              <h3>Интернет-магазин</h3>
+              <div class="price-val">от 1 000 ₽ <small>/ под ключ</small></div>
+              <ul class="features">
+                <li>Витрина товаров с категориями, фото и описанием</li>
+                <li>Удобная корзина с автоматическим расчетом суммы</li>
+                <li>Мгновенная отправка готового заказа вам в Telegram</li>
+                <li>Размещение в интернете без ежемесячной платы</li>
+              </ul>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="orderService('Интернет-магазин (от 1 000 ₽)')">Заказать магазин</button>
+          </div>
+
+          <!-- Service 4: Landing -->
           <div class="card featured">
             <div>
               <div class="card-top">
@@ -1922,7 +1978,7 @@
             <button class="btn btn-primary btn-sm" onclick="orderService('Сайт-визитка / Лендинг (1 050 ₽)')">Заказать сайт</button>
           </div>
 
-          <!-- Service 4: Mini App -->
+          <!-- Service 5: Mini App -->
           <div class="card featured">
             <div>
               <div class="card-top">
@@ -1941,7 +1997,7 @@
             <button class="btn btn-primary btn-sm" onclick="orderService('Telegram Mini App (1 400 ₽)')">Заказать Mini App</button>
           </div>
 
-          <!-- Service 5: Telegram Bot (Negotiable) -->
+          <!-- Service 6: Telegram Bot (Negotiable) -->
           <div class="card bot-card">
             <div>
               <div class="card-top">
@@ -1972,13 +2028,13 @@
 
         <div class="faq-list">
           <details class="faq-item" open>
-            <summary class="faq-q">От чего зависит цена разработки Telegram-бота?</summary>
-            <div class="faq-a">Цена договорная и зависит от функционала: простой бот с меню, прайсом и отправкой заявок в личку стоит недорого и делается за 1 день, а сложный бот с базой данных, приемом оплат, рассылками или ИИ-ассистентом оценивается индивидуально перед стартом.</div>
+            <summary class="faq-q">От чего зависит цена интернет-магазина и Telegram-бота?</summary>
+            <div class="faq-a">Базовый интернет-магазин с каталогом, корзиной и отправкой заказов в Telegram стоит от 1 000 ₽ (итоговая цена зависит от количества товаров и фильтров). Для Telegram-ботов цена договорная и зависит от сложности логики: меню, запись, база данных или прием оплат.</div>
           </details>
 
           <details class="faq-item">
             <summary class="faq-q">Правда ли не нужно платить каждый месяц за хостинг сайта?</summary>
-            <div class="faq-a">Да. Все сайты-визитки, BioCard и фронтенд Mini Apps мы размещаем на надежной облачной инфраструктуре с бесплатным SSL-сертификатом — без ежемесячной абонентской платы.</div>
+            <div class="faq-a">Да. Все сайты-визитки, интернет-магазины, BioCard и фронтенд Mini Apps мы размещаем на надежной облачной инфраструктуре с бесплатным SSL-сертификатом — без ежемесячной абонентской платы.</div>
           </details>
 
           <details class="faq-item">
@@ -1987,15 +2043,15 @@
           </details>
 
           <details class="faq-item">
-            <summary class="faq-q">Как потом поменять цены или добавить новую услугу?</summary>
-            <div class="faq-a">Просто напишите нам в Telegram — обновим цены, тексты или фото за 15 минут. Также при желании передадим вам исходный файл проекта.</div>
+            <summary class="faq-q">Как потом поменять цены или добавить новый товар?</summary>
+            <div class="faq-a">Просто напишите нам в Telegram — обновим цены, товары или фото за 15 минут. Также при желании передадим вам исходный файл проекта.</div>
           </details>
         </div>
 
         <!-- Direct Telegram Contact Card -->
         <div class="faq-contact-box">
           <div class="faq-contact-text">
-            <strong>Нужен расчет стоимости бота или помощь с выбором?</strong>
+            <strong>Нужен расчет стоимости магазина или бота?</strong>
             <span>Напишите напрямую разработчику в Telegram: <b>@alwayssowdev</b> или подпишитесь на канал <b>@alwaysstudiioo</b></span>
           </div>
           <div style="display:flex; gap:8px; flex-wrap:wrap;">
@@ -2014,11 +2070,12 @@
           </div>
           <div class="form-group">
             <label>Ваша сфера или задача</label>
-            <input type="text" id="clientNiche" placeholder="Например: Бот для записи / Маникюр / Автосервис">
+            <input type="text" id="clientNiche" placeholder="Например: Интернет-магазин одежды / Маникюр / Бот">
           </div>
           <div class="form-group">
             <label>Выберите услугу</label>
             <select id="clientTariff">
+              <option value="Интернет-магазин (от 1 000 ₽)">Интернет-магазин — от 1 000 ₽</option>
               <option value="Сайт-визитка / Лендинг (1 050 ₽)">Сайт-визитка / Лендинг — 1 050 ₽</option>
               <option value="Telegram Mini App (1 400 ₽)">Telegram Mini App — 1 400 ₽</option>
               <option value="Создание Telegram-бота (цена договорная)">Создание Telegram-бота — договорная</option>
@@ -2080,7 +2137,7 @@
       <div style="font-size:0.74rem; color:#94a3b8; margin-bottom:8px;">1. Выберите нужные позиции:</div>
       <div id="demoList"></div>
 
-      <div style="font-size:0.74rem; color:#94a3b8; margin-top:10px;">2. Удобное время / формат:</div>
+      <div style="font-size:0.74rem; color:#94a3b8; margin-top:10px;">2. Удобное время / способ получения:</div>
       <div class="slot-bar" id="demoSlots"></div>
 
       <div class="demo-summary">
@@ -2090,7 +2147,7 @@
 
       <button class="btn btn-primary btn-sm" id="demoActionBtn" style="width:100%;" onclick="triggerDemoOrder()">Сформировать заявку</button>
 
-      <!-- Real Telegram Incoming Message Result -->
+      <!-- Real Telegram Message Preview inside Demo -->
       <div class="tg-msg-preview" id="tgMsgPreview">
         <div class="tg-msg-header">
           <span>Так заявка придет вам в Telegram:</span>
@@ -2280,6 +2337,21 @@
 
     /* 4. Realistic Interactive Demo Data */
     const demos = {
+      shop: {
+        title: "🛍️ GadgetStore • Магазин аксессуаров",
+        desc: "Оригинальные аксессуары для iPhone и Mac • Гарантия 12 мес • Доставка по городу",
+        gradient: "linear-gradient(135deg, #0284c7, #38bdf8)",
+        meta: ["В наличии", "Доставка за 2ч", "4.9 (112 отзывов)"],
+        cta: "Оформить заказ в Telegram",
+        slots: ["Курьером сегодня", "Самовывоз из магазина", "СДЭК / Почта РФ"],
+        tabs: ["Весь каталог", "Аудио", "Зарядка и защита"],
+        items: [
+          { cat: "Аудио", name: "Беспроводные наушники Pro 2 (ANC)", sub: "Активное шумоподавление • Чехол в подарок", price: 3490, label: "3 490 ₽" },
+          { cat: "Зарядка и защита", name: "MagSafe PowerBank 10 000 mAh", sub: "Быстрая беспроводная зарядка 15W", price: 2790, label: "2 790 ₽" },
+          { cat: "Зарядка и защита", name: "Адаптер питания USB-C 20W + кабель", sub: "Оригинальный чип • Быстрая зарядка 50% за 30 мин", price: 1490, label: "1 490 ₽" },
+          { cat: "Зарядка и защита", name: "Силиконовый чехол MagSafe + защитное стекло", sub: "Комплект для любой модели iPhone", price: 1190, label: "1 190 ₽" }
+        ]
+      },
       tgbot: {
         title: "🤖 TOP CUT • Бот-администратор",
         desc: "Онлайн-запись к барберу, напоминания и бонусный баланс в Telegram",
@@ -2387,7 +2459,7 @@
       }
     };
 
-    let activeDemoKey = 'tgbot';
+    let activeDemoKey = 'shop';
     let selectedIndices = new Set([0]);
     let selectedSlot = "";
 
@@ -2487,7 +2559,7 @@
         }
       });
 
-      const msg = `Новая заявка | ${data.title}\n\nВыбрано:\n${lines.join('\n')}\n\nВремя: ${selectedSlot}\nИтого: ${sum.toLocaleString('ru-RU')} ₽\nКлиент: @username`;
+      const msg = `Новая заявка | ${data.title}\n\nВыбрано:\n${lines.join('\n')}\n\nВремя / доставка: ${selectedSlot}\nИтого: ${sum.toLocaleString('ru-RU')} ₽\nКлиент: @username`;
       document.getElementById('tgMsgBody').textContent = msg;
       document.getElementById('tgMsgPreview').style.display = 'block';
     }
