@@ -91,15 +91,15 @@
       transition: width 0.08s linear;
     }
 
-    /* Reference-Style Technical Grid + Blue-Cyan Ambient Glows */
+    /* Technical Grid + Dot Matrix + Blue-Cyan Ambient Glows */
     .bg-stage {
       position: fixed;
       inset: 0;
       width: 100vw;
       height: 100vh;
       background:
-        radial-gradient(ellipse 75% 48% at 72% 38%, rgba(14, 165, 233, 0.2) 0%, rgba(2, 132, 199, 0.06) 50%, transparent 78%),
-        radial-gradient(ellipse 65% 40% at 25% 12%, rgba(56, 189, 248, 0.14) 0%, transparent 75%),
+        radial-gradient(ellipse 75% 48% at 72% 38%, rgba(14, 165, 233, 0.22) 0%, rgba(2, 132, 199, 0.07) 50%, transparent 78%),
+        radial-gradient(ellipse 65% 40% at 25% 12%, rgba(56, 189, 248, 0.15) 0%, transparent 75%),
         linear-gradient(180deg, #050a14 0%, #030508 55%, #040914 100%);
       z-index: -4;
       pointer-events: none;
@@ -112,11 +112,13 @@
       width: 100vw;
       height: 100vh;
       background-image:
+        radial-gradient(rgba(56, 189, 248, 0.14) 1.5px, transparent 1.5px),
         linear-gradient(to right, rgba(56, 189, 248, 0.065) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(56, 189, 248, 0.065) 1px, transparent 1px);
-      background-size: 40px 40px;
-      mask-image: radial-gradient(ellipse 96% 85% at 50% 42%, #000 35%, transparent 96%);
-      -webkit-mask-image: radial-gradient(ellipse 96% 85% at 50% 42%, #000 35%, transparent 96%);
+      background-size: 20px 20px, 40px 40px, 40px 40px;
+      background-position: 8px 8px, 0 0, 0 0;
+      mask-image: radial-gradient(ellipse 96% 88% at 50% 45%, #000 38%, transparent 96%);
+      -webkit-mask-image: radial-gradient(ellipse 96% 88% at 50% 45%, #000 38%, transparent 96%);
       pointer-events: none;
       z-index: -3;
     }
@@ -126,7 +128,7 @@
       inset: 0;
       width: 100vw;
       height: 100vh;
-      opacity: 0.03;
+      opacity: 0.035;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: -2;
@@ -230,31 +232,33 @@
       min-width: 0;
     }
 
+    /* Restored Original Circular Neon Emblem */
     .logo-badge {
       width: 38px;
       height: 38px;
-      border-radius: 11px;
-      background: linear-gradient(145deg, #38bdf8 0%, #0284c7 100%);
-      border: 1px solid rgba(186, 230, 253, 0.45);
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #0d2b4c 0%, #040d1a 75%);
+      border: 1.5px solid rgba(34, 211, 238, 0.85);
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow:
         0 6px 14px rgba(0, 0, 0, 0.7),
-        0 0 18px rgba(56, 189, 248, 0.28),
-        inset 0 1px 3px rgba(255, 255, 255, 0.45);
+        0 0 18px rgba(34, 211, 238, 0.28),
+        inset 0 1px 4px rgba(186, 230, 253, 0.35);
       flex-shrink: 0;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .logo-badge svg {
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
       display: block;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.65));
     }
 
     .logo-wrap:hover .logo-badge {
-      transform: scale(1.06) rotate(-3deg);
+      transform: scale(1.06) rotate(-4deg);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8), 0 0 24px rgba(56, 189, 248, 0.48);
     }
 
@@ -399,9 +403,9 @@
       width: 34px;
       height: 34px;
       border-radius: 11px;
-      background: linear-gradient(145deg, rgba(56, 189, 248, 0.2), rgba(2, 132, 199, 0.08));
-      border: 1px solid rgba(56, 189, 248, 0.34);
-      box-shadow: inset 0 1px 0 rgba(186, 230, 253, 0.25), 0 6px 14px rgba(0, 0, 0, 0.55);
+      background: linear-gradient(145deg, rgba(56, 189, 248, 0.24), rgba(2, 132, 199, 0.08));
+      border: 1px solid rgba(56, 189, 248, 0.36);
+      box-shadow: 0 5px 0 rgba(3, 105, 161, 0.45), inset 0 1px 0 rgba(186, 230, 253, 0.28), 0 8px 16px rgba(0, 0, 0, 0.6);
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -488,7 +492,7 @@
       border-radius: 12px;
     }
 
-    /* Reference-Inspired Split Hero Layout */
+    /* Hero Section */
     .hero {
       padding: 24px 0 22px;
       perspective: 1100px;
@@ -500,7 +504,7 @@
 
     .hero-split {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1.12fr 0.88fr;
       gap: 28px;
       align-items: center;
       margin-bottom: 30px;
@@ -509,7 +513,7 @@
     @media (max-width: 880px) {
       .hero-split {
         grid-template-columns: 1fr;
-        gap: 22px;
+        gap: 24px;
       }
     }
 
@@ -558,7 +562,7 @@
       }
     }
 
-    /* Reference-Style Quick Finder Bar */
+    /* Quick Finder Bar */
     .quick-finder {
       display: flex;
       align-items: center;
@@ -631,20 +635,43 @@
       .hero-actions .btn { width: 100%; }
     }
 
-    /* Right 3D Geometric Visual Stage (Inspired by Reference Sphere/Orbitals) */
+    /* Detailed 3D Multi-Tile Orbital Stage (Refined 2nd + 3rd Screenshot Atmosphere) */
     .hero-visual-stage {
       position: relative;
-      min-height: 290px;
+      min-height: 330px;
       display: flex;
       align-items: center;
       justify-content: center;
-      perspective: 1000px;
+      perspective: 1100px;
+      border-radius: 24px;
+      background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.12) 0%, transparent 72%);
+    }
+
+    /* Subtle Crosshair & Axis Marks */
+    .stage-crosshair {
+      position: absolute;
+      inset: 14px;
+      border: 1px dashed rgba(56, 189, 248, 0.14);
+      border-radius: 20px;
+      pointer-events: none;
+    }
+
+    .stage-tag-top {
+      position: absolute;
+      top: 6px;
+      right: 12px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(125, 211, 252, 0.65);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     }
 
     .orbit-core {
       position: relative;
-      width: 210px;
-      height: 210px;
+      width: 240px;
+      height: 240px;
       display: grid;
       place-items: center;
       transform-style: preserve-3d;
@@ -654,49 +681,94 @@
       position: absolute;
       inset: 0;
       border-radius: 50%;
-      border: 1px dashed rgba(56, 189, 248, 0.42);
-      animation: spinSlow 24s linear infinite;
+      border: 1.5px dashed rgba(56, 189, 248, 0.45);
+      box-shadow: inset 0 0 28px rgba(56, 189, 248, 0.08);
+      animation: spinSlow 26s linear infinite;
     }
 
     .orbit-ring-inner {
       position: absolute;
-      inset: 22px;
+      inset: 20px;
       border-radius: 50%;
-      border: 1px solid rgba(34, 211, 238, 0.28);
-      transform: rotateX(62deg) rotateY(18deg);
+      border: 1px solid rgba(34, 211, 238, 0.34);
+      transform: rotateX(64deg) rotateY(16deg);
     }
 
+    .orbit-ring-tilt {
+      position: absolute;
+      inset: 8px;
+      border-radius: 50%;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      transform: rotateX(-58deg) rotateY(-24deg);
+    }
+
+    /* Extruded 3D Center Tile with Facets */
     .core-poly {
-      width: 112px;
-      height: 112px;
+      width: 136px;
+      height: 136px;
       border-radius: 28px;
-      background: linear-gradient(145deg, rgba(56, 189, 248, 0.28) 0%, rgba(2, 132, 199, 0.14) 55%, rgba(6, 12, 24, 0.9) 100%);
-      border: 1.5px solid rgba(103, 232, 249, 0.55);
+      background: linear-gradient(155deg, #163256 0%, #0b1930 52%, #060d1b 100%);
+      border: 1.5px solid rgba(103, 232, 249, 0.58);
       box-shadow:
-        0 0 50px rgba(56, 189, 248, 0.34),
-        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+        0 8px 0 #041d38,
+        0 12px 0 rgba(2, 132, 199, 0.25),
+        0 24px 52px rgba(0, 0, 0, 0.92),
+        0 0 42px rgba(56, 189, 248, 0.32),
+        inset 0 1.5px 0 rgba(224, 242, 254, 0.45);
       display: grid;
       place-items: center;
-      transform: rotate(12deg);
-      animation: floatCore 4.5s ease-in-out infinite;
+      transform: rotate(10deg);
+      animation: floatCore 4.8s ease-in-out infinite;
+      position: relative;
+      z-index: 2;
     }
 
     .core-poly-inner {
-      transform: rotate(-12deg);
+      transform: rotate(-10deg);
       color: #e0f2fe;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .core-stack-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(56, 189, 248, 0.28), rgba(2, 132, 199, 0.12));
+      border: 1px solid rgba(125, 211, 252, 0.45);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 6px 14px rgba(0, 0, 0, 0.55);
       display: grid;
       place-items: center;
-      gap: 4px;
     }
 
     .core-poly-inner span {
-      font-size: 0.7rem;
-      font-weight: 700;
+      font-size: 0.69rem;
+      font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: #7dd3fc;
+      white-space: nowrap;
     }
 
+    .core-mini-pills {
+      display: flex;
+      gap: 4px;
+    }
+
+    .core-mini-pills i {
+      font-style: normal;
+      font-size: 0.58rem;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 5px;
+      background: rgba(56, 189, 248, 0.16);
+      border: 1px solid rgba(56, 189, 248, 0.32);
+      color: #bae6fd;
+    }
+
+    /* Floating 3D App Tiles & Badges Around Core */
     .floating-callouts {
       position: absolute;
       inset: 0;
@@ -705,14 +777,33 @@
 
     .float-badge {
       position: absolute;
-      background: linear-gradient(165deg, #0d182b 0%, #060b14 100%);
-      border: 1px solid rgba(56, 189, 248, 0.34);
-      border-radius: 14px;
-      padding: 9px 13px;
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(186, 230, 253, 0.16);
+      background: linear-gradient(165deg, #101d34 0%, #070d1a 60%, #050810 100%);
+      border: 1px solid rgba(56, 189, 248, 0.36);
+      border-radius: 15px;
+      padding: 10px 13px;
+      box-shadow:
+        0 4px 0 rgba(3, 105, 161, 0.35),
+        0 16px 32px rgba(0, 0, 0, 0.85),
+        inset 0 1px 0 rgba(186, 230, 253, 0.2);
       font-size: 0.75rem;
       line-height: 1.25;
       color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      z-index: 3;
+    }
+
+    .float-badge-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: rgba(56, 189, 248, 0.16);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #38bdf8;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
     }
 
     .float-badge strong {
@@ -723,26 +814,58 @@
     }
 
     .float-badge.top-left {
-      top: 10px;
-      left: 4px;
+      top: 8px;
+      left: 2px;
     }
 
     .float-badge.bottom-right {
-      bottom: 10px;
-      right: 4px;
+      bottom: 8px;
+      right: 2px;
+    }
+
+    /* 3D Extruded Satellite Tiles (3rd Screenshot Tactile Tile Vibe) */
+    .sat-tile-3d {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      background: linear-gradient(155deg, #19375e 0%, #0a1629 65%, #050912 100%);
+      border: 1px solid rgba(103, 232, 249, 0.45);
+      box-shadow:
+        0 5px 0 #041b33,
+        0 12px 24px rgba(0, 0, 0, 0.8),
+        0 0 18px rgba(56, 189, 248, 0.25),
+        inset 0 1px 0 rgba(224, 242, 254, 0.35);
+      display: grid;
+      place-items: center;
+      color: #67e8f9;
+      z-index: 2;
+    }
+
+    .sat-tile-3d.t1 {
+      top: 18px;
+      right: 44px;
+      transform: rotate(14deg);
+    }
+
+    .sat-tile-3d.t2 {
+      bottom: 24px;
+      left: 34px;
+      transform: rotate(-12deg);
     }
 
     .sat-cube {
       position: absolute;
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       border-radius: 4px;
       background: linear-gradient(135deg, #38bdf8, #0284c7);
-      box-shadow: 0 0 14px rgba(56, 189, 248, 0.65);
+      box-shadow: 0 3px 0 #0369a1, 0 0 14px rgba(56, 189, 248, 0.65);
+      z-index: 2;
     }
 
-    .sat-cube.c1 { top: 36px; right: 26px; }
-    .sat-cube.c2 { bottom: 52px; left: 24px; background: linear-gradient(135deg, #22d3ee, #0369a1); }
+    .sat-cube.c1 { top: 96px; right: 10px; transform: rotate(20deg); }
+    .sat-cube.c2 { bottom: 96px; left: 10px; background: linear-gradient(135deg, #22d3ee, #0369a1); transform: rotate(-18deg); }
 
     @keyframes spinSlow {
       from { transform: rotate(0deg); }
@@ -750,8 +873,8 @@
     }
 
     @keyframes floatCore {
-      0%, 100% { transform: rotate(12deg) translateY(0px); }
-      50% { transform: rotate(16deg) translateY(-7px); }
+      0%, 100% { transform: rotate(10deg) translateY(0px); }
+      50% { transform: rotate(14deg) translateY(-7px); }
     }
 
     /* 3D Stats Bento */
@@ -785,16 +908,16 @@
     }
 
     .stat-icon-wrap {
-      width: 34px;
-      height: 34px;
+      width: 36px;
+      height: 36px;
       margin: 0 auto 10px;
-      border-radius: 10px;
-      background: rgba(56, 189, 248, 0.12);
-      border: 1px solid rgba(56, 189, 248, 0.28);
+      border-radius: 11px;
+      background: linear-gradient(145deg, rgba(56, 189, 248, 0.2), rgba(2, 132, 199, 0.08));
+      border: 1px solid rgba(56, 189, 248, 0.34);
       color: #38bdf8;
       display: grid;
       place-items: center;
-      box-shadow: inset 0 1px 0 rgba(186, 230, 253, 0.25);
+      box-shadow: 0 4px 0 rgba(3, 105, 161, 0.4), inset 0 1px 0 rgba(186, 230, 253, 0.28);
     }
 
     .stat-card strong {
@@ -815,7 +938,7 @@
       display: block;
     }
 
-    /* Tech Stack Logos Strip */
+    /* Tech Stack Logos Strip with 3D Tactile Badges */
     .tech-stack-section {
       max-width: 860px;
       margin: 28px auto 0;
@@ -844,10 +967,10 @@
       align-items: center;
       gap: 8px;
       padding: 8px 14px;
-      border-radius: 12px;
-      background: linear-gradient(180deg, #0b1322 0%, #060a13 100%);
-      border: 1px solid rgba(56, 189, 248, 0.18);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      border-radius: 13px;
+      background: linear-gradient(180deg, #0e192e 0%, #060b14 100%);
+      border: 1px solid rgba(56, 189, 248, 0.24);
+      box-shadow: 0 3px 0 #041326, 0 8px 18px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(186, 230, 253, 0.16);
       color: #cbd5e1;
       font-size: 0.8rem;
       font-weight: 600;
@@ -855,7 +978,7 @@
     }
 
     .tech-badge:hover {
-      border-color: rgba(56, 189, 248, 0.45);
+      border-color: rgba(56, 189, 248, 0.52);
       color: #ffffff;
       transform: translateY(-2px);
     }
@@ -909,12 +1032,12 @@
     }
 
     .action-icon-box {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: linear-gradient(145deg, rgba(56, 189, 248, 0.24), rgba(2, 132, 199, 0.1));
-      border: 1px solid rgba(56, 189, 248, 0.38);
-      box-shadow: inset 0 1px 0 rgba(186, 230, 253, 0.28), 0 6px 14px rgba(0, 0, 0, 0.5);
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      background: linear-gradient(145deg, rgba(56, 189, 248, 0.26), rgba(2, 132, 199, 0.1));
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      box-shadow: 0 4px 0 rgba(3, 105, 161, 0.4), inset 0 1px 0 rgba(186, 230, 253, 0.3), 0 6px 14px rgba(0, 0, 0, 0.5);
       color: #38bdf8;
       display: grid;
       place-items: center;
@@ -941,7 +1064,7 @@
       border-radius: 10px;
       background: rgba(56, 189, 248, 0.16);
       border: 1px solid rgba(56, 189, 248, 0.32);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      box-shadow: 0 2px 0 #041326, inset 0 1px 0 rgba(255, 255, 255, 0.14);
       color: #e0f2fe;
       font-size: 0.76rem;
       font-weight: 600;
@@ -979,6 +1102,7 @@
       border: 1px solid rgba(56, 189, 248, 0.24);
       padding: 5px 11px;
       border-radius: 999px;
+      box-shadow: inset 0 1px 0 rgba(186, 230, 253, 0.14);
     }
 
     .workflow-grid {
@@ -1036,6 +1160,7 @@
       color: #38bdf8;
       background: rgba(56, 189, 248, 0.12);
       border: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: 0 2px 0 rgba(3, 105, 161, 0.35), inset 0 1px 0 rgba(186, 230, 253, 0.18);
       padding: 4px 10px;
       border-radius: 8px;
       letter-spacing: 0.04em;
@@ -1238,7 +1363,7 @@
       background: rgba(14, 165, 233, 0.15);
       color: #7dd3fc;
       border: 1px solid rgba(56, 189, 248, 0.28);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      box-shadow: 0 2px 0 rgba(3, 105, 161, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.12);
     }
 
     .mini-badge {
@@ -1349,7 +1474,7 @@
       place-items: center;
       color: #ffffff;
       flex-shrink: 0;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      box-shadow: 0 3px 0 rgba(0, 0, 0, 0.55), 0 4px 10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.35);
     }
 
     .ui-app-title strong {
@@ -1420,6 +1545,7 @@
       border-radius: 6px;
       background: rgba(56, 189, 248, 0.18);
       border: 1px solid rgba(56, 189, 248, 0.35);
+      box-shadow: 0 2px 0 #041326;
       color: #38bdf8;
       display: grid;
       place-items: center;
@@ -1999,7 +2125,7 @@
 
   <div class="scroll-progress" id="scrollProgress"></div>
 
-  <!-- Reference-Style Technical Grid + Blue-Cyan Ambient Glows -->
+  <!-- Technical Grid + Dot Matrix + Blue-Cyan Ambient Glows -->
   <div class="bg-stage"></div>
   <div class="bg-grid"></div>
   <div class="bg-noise"></div>
@@ -2010,9 +2136,21 @@
       <div class="logo-wrap" onclick="switchPage('home')">
         <div class="logo-badge" aria-label="AlwaysStudio Logo">
           <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 49L26.5 14H35L28.5 30H36L32 36.5H25.8L21 49H12Z" fill="#041326"/>
-            <path d="M40.5 37L45.2 49H53L45.2 31L40.5 37Z" fill="#041326"/>
-            <path d="M43.5 9.5L28 34.5H36.8L32 54.5L49.5 29.5H40.5L43.5 9.5Z" fill="#ffffff"/>
+            <defs>
+              <linearGradient id="logoAGrad" x1="12" y1="50" x2="36" y2="12" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#1d4ed8"/>
+                <stop offset="55%" stop-color="#0ea5e9"/>
+                <stop offset="100%" stop-color="#38bdf8"/>
+              </linearGradient>
+              <linearGradient id="logoBoltGrad" x1="28" y1="10" x2="48" y2="54" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#67e8f9"/>
+                <stop offset="55%" stop-color="#22d3ee"/>
+                <stop offset="100%" stop-color="#0284c7"/>
+              </linearGradient>
+            </defs>
+            <path d="M12 49L26.5 14H35L28.5 30H36L32 36.5H25.8L21 49H12Z" fill="url(#logoAGrad)"/>
+            <path d="M40.5 37L45.2 49H53L45.2 31L40.5 37Z" fill="url(#logoAGrad)"/>
+            <path d="M43.5 9.5L28 34.5H36.8L32 54.5L49.5 29.5H40.5L43.5 9.5Z" fill="url(#logoBoltGrad)"/>
           </svg>
         </div>
         <div class="logo-text-group">
@@ -2067,30 +2205,65 @@
           </div>
 
           <div class="hero-visual-stage reveal-item" aria-hidden="true">
+            <div class="stage-crosshair"></div>
+            <span class="stage-tag-top">3D UI • 0.3s CDN</span>
+
             <div class="floating-callouts">
               <div class="float-badge top-left">
-                <strong>Слоты на запуск</strong>
-                <span>Сегодня • до 24 часов</span>
+                <span class="float-badge-icon">
+                  <svg class="ui-icon" style="width:14px;height:14px;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <div>
+                  <strong>Слоты на запуск</strong>
+                  <span>Сегодня • до 24 часов</span>
+                </div>
               </div>
+
+              <div class="sat-tile-3d t1">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#67e8f9" stroke-width="2">
+                  <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+                </svg>
+              </div>
+
+              <div class="sat-tile-3d t2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2">
+                  <path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/>
+                </svg>
+              </div>
+
               <div class="sat-cube c1"></div>
               <div class="sat-cube c2"></div>
+
               <div class="float-badge bottom-right">
-                <strong>Облачный хостинг</strong>
-                <span>0 ₽/мес • SSL включен</span>
+                <span class="float-badge-icon">
+                  <svg class="ui-icon" style="width:14px;height:14px;" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+                </span>
+                <div>
+                  <strong>Облачный хостинг</strong>
+                  <span>0 ₽/мес • SSL включен</span>
+                </div>
               </div>
             </div>
 
             <div class="orbit-core">
               <div class="orbit-ring"></div>
               <div class="orbit-ring-inner"></div>
+              <div class="orbit-ring-tilt"></div>
               <div class="core-poly">
                 <div class="core-poly-inner">
-                  <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#67e8f9" stroke-width="1.8">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                    <path d="M2 17l10 5 10-5"/>
-                    <path d="M2 12l10 5 10-5"/>
-                  </svg>
-                  <span>Web • App • Bot</span>
+                  <div class="core-stack-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#67e8f9" stroke-width="2">
+                      <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                      <path d="M2 17l10 5 10-5"/>
+                      <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                  </div>
+                  <span>WEB • APP • BOT</span>
+                  <div class="core-mini-pills">
+                    <i>HTML</i>
+                    <i>JS</i>
+                    <i>PY</i>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2904,7 +3077,7 @@
                 <li>Адаптация под любые смартфоны</li>
               </ul>
             </div>
-            <button class="btn btn-outline btn-sm" onclick="orderService('Цифровая визитка BioCard (790 ₽)')">Заказать BioCard</button>
+            <button class="btn btn-primary btn-sm" onclick="orderService('Цифровая визитка BioCard (790 ₽)')">Заказать BioCard</button>
           </div>
 
           <!-- Service 2: Redesign -->
@@ -2926,7 +3099,7 @@
                 <li>Ускорение загрузки и перенос на бесплатный хостинг</li>
               </ul>
             </div>
-            <button class="btn btn-outline btn-sm" onclick="orderService('Редизайн и оптимизация сайта (990 ₽)')">Заказать апгрейд</button>
+            <button class="btn btn-primary btn-sm" onclick="orderService('Редизайн и оптимизация сайта (990 ₽)')">Заказать апгрейд</button>
           </div>
 
           <!-- Service 3: Landing -->
