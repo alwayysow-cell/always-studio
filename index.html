@@ -15,12 +15,17 @@
   <meta property="og:title" content="AlwaysStudio — Сайты, Mini Apps и Telegram-боты за 24 часа">
   <meta property="og:description" content="Сайты-визитки, интернет-магазины от 1 000 ₽, Telegram Mini Apps и боты для автоматизации заявок. Бесплатный хостинг навсегда.">
   <meta property="og:image" content="https://alwayysow-cell.github.io/always-studio/preview.jpg">
+  <meta property="og:image:secure_url" content="https://alwayysow-cell.github.io/always-studio/preview.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AlwaysStudio — Сайты, Mini Apps и Telegram-боты">
   <meta name="twitter:description" content="Запуск сайтов, магазинов и ботов под ключ от 24 часов.">
+  <meta name="twitter:image" content="https://alwayysow-cell.github.io/always-studio/preview.jpg">
 
-  <!-- Минималистичный Favicon (буква A + молния) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%230284c7'/%3E%3Cstop offset='100%25' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='%23040914'/%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='url(%23g)' stroke-width='3'/%3E%3Cpath d='M35 13L19 35h11l-2 16 17-22H34l1-16z' fill='url(%23g)'/%3E%3C/svg%3E">
+  <!-- Фирменный Favicon в стиле аватарки (буква A + молния в неоновом кольце) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='aGrad' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%231d4ed8'/%3E%3Cstop offset='55%25' stop-color='%230ea5e9'/%3E%3Cstop offset='100%25' stop-color='%2338bdf8'/%3E%3C/linearGradient%3E%3ClinearGradient id='bGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2367e8f9'/%3E%3Cstop offset='100%25' stop-color='%230284c7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='31' fill='%23040d1a'/%3E%3Ccircle cx='32' cy='32' r='27.5' fill='none' stroke='%2322d3ee' stroke-width='1.8' stroke-opacity='0.85'/%3E%3Cpath d='M16 45L27.5 16h7L29.5 29h6.5L32.5 34.5H26L22 45H16z' fill='url(%23aGrad)'/%3E%3Cpath d='M38.5 13L27.5 33h6.8l-3.3 18 13.5-21h-7l4-17z' fill='url(%23bGrad)'/%3E%3Cpath d='M38.8 35.5L43 45h5.5l-5.8-13.5-3.9 4z' fill='url(%23aGrad)'/%3E%3C/svg%3E">
 
   <style>
     :root {
@@ -213,25 +218,43 @@
     .logo-wrap {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 11px;
       cursor: pointer;
     }
 
+    /* Встроенный логотип в стиле выбранной аватарки */
     .logo-badge {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #0284c7 0%, #38bdf8 60%, #67e8f9 100%);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 45%, #07192e 0%, #030a14 100%);
+      border: 1.5px solid rgba(34, 211, 238, 0.78);
       display: grid;
       place-items: center;
-      color: #ffffff;
-      box-shadow: 0 0 22px rgba(14, 165, 233, 0.48), inset 0 1px 1px rgba(255,255,255,0.55);
+      box-shadow:
+        0 0 18px rgba(34, 211, 238, 0.34),
+        inset 0 0 10px rgba(56, 189, 248, 0.22);
       flex-shrink: 0;
-      transition: transform 0.25s ease;
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+    }
+
+    .logo-badge svg {
+      width: 26px;
+      height: 26px;
+      filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.55));
+      transition: transform 0.28s ease;
     }
 
     .logo-wrap:hover .logo-badge {
-      transform: rotate(-6deg) scale(1.05);
+      transform: scale(1.06);
+      border-color: #67e8f9;
+      box-shadow:
+        0 0 24px rgba(56, 189, 248, 0.55),
+        inset 0 0 12px rgba(103, 232, 249, 0.32);
+    }
+
+    .logo-wrap:hover .logo-badge svg {
+      transform: scale(1.04);
     }
 
     .logo-text-group {
@@ -1479,9 +1502,26 @@
   <header>
     <div class="nav-bar">
       <div class="logo-wrap" onclick="switchPage('home')">
-        <div class="logo-badge">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/>
+        <div class="logo-badge" aria-label="AlwaysStudio Logo">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logoAGrad" x1="14" y1="48" x2="36" y2="14" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#1d4ed8"/>
+                <stop offset="55%" stop-color="#0ea5e9"/>
+                <stop offset="100%" stop-color="#38bdf8"/>
+              </linearGradient>
+              <linearGradient id="logoBoltGrad" x1="26" y1="12" x2="45" y2="52" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#67e8f9"/>
+                <stop offset="55%" stop-color="#22d3ee"/>
+                <stop offset="100%" stop-color="#0284c7"/>
+              </linearGradient>
+            </defs>
+            <!-- Левая часть буквы А -->
+            <path d="M14.5 47L26.8 16H34.2L28.8 30.2H36L32.2 35.8H26.4L21.8 47H14.5Z" fill="url(#logoAGrad)"/>
+            <!-- Правая нижняя ножка буквы А -->
+            <path d="M39.2 36.2L43.8 47H50.2L43.5 31.2L39.2 36.2Z" fill="url(#logoAGrad)"/>
+            <!-- Острая молния, рассекающая букву А -->
+            <path d="M40.5 11.5L27.5 33.5H35.2L31.4 52.5L46.5 29.8H38.5L40.5 11.5Z" fill="url(#logoBoltGrad)"/>
           </svg>
         </div>
         <div class="logo-text-group">
