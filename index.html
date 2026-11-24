@@ -24,8 +24,8 @@
   <meta name="twitter:description" content="Запуск сайтов, магазинов и ботов под ключ от 24 часов.">
   <meta name="twitter:image" content="https://alwayysow-cell.github.io/always-studio/preview.jpg">
 
-  <!-- Фирменный Favicon в стиле аватарки (буква A + молния в неоновом кольце) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='aGrad' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%231d4ed8'/%3E%3Cstop offset='55%25' stop-color='%230ea5e9'/%3E%3Cstop offset='100%25' stop-color='%2338bdf8'/%3E%3C/linearGradient%3E%3ClinearGradient id='bGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2367e8f9'/%3E%3Cstop offset='100%25' stop-color='%230284c7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='31' fill='%23040d1a'/%3E%3Ccircle cx='32' cy='32' r='27.5' fill='none' stroke='%2322d3ee' stroke-width='1.8' stroke-opacity='0.85'/%3E%3Cpath d='M16 45L27.5 16h7L29.5 29h6.5L32.5 34.5H26L22 45H16z' fill='url(%23aGrad)'/%3E%3Cpath d='M38.5 13L27.5 33h6.8l-3.3 18 13.5-21h-7l4-17z' fill='url(%23bGrad)'/%3E%3Cpath d='M38.8 35.5L43 45h5.5l-5.8-13.5-3.9 4z' fill='url(%23aGrad)'/%3E%3C/svg%3E">
+  <!-- Ровный Favicon в стиле аватарки -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%231d4ed8'/%3E%3Cstop offset='100%25' stop-color='%2338bdf8'/%3E%3C/linearGradient%3E%3ClinearGradient id='g2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2367e8f9'/%3E%3Cstop offset='100%25' stop-color='%230284c7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='31' fill='%23040d1a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2322d3ee' stroke-width='2'/%3E%3Cpath d='M13 48L27 15h8l-6 15h7l-4 6h-6l-4 12h-9z' fill='url(%23g1)'/%3E%3Cpath d='M41 37l4.5 11H53l-7.5-17-4.5 6z' fill='url(%23g1)'/%3E%3Cpath d='M43 11L28 34h8.5L32 53l17-24h-8.5L43 11z' fill='url(%23g2)'/%3E%3C/svg%3E">
 
   <style>
     :root {
@@ -222,39 +222,36 @@
       cursor: pointer;
     }
 
-    /* Встроенный логотип в стиле выбранной аватарки */
+    /* Ровный и крупный логотип в стиле аватарки */
     .logo-badge {
       width: 42px;
       height: 42px;
       border-radius: 50%;
       background: radial-gradient(circle at 50% 45%, #07192e 0%, #030a14 100%);
-      border: 1.5px solid rgba(34, 211, 238, 0.78);
-      display: grid;
-      place-items: center;
+      border: 1.5px solid rgba(34, 211, 238, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       box-shadow:
-        0 0 18px rgba(34, 211, 238, 0.34),
-        inset 0 0 10px rgba(56, 189, 248, 0.22);
+        0 0 16px rgba(34, 211, 238, 0.32),
+        inset 0 0 10px rgba(56, 189, 248, 0.2);
       flex-shrink: 0;
-      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
 
     .logo-badge svg {
-      width: 26px;
-      height: 26px;
-      filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.55));
-      transition: transform 0.28s ease;
+      width: 30px;
+      height: 30px;
+      display: block;
+      filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.5));
     }
 
     .logo-wrap:hover .logo-badge {
       transform: scale(1.06);
       border-color: #67e8f9;
       box-shadow:
-        0 0 24px rgba(56, 189, 248, 0.55),
-        inset 0 0 12px rgba(103, 232, 249, 0.32);
-    }
-
-    .logo-wrap:hover .logo-badge svg {
-      transform: scale(1.04);
+        0 0 22px rgba(56, 189, 248, 0.52),
+        inset 0 0 12px rgba(103, 232, 249, 0.3);
     }
 
     .logo-text-group {
@@ -1177,7 +1174,7 @@
       color: #ffffff;
     }
 
-    /* Mobile Bottom Dock with Clean Vector Icons */
+    /* Mobile Bottom Dock */
     .mobile-dock {
       display: none;
     }
@@ -1185,20 +1182,19 @@
     @media (max-width: 780px) {
       .mobile-dock {
         position: fixed;
-        bottom: calc(10px + env(safe-area-inset-bottom));
-        left: 14px;
-        right: 14px;
-        background: rgba(4, 7, 13, 0.94);
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(4, 7, 13, 0.96);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(56, 189, 248, 0.26);
-        border-radius: 20px;
-        padding: 6px 8px;
+        border-top: 1px solid rgba(56, 189, 248, 0.24);
+        padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 4px;
+        gap: 6px;
         z-index: 45;
-        box-shadow: 0 14px 36px rgba(0, 0, 0, 0.9);
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.85);
         transform: translate3d(0, 0, 0);
       }
 
@@ -1220,7 +1216,7 @@
       }
 
       .dock-btn.active {
-        background: rgba(56, 189, 248, 0.2);
+        background: rgba(56, 189, 248, 0.18);
         color: #7dd3fc;
         font-weight: 700;
         box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.35);
@@ -1505,23 +1501,23 @@
         <div class="logo-badge" aria-label="AlwaysStudio Logo">
           <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <linearGradient id="logoAGrad" x1="14" y1="48" x2="36" y2="14" gradientUnits="userSpaceOnUse">
+              <linearGradient id="logoAGrad" x1="12" y1="50" x2="36" y2="12" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#1d4ed8"/>
                 <stop offset="55%" stop-color="#0ea5e9"/>
                 <stop offset="100%" stop-color="#38bdf8"/>
               </linearGradient>
-              <linearGradient id="logoBoltGrad" x1="26" y1="12" x2="45" y2="52" gradientUnits="userSpaceOnUse">
+              <linearGradient id="logoBoltGrad" x1="28" y1="10" x2="48" y2="54" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#67e8f9"/>
                 <stop offset="55%" stop-color="#22d3ee"/>
                 <stop offset="100%" stop-color="#0284c7"/>
               </linearGradient>
             </defs>
-            <!-- Левая часть буквы А -->
-            <path d="M14.5 47L26.8 16H34.2L28.8 30.2H36L32.2 35.8H26.4L21.8 47H14.5Z" fill="url(#logoAGrad)"/>
-            <!-- Правая нижняя ножка буквы А -->
-            <path d="M39.2 36.2L43.8 47H50.2L43.5 31.2L39.2 36.2Z" fill="url(#logoAGrad)"/>
-            <!-- Острая молния, рассекающая букву А -->
-            <path d="M40.5 11.5L27.5 33.5H35.2L31.4 52.5L46.5 29.8H38.5L40.5 11.5Z" fill="url(#logoBoltGrad)"/>
+            <!-- Левая опора и перекладина буквы А -->
+            <path d="M12 49L26.5 14H35L28.5 30H36L32 36.5H25.8L21 49H12Z" fill="url(#logoAGrad)"/>
+            <!-- Правая нижняя опора буквы А -->
+            <path d="M40.5 37L45.2 49H53L45.2 31L40.5 37Z" fill="url(#logoAGrad)"/>
+            <!-- Центральная молния -->
+            <path d="M43.5 9.5L28 34.5H36.8L32 54.5L49.5 29.5H40.5L43.5 9.5Z" fill="url(#logoBoltGrad)"/>
           </svg>
         </div>
         <div class="logo-text-group">
@@ -2198,7 +2194,7 @@
 
   </main>
 
-  <!-- Mobile Bottom Dock with Clean Vector Icons -->
+  <!-- Mobile Bottom Dock -->
   <nav class="mobile-dock">
     <button class="dock-btn active" data-page="home" onclick="switchPage('home')">
       <svg class="ui-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
