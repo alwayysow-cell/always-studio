@@ -91,17 +91,16 @@
       transition: width 0.08s linear;
     }
 
-    /* 3D Layered Ambient Stage + Perspective Grid + Film Grain */
+    /* Reference-Style Technical Grid + Blue-Cyan Ambient Glows */
     .bg-stage {
       position: fixed;
       inset: 0;
       width: 100vw;
       height: 100vh;
       background:
-        radial-gradient(ellipse 82% 45% at 50% -4%, rgba(14, 165, 233, 0.28) 0%, rgba(2, 132, 199, 0.08) 50%, transparent 80%),
-        radial-gradient(circle at 86% 30%, rgba(34, 211, 238, 0.11) 0%, transparent 45%),
-        radial-gradient(circle at 14% 70%, rgba(2, 132, 199, 0.14) 0%, transparent 50%),
-        linear-gradient(180deg, #040914 0%, #030508 45%, #040a16 82%, #020305 100%);
+        radial-gradient(ellipse 75% 48% at 72% 38%, rgba(14, 165, 233, 0.2) 0%, rgba(2, 132, 199, 0.06) 50%, transparent 78%),
+        radial-gradient(ellipse 65% 40% at 25% 12%, rgba(56, 189, 248, 0.14) 0%, transparent 75%),
+        linear-gradient(180deg, #050a14 0%, #030508 55%, #040914 100%);
       z-index: -4;
       pointer-events: none;
       transform: translate3d(0, 0, 0);
@@ -113,11 +112,11 @@
       width: 100vw;
       height: 100vh;
       background-image:
-        linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: radial-gradient(ellipse 90% 64% at 50% 18%, #000 22%, transparent 92%);
-      -webkit-mask-image: radial-gradient(ellipse 90% 64% at 50% 18%, #000 22%, transparent 92%);
+        linear-gradient(to right, rgba(56, 189, 248, 0.065) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(56, 189, 248, 0.065) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 96% 85% at 50% 42%, #000 35%, transparent 96%);
+      -webkit-mask-image: radial-gradient(ellipse 96% 85% at 50% 42%, #000 35%, transparent 96%);
       pointer-events: none;
       z-index: -3;
     }
@@ -134,7 +133,7 @@
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1120px;
       width: 100%;
       margin: 0 auto;
       padding: 0 16px;
@@ -184,7 +183,7 @@
       transform: translateY(0);
     }
 
-    /* 3D Floating Header */
+    /* Top Header */
     header {
       position: relative;
       z-index: 20;
@@ -193,7 +192,7 @@
     }
 
     .nav-bar {
-      max-width: 1076px;
+      max-width: 1096px;
       margin: 0 auto;
       padding: 10px 14px;
       background: linear-gradient(180deg, rgba(11, 19, 34, 0.94) 0%, rgba(6, 10, 18, 0.94) 100%);
@@ -234,29 +233,28 @@
     .logo-badge {
       width: 38px;
       height: 38px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 30%, #0d2b4c 0%, #040d1a 75%);
-      border: 1.5px solid rgba(34, 211, 238, 0.85);
+      border-radius: 11px;
+      background: linear-gradient(145deg, #38bdf8 0%, #0284c7 100%);
+      border: 1px solid rgba(186, 230, 253, 0.45);
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow:
         0 6px 14px rgba(0, 0, 0, 0.7),
-        0 0 18px rgba(34, 211, 238, 0.28),
-        inset 0 1px 4px rgba(186, 230, 253, 0.35);
+        0 0 18px rgba(56, 189, 248, 0.28),
+        inset 0 1px 3px rgba(255, 255, 255, 0.45);
       flex-shrink: 0;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .logo-badge svg {
-      width: 26px;
-      height: 26px;
+      width: 24px;
+      height: 24px;
       display: block;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.65));
     }
 
     .logo-wrap:hover .logo-badge {
-      transform: scale(1.06) rotate(-4deg);
+      transform: scale(1.06) rotate(-3deg);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8), 0 0 24px rgba(56, 189, 248, 0.48);
     }
 
@@ -490,22 +488,47 @@
       border-radius: 12px;
     }
 
-    /* Hero Section with 3D Typography */
+    /* Reference-Inspired Split Hero Layout */
     .hero {
-      padding: 26px 0 24px;
-      text-align: center;
+      padding: 24px 0 22px;
       perspective: 1100px;
     }
 
     @media (min-width: 768px) {
-      .hero { padding: 48px 0 32px; }
+      .hero { padding: 38px 0 28px; }
+    }
+
+    .hero-split {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 880px) {
+      .hero-split {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+    }
+
+    .hero-left {
+      text-align: left;
+    }
+
+    @media (max-width: 880px) {
+      .hero-left {
+        text-align: center;
+      }
     }
 
     h1 {
-      font-size: clamp(2.05rem, 6vw, 3.85rem);
+      font-size: clamp(2.25rem, 6.2vw, 4.15rem);
       font-weight: 800;
-      line-height: 1.06;
-      letter-spacing: -0.035em;
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
       margin-bottom: 16px;
       color: #ffffff;
       text-shadow:
@@ -518,26 +541,217 @@
       background: linear-gradient(135deg, #38bdf8 0%, #67e8f9 55%, #e0f2fe 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 6px 18px rgba(56, 189, 248, 0.25));
+      filter: drop-shadow(0 6px 18px rgba(56, 189, 248, 0.28));
     }
 
-    .hero p {
+    .hero-lead {
       color: #94a3b8;
-      font-size: clamp(0.95rem, 2.4vw, 1.1rem);
-      max-width: 630px;
-      margin: 0 auto 28px;
+      font-size: clamp(0.95rem, 2.2vw, 1.08rem);
+      max-width: 560px;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 880px) {
+      .hero-lead {
+        margin: 0 auto 20px;
+      }
+    }
+
+    /* Reference-Style Quick Finder Bar */
+    .quick-finder {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 6px 6px 14px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #0b1424 0%, #060b14 100%);
+      border: 1px solid rgba(56, 189, 248, 0.32);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(186, 230, 253, 0.16);
+      max-width: 520px;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 880px) {
+      .quick-finder {
+        margin: 0 auto 18px;
+      }
+    }
+
+    .quick-finder svg {
+      color: #38bdf8;
+      flex-shrink: 0;
+    }
+
+    .quick-finder input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      box-shadow: none;
+      padding: 8px 4px;
+      font-size: 0.9rem;
+      color: #f8fafc;
+    }
+
+    .quick-finder input:focus {
+      box-shadow: none;
+    }
+
+    .quick-finder-btn {
+      padding: 10px 18px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 3px 0 #0369a1, inset 0 1px 0 rgba(255, 255, 255, 0.45);
+      transition: transform 0.14s ease;
+    }
+
+    .quick-finder-btn:active {
+      transform: translateY(2px);
     }
 
     .hero-actions {
       display: flex;
       gap: 12px;
-      justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 34px;
+    }
+
+    @media (max-width: 880px) {
+      .hero-actions {
+        justify-content: center;
+      }
     }
 
     @media (max-width: 480px) {
       .hero-actions .btn { width: 100%; }
+    }
+
+    /* Right 3D Geometric Visual Stage (Inspired by Reference Sphere/Orbitals) */
+    .hero-visual-stage {
+      position: relative;
+      min-height: 290px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1000px;
+    }
+
+    .orbit-core {
+      position: relative;
+      width: 210px;
+      height: 210px;
+      display: grid;
+      place-items: center;
+      transform-style: preserve-3d;
+    }
+
+    .orbit-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px dashed rgba(56, 189, 248, 0.42);
+      animation: spinSlow 24s linear infinite;
+    }
+
+    .orbit-ring-inner {
+      position: absolute;
+      inset: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(34, 211, 238, 0.28);
+      transform: rotateX(62deg) rotateY(18deg);
+    }
+
+    .core-poly {
+      width: 112px;
+      height: 112px;
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(56, 189, 248, 0.28) 0%, rgba(2, 132, 199, 0.14) 55%, rgba(6, 12, 24, 0.9) 100%);
+      border: 1.5px solid rgba(103, 232, 249, 0.55);
+      box-shadow:
+        0 0 50px rgba(56, 189, 248, 0.34),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      display: grid;
+      place-items: center;
+      transform: rotate(12deg);
+      animation: floatCore 4.5s ease-in-out infinite;
+    }
+
+    .core-poly-inner {
+      transform: rotate(-12deg);
+      color: #e0f2fe;
+      display: grid;
+      place-items: center;
+      gap: 4px;
+    }
+
+    .core-poly-inner span {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #7dd3fc;
+    }
+
+    .floating-callouts {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .float-badge {
+      position: absolute;
+      background: linear-gradient(165deg, #0d182b 0%, #060b14 100%);
+      border: 1px solid rgba(56, 189, 248, 0.34);
+      border-radius: 14px;
+      padding: 9px 13px;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(186, 230, 253, 0.16);
+      font-size: 0.75rem;
+      line-height: 1.25;
+      color: #e2e8f0;
+    }
+
+    .float-badge strong {
+      display: block;
+      color: #38bdf8;
+      font-size: 0.78rem;
+      margin-bottom: 2px;
+    }
+
+    .float-badge.top-left {
+      top: 10px;
+      left: 4px;
+    }
+
+    .float-badge.bottom-right {
+      bottom: 10px;
+      right: 4px;
+    }
+
+    .sat-cube {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      background: linear-gradient(135deg, #38bdf8, #0284c7);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.65);
+    }
+
+    .sat-cube.c1 { top: 36px; right: 26px; }
+    .sat-cube.c2 { bottom: 52px; left: 24px; background: linear-gradient(135deg, #22d3ee, #0369a1); }
+
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes floatCore {
+      0%, 100% { transform: rotate(12deg) translateY(0px); }
+      50% { transform: rotate(16deg) translateY(-7px); }
     }
 
     /* 3D Stats Bento */
@@ -789,7 +1003,6 @@
       position: relative;
     }
 
-    /* Decorative 3D Corner Accent */
     .step-card::before {
       content: "";
       position: absolute;
@@ -1334,7 +1547,7 @@
 
     .card.bot-card {
       border: 1px solid rgba(56, 189, 248, 0.52);
-      background: linear-gradient(165deg, rgba(2, 132, 199, 0.2) 0%, rgba(250, 204, 21, 0.05) 50%, #04070e 100%);
+      background: linear-gradient(165deg, rgba(2, 132, 199, 0.2) 0%, rgba(34, 211, 238, 0.06) 50%, #04070e 100%);
     }
 
     /* FAQ + Direct Contact */
@@ -1786,32 +1999,20 @@
 
   <div class="scroll-progress" id="scrollProgress"></div>
 
-  <!-- 3D Layered Ambient Stage + Grid + Film Grain -->
+  <!-- Reference-Style Technical Grid + Blue-Cyan Ambient Glows -->
   <div class="bg-stage"></div>
   <div class="bg-grid"></div>
   <div class="bg-noise"></div>
 
-  <!-- Static Top Header -->
+  <!-- Top Header -->
   <header>
     <div class="nav-bar">
       <div class="logo-wrap" onclick="switchPage('home')">
         <div class="logo-badge" aria-label="AlwaysStudio Logo">
           <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="logoAGrad" x1="12" y1="50" x2="36" y2="12" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#1d4ed8"/>
-                <stop offset="55%" stop-color="#0ea5e9"/>
-                <stop offset="100%" stop-color="#38bdf8"/>
-              </linearGradient>
-              <linearGradient id="logoBoltGrad" x1="28" y1="10" x2="48" y2="54" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#67e8f9"/>
-                <stop offset="55%" stop-color="#22d3ee"/>
-                <stop offset="100%" stop-color="#0284c7"/>
-              </linearGradient>
-            </defs>
-            <path d="M12 49L26.5 14H35L28.5 30H36L32 36.5H25.8L21 49H12Z" fill="url(#logoAGrad)"/>
-            <path d="M40.5 37L45.2 49H53L45.2 31L40.5 37Z" fill="url(#logoAGrad)"/>
-            <path d="M43.5 9.5L28 34.5H36.8L32 54.5L49.5 29.5H40.5L43.5 9.5Z" fill="url(#logoBoltGrad)"/>
+            <path d="M12 49L26.5 14H35L28.5 30H36L32 36.5H25.8L21 49H12Z" fill="#041326"/>
+            <path d="M40.5 37L45.2 49H53L45.2 31L40.5 37Z" fill="#041326"/>
+            <path d="M43.5 9.5L28 34.5H36.8L32 54.5L49.5 29.5H40.5L43.5 9.5Z" fill="#ffffff"/>
           </svg>
         </div>
         <div class="logo-text-group">
@@ -1842,18 +2043,58 @@
     <!-- ==================== PAGE 1: HOME ==================== -->
     <div id="page-home" class="page-view active">
       <section class="hero">
-        <h1 class="reveal-item">Сайты, <span class="gradient-text">Mini Apps и Telegram-боты</span> за 24 часа</h1>
-        <p class="reveal-item">Проектируем быстрые сайты-визитки, интернет-магазины, Telegram Mini Apps и умных ботов для автоматизации заявок без ежемесячной платы за хостинг.</p>
+        <div class="hero-split">
+          <div class="hero-left">
+            <h1 class="reveal-item">Сайты,<br><span class="gradient-text">Mini Apps и боты</span><br>за 24 часа</h1>
+            <p class="hero-lead reveal-item">Проектируем быстрые сайты-визитки, интернет-магазины, Telegram Mini Apps и умных ботов для автоматизации заявок без ежемесячной платы за хостинг.</p>
 
-        <div class="hero-actions reveal-item">
-          <button class="btn btn-primary" onclick="switchPage('faq', true)">
-            <svg class="ui-icon" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            <span>Обсудить проект</span>
-          </button>
-          <button class="btn btn-outline" onclick="switchPage('cases')">
-            <svg class="ui-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
-            <span>Смотреть кейсы и UI</span>
-          </button>
+            <form class="quick-finder reveal-item" onsubmit="handleQuickFind(event)">
+              <svg class="ui-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" id="quickQuery" placeholder="Какое решение нужно? (бот, магазин, лендинг)">
+              <button type="submit" class="quick-finder-btn">Найти</button>
+            </form>
+
+            <div class="hero-actions reveal-item">
+              <button class="btn btn-primary" onclick="switchPage('faq', true)">
+                <svg class="ui-icon" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                <span>Обсудить проект</span>
+              </button>
+              <button class="btn btn-outline" onclick="switchPage('cases')">
+                <svg class="ui-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+                <span>Смотреть кейсы и UI</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-visual-stage reveal-item" aria-hidden="true">
+            <div class="floating-callouts">
+              <div class="float-badge top-left">
+                <strong>Слоты на запуск</strong>
+                <span>Сегодня • до 24 часов</span>
+              </div>
+              <div class="sat-cube c1"></div>
+              <div class="sat-cube c2"></div>
+              <div class="float-badge bottom-right">
+                <strong>Облачный хостинг</strong>
+                <span>0 ₽/мес • SSL включен</span>
+              </div>
+            </div>
+
+            <div class="orbit-core">
+              <div class="orbit-ring"></div>
+              <div class="orbit-ring-inner"></div>
+              <div class="core-poly">
+                <div class="core-poly-inner">
+                  <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#67e8f9" stroke-width="1.8">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                  </svg>
+                  <span>Web • App • Bot</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- 3D Key Metrics with Relevant Icons -->
@@ -1897,7 +2138,6 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
               <span>Telegram WebApp API</span>
             </div>
-            <!-- Python Icon -->
             <div class="tech-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 2c-3.2 0-3 1.4-3 2.5V7h3v.8H7.2C5.4 7.8 4 9.1 4 12s1.2 4.2 3 4.2h1.5v-2.2c0-1.6 1.3-2.9 2.9-2.9h3.2c1.4 0 2.5-1.1 2.5-2.5V4.5C16.7 3 15.2 2 12 2z" stroke="#38bdf8"/>
@@ -2614,7 +2854,6 @@
         <h2 class="section-title reveal-item">Решения студии под ключ</h2>
         <p class="section-sub reveal-item">Фиксированная стоимость без скрытых платежей. Все веб-проекты размещаются на облачной инфраструктуре без ежемесячной платы за хостинг.</p>
 
-        <!-- Extra Design Strip: Key Advantages with Icons -->
         <div class="perks-strip reveal-item">
           <div class="perk-pill-card">
             <span class="icon-3d-badge">
@@ -2957,6 +3196,27 @@
       const card = e.target.closest && e.target.closest('.card-3d');
       if (card) card.style.transform = '';
     }, true);
+
+    /* Quick Hero Finder */
+    function handleQuickFind(e) {
+      e.preventDefault();
+      const q = (document.getElementById('quickQuery').value || '').toLowerCase().trim();
+      if (q.includes('бот') || q.includes('python') || q.includes('aiogram')) {
+        orderService('Разработка Telegram-бота (от 1 990 ₽)');
+        return;
+      }
+      if (q.includes('mini') || q.includes('webapp') || q.includes('приложен')) {
+        orderService('Telegram Mini App (1 790 ₽)');
+        return;
+      }
+      if (q.includes('магаз') || q.includes('товар') || q.includes('корзин')) {
+        switchPage('cases');
+        const foodBtn = document.querySelectorAll('#page-cases .filter-btn')[1];
+        if (foodBtn) filterCases('food', foodBtn);
+        return;
+      }
+      switchPage('services');
+    }
 
     /* Staggered Block Reveal */
     function triggerStagger(pageEl) {
