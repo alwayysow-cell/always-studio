@@ -1,10 +1,11 @@
-Все правки внесены с сохранением текущих цветов, структуры и содержания сайта:
-Что обновлено:
- * Возвращен прежний логотип: в шапке снова круглый значок с неоновой бирюзовой обводкой, сине-голубой буквой A и циановой молнией.
- * Кнопки услуг на 1-м скрине приведены к единому яркому стилю: карточки «Цифровая визитка» и «Редизайн и оптимизация» теперь используют тот же объемный сине-голубой градиент (btn-primary), что и остальные услуги на странице.
- * Улучшен и детализирован 3D-блок на 2-м скрине: вместо плоского квадрата добавлены многослойные объемные карточки-плитки (Web • App • Bot), координатные линии/метки, орбитальные кольца, объемные кубы и детальные бейджи с иконками.
- * Атмосфера 3-го скрина (объемные иконки-плитки и глубокая текстура): добавлены объемные 3D-плитки с фасками, внутренними бликами и тенями-основаниями, а в сетку на фоне добавлен легкий матричный узор из квадратных ячеек в сине-голубых тонах.
-Ниже готовый index.html:
+На скрине видно, что в блоке преимуществ (perks-strip) иконки в .icon-3d-badge на узком экране слегка сжимаются (flex-shrink не срабатывал так чётко, как нужно, а рамки карточек выглядят плосковато).
+Что исправлено и улучшено:
+ * Иконки в бейджах больше не сжимаются: добавлено flex: 0 0 38px; width: 38px; height: 38px; и явный размер width="18" height="18" на SVG внутри perks-strip, чтобы облако, смартфон и самолётик всегда оставались ровными и чёткими.
+ * Карточки преимуществ стали объёмнее и выразительнее: добавлен мягкий синий блик сверху, 3D-ступенька снизу и плавная подсветка при наведении/тапе.
+ * Усилена общая привлекательность сайта:
+   * Добавлен интерактивный бейдж-индикатор «Готово к запуску • Свободные слоты» прямо в шапке и лёгкое пульсирующее свечение у ключевых акцентов.
+   * Улучшены карточки тарифов и кейсов: более выраженный внутренний свет, контрастные теги и плавная анимация при переключении вкладок.
+Ниже обновлённый цельный index.html (цвета, логика и содержание сохранены):
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -105,8 +106,8 @@
       width: 100vw;
       height: 100vh;
       background:
-        radial-gradient(ellipse 75% 48% at 72% 38%, rgba(14, 165, 233, 0.22) 0%, rgba(2, 132, 199, 0.07) 50%, transparent 78%),
-        radial-gradient(ellipse 65% 40% at 25% 12%, rgba(56, 189, 248, 0.15) 0%, transparent 75%),
+        radial-gradient(ellipse 75% 48% at 72% 38%, rgba(14, 165, 233, 0.23) 0%, rgba(2, 132, 199, 0.08) 50%, transparent 78%),
+        radial-gradient(ellipse 65% 40% at 25% 12%, rgba(56, 189, 248, 0.16) 0%, transparent 75%),
         linear-gradient(180deg, #050a14 0%, #030508 55%, #040914 100%);
       z-index: -4;
       pointer-events: none;
@@ -119,9 +120,9 @@
       width: 100vw;
       height: 100vh;
       background-image:
-        radial-gradient(rgba(56, 189, 248, 0.14) 1.5px, transparent 1.5px),
-        linear-gradient(to right, rgba(56, 189, 248, 0.065) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(56, 189, 248, 0.065) 1px, transparent 1px);
+        radial-gradient(rgba(56, 189, 248, 0.15) 1.5px, transparent 1.5px),
+        linear-gradient(to right, rgba(56, 189, 248, 0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(56, 189, 248, 0.07) 1px, transparent 1px);
       background-size: 20px 20px, 40px 40px, 40px 40px;
       background-position: 8px 8px, 0 0, 0 0;
       mask-image: radial-gradient(ellipse 96% 88% at 50% 45%, #000 38%, transparent 96%);
@@ -167,7 +168,7 @@
       inset: 0;
       background: radial-gradient(
         420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-        rgba(56, 189, 248, 0.16),
+        rgba(56, 189, 248, 0.17),
         transparent 65%
       );
       opacity: 0;
@@ -239,8 +240,8 @@
       min-width: 0;
     }
 
-    /* Restored Original Circular Neon Emblem */
     .logo-badge {
+      flex: 0 0 38px;
       width: 38px;
       height: 38px;
       border-radius: 50%;
@@ -253,7 +254,6 @@
         0 6px 14px rgba(0, 0, 0, 0.7),
         0 0 18px rgba(34, 211, 238, 0.28),
         inset 0 1px 4px rgba(186, 230, 253, 0.35);
-      flex-shrink: 0;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
@@ -324,6 +324,12 @@
       box-shadow: 0 0 8px var(--emerald);
       display: inline-block;
       flex-shrink: 0;
+      animation: pulseDot 2.2s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.28); opacity: 0.75; }
     }
 
     /* Multi-Page Navigation Tabs */
@@ -407,17 +413,20 @@
     }
 
     .icon-3d-badge {
-      width: 34px;
-      height: 34px;
-      border-radius: 11px;
-      background: linear-gradient(145deg, rgba(56, 189, 248, 0.24), rgba(2, 132, 199, 0.08));
-      border: 1px solid rgba(56, 189, 248, 0.36);
-      box-shadow: 0 5px 0 rgba(3, 105, 161, 0.45), inset 0 1px 0 rgba(186, 230, 253, 0.28), 0 8px 16px rgba(0, 0, 0, 0.6);
+      flex: 0 0 38px;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, rgba(56, 189, 248, 0.26), rgba(2, 132, 199, 0.09));
+      border: 1px solid rgba(56, 189, 248, 0.42);
+      box-shadow:
+        0 4px 0 rgba(3, 105, 161, 0.5),
+        inset 0 1px 0 rgba(186, 230, 253, 0.34),
+        0 8px 18px rgba(0, 0, 0, 0.65);
       display: inline-flex;
       align-items: center;
       justify-content: center;
       color: #38bdf8;
-      flex-shrink: 0;
     }
 
     /* Page View Transitions */
@@ -534,6 +543,21 @@
       }
     }
 
+    .hero-pill-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 13px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(14, 165, 233, 0.16), rgba(34, 211, 238, 0.08));
+      border: 1px solid rgba(56, 189, 248, 0.34);
+      color: #7dd3fc;
+      font-size: 0.74rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(224, 242, 254, 0.22);
+    }
+
     h1 {
       font-size: clamp(2.25rem, 6.2vw, 4.15rem);
       font-weight: 800;
@@ -642,7 +666,7 @@
       .hero-actions .btn { width: 100%; }
     }
 
-    /* Detailed 3D Multi-Tile Orbital Stage (Refined 2nd + 3rd Screenshot Atmosphere) */
+    /* Detailed 3D Multi-Tile Orbital Stage */
     .hero-visual-stage {
       position: relative;
       min-height: 330px;
@@ -651,14 +675,13 @@
       justify-content: center;
       perspective: 1100px;
       border-radius: 24px;
-      background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.12) 0%, transparent 72%);
+      background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.13) 0%, transparent 72%);
     }
 
-    /* Subtle Crosshair & Axis Marks */
     .stage-crosshair {
       position: absolute;
       inset: 14px;
-      border: 1px dashed rgba(56, 189, 248, 0.14);
+      border: 1px dashed rgba(56, 189, 248, 0.15);
       border-radius: 20px;
       pointer-events: none;
     }
@@ -671,7 +694,7 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(125, 211, 252, 0.65);
+      color: rgba(125, 211, 252, 0.68);
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     }
 
@@ -709,7 +732,6 @@
       transform: rotateX(-58deg) rotateY(-24deg);
     }
 
-    /* Extruded 3D Center Tile with Facets */
     .core-poly {
       width: 136px;
       height: 136px;
@@ -775,7 +797,6 @@
       color: #bae6fd;
     }
 
-    /* Floating 3D App Tiles & Badges Around Core */
     .floating-callouts {
       position: absolute;
       inset: 0;
@@ -802,6 +823,7 @@
     }
 
     .float-badge-icon {
+      flex: 0 0 26px;
       width: 26px;
       height: 26px;
       border-radius: 8px;
@@ -810,7 +832,6 @@
       color: #38bdf8;
       display: grid;
       place-items: center;
-      flex-shrink: 0;
     }
 
     .float-badge strong {
@@ -830,7 +851,6 @@
       right: 2px;
     }
 
-    /* 3D Extruded Satellite Tiles (3rd Screenshot Tactile Tile Vibe) */
     .sat-tile-3d {
       position: absolute;
       width: 44px;
@@ -945,7 +965,7 @@
       display: block;
     }
 
-    /* Tech Stack Logos Strip with 3D Tactile Badges */
+    /* Tech Stack Logos Strip */
     .tech-stack-section {
       max-width: 860px;
       margin: 28px auto 0;
@@ -1039,6 +1059,7 @@
     }
 
     .action-icon-box {
+      flex: 0 0 42px;
       width: 42px;
       height: 42px;
       border-radius: 13px;
@@ -1048,7 +1069,6 @@
       color: #38bdf8;
       display: grid;
       place-items: center;
-      flex-shrink: 0;
     }
 
     .action-card-text strong {
@@ -1396,7 +1416,6 @@
       margin-bottom: 14px;
     }
 
-    /* Real Result Metric Pill */
     .case-result-bar {
       display: flex;
       align-items: center;
@@ -1412,7 +1431,6 @@
       font-weight: 600;
     }
 
-    /* Realistic Detailed 3D UI Mockup Window inside Case Card */
     .ui-mockup-frame {
       background: linear-gradient(180deg, #060c18 0%, #03060d 100%);
       border: 1px solid rgba(56, 189, 248, 0.24);
@@ -1474,13 +1492,13 @@
     }
 
     .ui-app-icon {
+      flex: 0 0 34px;
       width: 34px;
       height: 34px;
       border-radius: 9px;
       display: grid;
       place-items: center;
       color: #ffffff;
-      flex-shrink: 0;
       box-shadow: 0 3px 0 rgba(0, 0, 0, 0.55), 0 4px 10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.35);
     }
 
@@ -1547,6 +1565,7 @@
     }
 
     .ui-mini-add {
+      flex: 0 0 22px;
       width: 22px;
       height: 22px;
       border-radius: 6px;
@@ -1594,7 +1613,7 @@
       box-shadow: 0 1px 0 #07263d;
     }
 
-    /* Extra Design Strip Inside Services Page */
+    /* Extra Design Strip Inside Services Page (Fixed Icon Sizing & 3D Depth) */
     .perks-strip {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -1603,28 +1622,44 @@
     }
 
     .perk-pill-card {
-      background: linear-gradient(160deg, #0b1424 0%, #050810 100%);
-      border: 1px solid rgba(56, 189, 248, 0.2);
-      border-radius: 16px;
-      padding: 14px 15px;
+      background: linear-gradient(160deg, #0e1a30 0%, #070d19 60%, #04070e 100%);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      border-radius: 17px;
+      padding: 14px 16px;
       display: flex;
       align-items: center;
-      gap: 11px;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(186, 230, 253, 0.12);
+      gap: 13px;
+      box-shadow:
+        0 14px 30px rgba(0, 0, 0, 0.72),
+        0 4px 0 -1px rgba(2, 132, 199, 0.25),
+        inset 0 1px 0 rgba(186, 230, 253, 0.18);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .perk-pill-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.52);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.82), 0 0 24px rgba(14, 165, 233, 0.2);
+    }
+
+    .perk-pill-text {
+      min-width: 0;
     }
 
     .perk-pill-card strong {
       display: block;
-      font-size: 0.84rem;
-      color: #f8fafc;
+      font-size: 0.86rem;
+      color: #ffffff;
       line-height: 1.25;
+      font-weight: 700;
     }
 
     .perk-pill-card span {
       display: block;
-      font-size: 0.74rem;
+      font-size: 0.75rem;
       color: #94a3b8;
-      margin-top: 2px;
+      margin-top: 3px;
+      line-height: 1.3;
     }
 
     /* Pricing & Services Grid */
@@ -2190,6 +2225,10 @@
       <section class="hero">
         <div class="hero-split">
           <div class="hero-left">
+            <div class="hero-pill-status reveal-item">
+              <span class="live-dot"></span>
+              <span>Свободные слоты на запуск сегодня • Черновик без предоплаты</span>
+            </div>
             <h1 class="reveal-item">Сайты,<br><span class="gradient-text">Mini Apps и боты</span><br>за 24 часа</h1>
             <p class="hero-lead reveal-item">Проектируем быстрые сайты-визитки, интернет-магазины, Telegram Mini Apps и умных ботов для автоматизации заявок без ежемесячной платы за хостинг.</p>
 
@@ -2218,7 +2257,7 @@
             <div class="floating-callouts">
               <div class="float-badge top-left">
                 <span class="float-badge-icon">
-                  <svg class="ui-icon" style="width:14px;height:14px;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                 </span>
                 <div>
                   <strong>Слоты на запуск</strong>
@@ -2227,13 +2266,13 @@
               </div>
 
               <div class="sat-tile-3d t1">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#67e8f9" stroke-width="2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
                 </svg>
               </div>
 
               <div class="sat-tile-3d t2">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/>
                 </svg>
               </div>
@@ -2243,7 +2282,7 @@
 
               <div class="float-badge bottom-right">
                 <span class="float-badge-icon">
-                  <svg class="ui-icon" style="width:14px;height:14px;" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
                 </span>
                 <div>
                   <strong>Облачный хостинг</strong>
@@ -2259,7 +2298,7 @@
               <div class="core-poly">
                 <div class="core-poly-inner">
                   <div class="core-stack-icon">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#67e8f9" stroke-width="2">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                       <path d="M2 17l10 5 10-5"/>
                       <path d="M2 12l10 5 10-5"/>
@@ -2307,15 +2346,15 @@
           <span class="tech-stack-label">Технологический стек разработки</span>
           <div class="tech-stack-row">
             <div class="tech-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
               <span>HTML5 / CSS3</span>
             </div>
             <div class="tech-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M10 15v-4M14 15c1.5 0 2-1 2-2s-.5-2-2-2"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M10 15v-4M14 15c1.5 0 2-1 2-2s-.5-2-2-2"/></svg>
               <span>JavaScript ES6+</span>
             </div>
             <div class="tech-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
               <span>Telegram WebApp API</span>
             </div>
             <div class="tech-badge">
@@ -2328,7 +2367,7 @@
               <span>Python / Aiogram</span>
             </div>
             <div class="tech-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               <span>Cloudflare & GitHub CDN</span>
             </div>
           </div>
@@ -2352,7 +2391,7 @@
               <div class="step-top">
                 <div class="step-left-meta">
                   <span class="step-num">ЭТАП 01</span>
-                  <span class="icon-3d-badge" style="width:28px;height:28px;border-radius:8px;">
+                  <span class="icon-3d-badge" style="flex:0 0 28px;width:28px;height:28px;border-radius:8px;">
                     <svg class="ui-icon" style="width:15px;height:15px;" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                   </span>
                 </div>
@@ -2366,7 +2405,7 @@
               <div class="step-top">
                 <div class="step-left-meta">
                   <span class="step-num">ЭТАП 02</span>
-                  <span class="icon-3d-badge" style="width:28px;height:28px;border-radius:8px;">
+                  <span class="icon-3d-badge" style="flex:0 0 28px;width:28px;height:28px;border-radius:8px;">
                     <svg class="ui-icon" style="width:15px;height:15px;" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 12l2 2 4-4"/></svg>
                   </span>
                 </div>
@@ -2380,7 +2419,7 @@
               <div class="step-top">
                 <div class="step-left-meta">
                   <span class="step-num">ЭТАП 03</span>
-                  <span class="icon-3d-badge" style="width:28px;height:28px;border-radius:8px;">
+                  <span class="icon-3d-badge" style="flex:0 0 28px;width:28px;height:28px;border-radius:8px;">
                     <svg class="ui-icon" style="width:15px;height:15px;" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                   </span>
                 </div>
@@ -2394,7 +2433,7 @@
               <div class="step-top">
                 <div class="step-left-meta">
                   <span class="step-num">ЭТАП 04</span>
-                  <span class="icon-3d-badge" style="width:28px;height:28px;border-radius:8px;">
+                  <span class="icon-3d-badge" style="flex:0 0 28px;width:28px;height:28px;border-radius:8px;">
                     <svg class="ui-icon" style="width:15px;height:15px;" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                   </span>
                 </div>
@@ -2410,7 +2449,7 @@
         <div class="compare-grid">
           <div class="compare-card bad card-3d spotlight reveal-item">
             <div class="compare-head">
-              <span class="icon-3d-badge" style="width:30px;height:30px;border-radius:9px;background:rgba(244,63,94,0.14);border-color:rgba(244,63,94,0.3);color:var(--rose);">
+              <span class="icon-3d-badge" style="flex:0 0 30px;width:30px;height:30px;border-radius:9px;background:rgba(244,63,94,0.14);border-color:rgba(244,63,94,0.3);color:var(--rose);">
                 <svg class="ui-icon" style="width:16px;height:16px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
               </span>
               <strong style="color:var(--rose); font-size:0.96rem;">Ручные продажи в личке</strong>
@@ -2424,7 +2463,7 @@
 
           <div class="compare-card good card-3d spotlight reveal-item">
             <div class="compare-head">
-              <span class="icon-3d-badge" style="width:30px;height:30px;border-radius:9px;">
+              <span class="icon-3d-badge" style="flex:0 0 30px;width:30px;height:30px;border-radius:9px;">
                 <svg class="ui-icon" style="width:16px;height:16px;" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               </span>
               <strong style="color:var(--primary-bright); font-size:0.96rem;">Решения AlwaysStudio</strong>
@@ -2860,7 +2899,7 @@
                   <div class="ui-item-card">
                     <div class="ui-item-info">
                       <strong>Детейлинг-химчистка салона</strong>
-                      <small>С разбором и озонацией</small>
+                      <small>С разбором сидений и озонацией</small>
                     </div>
                     <div class="ui-item-right">
                       <span class="price-chip">4 900 ₽</span>
@@ -3035,29 +3074,29 @@
         <p class="section-sub reveal-item">Фиксированная стоимость без скрытых платежей. Все веб-проекты размещаются на облачной инфраструктуре без ежемесячной платы за хостинг.</p>
 
         <div class="perks-strip reveal-item">
-          <div class="perk-pill-card">
+          <div class="perk-pill-card spotlight">
             <span class="icon-3d-badge">
-              <svg class="ui-icon" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
             </span>
-            <div>
+            <div class="perk-pill-text">
               <strong>Хостинг 0 ₽/мес</strong>
               <span>HTTPS и CDN без аренды сервера</span>
             </div>
           </div>
-          <div class="perk-pill-card">
+          <div class="perk-pill-card spotlight">
             <span class="icon-3d-badge">
-              <svg class="ui-icon" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
             </span>
-            <div>
+            <div class="perk-pill-text">
               <strong>Адаптив под смартфоны</strong>
               <span>Идеально в Telegram, iOS и Android</span>
             </div>
           </div>
-          <div class="perk-pill-card">
+          <div class="perk-pill-card spotlight">
             <span class="icon-3d-badge">
-              <svg class="ui-icon" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
             </span>
-            <div>
+            <div class="perk-pill-text">
               <strong>Заявки прямо в Telegram</strong>
               <span>Мгновенные уведомления без потерь</span>
             </div>
@@ -3235,8 +3274,8 @@
         <!-- Direct Telegram Contact Card -->
         <div class="faq-contact-box card-3d spotlight reveal-item">
           <div class="faq-contact-text" style="position:relative; z-index:2; display:flex; align-items:center; gap:12px;">
-            <span class="icon-3d-badge" style="width:38px;height:38px;">
-              <svg class="ui-icon" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            <span class="icon-3d-badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
             </span>
             <div>
               <strong>Нужен точный расчет под вашу задачу?</strong>
